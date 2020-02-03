@@ -1,0 +1,36 @@
+class JsonHelper {
+  static final number = "number";
+  static final name = "name";
+  static final types = "types";
+  static final portraitWikiUrl = "portraitWikiUrl";
+  static final wikiUrl = "wikiUrl";
+  static final stats = "stats";
+  static final hp = "hp";
+  static final sta = "sta";
+  static final spd = "spd";
+  static final atk = "atk";
+  static final def = "def";
+  static final spatk = "spatk";
+  static final spdef = "spdef";
+  static final total = "total";
+  static final traits = "traits";
+  static final details = "details";
+  static final height = "height";
+  static final cm = "cm";
+  static final inches = "inches";
+  static final weight = "weight";
+  static final kg = "kg";
+  static final lbs = "lbs";
+  static final techniques = "techniques";
+  static final source = "source";
+  static final trivia = "trivia";
+  static final evolution = "evolution";
+  static final stage = "stage";
+  static final evolutionTree = "evolutionTree";
+  static final levels = "levels";
+  static final evolves = "evolves";
+  static final type = "type";
+  static final wikiPortraitUrlLarge = "wikiPortraitUrlLarge";
+  static final locations = "locations";
+  static final icon = "icon";
+}

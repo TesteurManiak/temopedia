@@ -1,17 +1,19 @@
+import 'package:temopedia/utils/JsonHelper.dart';
+
 class EvolutionNode {
   final int number;
   final String name;
   final int stage;
-  final int levels;
+  final dynamic levels;
 
   EvolutionNode({this.number, this.name, this.stage, this.levels});
 
   factory EvolutionNode.fromJson(Map<String, dynamic> json) {
     return EvolutionNode(
-      number: json['number'],
-      name: json['name'],
-      stage: json['stage'],
-      levels: json['levels'],
+      number: json[JsonHelper.number],
+      name: json[JsonHelper.name],
+      stage: json[JsonHelper.stage],
+      levels: json[JsonHelper.levels],
     );
   }
 }
@@ -25,13 +27,15 @@ class Evolution {
   Evolution({this.stage, this.evolutionTree, this.evolves, this.type});
 
   factory Evolution.fromJson(Map<String, dynamic> json) {
+    List<EvolutionNode> _evolutionTree = [];
+    if (json[JsonHelper.evolutionTree] != null)
+      json[JsonHelper.evolutionTree]
+          .forEach((node) => _evolutionTree.add(EvolutionNode.fromJson(node)));
     return Evolution(
-      stage: json['stage'],
-      evolutionTree: json['evolutionTree']
-          .map((node) => EvolutionNode.fromJson(node))
-          .toList(),
-      evolves: json['evolves'],
-      type: json['types'],
+      stage: json[JsonHelper.stage],
+      evolutionTree: _evolutionTree,
+      evolves: json[JsonHelper.evolves],
+      type: json[JsonHelper.type],
     );
   }
 }
