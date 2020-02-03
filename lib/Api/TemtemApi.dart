@@ -22,4 +22,12 @@ class TemtemApi {
     else
       throw Exception("Failed to get Temtems");
   }
+
+  Future getAllTypes() async {
+    var response = await http.get("$baseUrl$types");
+    if (response.statusCode == 200)
+      return jsonDecode(response.body);
+    else
+      throw Exception("Failed to get types");
+  }
 }

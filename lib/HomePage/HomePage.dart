@@ -30,8 +30,7 @@ class _HomePageState extends State<HomePage> {
     return ListTile(
       onTap: () => Navigator.push(
           context, MaterialPageRoute(builder: (context) => TemtemPage(item))),
-      leading: CachedNetworkImage(
-          imageUrl: "https://temtem-api.mael.tech${item.icon}"),
+      leading: CachedNetworkImage(imageUrl: item.portraitWikiUrl),
       title: Text(
         item.name,
         style: GoogleFonts.patrickHand(
