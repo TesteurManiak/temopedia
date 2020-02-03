@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final _appLogo = Image(
     image: ExactAssetImage("assets/logo.png"),
-    height: 32.0,
+    height: 42.0,
     alignment: FractionalOffset.center,
   );
 
@@ -27,6 +28,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildTemtemCard(Temtem item) {
     return ListTile(
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (context) => TemtemPage(item))),
       leading: CachedNetworkImage(
           imageUrl: "https://temtem-api.mael.tech${item.icon}"),
       title: Text(
