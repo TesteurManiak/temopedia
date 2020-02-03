@@ -1,5 +1,8 @@
 import 'package:temopedia/Models/Details.dart';
+import 'package:temopedia/Models/Evolution.dart';
+import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Stats.dart';
+import 'package:temopedia/Models/Technique.dart';
 
 class Temtem {
   final int number;
@@ -10,6 +13,12 @@ class Temtem {
   final Stats stats;
   final List<String> traits;
   final Details details;
+  final List<Technique> techniques;
+  final List<String> trivia;
+  final Evolution evolution;
+  final String wikiPortraitUrlLarge;
+  final List<Location> locations;
+  final String icon;
 
   Temtem({
     this.number,
@@ -20,5 +29,21 @@ class Temtem {
     this.stats,
     this.traits,
     this.details,
+    this.techniques,
+    this.trivia,
+    this.evolution,
+    this.wikiPortraitUrlLarge,
+    this.locations,
+    this.icon,
   });
+
+  factory Temtem.fromJson(Map<String, dynamic> json) {
+    return Temtem(
+        number: json['number'],
+        name: json['name'],
+        types: json['types'].map((String type) => type).toList(),
+        portraitWikiUrl: json['portraitWikiUrl'],
+        wikiUrl: json['wikiUrl'],
+        stats: null);
+  }
 }
