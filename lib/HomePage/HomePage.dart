@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/styles/Theme.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
@@ -11,23 +13,45 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _appLogo = Image(
+    image: ExactAssetImage("assets/logo.png"),
+    height: 32.0,
+    alignment: FractionalOffset.center,
+  );
+
   @override
   void initState() {
     super.initState();
   }
 
+  Widget _buildTemtemCard(Temtem item) {
+    return ListTile(
+      leading: CachedNetworkImage(
+          imageUrl: "https://temtem-api.mael.tech${item.icon}"),
+      title: Text(
+        item.name,
+        style: TextStyle(color: MyColors.lightOrange),
+      ),
+      trailing: Icon(Icons.arrow_forward_ios, color: MyColors.lightOrange),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: MyColors.background,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        title: Center(child: _appLogo),
+      ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(left: 12.0, bottom: 12.0),
+          padding: const EdgeInsets.only(bottom: 12.0),
           child: ListView.builder(
             itemCount: widget.temtems == null ? 0 : widget.temtems.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(widget.temtems[index].name),
-            ),
+            itemBuilder: (context, index) =>
+                _buildTemtemCard(widget.temtems[index]),
           ),
         ),
       ),
