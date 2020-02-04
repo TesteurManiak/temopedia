@@ -113,7 +113,7 @@ class StatWidget extends StatelessWidget {
             progress: progress,
             color: progress < 0.5
                 ? Colors.red
-                : progress < 0.7 ? Colors.orange : Colors.teal,
+                : progress < 0.7 ? Colors.orange : Colors.green,
           ),
         )
       ],
