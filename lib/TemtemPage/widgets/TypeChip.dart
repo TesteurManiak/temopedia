@@ -20,14 +20,14 @@ class TypeChip extends StatelessWidget {
     globals.types.forEach((item) {
       if (item.name.toLowerCase() == type.toLowerCase())
         _chip = Chip(
-          backgroundColor: MyColors.lightOrange,
+          backgroundColor: MyColors.background,
           avatar: CachedNetworkImage(
             imageUrl: "https://temtem-api.mael.tech${item.icon}",
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
           label: Text(item.name,
               style: GoogleFonts.patrickHand(
-                  color: MyColors.background, letterSpacing: 0.7)),
+                  color: MyColors.lightOrange, letterSpacing: 0.7)),
         );
     });
     return _chip;

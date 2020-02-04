@@ -6,4 +6,5 @@ class MyColors {
   static final Color background = Color.fromRGBO(60, 46, 74, 1);
   static final Color temtemInfo = Color.fromRGBO(112, 250, 225, 1);
   static final Color textInfo = Color.fromRGBO(16, 133, 116, 1);
+  static final Color photoBack = Color.fromRGBO(39, 60, 66, 1);
 }

@@ -18,13 +18,10 @@ class TriviaCard extends StatelessWidget {
             color: MyColors.background, letterSpacing: 0.7),
       )),
     );
-    return Card(
-      color: MyColors.lightOrange,
-      child: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: _cards),
-      ),
+    return Container(
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(8.0),
+      child: Column(children: _cards),
     );
   }
 }
