@@ -31,6 +31,7 @@ class TraitsCard extends StatelessWidget {
     ];
     traits.forEach((item) => _children.add(
           Container(
+            margin: const EdgeInsets.only(top: 6.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 color: MyColors.lightBackground),
