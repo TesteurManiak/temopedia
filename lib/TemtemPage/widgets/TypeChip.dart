@@ -22,7 +22,9 @@ class TypeChip extends StatelessWidget {
         _chip = Chip(
           backgroundColor: MyColors.lightOrange,
           avatar: CachedNetworkImage(
-              imageUrl: "https://temtem-api.mael.tech${item.icon}"),
+            imageUrl: "https://temtem-api.mael.tech${item.icon}",
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
           label: Text(item.name,
               style: GoogleFonts.patrickHand(
                   color: MyColors.background, letterSpacing: 0.7)),
