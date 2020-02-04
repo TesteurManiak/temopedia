@@ -18,10 +18,10 @@ class _RootPageState extends State<RootPage> {
   bool _isLoading = true;
 
   _loadList() async {
-    var json = await api.getAllTemtem();
+    var json = await api.getRequest(TemtemApi.allTemtems);
     json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
 
-    json = await api.getAllTypes();
+    json = await api.getRequest(TemtemApi.types);
     json.forEach((item) => globals.types.add(TemType.fromJson(item)));
 
     setState(() => _isLoading = false);
