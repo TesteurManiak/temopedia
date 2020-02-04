@@ -46,7 +46,7 @@ class Temtem {
 
     List<String> _traits = [];
     if (json[JsonHelper.traits] != null)
-      json[JsonHelper.types].forEach((item) => _traits.add(item));
+      json[JsonHelper.traits].forEach((item) => _traits.add(item));
 
     List<Technique> _techniques = [];
     if (json[JsonHelper.techniques] != null)

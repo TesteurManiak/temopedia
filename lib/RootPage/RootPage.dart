@@ -3,6 +3,7 @@ import 'package:temopedia/Api/TemtemApi.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/Models/Traits.dart';
 import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -23,6 +24,9 @@ class _RootPageState extends State<RootPage> {
 
     json = await api.getRequest(TemtemApi.types);
     json.forEach((item) => globals.types.add(TemType.fromJson(item)));
+
+    json = await api.getRequest(TemtemApi.traits);
+    json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
 
     setState(() => _isLoading = false);
   }

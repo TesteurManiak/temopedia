@@ -33,4 +33,5 @@ class JsonHelper {
   static final wikiPortraitUrlLarge = "wikiPortraitUrlLarge";
   static final locations = "locations";
   static final icon = "icon";
+  static final description = "description";
 }
