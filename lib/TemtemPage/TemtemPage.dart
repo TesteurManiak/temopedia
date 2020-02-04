@@ -18,13 +18,7 @@ class _TemtemPageState extends State<TemtemPage> {
   Widget _buildType() {
     List<Widget> _types = List();
     widget.temtem.types.forEach((type) => _types.add(TypeChip(type)));
-    return Card(
-      color: MyColors.lightOrange,
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
-        child: Wrap(children: _types),
-      ),
-    );
+    return Wrap(children: _types, spacing: 4);
   }
 
   Widget _buildTriviaCards() {
