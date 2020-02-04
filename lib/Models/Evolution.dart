@@ -23,8 +23,14 @@ class Evolution {
   final List<EvolutionNode> evolutionTree;
   final bool evolves;
   final String type;
+  final String description;
 
-  Evolution({this.stage, this.evolutionTree, this.evolves, this.type});
+  Evolution(
+      {this.stage,
+      this.evolutionTree,
+      this.evolves,
+      this.type,
+      this.description});
 
   factory Evolution.fromJson(Map<String, dynamic> json) {
     List<EvolutionNode> _evolutionTree = [];
@@ -36,6 +42,7 @@ class Evolution {
       evolutionTree: _evolutionTree,
       evolves: json[JsonHelper.evolves],
       type: json[JsonHelper.type],
+      description: json[JsonHelper.description],
     );
   }
 }

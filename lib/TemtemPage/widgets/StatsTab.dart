@@ -56,10 +56,25 @@ class StatsTab extends StatelessWidget {
           borderRadius: BorderRadius.circular(21.0),
           color: MyColors.background),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          ..._buildStats().expand((stat) => [stat, SizedBox(height: 14)]),
+          Text(
+            "Statistics",
+            style: TextStyle(
+              color: MyColors.lightOrange,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              height: 0.8,
+            ),
+          ),
+          SizedBox(height: 28),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              ..._buildStats().expand((stat) => [stat, SizedBox(height: 14)]),
+            ],
+          )
         ],
       ),
     );

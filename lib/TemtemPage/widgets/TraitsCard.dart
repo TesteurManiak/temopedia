@@ -17,10 +17,20 @@ class TraitsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = [Text("Traits", style: textStyle)];
+    List<Widget> _children = [
+      Text(
+        "Traits",
+        style: TextStyle(
+          color: MyColors.lightOrange,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          height: 0.8,
+        ),
+      ),
+      SizedBox(height: 28),
+    ];
     traits.forEach((item) => _children.add(
           Container(
-            margin: const EdgeInsets.only(top: 6.0),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 color: MyColors.lightBackground),
@@ -47,13 +57,12 @@ class TraitsCard extends StatelessWidget {
           ),
         ));
     return Container(
-      padding:
-          const EdgeInsets.only(left: 8.0, right: 8.0, top: 8.0, bottom: 12.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21.0),
           color: MyColors.background),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: _children,
       ),
     );

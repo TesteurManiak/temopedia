@@ -9,7 +9,18 @@ class TriviaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _cards = List();
+    List<Widget> _cards = [
+      Text(
+        "Trivia",
+        style: TextStyle(
+          color: MyColors.lightOrange,
+          fontWeight: FontWeight.bold,
+          fontSize: 16,
+          height: 0.8,
+        ),
+      ),
+      SizedBox(height: 28),
+    ];
     trivia.forEach(
       (info) => _cards.add(Text(
         info,
@@ -23,8 +34,9 @@ class TriviaCard extends StatelessWidget {
           color: MyColors.background,
           borderRadius: BorderRadius.circular(21.0)),
       alignment: Alignment.center,
-      padding: const EdgeInsets.all(8.0),
-      child: Column(children: _cards),
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, children: _cards),
     );
   }
 }
