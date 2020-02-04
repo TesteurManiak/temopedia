@@ -9,7 +9,7 @@ class TraitsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> _children = [
-      Text("Trait", style: TextStyle(color: MyColors.lightOrange))
+      Text("Traits", style: TextStyle(color: MyColors.lightOrange))
     ];
     traits.forEach((item) => _children.add(
           Container(

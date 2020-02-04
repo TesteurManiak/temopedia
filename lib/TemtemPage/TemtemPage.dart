@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
 import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
@@ -52,6 +53,8 @@ class _TemtemPageState extends State<TemtemPage> {
                           TemtemName(widget.temtem),
                           _buildType(),
                           TraitsCard(widget.temtem.traits),
+                          SizedBox(height: 12.0),
+                          StatsTab(widget.temtem.stats),
                           TriviaCard(widget.temtem.trivia),
                         ],
                       ),
