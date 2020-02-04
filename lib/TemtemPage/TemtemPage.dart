@@ -33,6 +33,7 @@ class _TemtemPageState extends State<TemtemPage> {
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0.0),
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Stack(
@@ -42,8 +43,8 @@ class _TemtemPageState extends State<TemtemPage> {
                   children: <Widget>[
                     SizedBox(height: circleHeight - circleHeight / 6),
                     Container(
-                      padding:
-                          EdgeInsets.only(top: 32.0, left: 8.0, right: 8.0),
+                      padding: EdgeInsets.only(
+                          top: 32.0, left: 8.0, right: 8.0, bottom: 32.0),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
                           color: MyColors.lightOrange),
@@ -55,6 +56,7 @@ class _TemtemPageState extends State<TemtemPage> {
                           TraitsCard(widget.temtem.traits),
                           SizedBox(height: 12.0),
                           StatsTab(widget.temtem.stats),
+                          SizedBox(height: 12.0),
                           TriviaCard(widget.temtem.trivia),
                         ],
                       ),

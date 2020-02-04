@@ -15,10 +15,13 @@ class TriviaCard extends StatelessWidget {
         info,
         textAlign: TextAlign.center,
         style: GoogleFonts.patrickHand(
-            color: MyColors.background, letterSpacing: 0.7),
+            color: MyColors.lightOrange, letterSpacing: 0.7),
       )),
     );
     return Container(
+      decoration: BoxDecoration(
+          color: MyColors.background,
+          borderRadius: BorderRadius.circular(21.0)),
       alignment: Alignment.center,
       padding: const EdgeInsets.all(8.0),
       child: Column(children: _cards),
