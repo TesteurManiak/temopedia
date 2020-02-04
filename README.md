@@ -1,7 +1,5 @@
 <div align="center">
-
     <img src="assets/logo.png">
-
 </div>
 
 # <img src="assets/icon.png" height="60"> Temopedia
@@ -13,12 +11,10 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 ## Screenshots
 
 <div align="center">
-
     <img src="flutter_01.png" height="400">
     <img src="flutter_02.png" height="400">
     <img src="flutter_04.png" height="400">
     <img src="flutter_03.png" height="400">
-
 </div>
 
 ## How to install
