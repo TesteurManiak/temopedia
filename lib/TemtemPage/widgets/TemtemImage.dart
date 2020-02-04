@@ -20,11 +20,14 @@ class TemtemImage extends StatelessWidget {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.0),
             color: MyColors.temtemInfo),
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         alignment: Alignment.center,
         child: Column(
           children: <Widget>[
-            CachedNetworkImage(imageUrl: temtem.wikiPortraitUrlLarge),
+            CachedNetworkImage(
+              imageUrl: temtem.wikiPortraitUrlLarge,
+              placeholder: (context, url) => Image.asset("assets/icon.png"),
+            ),
             Text(temtem.name.toUpperCase(), style: style),
             Text("#${temtem.number}", style: style),
           ],
