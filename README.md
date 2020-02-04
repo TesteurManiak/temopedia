@@ -43,7 +43,7 @@ flutter install
 * [x] TemtemPage - Add trivia
 * [ ] TemtemPage - Add details
 * [ ] TemtemPage - Add techiques list
-* [ ] TemtemPage - Add evolution chain
+* [x] TemtemPage - Add evolution chain
 * [ ] TemtemPage - Add locations list
 * [ ] Technique - Show technique's details inside a popup
 * [ ] Better design and animations
