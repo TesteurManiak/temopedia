@@ -58,5 +58,5 @@ flutter install
 
 ## Credits
 
-* [Mael](https://temtem-api.mael.tech/) - The talented person who made the API
+* [Mael](https://github.com/maael/temtem-api) - The talented person who made the API
 
