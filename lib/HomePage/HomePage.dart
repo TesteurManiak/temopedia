@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
@@ -65,8 +64,7 @@ class _HomePageState extends State<HomePage> {
       ),
       title: Text(
         item.name,
-        style: GoogleFonts.patrickHand(
-            color: MyColors.lightOrange, letterSpacing: 0.7),
+        style: TextStyle(color: MyColors.lightOrange),
       ),
       trailing: Icon(Icons.arrow_forward_ios, color: MyColors.lightOrange),
     );

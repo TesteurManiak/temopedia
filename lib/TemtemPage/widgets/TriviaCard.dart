@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TriviaCard extends StatelessWidget {
@@ -25,8 +24,7 @@ class TriviaCard extends StatelessWidget {
       (info) => _cards.add(Text(
         info,
         textAlign: TextAlign.center,
-        style: GoogleFonts.patrickHand(
-            color: MyColors.lightOrange, letterSpacing: 0.7),
+        style: TextStyle(color: MyColors.lightOrange),
       )),
     );
     return Container(
