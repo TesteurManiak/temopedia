@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Technique.dart';
+import 'package:temopedia/TemtemPage/widgets/ClassChip.dart';
+import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
+import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
@@ -17,7 +20,17 @@ class TechniqueContent extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        TypeChip(tech.type),
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 7,
+          children: <Widget>[
+            TypeChip(tech.type, color: MyColors.lightBackground),
+            ClassChip(tech.classTouch, tech.damage),
+            StaminaChip(tech.staminaCost),
+            PriorityChip(tech.priority),
+          ],
+        ),
+        Text("Hold: ${tech.hold}", style: textStyle),
         Text(tech.description, style: textStyle),
       ],
     );

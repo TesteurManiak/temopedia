@@ -6,8 +6,9 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TypeChip extends StatelessWidget {
   final String type;
+  final Color color;
 
-  TypeChip(this.type);
+  TypeChip(this.type, {this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class TypeChip extends StatelessWidget {
     globals.types.forEach((item) {
       if (item.name.toLowerCase() == type.toLowerCase())
         _chip = Chip(
-          backgroundColor: MyColors.background,
+          backgroundColor: color ?? MyColors.background,
           avatar: CachedNetworkImage(
             imageUrl: "https://temtem-api.mael.tech${item.icon}",
             errorWidget: (context, url, error) => Icon(Icons.error),
