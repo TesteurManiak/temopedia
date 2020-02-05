@@ -4,6 +4,8 @@ import 'package:temopedia/TemtemPage/widgets/ClassChip.dart';
 import 'package:temopedia/TemtemPage/widgets/HoldChip.dart';
 import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
 import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
+import 'package:temopedia/TemtemPage/widgets/SynergyInfo.dart';
+import 'package:temopedia/TemtemPage/widgets/TargetChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
@@ -30,8 +32,11 @@ class TechniqueContent extends StatelessWidget {
             StaminaChip(tech.staminaCost),
             PriorityChip(tech.priority),
             HoldChip(tech.hold),
+            TargetChip(tech.targets),
           ],
         ),
+        SynergyInfo(tech.synergy, tech.synergyEffect),
+        SizedBox(height: 8),
         Text(tech.description, style: textStyle),
       ],
     );
