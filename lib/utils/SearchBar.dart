@@ -49,14 +49,16 @@ class _SearchBarState extends State<SearchBar> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Icon(Icons.search, color: Colors.white),
+          Icon(Icons.search, color: MyColors.background),
           SizedBox(width: 13),
           Expanded(
-            child: TextFormField(
+            child: TextField(
+              onSubmitted: (_) => Navigator.pop(context),
+              style: TextStyle(color: MyColors.background),
               controller: _filter,
               decoration: InputDecoration(
                 hintText: "Search Temtems",
-                hintStyle: TextStyle(fontSize: 14, color: Colors.white),
+                hintStyle: TextStyle(fontSize: 14, color: MyColors.background),
                 border: InputBorder.none,
               ),
             ),
