@@ -45,7 +45,7 @@ class Technique {
       synergyEffect: json[JsonHelper.synergyEffect],
       synergyEffectDamage: json[JsonHelper.synergyEffectDamage],
       targets: json[JsonHelper.targets].toString(),
-      description: json[JsonHelper.description],
+      description: json[JsonHelper.description].toString().replaceAll('\n', ''),
     );
   }
 }
