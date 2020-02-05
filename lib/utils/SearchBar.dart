@@ -22,12 +22,11 @@ class _SearchBarState extends State<SearchBar> {
   void initState() {
     super.initState();
     _filter.addListener(() {
-      if (_filter.text.isEmpty) {
+      if (_filter.text.isEmpty)
         searchText = "";
-      } else {
+      else
         searchText = _filter.text;
-        if (widget.refresh != null) widget.refresh(searchText);
-      }
+      if (widget.refresh != null) widget.refresh(searchText);
     });
   }
 

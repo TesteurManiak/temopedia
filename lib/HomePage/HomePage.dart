@@ -22,14 +22,25 @@ class _HomePageState extends State<HomePage> {
     alignment: FractionalOffset.center,
   );
 
+  List<Temtem> _filteredList;
+
   @override
   void initState() {
     super.initState();
+    _filteredList = widget.temtems;
   }
 
   _refreshSearch(String searchTxt) {
+    _filteredList = widget.temtems;
     setState(() {
-      print("search: $searchTxt");
+      if (searchTxt.isNotEmpty) {
+        List<Temtem> tmp = [];
+        _filteredList.forEach((elem) {
+          if (elem.name.toLowerCase().contains(searchTxt.toLowerCase()))
+            tmp.add(elem);
+        });
+        _filteredList = tmp;
+      }
     });
   }
 
@@ -43,8 +54,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildTemtemCard(Temtem item) {
     return ListTile(
-      onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => TemtemPage(item))),
+      onTap: () {
+        _filteredList = widget.temtems;
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => TemtemPage(item)));
+      },
       leading: CachedNetworkImage(
         imageUrl: item.portraitWikiUrl,
         placeholder: (context, url) => Image.asset("assets/icon.png"),
@@ -77,9 +91,9 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.only(bottom: 12.0),
           child: ListView.builder(
             physics: BouncingScrollPhysics(),
-            itemCount: widget.temtems == null ? 0 : widget.temtems.length,
+            itemCount: _filteredList == null ? 0 : _filteredList.length,
             itemBuilder: (context, index) =>
-                _buildTemtemCard(widget.temtems[index]),
+                _buildTemtemCard(_filteredList[index]),
           ),
         ),
       ),
