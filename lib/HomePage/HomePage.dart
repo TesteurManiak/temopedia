@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       },
       leading: CachedNetworkImage(
         imageUrl: item.portraitWikiUrl,
-        placeholder: (context, url) => Image.asset("assets/icon.png"),
+        placeholder: (context, url) => Image.asset("assets/temtem_unknown.png"),
       ),
       title: Text(
         item.name,

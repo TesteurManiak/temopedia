@@ -24,6 +24,7 @@ class TypeChip extends StatelessWidget {
           backgroundColor: color ?? MyColors.background,
           avatar: CachedNetworkImage(
             imageUrl: "https://temtem-api.mael.tech${item.icon}",
+            placeholder: (context, url) => Image.asset("assets/unknown.png"),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
           label: Text(item.name,
