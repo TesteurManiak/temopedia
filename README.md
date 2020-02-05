@@ -46,6 +46,7 @@ flutter install
 * [ ] TemtemPage - Add techiques list
 * [x] TemtemPage - Add evolution chain
 * [ ] TemtemPage - Add locations list
+* [x] Traits - Show trait's details inside a popup
 * [ ] Technique - Show technique's details inside a popup
 * [ ] Better design and animations
 * [ ] CI/CD
