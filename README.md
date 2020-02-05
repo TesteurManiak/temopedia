@@ -37,7 +37,7 @@ flutter install
 * [x] API - Load traits list
 * [x] API - Load techniques list
 * [x] HomePage - Display temtems list
-* [ ] HomePage - Search bar to filter temtems
+* [x] HomePage - Search bar to filter temtems
 * [x] TemtemPage - Add picture
 * [x] TemtemPage - Add traits
 * [x] TemtemPage - Add statistics
