@@ -34,4 +34,13 @@ class JsonHelper {
   static final locations = "locations";
   static final icon = "icon";
   static final description = "description";
+  static final classTouch = "class";
+  static final damage = "damage";
+  static final staminaCost = "staminaCost";
+  static final hold = "hold";
+  static final priority = "priority";
+  static final synergy = "synergy";
+  static final synergyEffect = "synergyEffect";
+  static final synergyEffectDamage = "synergyEffectDamage";
+  static final targets = "targets";
 }

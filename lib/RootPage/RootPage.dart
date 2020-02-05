@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Api/TemtemApi.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
+import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/Models/Traits.dart';
 import 'package:temopedia/Models/Type.dart';
@@ -27,6 +28,9 @@ class _RootPageState extends State<RootPage> {
 
     json = await api.getRequest(TemtemApi.traits);
     json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
+
+    json = await api.getRequest(TemtemApi.techniques);
+    json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
 
     setState(() => _isLoading = false);
   }

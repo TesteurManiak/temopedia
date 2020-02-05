@@ -2,7 +2,6 @@ import 'package:temopedia/Models/Details.dart';
 import 'package:temopedia/Models/Evolution.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Stats.dart';
-import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 
 class Temtem {
@@ -15,7 +14,7 @@ class Temtem {
   final Stats stats;
   final List<String> traits;
   final Details details;
-  final List<Technique> techniques;
+  final List<Map<String, dynamic>> techniques;
   final List<String> trivia;
   final Evolution evolution;
   final String wikiPortraitUrlLarge;
@@ -48,10 +47,12 @@ class Temtem {
     if (json[JsonHelper.traits] != null)
       json[JsonHelper.traits].forEach((item) => _traits.add(item));
 
-    List<Technique> _techniques = [];
+    List<Map<String, dynamic>> _techniques = [];
     if (json[JsonHelper.techniques] != null)
-      json[JsonHelper.techniques]
-          .forEach((item) => _techniques.add(Technique.fromJson(item)));
+      json[JsonHelper.techniques].forEach((item) => _techniques.add({
+            JsonHelper.name: item[JsonHelper.name],
+            JsonHelper.source: item[JsonHelper.source]
+          }));
 
     List<String> _trivia = [];
     if (json[JsonHelper.trivia] != null)
