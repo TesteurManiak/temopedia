@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/TemtemPage/widgets/ClassChip.dart';
+import 'package:temopedia/TemtemPage/widgets/HoldChip.dart';
 import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
 import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
@@ -28,9 +29,9 @@ class TechniqueContent extends StatelessWidget {
             ClassChip(tech.classTouch, tech.damage),
             StaminaChip(tech.staminaCost),
             PriorityChip(tech.priority),
+            HoldChip(tech.hold),
           ],
         ),
-        Text("Hold: ${tech.hold}", style: textStyle),
         Text(tech.description, style: textStyle),
       ],
     );

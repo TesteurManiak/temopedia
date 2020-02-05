@@ -10,7 +10,7 @@ class StaminaChip extends StatelessWidget {
     return Chip(
       backgroundColor: Colors.blue,
       label: Text(
-        staminaCost.toString(),
+        "Cost: $staminaCost",
         style: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
