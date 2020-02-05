@@ -15,11 +15,20 @@ class DetailsCard extends StatelessWidget {
         ));
   }
 
+  Widget _buildDivider() {
+    return Container(
+      height: 25,
+      child: VerticalDivider(
+        color: MyColors.lightOrange,
+      ),
+    );
+  }
+
   Widget _buildDetails() {
     return Row(
-      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Expanded(
+        Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -33,7 +42,8 @@ class DetailsCard extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(
+        _buildDivider(),
+        Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
