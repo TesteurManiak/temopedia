@@ -1,4 +1,4 @@
-package com.example.temopedia
+package com.maniak.temopedia
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
