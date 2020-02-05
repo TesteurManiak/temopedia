@@ -1,8 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Technique.dart';
+import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+
+class TechniqueContent extends StatelessWidget {
+  final Technique tech;
+  final textStyle = TextStyle(color: MyColors.lightOrange);
+
+  TechniqueContent(this.tech);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        TypeChip(tech.type),
+        Text(tech.description, style: textStyle),
+      ],
+    );
+  }
+}
 
 class TechniqueList extends StatelessWidget {
   final List<Map<String, dynamic>> techniques;
@@ -50,7 +70,7 @@ class TechniqueList extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21.0)),
                     title: Text(_tech.name, style: textStyle),
-                    content: Text(_tech.description, style: textStyle),
+                    content: TechniqueContent(_tech),
                     actions: <Widget>[
                       FlatButton(
                           child: Text("Close"),
