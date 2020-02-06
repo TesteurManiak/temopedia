@@ -37,7 +37,7 @@ class TemtemNode extends StatelessWidget {
               SizedBox(height: 3),
               Text(
                 temtem.name,
-                style: TextStyle(color: MyColors.lightOrange),
+                style: TextStyle(color: MyColors.lightFont),
               )
             ],
           );
@@ -56,12 +56,12 @@ class EvolutionChain extends StatelessWidget {
           ? Expanded(
               child: Column(
                 children: <Widget>[
-                  Icon(Icons.arrow_forward, color: MyColors.lightOrange),
+                  Icon(Icons.arrow_forward, color: MyColors.lightFont),
                   SizedBox(height: 7),
                   Text(
                     "+$level Lvl",
                     style: TextStyle(
-                      color: MyColors.lightOrange,
+                      color: MyColors.lightFont,
                       fontWeight: FontWeight.bold,
                       fontSize: 12,
                     ),
@@ -80,14 +80,14 @@ class EvolutionChain extends StatelessWidget {
         temtem.evolution.description != null)
       return Text(
         temtem.evolution.description,
-        style: TextStyle(color: MyColors.lightOrange),
+        style: TextStyle(color: MyColors.lightFont),
       );
     List<Widget> _chain = [];
     for (int i = 1; i < temtem.evolution.evolutionTree.length; i++) {
       var previousNode = temtem.evolution.evolutionTree[i - 1];
       _chain.add(_buildRow(previousNode.number,
           next: temtem.evolution.evolutionTree[i].number,
-          level: previousNode.levels));
+          level: int.tryParse(previousNode.levels.toString() ?? 0)));
     }
     return Column(children: _chain);
   }
@@ -99,22 +99,7 @@ class EvolutionChain extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(21.0),
           color: MyColors.background),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            "Evolution Chain",
-            style: TextStyle(
-              color: MyColors.lightOrange,
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              height: 0.8,
-            ),
-          ),
-          SizedBox(height: 28),
-          _buildEvolution(),
-        ],
-      ),
+      child: _buildEvolution(),
     );
   }
 }

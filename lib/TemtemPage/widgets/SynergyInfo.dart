@@ -32,12 +32,12 @@ class SynergyInfo extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text("Synergy:", style: TextStyle(color: MyColors.lightOrange)),
+              Text("Synergy:", style: TextStyle(color: MyColors.lightFont)),
               SizedBox(width: 10),
               TypeChip(synergyType.name),
             ],
           ),
-          Text(synergyEffect, style: TextStyle(color: MyColors.lightOrange)),
+          Text(synergyEffect, style: TextStyle(color: MyColors.lightFont)),
         ],
       ),
     );

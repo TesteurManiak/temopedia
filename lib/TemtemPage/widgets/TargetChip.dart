@@ -11,7 +11,7 @@ class TargetChip extends StatelessWidget {
     return Chip(
       backgroundColor: MyColors.lightBackground,
       avatar: Icon(Icons.person, color: Colors.white),
-      label: Text(targets, style: TextStyle(color: MyColors.lightOrange)),
+      label: Text(targets, style: TextStyle(color: MyColors.lightFont)),
     );
   }
 }

@@ -43,7 +43,7 @@ class _SearchBarState extends State<SearchBar> {
       margin: widget.margin,
       decoration: ShapeDecoration(
         shape: StadiumBorder(),
-        color: MyColors.lightOrange,
+        color: MyColors.lightFont,
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,

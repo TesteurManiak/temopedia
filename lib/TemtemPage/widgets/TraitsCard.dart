@@ -5,7 +5,7 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TraitsCard extends StatelessWidget {
   final List<String> traits;
-  final TextStyle textStyle = TextStyle(color: MyColors.lightOrange);
+  final TextStyle textStyle = TextStyle(color: MyColors.lightFont);
 
   TraitsCard(this.traits);
 
@@ -17,18 +17,7 @@ class TraitsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _children = [
-      Text(
-        "Traits",
-        style: TextStyle(
-          color: MyColors.lightOrange,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-          height: 0.8,
-        ),
-      ),
-      SizedBox(height: 28),
-    ];
+    List<Widget> _children = [];
     traits.forEach((item) => _children.add(
           Container(
             margin: const EdgeInsets.only(top: 6.0),
@@ -57,7 +46,7 @@ class TraitsCard extends StatelessWidget {
               },
               title: Text(item, style: textStyle),
               trailing:
-                  Icon(Icons.arrow_forward_ios, color: MyColors.lightOrange),
+                  Icon(Icons.arrow_forward_ios, color: MyColors.lightFont),
             ),
           ),
         ));

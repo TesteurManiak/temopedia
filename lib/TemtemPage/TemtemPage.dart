@@ -52,6 +52,8 @@ class _TemtemPageState extends State<TemtemPage> {
                       children: <Widget>[
                         TemtemName(widget.temtem),
                         _buildType(),
+                        TriviaCard(widget.temtem.trivia),
+                        SizedBox(height: 12.0),
                         DetailsCard(widget.temtem.details),
                         SizedBox(height: 12.0),
                         EvolutionChain(widget.temtem),
@@ -61,8 +63,6 @@ class _TemtemPageState extends State<TemtemPage> {
                         TraitsCard(widget.temtem.traits),
                         SizedBox(height: 12.0),
                         TechniqueList(widget.temtem.techniques),
-                        SizedBox(height: 12.0),
-                        TriviaCard(widget.temtem.trivia),
                       ],
                     ),
                   ),

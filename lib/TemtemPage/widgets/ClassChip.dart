@@ -13,7 +13,7 @@ class ClassChip extends StatelessWidget {
       backgroundColor: MyColors.lightBackground,
       avatar: Image.asset("assets/$className.png"),
       label: Text(damage.toString(),
-          style: TextStyle(color: MyColors.lightOrange)),
+          style: TextStyle(color: MyColors.lightFont)),
     );
   }
 }

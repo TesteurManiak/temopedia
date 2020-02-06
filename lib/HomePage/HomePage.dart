@@ -64,9 +64,9 @@ class _HomePageState extends State<HomePage> {
       ),
       title: Text(
         item.name,
-        style: TextStyle(color: MyColors.lightOrange),
+        style: TextStyle(color: MyColors.lightFont),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, color: MyColors.lightOrange),
+      trailing: Icon(Icons.arrow_forward_ios, color: MyColors.lightFont),
     );
   }
 
@@ -74,9 +74,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: MyColors.lightOrange,
+        backgroundColor: MyColors.lightBackground,
         onPressed: _showSearchModal,
-        child: Icon(Icons.search, color: MyColors.background),
+        child: Icon(Icons.search, color: MyColors.lightFont),
       ),
       backgroundColor: MyColors.background,
       appBar: AppBar(

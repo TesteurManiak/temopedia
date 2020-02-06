@@ -10,16 +10,16 @@ class DetailsCard extends StatelessWidget {
   Widget _buildLabel(String text) {
     return Text(text,
         style: TextStyle(
-          color: MyColors.lightOrange,
+          color: MyColors.darkFont,
           height: 0.8,
         ));
   }
 
   Widget _buildDivider() {
     return Container(
-      height: 25,
+      height: 30,
       child: VerticalDivider(
-        color: MyColors.lightOrange,
+        color: MyColors.darkFont,
       ),
     );
   }
@@ -28,32 +28,26 @@ class DetailsCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
+        Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              _buildLabel("Height:"),
-              SizedBox(height: 11),
               Text("${details.heightCm} cm",
-                  style: TextStyle(
-                    height: 0.8,
-                    color: MyColors.lightOrange,
-                  )),
+                  style: TextStyle(color: MyColors.lightFont, fontSize: 25)),
+              SizedBox(height: 11),
+              _buildLabel("Height"),
             ],
           ),
         ),
         _buildDivider(),
-        Container(
+        Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              _buildLabel("Weight:"),
-              SizedBox(height: 11),
               Text("${details.weightKg} kg",
-                  style: TextStyle(
-                    height: 0.8,
-                    color: MyColors.lightOrange,
-                  )),
+                  style: TextStyle(color: MyColors.lightFont, fontSize: 25)),
+              SizedBox(height: 11),
+              _buildLabel("Weight"),
             ],
           ),
         )
@@ -69,20 +63,7 @@ class DetailsCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(21),
         color: MyColors.background,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text("Details",
-              style: TextStyle(
-                color: MyColors.lightOrange,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                height: 0.8,
-              )),
-          SizedBox(height: 28),
-          _buildDetails(),
-        ],
-      ),
+      child: _buildDetails(),
     );
   }
 }

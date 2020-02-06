@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static final Color lightOrange = Color.fromRGBO(250, 152, 87, 1);
   static final Color darkOrange = Color.fromRGBO(255, 201, 108, 1);
   static final Color background = Color.fromRGBO(31, 24, 58, 1);
   static final Color lightBackground = Color.fromRGBO(32, 39, 67, 1);

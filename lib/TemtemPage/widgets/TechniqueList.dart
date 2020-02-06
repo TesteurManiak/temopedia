@@ -13,7 +13,7 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TechniqueContent extends StatelessWidget {
   final Technique tech;
-  final textStyle = TextStyle(color: MyColors.lightOrange);
+  final textStyle = TextStyle(color: MyColors.lightFont);
 
   TechniqueContent(this.tech);
 
@@ -45,7 +45,7 @@ class TechniqueContent extends StatelessWidget {
 
 class TechniqueList extends StatelessWidget {
   final List<Map<String, dynamic>> techniques;
-  final textStyle = TextStyle(color: MyColors.lightOrange);
+  final textStyle = TextStyle(color: MyColors.lightFont);
 
   TechniqueList(this.techniques);
 
@@ -57,18 +57,7 @@ class TechniqueList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _allTechniques = [
-      Text(
-        "Techniques",
-        style: TextStyle(
-          color: MyColors.lightOrange,
-          fontWeight: FontWeight.bold,
-          fontSize: 16,
-          height: 0.8,
-        ),
-      ),
-      SizedBox(height: 28),
-    ];
+    List<Widget> _allTechniques = [];
     techniques.forEach((item) => _allTechniques.add(
           Container(
             margin: const EdgeInsets.only(top: 6.0),

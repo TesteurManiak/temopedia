@@ -10,7 +10,7 @@ class HoldChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       backgroundColor: MyColors.lightBackground,
-      label: Text("Hold: $hold", style: TextStyle(color: MyColors.lightOrange)),
+      label: Text("Hold: $hold", style: TextStyle(color: MyColors.lightFont)),
     );
   }
 }

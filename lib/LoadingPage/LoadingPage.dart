@@ -15,7 +15,7 @@ class LoadingPage extends StatelessWidget {
             Image.asset("assets/logo.png"),
             CircularProgressIndicator(
               backgroundColor: Colors.transparent,
-              valueColor: AlwaysStoppedAnimation<Color>(MyColors.lightOrange),
+              valueColor: AlwaysStoppedAnimation<Color>(MyColors.lightFont),
             ),
           ],
         ),
