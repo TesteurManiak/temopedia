@@ -25,7 +25,6 @@ before_script:
   - tar -xf flutter-sdk.tar.xz
   - export PATH=$PATH:$PWD/flutter/bin
   - echo flutter.sdk=$PWD/flutter > android/local.properties
-  - chmod +x ./android/gradlew
   - flutter upgrade
 
 stages:
