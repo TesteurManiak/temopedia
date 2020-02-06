@@ -4,6 +4,8 @@
 
 # <img src="assets/icon.png" height="60"> Temopedia
 
+[![pipeline status](https://img.shields.io/gitlab/pipeline/G_Roux/temopedia)](https://gitlab.com/G_Roux/temopedia/commits/master)
+
 **WIP:** Mobile app companion for the game [Temtem](https://crema.gg/games/temtem/) to get an easy access to creature's information using [Mael's API](#credits).
 
 I am not affiliated with Temtem's company. This is a personal project I'm doing on my free time.
