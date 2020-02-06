@@ -27,7 +27,7 @@ class TechniqueContent extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 7,
           children: <Widget>[
-            TypeChip(tech.type, color: MyColors.lightBackground),
+            TypeChip(tech.type),
             ClassChip(tech.classTouch, tech.damage),
             StaminaChip(tech.staminaCost),
             PriorityChip(tech.priority),

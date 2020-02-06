@@ -5,29 +5,28 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TypeChip extends StatelessWidget {
   final String type;
-  final Color color;
 
-  TypeChip(this.type, {this.color});
+  TypeChip(this.type);
 
   @override
   Widget build(BuildContext context) {
-    Widget _chip = Chip(
-        label: Text(
-      type,
-      style: TextStyle(color: MyColors.background),
-    ));
-    globals.types.forEach((item) {
+    for (var item in globals.types) {
       if (item.name.toLowerCase() == type.toLowerCase())
-        _chip = Chip(
-          backgroundColor: color ?? MyColors.background,
+        return Chip(
+          elevation: 0.0,
+          backgroundColor: MyColors.lightBackground,
           avatar: CachedNetworkImage(
             imageUrl: "https://temtem-api.mael.tech${item.icon}",
             placeholder: (context, url) => Image.asset("assets/unknown.png"),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),
-          label: Text(item.name, style: TextStyle(color: MyColors.lightOrange)),
+          label: Text(item.name, style: TextStyle(color: MyColors.lightFont)),
         );
-    });
-    return _chip;
+    }
+    return Chip(
+        label: Text(
+      type,
+      style: TextStyle(color: MyColors.lightBackground),
+    ));
   }
 }

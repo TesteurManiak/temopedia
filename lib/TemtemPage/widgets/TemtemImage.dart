@@ -19,8 +19,9 @@ class TemtemImage extends StatelessWidget {
       height: height,
       width: height,
       decoration: BoxDecoration(
+        border: Border.all(color: MyColors.border, width: 5),
         shape: BoxShape.circle,
-        color: MyColors.darkOrange,
+        color: MyColors.portraitBack,
         image: DecorationImage(image: CachedNetworkImageProvider(url)),
       ),
       padding: const EdgeInsets.all(12.0),

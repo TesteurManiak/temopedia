@@ -14,13 +14,19 @@ class TemtemName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String number = "";
+    if (temtem.number < 100) number += "0";
+    if (temtem.number < 10) number += "0";
+    number += temtem.number.toString();
     return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      child: Column(
         children: <Widget>[
-          Text("#${temtem.number}", style: textStyle),
-          SizedBox(width: 5),
-          Text(temtem.name.toUpperCase(), style: textStyle),
+          Text(temtem.name,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: MyColors.lightFont, fontSize: 35)),
+          Text("Temtem #$number",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: MyColors.darkFont, fontSize: 22)),
         ],
       ),
     );

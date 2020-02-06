@@ -36,48 +36,43 @@ class _TemtemPageState extends State<TemtemPage> {
       appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0.0),
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    SizedBox(height: circleHeight - circleHeight / 6),
-                    Container(
-                      padding: EdgeInsets.only(
-                          top: 32.0, left: 8.0, right: 8.0, bottom: 32.0),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: MyColors.lightOrange),
-                      child: Column(
-                        children: <Widget>[
-                          // Content goes here
-                          TemtemName(widget.temtem),
-                          _buildType(),
-                          DetailsCard(widget.temtem.details),
-                          SizedBox(height: 12.0),
-                          EvolutionChain(widget.temtem),
-                          SizedBox(height: 12.0),
-                          StatsTab(widget.temtem.stats),
-                          SizedBox(height: 12.0),
-                          TraitsCard(widget.temtem.traits),
-                          SizedBox(height: 12.0),
-                          TechniqueList(widget.temtem.techniques),
-                          SizedBox(height: 12.0),
-                          TriviaCard(widget.temtem.trivia),
-                        ],
-                      ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  SizedBox(height: circleHeight - circleHeight / 6),
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: 32.0, left: 8.0, right: 8.0, bottom: 32.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.0),
+                        color: MyColors.lightBackground),
+                    child: Column(
+                      children: <Widget>[
+                        TemtemName(widget.temtem),
+                        _buildType(),
+                        DetailsCard(widget.temtem.details),
+                        SizedBox(height: 12.0),
+                        EvolutionChain(widget.temtem),
+                        SizedBox(height: 12.0),
+                        StatsTab(widget.temtem.stats),
+                        SizedBox(height: 12.0),
+                        TraitsCard(widget.temtem.traits),
+                        SizedBox(height: 12.0),
+                        TechniqueList(widget.temtem.techniques),
+                        SizedBox(height: 12.0),
+                        TriviaCard(widget.temtem.trivia),
+                      ],
                     ),
-                  ],
-                ),
-                Positioned(
-                    child: TemtemImage(
-                        widget.temtem.wikiPortraitUrlLarge, circleHeight),
-                    top: 0.0),
-              ],
-            ),
+                  ),
+                ],
+              ),
+              Positioned(
+                  child: TemtemImage(
+                      widget.temtem.wikiPortraitUrlLarge, circleHeight),
+                  top: 0.0),
+            ],
           ),
         ),
       ),
