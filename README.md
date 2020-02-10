@@ -21,13 +21,19 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 ## How to install
 
-This application is a WIP for now so there is no release on the stores yet.
+### Android
+
+Register [here](https://forms.gle/SmoXZd9x6LY9qgxZ8) for the closed Alpha on the Google Playstore.
+
+### iOS
+
+There is no release on the AppStore yet.
 To test the application you need to clone and build the souce code, [Flutter SDK](https://flutter.dev/) is required to do so.
 
 ``` bash
 git clone https://gitlab.com/G_Roux/temopedia.git
 cd temopedia/
-flutter build apk # or build ios
+flutter build ios
 flutter install
 ```
 
@@ -44,6 +50,8 @@ flutter install
 * [x] HomePage - Display temtems list
 * [x] HomePage - Search bar to filter temtems
 * [ ] HomePage - Filter Temtems by type
+* [ ] HomePage - Order Temtems in alphabetical order
+* [ ] HomePage - Order Temtems by their number
 * [x] TemtemPage - Add picture
 * [x] TemtemPage - Add traits
 * [x] TemtemPage - Add statistics
