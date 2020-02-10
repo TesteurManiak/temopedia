@@ -43,6 +43,7 @@ flutter install
 * [x] API - Load techniques list
 * [x] HomePage - Display temtems list
 * [x] HomePage - Search bar to filter temtems
+* [ ] HomePage - Filter Temtems by type
 * [x] TemtemPage - Add picture
 * [x] TemtemPage - Add traits
 * [x] TemtemPage - Add statistics
@@ -53,9 +54,9 @@ flutter install
 * [x] TemtemPage - Add locations list
 * [x] Traits - Show trait's details inside a popup
 * [x] Technique - Show technique's details inside a popup
-* [ ] Better design and animations
+* [ ] Design - Add animations
 * [x] CI/CD
-* [ ] (Playstore release ?)
+* [x] [Playstore release](#roadmap)
 
 ## Author
 
