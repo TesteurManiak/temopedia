@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
+import 'package:temopedia/TemtemPage/widgets/LocationCard.dart';
 import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
 import 'package:temopedia/TemtemPage/widgets/TechniqueList.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
@@ -63,6 +64,8 @@ class _TemtemPageState extends State<TemtemPage> {
                         TraitsCard(widget.temtem.traits),
                         SizedBox(height: 12.0),
                         TechniqueList(widget.temtem.techniques),
+                        SizedBox(height: 12.0),
+                        LocationCard(widget.temtem.locations),
                       ],
                     ),
                   ),
