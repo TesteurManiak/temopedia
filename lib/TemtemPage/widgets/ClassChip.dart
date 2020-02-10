@@ -11,9 +11,9 @@ class ClassChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Chip(
       backgroundColor: MyColors.lightBackground,
-      avatar: Image.asset("assets/$className.png"),
-      label: Text(damage.toString(),
-          style: TextStyle(color: MyColors.lightFont)),
+      avatar: Image.asset("assets/${className.toLowerCase()}.png"),
+      label:
+          Text(damage.toString(), style: TextStyle(color: MyColors.lightFont)),
     );
   }
 }
