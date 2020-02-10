@@ -46,11 +46,11 @@ flutter install
 * [x] TemtemPage - Add details
 * [x] TemtemPage - Add techiques list
 * [x] TemtemPage - Add evolution chain
-* [ ] TemtemPage - Add locations list
+* [x] TemtemPage - Add locations list
 * [x] Traits - Show trait's details inside a popup
 * [x] Technique - Show technique's details inside a popup
 * [ ] Better design and animations
-* [ ] CI/CD
+* [x] CI/CD
 * [ ] (Playstore release ?)
 
 ## Author
