@@ -66,7 +66,6 @@ class _HomePageState extends State<HomePage> {
         item.name,
         style: TextStyle(color: MyColors.lightFont),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, color: MyColors.lightFont),
     );
   }
 
@@ -87,11 +86,13 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.only(bottom: 12.0),
-          child: ListView.builder(
-            physics: BouncingScrollPhysics(),
-            itemCount: _filteredList == null ? 0 : _filteredList.length,
-            itemBuilder: (context, index) =>
-                _buildTemtemCard(_filteredList[index]),
+          child: Scrollbar(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: _filteredList == null ? 0 : _filteredList.length,
+              itemBuilder: (context, index) =>
+                  _buildTemtemCard(_filteredList[index]),
+            ),
           ),
         ),
       ),
