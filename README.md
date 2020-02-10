@@ -21,7 +21,7 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 ## How to install
 
-This application is a WIP for now so there is no release build.
+This application is a WIP for now so there is no release on the stores yet.
 To test the application you need to clone and build the souce code, [Flutter SDK](https://flutter.dev/) is required to do so.
 
 ``` bash
@@ -30,6 +30,10 @@ cd temopedia/
 flutter build apk # or build ios
 flutter install
 ```
+
+## Roadmap
+
+<img src="images/Timeline.png">
 
 ## Todo
 
