@@ -49,18 +49,22 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _refreshType(String type) {
-    if (_selectedTypes.contains(type))
-      _selectedTypes.remove(type);
-    else
+  _refreshType(String type, bool toAdd) {
+    if (toAdd)
       _selectedTypes.add(type);
-    _filteredList = widget.temtems;
+    else
+      _selectedTypes.remove(type);
     setState(() {
+      _filteredList = widget.temtems;
       if (_selectedTypes.isNotEmpty) {
         List<Temtem> tmp = [];
-        _selectedTypes.forEach((filter) {
-          for (var temtem in _filteredList)
-            if (temtem.types.contains(filter)) tmp.add(temtem);
+        _filteredList.forEach((temtem) {
+          for (String hasType in temtem.types) {
+            if (_selectedTypes.contains(hasType)) {
+              tmp.add(temtem);
+              break;
+            }
+          }
         });
         _filteredList = tmp;
       }

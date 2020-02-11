@@ -13,7 +13,7 @@ class TypeFilter {
 
 class TypeFilterWidget extends StatefulWidget {
   final TypeFilter filter;
-  final Function(String) refresh;
+  final Function(String, bool) refresh;
 
   TypeFilterWidget({@required this.filter, this.refresh});
 
@@ -38,7 +38,8 @@ class _TypeFilterWidgetState extends State<TypeFilterWidget> {
       onSelected: (val) {
         setState(() {
           widget.filter.isSelected = val;
-          if (widget.refresh != null) widget.refresh(widget.filter.type.name);
+          if (widget.refresh != null)
+            widget.refresh(widget.filter.type.name, val);
         });
       },
     );
@@ -46,7 +47,7 @@ class _TypeFilterWidgetState extends State<TypeFilterWidget> {
 }
 
 class SelectTypeModal extends StatelessWidget {
-  final Function(String) refresh;
+  final Function(String, bool) refresh;
   final List<String> selectedTypes;
 
   SelectTypeModal({this.refresh, @required this.selectedTypes});
@@ -62,17 +63,25 @@ class SelectTypeModal extends StatelessWidget {
           topRight: Radius.circular(30),
         ),
       ),
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        spacing: 8,
-        children: List<Widget>.generate(
-          globals.types.length,
-          (int index) => TypeFilterWidget(
-              filter: TypeFilter(globals.types[index],
-                  isSelected:
-                      selectedTypes.contains(globals.types[index].name)),
-              refresh: refresh),
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text("Choose types you want to filter",
+              style: TextStyle(color: MyColors.lightFont)),
+          SizedBox(height: 8),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 8,
+            children: List<Widget>.generate(
+              globals.types.length,
+              (int index) => TypeFilterWidget(
+                  filter: TypeFilter(globals.types[index],
+                      isSelected:
+                          selectedTypes.contains(globals.types[index].name)),
+                  refresh: refresh),
+            ),
+          )
+        ],
       ),
     );
   }
