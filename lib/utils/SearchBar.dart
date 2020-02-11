@@ -15,12 +15,13 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  final TextEditingController _filter = TextEditingController();
-  String searchText = "";
+  static String searchText = "";
+  TextEditingController _filter;
 
   @override
   void initState() {
     super.initState();
+    _filter = TextEditingController(text: searchText);
     _filter.addListener(() {
       if (_filter.text.isEmpty)
         searchText = "";
@@ -60,6 +61,10 @@ class _SearchBarState extends State<SearchBar> {
                 hintText: "Search Temtems",
                 hintStyle: TextStyle(fontSize: 14, color: MyColors.background),
                 border: InputBorder.none,
+                suffixIcon: IconButton(
+                    icon: Icon(Icons.clear),
+                    onPressed: () => WidgetsBinding.instance
+                        .addPostFrameCallback((_) => _filter.clear())),
               ),
             ),
           )

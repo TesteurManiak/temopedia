@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
 
   _refreshSearch(String searchTxt) {
     _selectedTypes.clear();
-    _filteredList = widget.temtems;
     setState(() {
+      _filteredList = widget.temtems;
       if (searchTxt.isNotEmpty) {
         List<Temtem> tmp = [];
         _filteredList.forEach((elem) {
