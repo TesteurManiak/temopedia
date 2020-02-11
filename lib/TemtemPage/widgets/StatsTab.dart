@@ -6,11 +6,23 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class StatsTab extends StatelessWidget {
   final Stats stats;
+  final darkStyle =
+      TextStyle(color: MyColors.darkFont, fontWeight: FontWeight.bold);
 
   StatsTab(this.stats);
 
-  List<StatWidget> _buildStats() {
-    List<StatWidget> _stats = [];
+  Widget _totalStat() {
+    return Row(
+      children: <Widget>[
+        Expanded(flex: 2, child: Text("Total", style: darkStyle)),
+        Expanded(flex: 1, child: Text("${stats.total}", style: darkStyle)),
+        Expanded(child: Container(), flex: 5),
+      ],
+    );
+  }
+
+  List<Widget> _buildStats() {
+    List<Widget> _stats = [];
     _stats.add(StatWidget(
       label: "Hp",
       progress: stats.hp.toDouble(),
@@ -53,6 +65,7 @@ class StatsTab extends StatelessWidget {
       value: stats.spdef.toString(),
       maxValue: globals.maxStats['spdef'],
     ));
+    _stats.add(_totalStat());
     return _stats;
   }
 
