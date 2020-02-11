@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
@@ -52,6 +53,21 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  _sortByAlpha() {
+    setState(() {
+      _filteredList = widget.temtems;
+      _filteredList
+          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    });
+  }
+
+  _sortByNumber() {
+    setState(() {
+      _filteredList = widget.temtems;
+      _filteredList.sort((a, b) => a.number.compareTo(b.number));
+    });
+  }
+
   Widget _buildTemtemCard(Temtem item) {
     return Container(
       margin: const EdgeInsets.all(4),
@@ -89,10 +105,35 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: MyColors.lightBackground,
-        onPressed: _showSearchModal,
-        child: Icon(Icons.search, color: MyColors.lightFont),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        animatedIconTheme: IconThemeData(size: 22, color: MyColors.lightFont),
+        backgroundColor: MyColors.background,
+        elevation: 8,
+        children: [
+          SpeedDialChild(
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.search, color: MyColors.lightFont),
+            onTap: _showSearchModal,
+          ),
+          SpeedDialChild(
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.sort_by_alpha, color: MyColors.lightFont),
+            onTap: _sortByAlpha,
+          ),
+          SpeedDialChild(
+            label: "Number",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.sort, color: MyColors.lightFont),
+            onTap: _sortByNumber,
+          ),
+          SpeedDialChild(
+            label: "Type",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.sort, color: MyColors.lightFont),
+            onTap: () {},
+          ),
+        ],
       ),
       backgroundColor: MyColors.background,
       appBar: AppBar(
