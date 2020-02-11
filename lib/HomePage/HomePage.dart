@@ -6,6 +6,7 @@ import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/temopedia_icons.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
@@ -118,13 +119,12 @@ class _HomePageState extends State<HomePage> {
           ),
           SpeedDialChild(
             backgroundColor: MyColors.background,
-            child: Icon(Icons.sort_by_alpha, color: MyColors.lightFont),
+            child: Icon(Temopedia.sort_name_up, color: MyColors.lightFont),
             onTap: _sortByAlpha,
           ),
           SpeedDialChild(
-            label: "Number",
             backgroundColor: MyColors.background,
-            child: Icon(Icons.sort, color: MyColors.lightFont),
+            child: Icon(Temopedia.sort_number_up, color: MyColors.lightFont),
             onTap: _sortByNumber,
           ),
           SpeedDialChild(
