@@ -1,10 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
+import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/temopedia_icons.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
@@ -23,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   );
 
   List<Temtem> _filteredList;
+  List<String> _selectedTypes = [];
 
   @override
   void initState() {
@@ -31,6 +35,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _refreshSearch(String searchTxt) {
+    _selectedTypes.clear();
     _filteredList = widget.temtems;
     setState(() {
       if (searchTxt.isNotEmpty) {
@@ -44,12 +49,56 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  _refreshType(String type) {
+    if (_selectedTypes.contains(type))
+      _selectedTypes.remove(type);
+    else
+      _selectedTypes.add(type);
+    _filteredList = widget.temtems;
+    setState(() {
+      if (_selectedTypes.isNotEmpty) {
+        List<Temtem> tmp = [];
+        _selectedTypes.forEach((filter) {
+          for (var temtem in _filteredList)
+            if (temtem.types.contains(filter)) tmp.add(temtem);
+        });
+        _filteredList = tmp;
+      }
+    });
+  }
+
   _showSearchModal() {
     showModalBottomSheet(
       context: context,
       builder: (context) => SearchBarModal(refresh: _refreshSearch),
       backgroundColor: Colors.transparent,
     );
+  }
+
+  _showTypeModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) =>
+          SelectTypeModal(refresh: _refreshType, selectedTypes: _selectedTypes),
+    );
+  }
+
+  _sortByAlpha() {
+    setState(() {
+      _selectedTypes.clear();
+      _filteredList = widget.temtems;
+      _filteredList
+          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    });
+  }
+
+  _sortByNumber() {
+    _selectedTypes.clear();
+    setState(() {
+      _filteredList = widget.temtems;
+      _filteredList.sort((a, b) => a.number.compareTo(b.number));
+    });
   }
 
   Widget _buildTemtemCard(Temtem item) {
@@ -89,10 +138,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: MyColors.lightBackground,
-        onPressed: _showSearchModal,
-        child: Icon(Icons.search, color: MyColors.lightFont),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        animatedIconTheme: IconThemeData(size: 22, color: MyColors.lightFont),
+        backgroundColor: MyColors.background,
+        elevation: 8,
+        children: [
+          SpeedDialChild(
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.search, color: MyColors.lightFont),
+            onTap: _showSearchModal,
+          ),
+          SpeedDialChild(
+            backgroundColor: MyColors.background,
+            child: Icon(Temopedia.sort_name_up, color: MyColors.lightFont),
+            onTap: _sortByAlpha,
+          ),
+          SpeedDialChild(
+            backgroundColor: MyColors.background,
+            child: Icon(Temopedia.sort_number_up, color: MyColors.lightFont),
+            onTap: _sortByNumber,
+          ),
+          SpeedDialChild(
+            label: "Type",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.sort, color: MyColors.lightFont),
+            onTap: _showTypeModal,
+          ),
+        ],
       ),
       backgroundColor: MyColors.background,
       appBar: AppBar(
