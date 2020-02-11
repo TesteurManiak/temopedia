@@ -81,7 +81,7 @@ class TechniqueList extends StatelessWidget {
                     content: TechniqueContent(_tech),
                     actions: <Widget>[
                       FlatButton(
-                          child: Text("Close"),
+                          child: Text("Close", style: textStyle),
                           onPressed: () => Navigator.pop(context))
                     ],
                   ),

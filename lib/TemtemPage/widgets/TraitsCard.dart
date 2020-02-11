@@ -38,7 +38,7 @@ class TraitsCard extends StatelessWidget {
                     content: Text(_trait.description, style: textStyle),
                     actions: <Widget>[
                       FlatButton(
-                          child: Text("Close"),
+                          child: Text("Close", style: textStyle),
                           onPressed: () => Navigator.pop(context))
                     ],
                   ),
