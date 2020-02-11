@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
+import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
@@ -25,6 +26,7 @@ class _HomePageState extends State<HomePage> {
   );
 
   List<Temtem> _filteredList;
+  List<String> _selectedTypes = [];
 
   @override
   void initState() {
@@ -46,11 +48,38 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  _refreshType(String type) {
+    if (_selectedTypes.contains(type))
+      _selectedTypes.remove(type);
+    else
+      _selectedTypes.add(type);
+    _filteredList = widget.temtems;
+    setState(() {
+      if (_selectedTypes.isNotEmpty) {
+        List<Temtem> tmp = [];
+        _selectedTypes.forEach((filter) {
+          for (var temtem in _filteredList)
+            if (temtem.types.contains(filter)) tmp.add(temtem);
+        });
+        _filteredList = tmp;
+      }
+    });
+  }
+
   _showSearchModal() {
     showModalBottomSheet(
       context: context,
       builder: (context) => SearchBarModal(refresh: _refreshSearch),
       backgroundColor: Colors.transparent,
+    );
+  }
+
+  _showTypeModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) =>
+          SelectTypeModal(refresh: _refreshType, selectedTypes: _selectedTypes),
     );
   }
 
@@ -131,7 +160,7 @@ class _HomePageState extends State<HomePage> {
             label: "Type",
             backgroundColor: MyColors.background,
             child: Icon(Icons.sort, color: MyColors.lightFont),
-            onTap: () {},
+            onTap: _showTypeModal,
           ),
         ],
       ),
