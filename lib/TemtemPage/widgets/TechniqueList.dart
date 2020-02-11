@@ -90,16 +90,18 @@ class TechniqueList extends StatelessWidget {
             ),
           ),
         ));
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: MyColors.background,
-        borderRadius: BorderRadius.circular(21.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: _allTechniques,
-      ),
-    );
+    return _allTechniques.isEmpty
+        ? Container()
+        : Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: MyColors.background,
+              borderRadius: BorderRadius.circular(21.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: _allTechniques,
+            ),
+          );
   }
 }

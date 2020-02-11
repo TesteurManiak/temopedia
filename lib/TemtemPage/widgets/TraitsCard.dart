@@ -50,15 +50,18 @@ class TraitsCard extends StatelessWidget {
             ),
           ),
         ));
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.0),
-          color: MyColors.background),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: _children,
-      ),
-    );
+
+    return _children.isEmpty
+        ? Container()
+        : Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(21.0),
+                color: MyColors.background),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: _children,
+            ),
+          );
   }
 }

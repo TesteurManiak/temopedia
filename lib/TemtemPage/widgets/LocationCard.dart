@@ -19,16 +19,19 @@ class LocationCard extends StatelessWidget {
             overflow: TextOverflow.ellipsis, style: textStyle),
       )),
     );
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: MyColors.background,
-        borderRadius: BorderRadius.circular(21.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: _locations,
-      ),
-    );
+
+    return _locations.isEmpty
+        ? Container()
+        : Container(
+            padding: const EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: MyColors.background,
+              borderRadius: BorderRadius.circular(21.0),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: _locations,
+            ),
+          );
   }
 }
