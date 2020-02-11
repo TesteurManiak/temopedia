@@ -49,9 +49,9 @@ flutter install
 * [x] API - Load techniques list
 * [x] HomePage - Display temtems list
 * [x] HomePage - Search bar to filter temtems
-* [ ] HomePage - Filter Temtems by type
-* [ ] HomePage - Order Temtems in alphabetical order
-* [ ] HomePage - Order Temtems by their number
+* [x] HomePage - Filter Temtems by type
+* [x] HomePage - Order Temtems in alphabetical order
+* [x] HomePage - Order Temtems by their number
 * [x] TemtemPage - Add picture
 * [x] TemtemPage - Add traits
 * [x] TemtemPage - Add statistics
