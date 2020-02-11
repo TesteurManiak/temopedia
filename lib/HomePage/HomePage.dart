@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _refreshSearch(String searchTxt) {
+    _selectedTypes.clear();
     _filteredList = widget.temtems;
     setState(() {
       if (searchTxt.isNotEmpty) {
@@ -85,6 +86,7 @@ class _HomePageState extends State<HomePage> {
 
   _sortByAlpha() {
     setState(() {
+      _selectedTypes.clear();
       _filteredList = widget.temtems;
       _filteredList
           .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
@@ -92,6 +94,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _sortByNumber() {
+    _selectedTypes.clear();
     setState(() {
       _filteredList = widget.temtems;
       _filteredList.sort((a, b) => a.number.compareTo(b.number));
