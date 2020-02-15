@@ -23,7 +23,9 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 ### Android
 
-Register [here](https://forms.gle/SmoXZd9x6LY9qgxZ8) for the closed Alpha on the Google Playstore.
+[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="200">](https://play.google.com/store/apps/details?id=com.maniak.temopedia)
+
+[Google Playstore](https://play.google.com/store/apps/details?id=com.maniak.temopedia)
 
 ### iOS
 
