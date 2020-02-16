@@ -1,11 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
+import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/TemtemPage/TemtemPage.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/styles/temopedia_icons.dart';
 
@@ -28,16 +26,20 @@ class _HomePageState extends State<HomePage> {
   List<Temtem> _filteredList;
   List<String> _selectedTypes = [];
 
+  _resetFilter() {
+    _filteredList = widget.temtems;
+    _selectedTypes.clear();
+  }
+
   @override
   void initState() {
     super.initState();
-    _filteredList = widget.temtems;
+    _resetFilter();
   }
 
   _refreshSearch(String searchTxt) {
-    _selectedTypes.clear();
     setState(() {
-      _filteredList = widget.temtems;
+      _resetFilter();
       if (searchTxt.isNotEmpty) {
         List<Temtem> tmp = [];
         _filteredList.forEach((elem) {
@@ -90,17 +92,15 @@ class _HomePageState extends State<HomePage> {
 
   _sortByAlpha() {
     setState(() {
-      _selectedTypes.clear();
-      _filteredList = widget.temtems;
+      _resetFilter();
       _filteredList
           .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
     });
   }
 
   _sortByNumber() {
-    _selectedTypes.clear();
     setState(() {
-      _filteredList = widget.temtems;
+      _resetFilter();
       _filteredList.sort((a, b) => a.number.compareTo(b.number));
     });
   }
@@ -112,30 +112,7 @@ class _HomePageState extends State<HomePage> {
         color: MyColors.lightBackground,
         borderRadius: BorderRadius.circular(21.0),
       ),
-      child: ListTile(
-        onTap: () {
-          _filteredList = widget.temtems;
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => TemtemPage(item)));
-        },
-        leading: CircleAvatar(
-          backgroundColor: MyColors.portraitBack,
-          child: CachedNetworkImage(
-            imageUrl: item.portraitWikiUrl,
-            placeholder: (context, url) =>
-                Image.asset("assets/temtem_unknown.png"),
-          ),
-        ),
-        title: Text(
-          "${item.number}. ${item.name}",
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(color: MyColors.lightFont),
-        ),
-        trailing: Wrap(
-          children: List<Widget>.generate(item.types.length,
-              (index) => TypeChip(item.types[index], dispTitle: false)),
-        ),
-      ),
+      child: TemTile(item, resetFilter: _resetFilter),
     );
   }
 
