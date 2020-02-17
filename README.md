@@ -5,6 +5,7 @@
 # <img src="assets/icon.png" height="60"> Temopedia
 
 [![pipeline status](https://img.shields.io/gitlab/pipeline/G_Roux/temopedia)](https://gitlab.com/G_Roux/temopedia/commits/master)
+[![Codemagic build status](https://api.codemagic.io/apps/5e4ae040000fe09eb5c118e7/5e4ae040000fe09eb5c118e6/status_badge.svg)](https://codemagic.io/apps/5e4ae040000fe09eb5c118e7/5e4ae040000fe09eb5c118e6/latest_build)
 
 **WIP:** Mobile app companion for the game [Temtem](https://crema.gg/games/temtem/) to get an easy access to creature's information using [Mael's API](#credits).
 
