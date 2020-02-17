@@ -25,8 +25,6 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 [<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" height="200">](https://play.google.com/store/apps/details?id=com.maniak.temopedia)
 
-[Google Playstore](https://play.google.com/store/apps/details?id=com.maniak.temopedia)
-
 ### iOS
 
 There is no release on the AppStore yet.
@@ -39,21 +37,20 @@ flutter build ios
 flutter install
 ```
 
-## Roadmap
-
-<img src="images/Timeline.png">
-
 ## Todo
 
 * [x] API - Load temtems list
 * [x] API - Load types list
 * [x] API - Load traits list
 * [x] API - Load techniques list
-* [x] HomePage - Display temtems list
-* [x] HomePage - Search bar to filter temtems
+* [x] HomePage - Display Temtems list
+* [x] HomePage - Search bar to filter Temtems
 * [x] HomePage - Filter Temtems by type
-* [x] HomePage - Order Temtems in alphabetical order
-* [x] HomePage - Order Temtems by their number
+* [x] HomePage - Filter Temtems by favorite
+* [ ] HomePage - Display Techniques list (Movedex ?)
+* [ ] HomePage - Search bar to filter Techniques
+* [ ] TechniquePage - Display technique's details
+* [ ] TechniquePage - Display temtem's who can learn it
 * [x] TemtemPage - Add picture
 * [x] TemtemPage - Add traits
 * [x] TemtemPage - Add statistics
@@ -62,6 +59,9 @@ flutter install
 * [x] TemtemPage - Add techiques list
 * [x] TemtemPage - Add evolution chain
 * [x] TemtemPage - Add locations list
+* [ ] TemtemPage - Display location map
+* [x] TemtemPage - Add temtem to favorite
+* [ ] TemtemPage - Add type effectiveness
 * [x] Traits - Show trait's details inside a popup
 * [x] Technique - Show technique's details inside a popup
 * [ ] Design - Add animations
