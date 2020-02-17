@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/styles/Theme.dart';
@@ -7,8 +8,9 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TemtemNode extends StatelessWidget {
   final int number;
+  final DatabaseHelper dbHelper;
 
-  TemtemNode(this.number);
+  TemtemNode(this.number, this.dbHelper);
 
   Temtem _getTemtem() {
     for (Temtem elem in globals.temtems) if (elem.number == number) return elem;
@@ -24,8 +26,10 @@ class TemtemNode extends StatelessWidget {
     return temtem == null
         ? Container()
         : GestureDetector(
-            onTap: () => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => TemtemPage(temtem))),
+            onTap: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => TemtemPage(temtem, dbHelper))),
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
@@ -51,12 +55,13 @@ class TemtemNode extends StatelessWidget {
 
 class EvolutionChain extends StatelessWidget {
   final Temtem temtem;
+  final DatabaseHelper dbHelper;
 
-  EvolutionChain(this.temtem);
+  EvolutionChain(this.temtem, this.dbHelper);
 
   Widget _buildRow(int current, {int next, int level}) {
     return Row(children: <Widget>[
-      Expanded(child: TemtemNode(current)),
+      Expanded(child: TemtemNode(current, dbHelper)),
       level != null
           ? Expanded(
               child: Column(
@@ -75,7 +80,7 @@ class EvolutionChain extends StatelessWidget {
               ),
             )
           : Container(),
-      next != null ? Expanded(child: TemtemNode(next)) : Container(),
+      next != null ? Expanded(child: TemtemNode(next, dbHelper)) : Container(),
     ]);
   }
 

@@ -1,8 +1,10 @@
+import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Details.dart';
 import 'package:temopedia/Models/Evolution.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Stats.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
+import 'package:temopedia/utils/boolean_int.dart';
 
 class Temtem {
   // Properties
@@ -81,5 +83,12 @@ class Temtem {
       locations: _locations,
       icon: json[JsonHelper.icon],
     );
+  }
+
+  Map<String, dynamic> toSqlite() {
+    return {
+      DatabaseHelper.columnNumber: this.number,
+      DatabaseHelper.columnFavorite: booleanToInt(this.owned),
+    };
   }
 }

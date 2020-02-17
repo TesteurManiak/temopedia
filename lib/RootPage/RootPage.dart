@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Api/TemtemApi.dart';
+import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
 import 'package:temopedia/Models/Technique.dart';
@@ -17,11 +18,16 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   final api = TemtemApi();
+  final dbHelper = DatabaseHelper.instance;
   bool _isLoading = true;
 
   _loadList() async {
     var json = await api.getRequest(TemtemApi.allTemtems);
     json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
+
+    for (var temtem in globals.temtems) {
+      temtem.owned = await dbHelper.read(temtem.number);
+    }
 
     json = await api.getRequest(TemtemApi.types);
     json.forEach((item) => globals.types.add(TemType.fromJson(item)));
@@ -45,7 +51,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     switch (_isLoading) {
       case false:
-        return HomePage(globals.temtems);
+        return HomePage(globals.temtems, dbHelper);
       default:
         return LoadingPage();
     }
