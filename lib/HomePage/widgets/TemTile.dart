@@ -89,16 +89,6 @@ class _TemTileState extends State<TemTile> {
   List<Widget> _buildDecorations(double itemHeight) {
     return [
       Positioned(
-        bottom: -itemHeight * 0.136,
-        right: -itemHeight * 0.034,
-        child: Image.asset(
-          "assets/icon.png",
-          width: itemHeight * 0.754,
-          height: itemHeight * 0.754,
-          color: Colors.white.withOpacity(0.14),
-        ),
-      ),
-      Positioned(
         bottom: 8,
         right: 12,
         child: Hero(
