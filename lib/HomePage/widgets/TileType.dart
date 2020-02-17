@@ -16,6 +16,8 @@ class TileType extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
+        alignment: Alignment.center,
+        width: large ? 71 : 53,
         padding: EdgeInsets.symmetric(
           horizontal: large ? 19 : 12,
           vertical: large ? 6 : 4,
