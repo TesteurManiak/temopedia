@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
-import 'package:temopedia/styles/temopedia_icons.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
+  final DatabaseHelper dbHelper;
 
-  HomePage(this.temtems);
+  HomePage(this.temtems, this.dbHelper);
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
@@ -34,12 +35,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _resetFilter();
+    _filteredList = widget.temtems;
   }
 
   _refreshSearch(String searchTxt) {
+    _resetFilter();
     setState(() {
-      _resetFilter();
       if (searchTxt.isNotEmpty) {
         List<Temtem> tmp = [];
         _filteredList.forEach((elem) {
@@ -90,30 +91,15 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _sortByAlpha() {
+  _sortFavorite() {
+    _resetFilter();
     setState(() {
-      _resetFilter();
-      _filteredList
-          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+      List<Temtem> tmp = [];
+      _filteredList.forEach((temtem) {
+        if (temtem.owned) tmp.add(temtem);
+      });
+      _filteredList = tmp;
     });
-  }
-
-  _sortByNumber() {
-    setState(() {
-      _resetFilter();
-      _filteredList.sort((a, b) => a.number.compareTo(b.number));
-    });
-  }
-
-  Widget _buildTemtemCard(Temtem item) {
-    return Container(
-      margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: MyColors.lightBackground,
-        borderRadius: BorderRadius.circular(21.0),
-      ),
-      child: TemTile(item, resetFilter: _resetFilter),
-    );
   }
 
   @override
@@ -126,25 +112,28 @@ class _HomePageState extends State<HomePage> {
         elevation: 8,
         children: [
           SpeedDialChild(
+            label: "Search name",
             backgroundColor: MyColors.background,
             child: Icon(Icons.search, color: MyColors.lightFont),
             onTap: _showSearchModal,
-          ),
-          SpeedDialChild(
-            backgroundColor: MyColors.background,
-            child: Icon(Temopedia.sort_name_up, color: MyColors.lightFont),
-            onTap: _sortByAlpha,
-          ),
-          SpeedDialChild(
-            backgroundColor: MyColors.background,
-            child: Icon(Temopedia.sort_number_up, color: MyColors.lightFont),
-            onTap: _sortByNumber,
           ),
           SpeedDialChild(
             label: "Type",
             backgroundColor: MyColors.background,
             child: Icon(Icons.sort, color: MyColors.lightFont),
             onTap: _showTypeModal,
+          ),
+          SpeedDialChild(
+            label: "Favorite",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.favorite),
+            onTap: _sortFavorite,
+          ),
+          SpeedDialChild(
+            label: "Clear Filter",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.clear),
+            onTap: () => setState(() => _resetFilter()),
           ),
         ],
       ),
@@ -156,13 +145,20 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(bottom: 12.0),
+          padding: const EdgeInsets.all(8),
           child: Scrollbar(
-            child: ListView.builder(
+            child: GridView.builder(
               physics: BouncingScrollPhysics(),
               itemCount: _filteredList == null ? 0 : _filteredList.length,
-              itemBuilder: (context, index) =>
-                  _buildTemtemCard(_filteredList[index]),
+              itemBuilder: (context, index) => TemTile(
+                  _filteredList[index], widget.dbHelper,
+                  resetFilter: _resetFilter),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.4,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
             ),
           ),
         ),

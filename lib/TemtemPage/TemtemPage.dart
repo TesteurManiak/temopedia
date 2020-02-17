@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
@@ -14,8 +15,9 @@ import 'package:temopedia/styles/Theme.dart';
 
 class TemtemPage extends StatefulWidget {
   final Temtem temtem;
+  final DatabaseHelper dbHelper;
 
-  TemtemPage(this.temtem);
+  TemtemPage(this.temtem, this.dbHelper);
 
   @override
   State<StatefulWidget> createState() => _TemtemPageState();
@@ -34,7 +36,21 @@ class _TemtemPageState extends State<TemtemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.background,
-      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0.0),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
+            onPressed: () async {
+              widget.temtem.owned = !widget.temtem.owned;
+              await widget.dbHelper.update(widget.temtem);
+              setState(() {});
+            },
+          )
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Stack(
@@ -57,7 +73,7 @@ class _TemtemPageState extends State<TemtemPage> {
                         SizedBox(height: 12.0),
                         DetailsCard(widget.temtem.details),
                         SizedBox(height: 12.0),
-                        EvolutionChain(widget.temtem),
+                        EvolutionChain(widget.temtem, widget.dbHelper),
                         SizedBox(height: 12.0),
                         StatsTab(widget.temtem.stats),
                         SizedBox(height: 12.0),
