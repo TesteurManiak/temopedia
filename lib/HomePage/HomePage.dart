@@ -105,17 +105,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Widget _buildTemtemCard(Temtem item) {
-    return Container(
-      margin: const EdgeInsets.all(4),
-      decoration: BoxDecoration(
-        color: MyColors.lightBackground,
-        borderRadius: BorderRadius.circular(21.0),
-      ),
-      child: TemTile(item, resetFilter: _resetFilter),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,13 +145,19 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(bottom: 12.0),
+          padding: const EdgeInsets.all(8),
           child: Scrollbar(
-            child: ListView.builder(
+            child: GridView.builder(
               physics: BouncingScrollPhysics(),
               itemCount: _filteredList == null ? 0 : _filteredList.length,
               itemBuilder: (context, index) =>
-                  _buildTemtemCard(_filteredList[index]),
+                  TemTile(_filteredList[index], resetFilter: _resetFilter),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.4,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
             ),
           ),
         ),
