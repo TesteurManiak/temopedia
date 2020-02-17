@@ -66,7 +66,6 @@ flutter install
 * [x] Technique - Show technique's details inside a popup
 * [ ] Design - Add animations
 * [x] CI/CD
-* [x] [Playstore release](#roadmap)
 
 ## Author
 
