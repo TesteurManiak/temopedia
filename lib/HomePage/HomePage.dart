@@ -26,19 +26,21 @@ class _HomePageState extends State<HomePage> {
   List<String> _selectedTypes = [];
 
   _resetFilter() {
-    _filteredList = widget.temtems;
-    _selectedTypes.clear();
+    setState(() {
+      _filteredList = widget.temtems;
+      _selectedTypes.clear();
+    });
   }
 
   @override
   void initState() {
     super.initState();
-    _resetFilter();
+    _filteredList = widget.temtems;
   }
 
   _refreshSearch(String searchTxt) {
+    _resetFilter();
     setState(() {
-      _resetFilter();
       if (searchTxt.isNotEmpty) {
         List<Temtem> tmp = [];
         _filteredList.forEach((elem) {
@@ -90,8 +92,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   _sortFavorite() {
+    _resetFilter();
     setState(() {
-      _resetFilter();
       List<Temtem> tmp = [];
       _filteredList.forEach((temtem) {
         if (temtem.owned) tmp.add(temtem);
@@ -125,7 +127,13 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: MyColors.background,
             child: Icon(Icons.favorite),
             onTap: _sortFavorite,
-          )
+          ),
+          SpeedDialChild(
+            label: "Clear Filter",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.clear),
+            onTap: _resetFilter,
+          ),
         ],
       ),
       backgroundColor: MyColors.background,
