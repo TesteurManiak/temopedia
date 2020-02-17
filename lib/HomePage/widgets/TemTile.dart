@@ -16,14 +16,6 @@ class TemTile extends StatefulWidget {
 }
 
 class _TemTileState extends State<TemTile> {
-  bool _isChecked;
-
-  @override
-  void initState() {
-    super.initState();
-    _isChecked = false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -32,13 +24,22 @@ class _TemTileState extends State<TemTile> {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => TemtemPage(widget.temtem)));
       },
-      leading: CircleAvatar(
-        backgroundColor: MyColors.portraitBack,
-        child: CachedNetworkImage(
-          imageUrl: widget.temtem.portraitWikiUrl,
-          placeholder: (context, url) =>
-              Image.asset("assets/temtem_unknown.png"),
-        ),
+      leading: Wrap(
+        children: <Widget>[
+          Checkbox(
+            onChanged: (bool value) =>
+                setState(() => widget.temtem.owned = value),
+            value: widget.temtem.owned,
+          ),
+          CircleAvatar(
+            backgroundColor: MyColors.portraitBack,
+            child: CachedNetworkImage(
+              imageUrl: widget.temtem.portraitWikiUrl,
+              placeholder: (context, url) =>
+                  Image.asset("assets/temtem_unknown.png"),
+            ),
+          ),
+        ],
       ),
       title: Text(
         "${widget.temtem.number}. ${widget.temtem.name}",
@@ -46,16 +47,8 @@ class _TemTileState extends State<TemTile> {
         style: TextStyle(color: MyColors.lightFont),
       ),
       trailing: Wrap(
-        children: List<Widget>.generate(
-                widget.temtem.types.length,
-                (index) =>
-                    TypeChip(widget.temtem.types[index], dispTitle: false)) +
-            [
-              Checkbox(
-                onChanged: (bool value) => setState(() => _isChecked = value),
-                value: _isChecked,
-              )
-            ],
+        children: List<Widget>.generate(widget.temtem.types.length,
+            (index) => TypeChip(widget.temtem.types[index], dispTitle: false)),
       ),
     );
   }

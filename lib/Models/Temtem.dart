@@ -20,6 +20,7 @@ class Temtem {
   final String wikiPortraitUrlLarge;
   final List<Location> locations;
   final String icon;
+  bool owned;
 
   Temtem({
     this.number,
@@ -36,6 +37,7 @@ class Temtem {
     this.wikiPortraitUrlLarge,
     this.locations,
     this.icon,
+    this.owned = false,
   });
 
   factory Temtem.fromJson(Map<String, dynamic> json) {
