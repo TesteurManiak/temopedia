@@ -5,8 +5,6 @@ import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
-import 'package:temopedia/styles/temopedia_icons.dart';
-import 'package:temopedia/utils/Globals.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
@@ -91,21 +89,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _sortByAlpha() {
-    setState(() {
-      _resetFilter();
-      _filteredList
-          .sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
-    });
-  }
-
-  _sortByNumber() {
-    setState(() {
-      _resetFilter();
-      _filteredList.sort((a, b) => a.number.compareTo(b.number));
-    });
-  }
-
   _sortFavorite() {
     setState(() {
       _resetFilter();
@@ -130,16 +113,6 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: MyColors.background,
             child: Icon(Icons.search, color: MyColors.lightFont),
             onTap: _showSearchModal,
-          ),
-          SpeedDialChild(
-            backgroundColor: MyColors.background,
-            child: Icon(Temopedia.sort_name_up, color: MyColors.lightFont),
-            onTap: _sortByAlpha,
-          ),
-          SpeedDialChild(
-            backgroundColor: MyColors.background,
-            child: Icon(Temopedia.sort_number_up, color: MyColors.lightFont),
-            onTap: _sortByNumber,
           ),
           SpeedDialChild(
             label: "Type",
