@@ -26,10 +26,8 @@ class _HomePageState extends State<HomePage> {
   List<String> _selectedTypes = [];
 
   _resetFilter() {
-    setState(() {
-      _filteredList = widget.temtems;
-      _selectedTypes.clear();
-    });
+    _filteredList = widget.temtems;
+    _selectedTypes.clear();
   }
 
   @override
@@ -112,6 +110,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 8,
         children: [
           SpeedDialChild(
+            label: "Search name",
             backgroundColor: MyColors.background,
             child: Icon(Icons.search, color: MyColors.lightFont),
             onTap: _showSearchModal,
@@ -132,7 +131,7 @@ class _HomePageState extends State<HomePage> {
             label: "Clear Filter",
             backgroundColor: MyColors.background,
             child: Icon(Icons.clear),
-            onTap: _resetFilter,
+            onTap: () => setState(() => _resetFilter()),
           ),
         ],
       ),

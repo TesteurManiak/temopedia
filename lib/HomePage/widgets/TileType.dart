@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/utils/getTypeColor.dart';
 
 class TileType extends StatelessWidget {
   final String type;
@@ -20,7 +21,7 @@ class TileType extends StatelessWidget {
           vertical: large ? 6 : 4,
         ),
         decoration: ShapeDecoration(
-          shape: StadiumBorder(),
+          shape: StadiumBorder(side: BorderSide(color: getTypeColor(type))),
           color: Colors.white.withOpacity(0.2),
         ),
         child: Text(

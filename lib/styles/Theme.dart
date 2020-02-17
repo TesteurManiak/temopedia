@@ -12,4 +12,16 @@ class MyColors {
   static final Color portraitBack = Color.fromRGBO(46, 38, 80, 1);
   static final Color yellow = Color.fromRGBO(253, 178, 96, 1);
   static final Color border = Color.fromRGBO(65, 60, 117, 1);
+
+  static final Color fire = Color.fromRGBO(223, 99, 63, 1);
+  static final Color nature = Color.fromRGBO(171, 232, 110, 1);
+  static final Color water = Color.fromRGBO(124, 233, 243, 1);
+  static final Color electric = Color.fromRGBO(252, 225, 141, 1);
+  static final Color mental = Color.fromRGBO(212, 137, 225, 1);
+  static final Color earth = Color.fromRGBO(162, 117, 87, 1);
+  static final Color wind = Color.fromRGBO(111, 228, 206, 1);
+  static final Color crystal = Color.fromRGBO(211, 59, 87, 1);
+  static final Color digital = Color.fromRGBO(96, 124, 126, 1);
+  static final Color melee = Color.fromRGBO(201, 120, 70, 1);
+  static final Color toxic = Color.fromRGBO(76, 70, 76, 1);
 }
