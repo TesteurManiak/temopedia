@@ -34,7 +34,18 @@ class _TemtemPageState extends State<TemtemPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.background,
-      appBar: AppBar(backgroundColor: Colors.transparent, elevation: 0.0),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
+            onPressed: () =>
+                setState(() => widget.temtem.owned = !widget.temtem.owned),
+          )
+        ],
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Stack(

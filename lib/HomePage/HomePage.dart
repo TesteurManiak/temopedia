@@ -6,6 +6,7 @@ import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/styles/temopedia_icons.dart';
+import 'package:temopedia/utils/Globals.dart';
 
 class HomePage extends StatefulWidget {
   final List<Temtem> temtems;
@@ -105,6 +106,17 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  _sortFavorite() {
+    setState(() {
+      _resetFilter();
+      List<Temtem> tmp = [];
+      _filteredList.forEach((temtem) {
+        if (temtem.owned) tmp.add(temtem);
+      });
+      _filteredList = tmp;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,6 +147,12 @@ class _HomePageState extends State<HomePage> {
             child: Icon(Icons.sort, color: MyColors.lightFont),
             onTap: _showTypeModal,
           ),
+          SpeedDialChild(
+            label: "Favorite",
+            backgroundColor: MyColors.background,
+            child: Icon(Icons.favorite),
+            onTap: _sortFavorite,
+          )
         ],
       ),
       backgroundColor: MyColors.background,
