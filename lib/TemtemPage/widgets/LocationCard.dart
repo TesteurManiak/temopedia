@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/MapPage/MapPage.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/styles/Theme.dart';
 
@@ -13,6 +14,8 @@ class LocationCard extends StatelessWidget {
     List<Widget> _locations = [];
     locations.forEach(
       (item) => _locations.add(ListTile(
+        onTap: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => MapPage(item))),
         title: Text(item.location, style: textStyle),
         subtitle: Text(item.island, style: textStyle),
         trailing: Text(item.frequency,

@@ -33,7 +33,7 @@ class TemtemNode extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
-                  imageUrl: temtem.portraitWikiUrl,
+                  imageUrl: temtem.wikiPortraitUrlLarge,
                   width: calcSize,
                   height: calcSize,
                   placeholder: (context, url) => Image.asset(
