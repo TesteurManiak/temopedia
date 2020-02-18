@@ -1,7 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:temopedia/Models/Location.dart';
+import 'package:temopedia/Models/MapData.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/utils/Globals.dart' as globals;
 
 class MapPage extends StatefulWidget {
   final Location location;
@@ -13,24 +16,34 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  String _getPosition() {
-    switch (widget.location.location.toLowerCase()) {
-      case "corrupted badlands":
-      case "xolot reservoir":
-        return 'assets/tucma.jpg';
-      case "mines of mictlan":
-        return "assets/tucma_subsurface.jpg";
-      case "the gifted bridges":
-      case "prasine coast":
-      case "thalassian cliffs":
-        return 'assets/deniz.jpg';
-      case "windward fort":
-        return 'assets/windward_fort.jpg';
-      case "aguamarina caves":
-        return 'assets/aguamarina_caves.jpg';
-      default:
-        return 'assets/unknown.png';
+  MapData _map;
+
+  MapData _getMap() {
+    for (var elem in globals.maps) {
+      if (elem.name.toLowerCase() == widget.location.island.toLowerCase())
+        return elem;
     }
+    return null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _map = _getMap();
+  }
+
+  Widget _setPoint() {
+    return Container(
+      decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.red.withOpacity(0.7),
+          border: Border.all(
+            width: 2,
+            color: Colors.white,
+          )),
+      height: 20,
+      width: 20,
+    );
   }
 
   @override
@@ -42,21 +55,40 @@ class _MapPageState extends State<MapPage> {
         title: Text(widget.location.location),
       ),
       body: SafeArea(
-        child: Container(
-          color: MyColors.background,
-          child: PhotoView.customChild(
-            child: Container(
-              color: MyColors.background,
-              child: Stack(
-                alignment: Alignment.center,
-                children: <Widget>[
-                  Image.asset(_getPosition()),
-                ],
-              ),
-            ),
-            initialScale: 1.0,
-          ),
-        ),
+        child: _map != null
+            ? LayoutBuilder(
+                builder: (context, constraints) {
+                  double prop =
+                      constraints.maxHeight / _map.maxHeight; //map maxheight
+                  return Container(
+                    color: MyColors.background,
+                    child: PhotoView.customChild(
+                      child: Container(
+                        color: MyColors.background,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: <Widget>[
+                            CachedNetworkImage(
+                              imageUrl: _map.url,
+                              placeholder: (context, url) =>
+                                  Center(child: CircularProgressIndicator()),
+                            ),
+                            ..._map.points
+                                .map((item) => Positioned(
+                                      child: _setPoint(),
+                                      top: item.top * prop,
+                                      left: item.left * prop,
+                                    ))
+                                .toList(),
+                          ],
+                        ),
+                      ),
+                      initialScale: 1.0,
+                    ),
+                  );
+                },
+              )
+            : Container(),
       ),
     );
   }

@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:temopedia/Api/TemtemApi.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
+import 'package:temopedia/Models/MapData.dart';
 import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/Models/Traits.dart';
@@ -37,6 +40,12 @@ class _RootPageState extends State<RootPage> {
 
     json = await api.getRequest(TemtemApi.techniques);
     json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
+
+    String content =
+        await DefaultAssetBundle.of(context).loadString('assets/map.json');
+    json = jsonDecode(content);
+    (json as Map)
+        .forEach((key, item) => globals.maps.add(MapData.fromJson(item, key)));
 
     setState(() => _isLoading = false);
   }

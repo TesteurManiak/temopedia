@@ -1,0 +1,29 @@
+{
+    "Deniz": {
+        "maxHeight": 2100,
+        "maxWidth": 1200,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Deniz.jpg",
+        "mapWaypoint": [
+            {
+                "top": 1630,
+                "left": 540
+            },
+            {
+                "top": 1540,
+                "left": 550
+            },
+            {
+                "top": 1460,
+                "left": 510
+            },
+            {
+                "top": 1430,
+                "left": 500
+            },
+            {
+                "top": 1380,
+                "left": 540
+            }
+        ]
+    }
+}
