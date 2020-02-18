@@ -61,7 +61,7 @@ flutter install
 * [x] TemtemPage - Add evolution chain
 * [x] TemtemPage - Add locations list
 * [ ] TemtemPage - Display location map
-    * [ ] Deniz (8/35)
+    * [x] Deniz (35/35)
     * [ ] Windward Fort
     * [ ] Aguamarina Caves
     * [ ] Superior Omninesia
