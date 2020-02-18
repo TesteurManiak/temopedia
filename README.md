@@ -61,6 +61,16 @@ flutter install
 * [x] TemtemPage - Add evolution chain
 * [x] TemtemPage - Add locations list
 * [ ] TemtemPage - Display location map
+    * [ ] Deniz (8/35)
+    * [ ] Windward Fort
+    * [ ] Aguamarina Caves
+    * [ ] Superior Omninesia
+    * [ ] Citerior Omninesia
+    * [ ] Giant Banyan
+    * [ ] Ulterior Omninesia
+    * [ ] Anak Volcano
+    * [ ] Tucma
+    * [ ] Tucma Subsurface
 * [x] TemtemPage - Add temtem to favorite
 * [ ] TemtemPage - Add type effectiveness
 * [x] Traits - Show trait's details inside a popup
