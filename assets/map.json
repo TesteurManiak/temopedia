@@ -280,5 +280,23 @@
                 ]
             }
         ]
+    },
+    "Windward Fort": {
+        "maxHeight": 673,
+        "maxWidth": 1087,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Windward_Fort.jpg",
+        "mapWaypoint": []
+    },
+    "Aguamarina Caves": {
+        "maxHeight": 1101,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Aguamarina_Caves.jpg",
+        "mapWaypoint": []
+    },
+    "Superior Omninesia": {
+        "maxHeight": 347,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Superior_Omninesia.jpg",
+        "mapWaypoint": []
     }
 }

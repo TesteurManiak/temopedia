@@ -21,12 +21,16 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   MapData _map;
 
-  MapData _getMap() {
-    for (var elem in globals.maps) {
-      if (elem.name.toLowerCase() == widget.location.island.toLowerCase())
-        return elem;
-    }
+  MapData _getMapByName(String name) {
+    for (var elem in globals.maps) if (name == elem.name) return elem;
     return null;
+  }
+
+  MapData _getMap() {
+    if (widget.location.location == "Windward Fort")
+      return _getMapByName("Windward Fort");
+    else
+      return _getMapByName(widget.location.island);
   }
 
   @override
