@@ -29,6 +29,12 @@ class _MapPageState extends State<MapPage> {
   MapData _getMap() {
     if (widget.location.location == "Windward Fort")
       return _getMapByName("Windward Fort");
+    else if (widget.location.location == "Aguamarina Caves")
+      return _getMapByName("Aguamarina Caves");
+    else if (widget.location.location == "The Canopath")
+      return _getMapByName("Superior Omninesia");
+    else if (widget.location.location == "The Flywalk")
+      return _getMapByName("Citerior Omninesia");
     else
       return _getMapByName(widget.location.island);
   }

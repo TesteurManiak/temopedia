@@ -298,5 +298,23 @@
         "maxWidth": 900,
         "url": "https://rerollcdn.com/TEMTEM/Map/Superior_Omninesia.jpg",
         "mapWaypoint": []
+    },
+    "Citerior Omninesia": {
+        "maxHeight": 555,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Citerior_Omninesia.jpg",
+        "mapWaypoint": []
+    },
+    "Giant Banyan": {
+        "maxHeight": 450,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Giant_Banyan.jpg",
+        "mapWaypoint": []
+    },
+    "Ulterior Omninesia": {
+        "maxHeight": 790,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Ulterior_Omninesia.jpg",
+        "mapWaypoint": []
     }
 }
