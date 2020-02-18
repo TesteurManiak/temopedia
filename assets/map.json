@@ -6,139 +6,198 @@
         "mapWaypoint": [
             {
                 "top": 1630,
-                "left": 540
+                "left": 540,
+                "temtems": [
+                    12,
+                    16
+                ]
             },
             {
                 "top": 1540,
-                "left": 550
+                "left": 550,
+                "temtems": [
+                    48,
+                    10,
+                    16
+                ]
             },
             {
                 "top": 1460,
-                "left": 510
+                "left": 510,
+                "temtems": [
+                    141
+                ]
             },
             {
                 "top": 1430,
-                "left": 500
+                "left": 500,
+                "temtems": [
+                    141,
+                    16,
+                    27
+                ]
             },
             {
                 "top": 1380,
-                "left": 540
+                "left": 540,
+                "temtems": [
+                    48,
+                    10,
+                    16
+                ]
             },
             {
                 "top": 1310,
-                "left": 500
+                "left": 500,
+                "temtems": [
+                    12
+                ]
             },
             {
                 "top": 1240,
-                "left": 570
+                "left": 570,
+                "temtems": [
+                    12,
+                    16
+                ]
             },
             {
                 "top": 990,
-                "left": 575
+                "left": 575,
+                "temtems": [
+                    12,
+                    27
+                ]
             },
             {
                 "top": 960,
-                "left": 440
+                "left": 440,
+                "temtems": []
             },
             {
                 "top": 945,
-                "left": 565
+                "left": 565,
+                "temtems": []
             },
             {
                 "top": 915,
-                "left": 545
+                "left": 545,
+                "temtems": []
             },
             {
                 "top": 895,
-                "left": 445
+                "left": 445,
+                "temtems": []
             },
             {
                 "top": 865,
-                "left": 490
+                "left": 490,
+                "temtems": []
             },
             {
                 "top": 790,
-                "left": 440
+                "left": 440,
+                "temtems": []
             },
             {
                 "top": 790,
-                "left": 390
+                "left": 390,
+                "temtems": []
             },
             {
                 "top": 760,
-                "left": 560
+                "left": 560,
+                "temtems": []
             },
             {
                 "top": 750,
-                "left": 290
+                "left": 290,
+                "temtems": []
             },
             {
                 "top": 510,
-                "left": 460
+                "left": 460,
+                "temtems": []
             },
             {
                 "top": 435,
-                "left": 450
+                "left": 450,
+                "temtems": []
             },
             {
                 "top": 360,
-                "left": 345
+                "left": 345,
+                "temtems": []
             },
             {
                 "top": 335,
-                "left": 455
+                "left": 455,
+                "temtems": []
             },
             {
                 "top": 320,
-                "left": 535
+                "left": 535,
+                "temtems": []
             },
             {
                 "top": 240,
-                "left": 340
+                "left": 340,
+                "temtems": []
             },
             {
                 "top": 295,
-                "left": 300
+                "left": 300,
+                "temtems": []
             },
             {
                 "top": 390,
-                "left": 270
+                "left": 270,
+                "temtems": []
             },
             {
                 "top": 175,
-                "left": 470
+                "left": 470,
+                "temtems": []
             },
             {
                 "top": 140,
-                "left": 700
+                "left": 700,
+                "temtems": []
             },
             {
                 "top": 230,
-                "left": 760
+                "left": 760,
+                "temtems": []
             },
             {
                 "top": 730,
-                "left": 760
+                "left": 760,
+                "temtems": []
             },
             {
                 "top": 1280,
-                "left": 725
+                "left": 725,
+                "temtems": []
             },
             {
                 "top": 1160,
-                "left": 695
+                "left": 695,
+                "temtems": []
             },
             {
                 "top": 1260,
-                "left": 775
+                "left": 775,
+                "temtems": []
             },
             {
                 "top": 1795,
-                "left": 755
+                "left": 755,
+                "temtems": []
             },
             {
                 "top": 1740,
-                "left": 740
+                "left": 740,
+                "temtems": []
             }
         ]
     }

@@ -1,11 +1,16 @@
 class MapPoint {
   final int top;
   final int left;
+  final List<int> temtemsNum;
 
-  MapPoint({this.top, this.left});
+  MapPoint({this.top, this.left, this.temtemsNum});
 
   factory MapPoint.fromJson(Map<String, dynamic> json) {
-    return MapPoint(top: json['top'], left: json['left']);
+    return MapPoint(
+      top: json['top'],
+      left: json['left'],
+      temtemsNum: List<int>.from(json['temtems'] as List),
+    );
   }
 }
 

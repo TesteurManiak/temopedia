@@ -81,7 +81,7 @@ class _TemtemPageState extends State<TemtemPage> {
                         SizedBox(height: 12.0),
                         TechniqueList(widget.temtem.techniques),
                         SizedBox(height: 12.0),
-                        LocationCard(widget.temtem.locations),
+                        LocationCard(widget.temtem),
                       ],
                     ),
                   ),

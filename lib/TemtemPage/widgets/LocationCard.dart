@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/MapPage/MapPage.dart';
-import 'package:temopedia/Models/Location.dart';
+import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class LocationCard extends StatelessWidget {
-  final List<Location> locations;
+  final Temtem temtem;
   final textStyle = TextStyle(color: MyColors.lightFont);
 
-  LocationCard(this.locations);
+  LocationCard(this.temtem);
 
   @override
   Widget build(BuildContext context) {
     List<Widget> _locations = [];
-    locations.forEach(
+    temtem.locations.forEach(
       (item) => _locations.add(ListTile(
-        onTap: () => Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MapPage(item))),
+        onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => MapPage(item, temtem))),
         title: Text(item.location, style: textStyle),
         subtitle: Text(item.island, style: textStyle),
         trailing: Text(item.frequency,

@@ -4,13 +4,15 @@ import 'package:photo_view/photo_view.dart';
 import 'package:temopedia/MapPage/widgets/Marker.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/MapData.dart';
+import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class MapPage extends StatefulWidget {
   final Location location;
+  final Temtem temtem;
 
-  MapPage(this.location);
+  MapPage(this.location, this.temtem);
 
   @override
   State<StatefulWidget> createState() => _MapPageState();
@@ -60,13 +62,16 @@ class _MapPageState extends State<MapPage> {
                               placeholder: (context, url) =>
                                   Center(child: CircularProgressIndicator()),
                             ),
-                            ..._map.points
-                                .map((item) => Positioned(
-                                      child: Marker(),
-                                      top: item.top * prop,
-                                      left: item.left * prop,
-                                    ))
-                                .toList(),
+                            ..._map.points.map((item) {
+                              if (!item.temtemsNum
+                                  .contains(widget.temtem.number))
+                                return Container();
+                              return Positioned(
+                                child: Marker(),
+                                top: item.top * prop,
+                                left: item.left * prop,
+                              );
+                            }).toList(),
                           ],
                         ),
                       ),
