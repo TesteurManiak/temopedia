@@ -316,5 +316,23 @@
         "maxWidth": 900,
         "url": "https://rerollcdn.com/TEMTEM/Map/Ulterior_Omninesia.jpg",
         "mapWaypoint": []
+    },
+    "Anak Volcano": {
+        "maxHeight": 801,
+        "maxWidth": 1200,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Anak_Volcano.jpg",
+        "mapWaypoint": []
+    },
+    "Tucma": {
+        "maxHeight": 486,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Tucma.jpg",
+        "mapWaypoint": []
+    },
+    "Mines of Mictlan": {
+        "maxHeight": 1216,
+        "maxWidth": 900,
+        "url": "https://rerollcdn.com/TEMTEM/Map/Tucma_Subsurface.jpg",
+        "mapWaypoint": []
     }
 }
