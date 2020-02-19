@@ -23,16 +23,22 @@ class LocationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List<Widget>.generate(
                 temtem.locations.length,
-                (index) => ListTile(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          MapPage(temtem.locations[index], temtem))),
-                  title:
-                      Text(temtem.locations[index].location, style: textStyle),
-                  subtitle:
-                      Text(temtem.locations[index].island, style: textStyle),
-                  trailing: Text(temtem.locations[index].frequency,
-                      overflow: TextOverflow.ellipsis, style: textStyle),
+                (index) => Container(
+                  margin: EdgeInsets.only(top: 6),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: MyColors.lightBackground),
+                  child: ListTile(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            MapPage(temtem.locations[index], temtem))),
+                    title: Text(temtem.locations[index].location,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                    subtitle: Text(temtem.locations[index].island,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                    trailing: Text(temtem.locations[index].frequency,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                  ),
                 ),
               ),
             ),
