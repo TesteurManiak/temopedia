@@ -44,9 +44,9 @@ flutter install
     * [x] Deniz (35/35)
     * [x] Windward Fort (11/11)
     * [ ] Aguamarina Caves
-    * [ ] Superior Omninesia
-    * [ ] Citerior Omninesia
-    * [ ] Giant Banyan
+    * [x] Superior Omninesia 6/6
+    * [x] Citerior Omninesia 5/5
+    * [x] Giant Banyan 2/2
     * [ ] Ulterior Omninesia
     * [ ] Anak Volcano
     * [ ] Tucma
