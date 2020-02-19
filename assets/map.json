@@ -491,7 +491,26 @@
         "maxHeight": 450,
         "maxWidth": 900,
         "url": "https://rerollcdn.com/TEMTEM/Map/Giant_Banyan.jpg",
-        "mapWaypoint": []
+        "mapWaypoint": [
+            {
+                "top": 265,
+                "left": 290,
+                "temtems": [
+                    102,
+                    23,
+                    137
+                ]
+            },
+            {
+                "top": 265,
+                "left": 735,
+                "temtems": [
+                    102,
+                    23,
+                    137
+                ]
+            }
+        ]
     },
     "Ulterior Omninesia": {
         "maxHeight": 1311,
