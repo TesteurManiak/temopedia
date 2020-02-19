@@ -6,7 +6,7 @@ class Marker extends StatelessWidget {
   final double borderWidth;
   final Color color;
 
-  Marker({this.size = 20, this.borderWidth = 2, this.color});
+  Marker({@required this.size, @required this.borderWidth, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Marker extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(5),
           color: _color.withOpacity(0.7),
           border: Border.all(
             width: borderWidth,
