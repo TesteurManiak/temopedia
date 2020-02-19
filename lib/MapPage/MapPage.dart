@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:temopedia/MapPage/widgets/Marker.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/MapData.dart';
 import 'package:temopedia/Models/Temtem.dart';
@@ -19,9 +18,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final double _markerSize = 20;
-  final double _borderWidth = 2;
-
   MapData _map;
 
   MapData _getMapByName(String name) {
@@ -57,9 +53,6 @@ class _MapPageState extends State<MapPage> {
     _map = _getMap();
   }
 
-  double _calcTop(double value) => value + _markerSize * 2;
-  double _calcLeft(double value) => value + _markerSize / 2;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +65,6 @@ class _MapPageState extends State<MapPage> {
         child: _map != null
             ? LayoutBuilder(
                 builder: (context, constraints) {
-                  double prop = constraints.maxHeight / _map.maxHeight;
-                  print("${constraints.maxHeight}");
-                  print("$prop");
                   return Container(
                     color: MyColors.background,
                     child: PhotoView.customChild(
