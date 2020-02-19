@@ -40,29 +40,9 @@ flutter install
 
 ## Todo
 
-* [x] API - Load temtems list
-* [x] API - Load types list
-* [x] API - Load traits list
-* [x] API - Load techniques list
-* [x] HomePage - Display Temtems list
-* [x] HomePage - Search bar to filter Temtems
-* [x] HomePage - Filter Temtems by type
-* [x] HomePage - Filter Temtems by favorite
-* [ ] HomePage - Display Techniques list (Movedex ?)
-* [ ] HomePage - Search bar to filter Techniques
-* [ ] TechniquePage - Display technique's details
-* [ ] TechniquePage - Display temtem's who can learn it
-* [x] TemtemPage - Add picture
-* [x] TemtemPage - Add traits
-* [x] TemtemPage - Add statistics
-* [x] TemtemPage - Add trivia
-* [x] TemtemPage - Add details
-* [x] TemtemPage - Add techiques list
-* [x] TemtemPage - Add evolution chain
-* [x] TemtemPage - Add locations list
-* [ ] TemtemPage - Display location map
+* [ ] TemtemPage - Display location map **(WIP)**
     * [x] Deniz (35/35)
-    * [ ] Windward Fort
+    * [x] Windward Fort (11/11)
     * [ ] Aguamarina Caves
     * [ ] Superior Omninesia
     * [ ] Citerior Omninesia
@@ -71,12 +51,8 @@ flutter install
     * [ ] Anak Volcano
     * [ ] Tucma
     * [ ] Tucma Subsurface
-* [x] TemtemPage - Add temtem to favorite
 * [ ] TemtemPage - Add type effectiveness
-* [x] Traits - Show trait's details inside a popup
-* [x] Technique - Show technique's details inside a popup
-* [ ] Design - Add animations
-* [x] CI/CD
+* [ ] UI/UX
 
 ## Author
 
