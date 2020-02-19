@@ -383,7 +383,61 @@
         "maxHeight": 463,
         "maxWidth": 1200,
         "url": "https://rerollcdn.com/TEMTEM/Map/Superior_Omninesia.jpg",
-        "mapWaypoint": []
+        "mapWaypoint": [
+            {
+                "top": 190,
+                "left": 590,
+                "temtems": [
+                    23,
+                    102,
+                    11
+                ]
+            },
+            {
+                "top": 300,
+                "left": 600,
+                "temtems": [
+                    23,
+                    102,
+                    11
+                ]
+            },
+            {
+                "top": 310,
+                "left": 480,
+                "temtems": [
+                    102,
+                    103
+                ]
+            },
+            {
+                "top": 250,
+                "left": 420,
+                "temtems": [
+                    23,
+                    102,
+                    11
+                ]
+            },
+            {
+                "top": 180,
+                "left": 490,
+                "temtems": [
+                    48,
+                    49,
+                    17
+                ]
+            },
+            {
+                "top": 120,
+                "left": 430,
+                "temtems": [
+                    23,
+                    102,
+                    11
+                ]
+            }
+        ]
     },
     "Citerior Omninesia": {
         "maxHeight": 555,
