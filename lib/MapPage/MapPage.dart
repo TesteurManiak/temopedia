@@ -19,6 +19,9 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  final double _markerSize = 20;
+  final double _borderWidth = 2;
+
   MapData _map;
 
   MapData _getMapByName(String name) {
@@ -54,6 +57,9 @@ class _MapPageState extends State<MapPage> {
     _map = _getMap();
   }
 
+  double _calcTop(double value) => value + _markerSize * 2;
+  double _calcLeft(double value) => value + _markerSize / 2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,31 +72,21 @@ class _MapPageState extends State<MapPage> {
         child: _map != null
             ? LayoutBuilder(
                 builder: (context, constraints) {
-                  double prop =
-                      constraints.maxHeight / _map.maxHeight; //map maxheight
+                  double prop = constraints.maxHeight / _map.maxHeight;
+                  print("${constraints.maxHeight}");
+                  print("$prop");
                   return Container(
                     color: MyColors.background,
                     child: PhotoView.customChild(
                       child: Container(
                         color: MyColors.background,
                         child: Stack(
-                          alignment: Alignment.center,
                           children: <Widget>[
                             CachedNetworkImage(
                               imageUrl: _map.url,
                               placeholder: (context, url) =>
                                   Center(child: CircularProgressIndicator()),
                             ),
-                            ..._map.points.map((item) {
-                              if (!item.temtemsNum
-                                  .contains(widget.temtem.number))
-                                return Container();
-                              return Positioned(
-                                child: Marker(),
-                                top: item.top * prop,
-                                left: item.left * prop,
-                              );
-                            }).toList(),
                           ],
                         ),
                       ),
