@@ -285,17 +285,103 @@
         "maxHeight": 673,
         "maxWidth": 1087,
         "url": "https://rerollcdn.com/TEMTEM/Map/Windward_Fort.jpg",
-        "mapWaypoint": []
+        "mapWaypoint": [
+            {
+                "top": 85,
+                "left": 175,
+                "temtems": [
+                    69,
+                    27,
+                    25
+                ]
+            },
+            {
+                "top": 165,
+                "left": 175,
+                "temtems": [
+                    25
+                ]
+            },
+            {
+                "top": 235,
+                "left": 95,
+                "temtems": [
+                    69,
+                    27,
+                    25
+                ]
+            },
+            {
+                "top": 235,
+                "left": 450,
+                "temtems": [
+                    12,
+                    27
+                ]
+            },
+            {
+                "top": 85,
+                "left": 610,
+                "temtems": [
+                    27
+                ]
+            },
+            {
+                "top": 415,
+                "left": 95,
+                "temtems": [
+                    27
+                ]
+            },
+            {
+                "top": 85,
+                "left": 910,
+                "temtems": [
+                    27,
+                    113
+                ]
+            },
+            {
+                "top": 235,
+                "left": 830,
+                "temtems": [
+                    27
+                ]
+            },
+            {
+                "top": 495,
+                "left": 255,
+                "temtems": [
+                    27
+                ]
+            },
+            {
+                "top": 415,
+                "left": 530,
+                "temtems": [
+                    27,
+                    113
+                ]
+            },
+            {
+                "top": 575,
+                "left": 910,
+                "temtems": [
+                    113,
+                    53
+                ]
+            }
+        ]
     },
     "Aguamarina Caves": {
-        "maxHeight": 1101,
-        "maxWidth": 900,
+        "maxHeight": 1453,
+        "maxWidth": 1188,
         "url": "https://rerollcdn.com/TEMTEM/Map/Aguamarina_Caves.jpg",
         "mapWaypoint": []
     },
     "Superior Omninesia": {
-        "maxHeight": 347,
-        "maxWidth": 900,
+        "maxHeight": 463,
+        "maxWidth": 1200,
         "url": "https://rerollcdn.com/TEMTEM/Map/Superior_Omninesia.jpg",
         "mapWaypoint": []
     },

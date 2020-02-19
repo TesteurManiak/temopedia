@@ -61,7 +61,10 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double prop = constraints.maxHeight / _map.maxHeight;
+        final prop = _map.maxHeight > _map.maxWidth
+            ? constraints.maxHeight / _map.maxHeight
+            : constraints.maxWidth / _map.maxWidth;
+        final offset = (_markerSize + _borderWidth) / 2;
         return Scaffold(
           backgroundColor: MyColors.background,
           appBar: AppBar(
@@ -75,17 +78,12 @@ class _MapPageState extends State<MapPage> {
                       color: MyColors.background,
                       child: Stack(
                         children: <Widget>[
-                          CachedNetworkImage(
-                            imageUrl: _map.url,
-                            placeholder: (context, url) =>
-                                Center(child: CircularProgressIndicator()),
-                          ),
+                          CachedNetworkImage(imageUrl: _map.url),
                           ..._map.points.map((item) {
                             if (!item.temtemsNum.contains(widget.temtem.number))
                               return Container();
-                            var offset = (_markerSize + _borderWidth) / 2;
-                            var top = item.top * prop - offset;
-                            var left = item.left * prop - offset;
+                            final top = item.top * prop - offset;
+                            final left = item.left * prop - offset;
                             return Positioned(
                                 top: top,
                                 left: left,
