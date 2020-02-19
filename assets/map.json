@@ -440,10 +440,52 @@
         ]
     },
     "Citerior Omninesia": {
-        "maxHeight": 555,
-        "maxWidth": 900,
+        "maxHeight": 792,
+        "maxWidth": 1284,
         "url": "https://rerollcdn.com/TEMTEM/Map/Citerior_Omninesia.jpg",
-        "mapWaypoint": []
+        "mapWaypoint": [
+            {
+                "top": 540,
+                "left": 760,
+                "temtems": [
+                    60,
+                    45
+                ]
+            },
+            {
+                "top": 545,
+                "left": 665,
+                "temtems": [
+                    102,
+                    45
+                ]
+            },
+            {
+                "top": 330,
+                "left": 565,
+                "temtems": [
+                    102,
+                    103
+                ]
+            },
+            {
+                "top": 570,
+                "left": 395,
+                "temtems": [
+                    45,
+                    11,
+                    17
+                ]
+            },
+            {
+                "top": 220,
+                "left": 575,
+                "temtems": [
+                    11,
+                    103
+                ]
+            }
+        ]
     },
     "Giant Banyan": {
         "maxHeight": 450,
@@ -452,8 +494,8 @@
         "mapWaypoint": []
     },
     "Ulterior Omninesia": {
-        "maxHeight": 790,
-        "maxWidth": 900,
+        "maxHeight": 1311,
+        "maxWidth": 1493,
         "url": "https://rerollcdn.com/TEMTEM/Map/Ulterior_Omninesia.jpg",
         "mapWaypoint": []
     },
@@ -464,14 +506,14 @@
         "mapWaypoint": []
     },
     "Tucma": {
-        "maxHeight": 486,
-        "maxWidth": 900,
+        "maxHeight": 648,
+        "maxWidth": 1200,
         "url": "https://rerollcdn.com/TEMTEM/Map/Tucma.jpg",
         "mapWaypoint": []
     },
     "Mines of Mictlan": {
-        "maxHeight": 1216,
-        "maxWidth": 900,
+        "maxHeight": 1621,
+        "maxWidth": 1200,
         "url": "https://rerollcdn.com/TEMTEM/Map/Tucma_Subsurface.jpg",
         "mapWaypoint": []
     }
