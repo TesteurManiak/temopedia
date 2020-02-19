@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/Models/SynergyEffects.dart';
 import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
@@ -6,9 +7,9 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 
 class SynergyInfo extends StatelessWidget {
   final String synergy;
-  final String synergyEffect;
+  final List<SynergyEffects> synergyEffects;
 
-  SynergyInfo(this.synergy, this.synergyEffect);
+  SynergyInfo(this.synergy, this.synergyEffects);
 
   TemType _getType() {
     for (var elem in globals.types)
@@ -37,7 +38,12 @@ class SynergyInfo extends StatelessWidget {
               TypeChip(synergyType.name),
             ],
           ),
-          Text(synergyEffect, style: TextStyle(color: MyColors.lightFont)),
+          ...synergyEffects
+              .map((synergy) => Text(
+                    synergy.effect ?? "Error Synergy Effect",
+                    style: TextStyle(color: MyColors.lightFont),
+                  ))
+              .toList(),
         ],
       ),
     );

@@ -40,7 +40,8 @@ class JsonHelper {
   static final hold = "hold";
   static final priority = "priority";
   static final synergy = "synergy";
-  static final synergyEffect = "synergyEffect";
+  static final synergyEffects = "synergyEffects";
   static final synergyEffectDamage = "synergyEffectDamage";
   static final targets = "targets";
+  static final effect = "effect";
 }

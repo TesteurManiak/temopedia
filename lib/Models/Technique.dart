@@ -1,3 +1,4 @@
+import 'package:temopedia/Models/SynergyEffects.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 
 class Technique {
@@ -10,8 +11,7 @@ class Technique {
   final int hold;
   final String priority;
   final String synergy;
-  final String synergyEffect;
-  final int synergyEffectDamage;
+  final List<SynergyEffects> synergyEffects;
   final String targets;
   final String description;
 
@@ -25,8 +25,7 @@ class Technique {
     this.hold,
     this.priority,
     this.synergy,
-    this.synergyEffect,
-    this.synergyEffectDamage,
+    this.synergyEffects,
     this.targets,
     this.description,
   });
@@ -42,8 +41,9 @@ class Technique {
       hold: json[JsonHelper.hold],
       priority: json[JsonHelper.priority],
       synergy: json[JsonHelper.synergy],
-      synergyEffect: json[JsonHelper.synergyEffect],
-      synergyEffectDamage: json[JsonHelper.synergyEffectDamage],
+      synergyEffects: (json[JsonHelper.synergyEffects] as List)
+          .map((item) => SynergyEffects.fromJson(item))
+          .toList(),
       targets: json[JsonHelper.targets].toString(),
       description: json[JsonHelper.description].toString().replaceAll('\n', ''),
     );

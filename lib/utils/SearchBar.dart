@@ -54,6 +54,8 @@ class _SearchBarState extends State<SearchBar> {
           SizedBox(width: 13),
           Expanded(
             child: TextField(
+              autofocus: true,
+              autocorrect: false,
               onSubmitted: (_) => Navigator.pop(context),
               style: TextStyle(color: MyColors.background),
               controller: _filter,

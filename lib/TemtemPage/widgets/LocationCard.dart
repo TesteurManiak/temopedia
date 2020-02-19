@@ -11,19 +11,7 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _locations = [];
-    temtem.locations.forEach(
-      (item) => _locations.add(ListTile(
-        onTap: () => Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => MapPage(item, temtem))),
-        title: Text(item.location, style: textStyle),
-        subtitle: Text(item.island, style: textStyle),
-        trailing: Text(item.frequency,
-            overflow: TextOverflow.ellipsis, style: textStyle),
-      )),
-    );
-
-    return _locations.isEmpty
+    return temtem.locations.isEmpty
         ? Container()
         : Container(
             padding: const EdgeInsets.all(16.0),
@@ -33,7 +21,20 @@ class LocationCard extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: _locations,
+              children: List<Widget>.generate(
+                temtem.locations.length,
+                (index) => ListTile(
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                          MapPage(temtem.locations[index], temtem))),
+                  title:
+                      Text(temtem.locations[index].location, style: textStyle),
+                  subtitle:
+                      Text(temtem.locations[index].island, style: textStyle),
+                  trailing: Text(temtem.locations[index].frequency,
+                      overflow: TextOverflow.ellipsis, style: textStyle),
+                ),
+              ),
             ),
           );
   }

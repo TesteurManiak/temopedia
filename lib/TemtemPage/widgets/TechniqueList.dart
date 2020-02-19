@@ -35,7 +35,7 @@ class TechniqueContent extends StatelessWidget {
             TargetChip(tech.targets),
           ],
         ),
-        SynergyInfo(tech.synergy, tech.synergyEffect),
+        SynergyInfo(tech.synergy, tech.synergyEffects),
         SizedBox(height: 8),
         Text(tech.description, style: textStyle),
       ],
