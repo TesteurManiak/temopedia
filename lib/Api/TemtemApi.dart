@@ -12,6 +12,7 @@ class TemtemApi {
   static final traits = "/api/traits";
   static final gear = "/api/gear";
   static final locations = "/api/locations";
+  static final weaknesses = "/api/weaknesses";
 
   static String temtem(int number) {
     String id =
