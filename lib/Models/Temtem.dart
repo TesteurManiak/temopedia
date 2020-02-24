@@ -12,6 +12,7 @@ class Temtem {
   final String name;
   final List<String> types;
   final String portraitWikiUrl;
+  final String lumaPortraitWikiUrl;
   final String wikiUrl;
   final Stats stats;
   final List<String> traits;
@@ -20,8 +21,10 @@ class Temtem {
   final List<String> trivia;
   final Evolution evolution;
   final String wikiPortraitUrlLarge;
+  final String lumaWikiPortraitUrlLarge;
   final List<Location> locations;
   final String icon;
+  final String lumaIcon;
   bool owned;
 
   Temtem({
@@ -29,6 +32,7 @@ class Temtem {
     this.name,
     this.types,
     this.portraitWikiUrl,
+    this.lumaPortraitWikiUrl,
     this.wikiUrl,
     this.stats,
     this.traits,
@@ -37,8 +41,10 @@ class Temtem {
     this.trivia,
     this.evolution,
     this.wikiPortraitUrlLarge,
+    this.lumaWikiPortraitUrlLarge,
     this.locations,
     this.icon,
+    this.lumaIcon,
     this.owned = false,
   });
 
@@ -55,7 +61,8 @@ class Temtem {
     if (json[JsonHelper.techniques] != null)
       json[JsonHelper.techniques].forEach((item) => _techniques.add({
             JsonHelper.name: item[JsonHelper.name],
-            JsonHelper.source: item[JsonHelper.source]
+            JsonHelper.source: item[JsonHelper.source],
+            JsonHelper.levels: item[JsonHelper.levels],
           }));
 
     List<String> _trivia = [];
@@ -72,6 +79,7 @@ class Temtem {
       name: json[JsonHelper.name],
       types: _types,
       portraitWikiUrl: json[JsonHelper.portraitWikiUrl],
+      lumaPortraitWikiUrl: json[JsonHelper.lumaPortraitWikiUrl],
       wikiUrl: json[JsonHelper.wikiUrl],
       stats: Stats.fromJson(json[JsonHelper.stats]),
       traits: _traits,
@@ -80,8 +88,10 @@ class Temtem {
       trivia: _trivia,
       evolution: Evolution.fromJson(json[JsonHelper.evolution]),
       wikiPortraitUrlLarge: json[JsonHelper.wikiPortraitUrlLarge],
+      lumaWikiPortraitUrlLarge: json[JsonHelper.lumaWikiPortraitUrlLarge],
       locations: _locations,
       icon: json[JsonHelper.icon],
+      lumaIcon: json[JsonHelper.lumaIcon],
     );
   }
 

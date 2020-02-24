@@ -3,6 +3,7 @@ class JsonHelper {
   static final name = "name";
   static final types = "types";
   static final portraitWikiUrl = "portraitWikiUrl";
+  static final lumaPortraitWikiUrl = "lumaPortraitWikiUrl";
   static final wikiUrl = "wikiUrl";
   static final stats = "stats";
   static final hp = "hp";
@@ -31,8 +32,10 @@ class JsonHelper {
   static final evolves = "evolves";
   static final type = "type";
   static final wikiPortraitUrlLarge = "wikiPortraitUrlLarge";
+  static final lumaWikiPortraitUrlLarge = "lumaWikiPortraitUrlLarge";
   static final locations = "locations";
   static final icon = "icon";
+  static final lumaIcon = "lumaIcon";
   static final description = "description";
   static final classTouch = "class";
   static final damage = "damage";
@@ -44,4 +47,5 @@ class JsonHelper {
   static final synergyEffectDamage = "synergyEffectDamage";
   static final targets = "targets";
   static final effect = "effect";
+  static final trading = "trading";
 }

@@ -522,7 +522,47 @@
         "maxHeight": 801,
         "maxWidth": 1200,
         "url": "https://rerollcdn.com/TEMTEM/Map/Anak_Volcano.jpg",
-        "mapWaypoint": []
+        "mapWaypoint": [
+            {
+                "top": 460,
+                "left": 395,
+                "temtems": [
+                    57,
+                    37
+                ]
+            },
+            {
+                "top": 350,
+                "left": 700,
+                "temtems": [
+                    57,
+                    37
+                ]
+            },
+            {
+                "top": 200,
+                "left": 550,
+                "temtems": [
+                    57,
+                    37,
+                    86
+                ]
+            },
+            {
+                "top": 400,
+                "left": 230,
+                "temtems": [
+                    138
+                ]
+            },
+            {
+                "top": 150,
+                "left": 400,
+                "temtems": [
+                    138
+                ]
+            }
+        ]
     },
     "Tucma": {
         "maxHeight": 648,
