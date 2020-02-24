@@ -40,17 +40,7 @@ flutter install
 
 ## Todo
 
-* [ ] TemtemPage - Display location map **(WIP)**
-    * [x] Deniz (35/35)
-    * [x] Windward Fort (11/11)
-    * [ ] Aguamarina Caves
-    * [x] Superior Omninesia 6/6
-    * [x] Citerior Omninesia 5/5
-    * [x] Giant Banyan 2/2
-    * [ ] Ulterior Omninesia
-    * [ ] Anak Volcano
-    * [ ] Tucma
-    * [ ] Tucma Subsurface
+* [ ] TemtemPage - Display location map **(Not enough data)**
 * [ ] TemtemPage - Add type effectiveness
 * [ ] UI/UX
 
