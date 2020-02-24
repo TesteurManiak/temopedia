@@ -12,6 +12,7 @@ class MyColors {
   static final Color portraitBack = Color.fromRGBO(46, 38, 80, 1);
   static final Color yellow = Color.fromRGBO(253, 178, 96, 1);
   static final Color border = Color.fromRGBO(65, 60, 117, 1);
+  static final Color marker = Color.fromRGBO(253, 177, 96, 1);
 
   static final Color fire = Color.fromRGBO(223, 99, 63, 1);
   static final Color nature = Color.fromRGBO(171, 232, 110, 1);

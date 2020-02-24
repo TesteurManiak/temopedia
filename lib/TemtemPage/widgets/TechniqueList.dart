@@ -35,7 +35,7 @@ class TechniqueContent extends StatelessWidget {
             TargetChip(tech.targets),
           ],
         ),
-        SynergyInfo(tech.synergy, tech.synergyEffect),
+        SynergyInfo(tech.synergy, tech.synergyEffects),
         SizedBox(height: 8),
         Text(tech.description, style: textStyle),
       ],
@@ -67,7 +67,11 @@ class TechniqueList extends StatelessWidget {
             ),
             child: ListTile(
               title: Text(item[JsonHelper.name], style: textStyle),
-              trailing: Text(item[JsonHelper.source], style: textStyle),
+              trailing: Text(
+                  item[JsonHelper.source] == "Levelling"
+                      ? "${item[JsonHelper.source]} : ${item[JsonHelper.levels]}"
+                      : item[JsonHelper.source],
+                  style: textStyle),
               onTap: () {
                 Technique _tech = _getTechnique(item[JsonHelper.name]);
                 if (_tech == null) return null;
@@ -76,7 +80,7 @@ class TechniqueList extends StatelessWidget {
                   builder: (context) => AlertDialog(
                     backgroundColor: MyColors.background,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21.0)),
+                        borderRadius: BorderRadius.circular(21)),
                     title: Text(_tech.name, style: textStyle),
                     content: TechniqueContent(_tech),
                     actions: <Widget>[

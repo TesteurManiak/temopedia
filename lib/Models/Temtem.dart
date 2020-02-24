@@ -1,8 +1,8 @@
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Details.dart';
 import 'package:temopedia/Models/Evolution.dart';
-import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Stats.dart';
+import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/boolean_int.dart';
 
@@ -12,6 +12,7 @@ class Temtem {
   final String name;
   final List<String> types;
   final String portraitWikiUrl;
+  final String lumaPortraitWikiUrl;
   final String wikiUrl;
   final Stats stats;
   final List<String> traits;
@@ -20,8 +21,10 @@ class Temtem {
   final List<String> trivia;
   final Evolution evolution;
   final String wikiPortraitUrlLarge;
-  final List<Location> locations;
+  final String lumaWikiPortraitUrlLarge;
+  final List<TemLocation> locations;
   final String icon;
+  final String lumaIcon;
   bool owned;
 
   Temtem({
@@ -29,6 +32,7 @@ class Temtem {
     this.name,
     this.types,
     this.portraitWikiUrl,
+    this.lumaPortraitWikiUrl,
     this.wikiUrl,
     this.stats,
     this.traits,
@@ -37,8 +41,10 @@ class Temtem {
     this.trivia,
     this.evolution,
     this.wikiPortraitUrlLarge,
+    this.lumaWikiPortraitUrlLarge,
     this.locations,
     this.icon,
+    this.lumaIcon,
     this.owned = false,
   });
 
@@ -55,23 +61,25 @@ class Temtem {
     if (json[JsonHelper.techniques] != null)
       json[JsonHelper.techniques].forEach((item) => _techniques.add({
             JsonHelper.name: item[JsonHelper.name],
-            JsonHelper.source: item[JsonHelper.source]
+            JsonHelper.source: item[JsonHelper.source],
+            JsonHelper.levels: item[JsonHelper.levels],
           }));
 
     List<String> _trivia = [];
     if (json[JsonHelper.trivia] != null)
       json[JsonHelper.trivia].forEach((item) => _trivia.add(item));
 
-    List<Location> _locations = [];
+    List<TemLocation> _locations = [];
     if (json[JsonHelper.locations] != null)
       json[JsonHelper.locations]
-          .forEach((item) => _locations.add(Location.fromJson(item)));
+          .forEach((item) => _locations.add(TemLocation.fromJson(item)));
 
     return Temtem(
       number: json[JsonHelper.number],
       name: json[JsonHelper.name],
       types: _types,
       portraitWikiUrl: json[JsonHelper.portraitWikiUrl],
+      lumaPortraitWikiUrl: json[JsonHelper.lumaPortraitWikiUrl],
       wikiUrl: json[JsonHelper.wikiUrl],
       stats: Stats.fromJson(json[JsonHelper.stats]),
       traits: _traits,
@@ -80,8 +88,10 @@ class Temtem {
       trivia: _trivia,
       evolution: Evolution.fromJson(json[JsonHelper.evolution]),
       wikiPortraitUrlLarge: json[JsonHelper.wikiPortraitUrlLarge],
+      lumaWikiPortraitUrlLarge: json[JsonHelper.lumaWikiPortraitUrlLarge],
       locations: _locations,
       icon: json[JsonHelper.icon],
+      lumaIcon: json[JsonHelper.lumaIcon],
     );
   }
 

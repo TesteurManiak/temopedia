@@ -1,26 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Location.dart';
+import 'package:temopedia/MapPage/MapPage.dart';
+import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class LocationCard extends StatelessWidget {
-  final List<Location> locations;
+  final Temtem temtem;
   final textStyle = TextStyle(color: MyColors.lightFont);
 
-  LocationCard(this.locations);
+  LocationCard(this.temtem);
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _locations = [];
-    locations.forEach(
-      (item) => _locations.add(ListTile(
-        title: Text(item.location, style: textStyle),
-        subtitle: Text(item.island, style: textStyle),
-        trailing: Text(item.frequency,
-            overflow: TextOverflow.ellipsis, style: textStyle),
-      )),
-    );
-
-    return _locations.isEmpty
+    return temtem.locations.isEmpty
         ? Container()
         : Container(
             padding: const EdgeInsets.all(16.0),
@@ -30,7 +21,26 @@ class LocationCard extends StatelessWidget {
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: _locations,
+              children: List<Widget>.generate(
+                temtem.locations.length,
+                (index) => Container(
+                  margin: EdgeInsets.only(top: 6),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: MyColors.lightBackground),
+                  child: ListTile(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            MapPage(temtem.locations[index], temtem))),
+                    title: Text(temtem.locations[index].location,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                    subtitle: Text(temtem.locations[index].island,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                    trailing: Text(temtem.locations[index].frequency,
+                        overflow: TextOverflow.ellipsis, style: textStyle),
+                  ),
+                ),
+              ),
             ),
           );
   }

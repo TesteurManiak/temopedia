@@ -8,19 +8,22 @@ class TriviaCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _cards = [];
-    trivia.forEach(
-      (info) =>
-          _cards.add(Text(info, style: TextStyle(color: MyColors.lightFont))),
-    );
-    return Container(
-      decoration: BoxDecoration(
-          color: MyColors.background,
-          borderRadius: BorderRadius.circular(21.0)),
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, children: _cards),
-    );
+    return trivia.isEmpty
+        ? Container()
+        : Container(
+            decoration: BoxDecoration(
+                color: MyColors.background,
+                borderRadius: BorderRadius.circular(21.0)),
+            alignment: Alignment.center,
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  ...trivia
+                      .map((elem) => Text(elem,
+                          style: TextStyle(color: MyColors.lightFont)))
+                      .toList()
+                ]),
+          );
   }
 }
