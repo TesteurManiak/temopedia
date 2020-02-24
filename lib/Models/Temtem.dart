@@ -1,8 +1,8 @@
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Details.dart';
 import 'package:temopedia/Models/Evolution.dart';
-import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Stats.dart';
+import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/boolean_int.dart';
 
@@ -22,7 +22,7 @@ class Temtem {
   final Evolution evolution;
   final String wikiPortraitUrlLarge;
   final String lumaWikiPortraitUrlLarge;
-  final List<Location> locations;
+  final List<TemLocation> locations;
   final String icon;
   final String lumaIcon;
   bool owned;
@@ -69,10 +69,10 @@ class Temtem {
     if (json[JsonHelper.trivia] != null)
       json[JsonHelper.trivia].forEach((item) => _trivia.add(item));
 
-    List<Location> _locations = [];
+    List<TemLocation> _locations = [];
     if (json[JsonHelper.locations] != null)
       json[JsonHelper.locations]
-          .forEach((item) => _locations.add(Location.fromJson(item)));
+          .forEach((item) => _locations.add(TemLocation.fromJson(item)));
 
     return Temtem(
       number: json[JsonHelper.number],

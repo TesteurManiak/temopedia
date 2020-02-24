@@ -48,4 +48,8 @@ class JsonHelper {
   static final targets = "targets";
   static final effect = "effect";
   static final trading = "trading";
+  static final location = "location";
+  static final island = "island";
+  static final frequency = "frequency";
+  static final level = "level";
 }
