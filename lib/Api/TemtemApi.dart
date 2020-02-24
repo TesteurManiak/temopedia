@@ -12,11 +12,15 @@ class TemtemApi {
   static final traits = "/api/traits";
   static final gear = "/api/gear";
   static final locations = "/api/locations";
+
   static String temtem(int number) {
     String id =
         number < 100 ? "0" + (number < 10 ? "0$number" : "$number") : "$number";
     return "/api/temtems/$id";
   }
+
+  static String weaknessCalc(String attacking, List<String> defending) =>
+      "/api/weaknesses/calculate?attacking=$attacking&defending=${defending.join(',')}";
 
   /// Make a GET request on the API's Url
   /// If response status is valid the method return the decoded
