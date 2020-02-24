@@ -1,4 +1,4 @@
-import 'package:temopedia/Models/MapData.dart';
+import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/Models/Traits.dart';
@@ -8,7 +8,7 @@ List<Temtem> temtems = [];
 List<TemType> types = [];
 List<Traits> traits = [];
 List<Technique> techiques = [];
-List<MapData> maps = [];
+List<Location> locations = [];
 
 Map<String, int> maxStats = {
   "hp": 0,

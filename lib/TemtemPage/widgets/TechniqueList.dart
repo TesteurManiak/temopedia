@@ -80,7 +80,7 @@ class TechniqueList extends StatelessWidget {
                   builder: (context) => AlertDialog(
                     backgroundColor: MyColors.background,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21.0)),
+                        borderRadius: BorderRadius.circular(21)),
                     title: Text(_tech.name, style: textStyle),
                     content: TechniqueContent(_tech),
                     actions: <Widget>[

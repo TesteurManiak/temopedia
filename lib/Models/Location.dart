@@ -46,6 +46,18 @@ class Location {
       name: json[JsonHelper.name],
       wikiUrl: json[JsonHelper.wikiUrl],
       description: json[JsonHelper.description],
+      temtemTypes: List<String>.from(json[JsonHelper.temtemTypes] as List),
+      type: json[JsonHelper.type],
+      routes: List<LocationElem>.generate(json[JsonHelper.routes].length,
+          (index) => LocationElem.fromJson(json[JsonHelper.routes][index])),
+      townsAndVillages: List<LocationElem>.generate(
+          json[JsonHelper.townsAndVillages].length,
+          (index) =>
+              LocationElem.fromJson(json[JsonHelper.townsAndVillages][index])),
+      landmarks: List<LocationElem>.generate(json[JsonHelper.landmarks].length,
+          (index) => LocationElem.fromJson(json[JsonHelper.landmarks][index])),
+      temtem: List<String>.from(json[JsonHelper.temtem] as List),
+      trivia: List<String>.from(json[JsonHelper.trivia] as List),
     );
   }
 }

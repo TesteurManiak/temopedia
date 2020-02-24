@@ -11,6 +11,7 @@ class TemtemApi {
   static final techniques = "/api/techniques";
   static final traits = "/api/traits";
   static final gear = "/api/gear";
+  static final locations = "/api/locations";
   static String temtem(int number) {
     String id =
         number < 100 ? "0" + (number < 10 ? "0$number" : "$number") : "$number";
@@ -22,10 +23,14 @@ class TemtemApi {
   /// [response.body].
   /// Else it will throw an [Exception].
   Future getRequest(String request) async {
-    var response = await http.get("$_baseUrl$request");
-    if (response.statusCode == 200)
-      return jsonDecode(response.body);
-    else
-      throw Exception("Failed to get request: $request");
+    try {
+      var response = await http.get("$_baseUrl$request");
+      if (response.statusCode == 200)
+        return jsonDecode(response.body);
+      else
+        throw Exception("Error GET request: $request");
+    } catch (e) {
+      throw Exception("Request: $request\nException: $e");
+    }
   }
 }

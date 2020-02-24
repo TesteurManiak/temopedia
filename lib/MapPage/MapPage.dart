@@ -1,105 +1,72 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:photo_view/photo_view.dart';
-import 'package:temopedia/MapPage/widgets/Marker.dart';
-import 'package:temopedia/Models/MapData.dart';
+import 'package:temopedia/MapPage/widgets/DescriptionCard.dart';
+import 'package:temopedia/MapPage/widgets/TypeFoundCard.dart';
+import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/TemLocation.dart';
-import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class MapPage extends StatefulWidget {
   final TemLocation location;
-  final Temtem temtem;
 
-  MapPage(this.location, this.temtem);
+  MapPage(this.location);
 
   @override
   State<StatefulWidget> createState() => _MapPageState();
 }
 
 class _MapPageState extends State<MapPage> {
-  final double _markerSize = 15;
-  final double _borderWidth = 2;
+  final _textStyle = TextStyle(color: MyColors.lightFont);
 
-  MapData _map;
+  Location _location;
 
-  MapData _getMapByName(String name) {
-    for (var elem in globals.maps) if (name == elem.name) return elem;
+  Location _getLocation() {
+    for (Location location in globals.locations) {
+      if (location.name.toLowerCase() == widget.location.island.toLowerCase())
+        return location;
+    }
     return null;
-  }
-
-  MapData _getMap() {
-    if (widget.location.location == "Windward Fort")
-      return _getMapByName(widget.location.location);
-    else if (widget.location.location == "Aguamarina Caves")
-      return _getMapByName(widget.location.location);
-    else if (widget.location.location == "The Canopath")
-      return _getMapByName("Superior Omninesia");
-    else if (widget.location.location == "The Flywalk")
-      return _getMapByName("Citerior Omninesia");
-    else if (widget.location.location == "Giant Banyan")
-      return _getMapByName(widget.location.location);
-    else if (widget.location.location == "The Glassyway" ||
-        widget.location.location == "The Hangroad")
-      return _getMapByName("Ulterior Omninesia");
-    else if (widget.location.location == "Anak Volcano")
-      return _getMapByName(widget.location.location);
-    else if (widget.location.location == "Mines of Mictlan")
-      return _getMapByName(widget.location.location);
-    else
-      return _getMapByName(widget.location.island);
   }
 
   @override
   void initState() {
     super.initState();
-    _map = _getMap();
+    _location = _getLocation();
   }
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final prop = _map.maxHeight > _map.maxWidth
-            ? constraints.maxHeight / _map.maxHeight
-            : constraints.maxWidth / _map.maxWidth;
-        final offset = (_markerSize + _borderWidth) / 2;
-        return Scaffold(
-          backgroundColor: MyColors.background,
-          appBar: AppBar(
-            backgroundColor: MyColors.background,
-            title: Text(widget.location.location),
-          ),
-          body: SafeArea(
-            child: _map != null
-                ? PhotoView.customChild(
-                    child: Container(
-                      color: MyColors.background,
-                      child: Stack(
-                        children: <Widget>[
-                          CachedNetworkImage(imageUrl: _map.url),
-                          ..._map.points.map((item) {
-                            if (!item.temtemsNum.contains(widget.temtem.number))
-                              return Container();
-                            final top = item.top * prop - offset;
-                            final left = item.left * prop - offset;
-                            return Positioned(
-                                top: top,
-                                left: left,
-                                child: Marker(
-                                    size: _markerSize,
-                                    borderWidth: _borderWidth));
-                          }).toList()
-                        ],
-                      ),
-                    ),
-                    initialScale: 1.0,
-                  )
-                : Container(),
-          ),
-        );
-      },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.location.island, style: _textStyle),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
+      backgroundColor: MyColors.background,
+      body: SafeArea(
+        child: _location == null
+            ? Container()
+            : SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32),
+                    color: MyColors.lightBackground,
+                  ),
+                  child: Column(
+                    children: <Widget>[
+                      DescriptionCard(_location.description),
+                      SizedBox(height: 12),
+                      TypeFoundCard(_location.temtemTypes),
+                      SizedBox(height: 12),
+                      TriviaCard(_location.trivia),
+                    ],
+                  ),
+                ),
+              ),
+      ),
     );
   }
 }

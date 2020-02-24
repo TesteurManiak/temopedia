@@ -31,7 +31,7 @@ class LocationCard extends StatelessWidget {
                   child: ListTile(
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
-                            MapPage(temtem.locations[index], temtem))),
+                            MapPage(temtem.locations[index]))),
                     title: Text(temtem.locations[index].location,
                         overflow: TextOverflow.ellipsis, style: textStyle),
                     subtitle: Text(temtem.locations[index].island,

@@ -52,4 +52,9 @@ class JsonHelper {
   static final island = "island";
   static final frequency = "frequency";
   static final level = "level";
+  static final temtemTypes = "temtemTypes";
+  static final routes = "routes";
+  static final townsAndVillages = "townsAndVillages";
+  static final landmarks = "landmarks";
+  static final temtem = "temtem";
 }
