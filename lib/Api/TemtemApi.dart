@@ -6,12 +6,16 @@ class TemtemApi {
 
   // Api's routes
   static final allTemtems = "/api/temtems";
-  static final temtem = "/api/temtems/";
   static final types = "/api/types";
   static final conditions = "/api/conditions";
   static final techniques = "/api/techniques";
   static final traits = "/api/traits";
   static final gear = "/api/gear";
+  static String temtem(int number) {
+    String id =
+        number < 100 ? "0" + (number < 10 ? "0$number" : "$number") : "$number";
+    return "/api/temtems/$id";
+  }
 
   /// Make a GET request on the API's Url
   /// If response status is valid the method return the decoded
