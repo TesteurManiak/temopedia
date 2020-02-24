@@ -67,7 +67,11 @@ class TechniqueList extends StatelessWidget {
             ),
             child: ListTile(
               title: Text(item[JsonHelper.name], style: textStyle),
-              trailing: Text(item[JsonHelper.source], style: textStyle),
+              trailing: Text(
+                  item[JsonHelper.source] == "Levelling"
+                      ? "${item[JsonHelper.source]} : ${item[JsonHelper.levels]}"
+                      : item[JsonHelper.source],
+                  style: textStyle),
               onTap: () {
                 Technique _tech = _getTechnique(item[JsonHelper.name]);
                 if (_tech == null) return null;
