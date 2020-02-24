@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/MapPage/widgets/DescriptionCard.dart';
+import 'package:temopedia/MapPage/widgets/TemtemAreaList.dart';
+import 'package:temopedia/MapPage/widgets/TemtemLocation.dart';
 import 'package:temopedia/MapPage/widgets/TypeFoundCard.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/TemLocation.dart';
@@ -54,16 +56,18 @@ class _MapPageState extends State<MapPage> {
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 8),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32),
+                    borderRadius: BorderRadius.circular(21),
                     color: MyColors.lightBackground,
                   ),
                   child: Column(
                     children: <Widget>[
+                      TemtemLocation(widget.temtem, widget.location),
+                      SizedBox(height: 12),
                       DescriptionCard(_location.description),
                       SizedBox(height: 12),
                       TypeFoundCard(_location.temtemTypes, widget.temtem),
                       SizedBox(height: 12),
-                      _getPlace(_location),
+                      TemtemAreaList(_location.temtem, _location),
                       SizedBox(height: 12),
                       TriviaCard(_location.trivia),
                     ],
@@ -72,17 +76,5 @@ class _MapPageState extends State<MapPage> {
               ),
       ),
     );
-  }
-
-  Widget _getPlace(Location location) {
-    for (var route in location.routes) {
-      if (route.name.toLowerCase() == widget.location.location.toLowerCase())
-        return Text(route.name, style: _textStyle);
-    }
-    for (var landmark in location.landmarks) {
-      if (landmark.name.toLowerCase() == widget.location.location.toLowerCase())
-        return Text(landmark.name, style: _textStyle);
-    }
-    return Container();
   }
 }
