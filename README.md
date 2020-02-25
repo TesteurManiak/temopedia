@@ -41,7 +41,8 @@ flutter install
 ## Todo
 
 * [ ] TemtemPage - Display location map **(Not enough data)**
-* [ ] TemtemPage - Add type effectiveness
+* [x] TemtemPage - Add type effectiveness
+* [ ] MoveDex
 * [ ] UI/UX
 
 ## Author
