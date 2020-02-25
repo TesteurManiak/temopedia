@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
+import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
 import 'package:temopedia/TemtemPage/widgets/LocationCard.dart';
 import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
@@ -43,10 +44,11 @@ class _TemtemPageState extends State<TemtemPage> {
           IconButton(
             icon: Icon(
                 widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
-            onPressed: () async {
-              widget.temtem.owned = !widget.temtem.owned;
-              await widget.dbHelper.update(widget.temtem);
-              setState(() {});
+            onPressed: () {
+              setState(() {
+                widget.temtem.owned = !widget.temtem.owned;
+                widget.dbHelper.update(widget.temtem);
+              });
             },
           )
         ],
@@ -82,6 +84,8 @@ class _TemtemPageState extends State<TemtemPage> {
                         TechniqueList(widget.temtem.techniques),
                         SizedBox(height: 12.0),
                         LocationCard(widget.temtem),
+                        SizedBox(height: 12.0),
+                        EffectivenessCard(widget.temtem.types),
                       ],
                     ),
                   ),

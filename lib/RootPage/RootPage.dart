@@ -8,6 +8,7 @@ import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/Models/Traits.dart';
 import 'package:temopedia/Models/Type.dart';
+import 'package:temopedia/Models/Weakness.dart';
 import 'package:temopedia/RootPage/widgets/ErrorDialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -26,33 +27,63 @@ class _RootPageState extends State<RootPage> {
   String _loadingText;
 
   _loadTemtems() async {
-    setState(() => _loadingText = "Loading Temtems...");
-    var json = await api.getRequest(TemtemApi.allTemtems);
-    json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
+    try {
+      setState(() => _loadingText = "Loading Temtems...");
+      var json = await api.getRequest(TemtemApi.allTemtems);
+      json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Temtems. Please restart the app or report an issue.");
+    }
   }
 
   _loadFavorites() async {
-    setState(() => _loadingText = "Loading Favorites...");
-    for (var temtem in globals.temtems)
-      temtem.owned = await dbHelper.read(temtem.number);
+    try {
+      setState(() => _loadingText = "Loading Favorites...");
+      for (var temtem in globals.temtems)
+        temtem.owned = await dbHelper.read(temtem.number);
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Favorites. Please restart the app or report an issue.");
+    }
   }
 
   _loadTypes() async {
-    setState(() => _loadingText = "Loading Types...");
-    var json = await api.getRequest(TemtemApi.types);
-    json.forEach((item) => globals.types.add(TemType.fromJson(item)));
+    try {
+      setState(() => _loadingText = "Loading Types...");
+      var json = await api.getRequest(TemtemApi.types);
+      json.forEach((item) => globals.types.add(TemType.fromJson(item)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Types. Please restart the app or report an issue.");
+    }
   }
 
   _loadTraits() async {
-    setState(() => _loadingText = "Loading Traits...");
-    var json = await api.getRequest(TemtemApi.traits);
-    json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
+    try {
+      setState(() => _loadingText = "Loading Traits...");
+      var json = await api.getRequest(TemtemApi.traits);
+      json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Traits. Please restart the app or report an issue.");
+    }
   }
 
   _loadTechniques() async {
-    setState(() => _loadingText = "Loading Techniques...");
-    var json = await api.getRequest(TemtemApi.techniques);
-    json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
+    try {
+      setState(() => _loadingText = "Loading Techniques...");
+      var json = await api.getRequest(TemtemApi.techniques);
+      json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Techniques. Please restart the app or report an issue.");
+    }
   }
 
   _loadLocations() async {
@@ -62,7 +93,21 @@ class _RootPageState extends State<RootPage> {
       json.forEach((item) => globals.locations.add(Location.fromJson(item)));
     } catch (e) {
       print(e);
-      throw Exception("Error while loading Locations. Please restart the app/");
+      throw Exception(
+          "Error while loading Locations. Please restart the app or report an issue.");
+    }
+  }
+
+  _loadWeaknesses() async {
+    try {
+      setState(() => _loadingText = "Loading Weaknesses...");
+      var json = await api.getRequest(TemtemApi.weaknesses);
+      (json as Map<String, dynamic>).forEach((key, value) =>
+          globals.weaknesses.add(Weakness.fromJson(value, key)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Weaknesses. Please restart the app or report an issue.");
     }
   }
 
@@ -74,6 +119,7 @@ class _RootPageState extends State<RootPage> {
       await _loadTraits();
       await _loadTechniques();
       await _loadLocations();
+      await _loadWeaknesses();
       setState(() => _isLoading = false);
     } catch (e) {
       print(e);
