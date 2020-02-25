@@ -8,6 +8,7 @@ import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/Models/Traits.dart';
 import 'package:temopedia/Models/Type.dart';
+import 'package:temopedia/Models/Weakness.dart';
 import 'package:temopedia/RootPage/widgets/ErrorDialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -97,6 +98,19 @@ class _RootPageState extends State<RootPage> {
     }
   }
 
+  _loadWeaknesses() async {
+    try {
+      setState(() => _loadingText = "Loading Weaknesses...");
+      var json = await api.getRequest(TemtemApi.weaknesses);
+      (json as Map<String, dynamic>).forEach((key, value) =>
+          globals.weaknesses.add(Weakness.fromJson(value, key)));
+    } catch (e) {
+      print(e);
+      throw Exception(
+          "Error while loading Weaknesses. Please restart the app or report an issue.");
+    }
+  }
+
   _loadList() async {
     try {
       await _loadTemtems();
@@ -105,6 +119,7 @@ class _RootPageState extends State<RootPage> {
       await _loadTraits();
       await _loadTechniques();
       await _loadLocations();
+      await _loadWeaknesses();
       setState(() => _isLoading = false);
     } catch (e) {
       print(e);

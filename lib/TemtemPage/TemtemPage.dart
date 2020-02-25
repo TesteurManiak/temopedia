@@ -43,10 +43,11 @@ class _TemtemPageState extends State<TemtemPage> {
           IconButton(
             icon: Icon(
                 widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
-            onPressed: () async {
-              widget.temtem.owned = !widget.temtem.owned;
-              await widget.dbHelper.update(widget.temtem);
-              setState(() {});
+            onPressed: () {
+              setState(() {
+                widget.temtem.owned = !widget.temtem.owned;
+                widget.dbHelper.update(widget.temtem);
+              });
             },
           )
         ],

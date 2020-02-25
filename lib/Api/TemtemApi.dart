@@ -14,11 +14,7 @@ class TemtemApi {
   static final locations = "/api/locations";
   static final weaknesses = "/api/weaknesses";
 
-  static String temtem(int number) {
-    String id =
-        number < 100 ? "0" + (number < 10 ? "0$number" : "$number") : "$number";
-    return "/api/temtems/$id";
-  }
+  static String temtem(int number) => "/api/temtems/$number";
 
   static String weaknessCalc(String attacking, List<String> defending) =>
       "/api/weaknesses/calculate?attacking=$attacking&defending=${defending.join(',')}";

@@ -93,6 +93,8 @@ class StatWidget extends StatelessWidget {
   final String value;
   final int maxValue;
 
+  final _textStyle = TextStyle(color: MyColors.lightFont);
+
   StatWidget({
     @required this.label,
     @required double progress,
@@ -105,16 +107,8 @@ class StatWidget extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Expanded(
-          flex: 2,
-          child: Text(
-            label,
-            style: TextStyle(color: MyColors.lightFont),
-          ),
-        ),
-        Expanded(
-            flex: 1,
-            child: Text(value, style: TextStyle(color: MyColors.lightFont))),
+        Expanded(flex: 2, child: Text(label, style: _textStyle)),
+        Expanded(flex: 1, child: Text(value, style: _textStyle)),
         Expanded(
           flex: 5,
           child: ProgressBar(

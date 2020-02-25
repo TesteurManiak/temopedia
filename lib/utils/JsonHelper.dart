@@ -57,4 +57,16 @@ class JsonHelper {
   static final townsAndVillages = "townsAndVillages";
   static final landmarks = "landmarks";
   static final temtem = "temtem";
+  static final neutral = "Neutral";
+  static final fire = "Fire";
+  static final water = "Water";
+  static final nature = "Nature";
+  static final electric = "Electric";
+  static final earth = "Earth";
+  static final mental = "Mental";
+  static final wind = "Wind";
+  static final digital = "Digital";
+  static final melee = "Melee";
+  static final crystal = "Crystal";
+  static final toxic = "Toxic";
 }
