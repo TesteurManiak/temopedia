@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Weakness.dart';
+import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -13,16 +14,25 @@ class EffectivenessCard extends StatefulWidget {
 }
 
 class _EffectivenessCardState extends State<EffectivenessCard> {
-  final _textStyle = TextStyle(color: MyColors.lightFont);
-
   List<Weakness> _weaknesses = [];
 
   _buildWeakness(String label, double value) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Expanded(flex: 2, child: Text(label, style: _textStyle)),
-        Expanded(flex: 1, child: Text("$value", style: _textStyle)),
+        Expanded(flex: 1, child: TypeChip(label)),
+        Expanded(
+          flex: 2,
+          child: Text(
+            "x $value",
+            style: TextStyle(
+              color: value < 1.5
+                  ? value < 1 ? Colors.green : Colors.white
+                  : Colors.red,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -41,16 +51,25 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(21),
-        color: MyColors.background,
-      ),
-      child: Column(
-        children: List<Widget>.generate(globals.types.length,
-            (index) => _buildWeakness(globals.types[index].name, null)),
-      ),
-    );
+    return _weaknesses.isEmpty
+        ? Container()
+        : Container(
+            padding: EdgeInsets.symmetric(vertical: 16),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(21),
+              color: MyColors.background,
+            ),
+            child: Column(
+              children: List<Widget>.generate(
+                  globals.weaknesses.length,
+                  (index) => _buildWeakness(
+                      globals.weaknesses[index].name,
+                      widget.types
+                          .map((type) =>
+                              globals.weaknesses[index].weaknesses[type])
+                          .toList()
+                          .reduce((a, b) => a * b))),
+            ),
+          );
   }
 }
