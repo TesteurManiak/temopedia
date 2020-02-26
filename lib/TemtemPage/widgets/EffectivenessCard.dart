@@ -27,8 +27,8 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
             "x $value",
             style: TextStyle(
               color: value > 1
-                  ? value < 1 ? Colors.green : Colors.white
-                  : Colors.red,
+                  ? Colors.red
+                  : value < 1 ? Colors.green : Colors.white,
               fontWeight: FontWeight.bold,
             ),
           ),
