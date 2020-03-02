@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
+import 'package:temopedia/TemtemPage/widgets/GenderRatioCard.dart';
 import 'package:temopedia/TemtemPage/widgets/LocationCard.dart';
 import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
 import 'package:temopedia/TemtemPage/widgets/TechniqueList.dart';
@@ -82,6 +84,10 @@ class _TemtemPageState extends State<TemtemPage> {
                         TraitsCard(widget.temtem.traits),
                         SizedBox(height: 12.0),
                         TechniqueList(widget.temtem.techniques),
+                        SizedBox(height: 12.0),
+                        GenderRatioCard(widget.temtem.genderRatio),
+                        SizedBox(height: 12.0),
+                        CatchRateCard(widget.temtem.catchRate),
                         SizedBox(height: 12.0),
                         LocationCard(widget.temtem),
                         SizedBox(height: 12.0),

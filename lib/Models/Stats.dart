@@ -1,4 +1,5 @@
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temopedia/utils/JsonHelper.dart';
 
 class Stats {
   final int hp;
@@ -29,14 +30,27 @@ class Stats {
     }
 
     return Stats(
-      hp: _checkMax(json['hp'], "hp"),
-      sta: _checkMax(json['sta'], "sta"),
-      spd: _checkMax(json['spd'], "spd"),
-      atk: _checkMax(json['atk'], "atk"),
-      def: _checkMax(json['def'], "def"),
-      spatk: _checkMax(json['spatk'], "spatk"),
-      spdef: _checkMax(json['spdef'], "spdef"),
-      total: json['total'],
+      hp: _checkMax(json[JsonHelper.hp], JsonHelper.hp),
+      sta: _checkMax(json[JsonHelper.sta], JsonHelper.sta),
+      spd: _checkMax(json[JsonHelper.spd], JsonHelper.spd),
+      atk: _checkMax(json[JsonHelper.atk], JsonHelper.atk),
+      def: _checkMax(json[JsonHelper.def], JsonHelper.def),
+      spatk: _checkMax(json[JsonHelper.spatk], JsonHelper.spatk),
+      spdef: _checkMax(json[JsonHelper.spdef], JsonHelper.spdef),
+      total: json[JsonHelper.total],
+    );
+  }
+
+  factory Stats.fromTvYieldsJson(Map<String, dynamic> json) {
+    return Stats(
+      hp: json[JsonHelper.hp],
+      sta: json[JsonHelper.sta],
+      spd: json[JsonHelper.spd],
+      atk: json[JsonHelper.atk],
+      def: json[JsonHelper.def],
+      spatk: json[JsonHelper.spatk],
+      spdef: json[JsonHelper.spdef],
+      total: json[JsonHelper.total],
     );
   }
 }
