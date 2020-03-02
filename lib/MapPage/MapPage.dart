@@ -61,7 +61,8 @@ class _MapPageState extends State<MapPage> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      TemtemLocation(widget.temtem, widget.location),
+                      TemtemLocation(widget.temtem, widget.location,
+                          _location.imageWikiThumbnail),
                       SizedBox(height: 12),
                       DescriptionCard(_location.description),
                       SizedBox(height: 12),

@@ -75,4 +75,6 @@ class JsonHelper {
   static final female = "female";
   static final catchRate = "catchRate";
   static final tvYields = "tvYields";
+  static final imageWikiThumbnail = "imageWikiThumbnail";
+  static final imageWikiFile = "imageWikiFile";
 }

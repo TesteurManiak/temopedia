@@ -37,8 +37,11 @@ class TemtemAreaList extends StatelessWidget {
                   if (_temtem == null) return Container();
                   return ListTile(
                     title: Text(_temtem.name, style: _textStyle),
-                    leading: CachedNetworkImage(
-                        imageUrl: _temtem.wikiPortraitUrlLarge),
+                    leading: CircleAvatar(
+                      backgroundImage: CachedNetworkImageProvider(
+                          _temtem.wikiPortraitUrlLarge),
+                      backgroundColor: MyColors.portraitBack,
+                    ),
                   );
                 }).toList()
               ],

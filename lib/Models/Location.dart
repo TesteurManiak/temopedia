@@ -22,6 +22,8 @@ class Location {
   final String description;
   final List<String> temtemTypes;
   final String type;
+  final String imageWikiThumbnail;
+  final String imageWikiFile;
   final List<LocationElem> routes;
   final List<LocationElem> townsAndVillages;
   final List<LocationElem> landmarks;
@@ -34,6 +36,8 @@ class Location {
     this.description,
     this.temtemTypes,
     this.type,
+    this.imageWikiThumbnail,
+    this.imageWikiFile,
     this.routes,
     this.townsAndVillages,
     this.landmarks,
@@ -48,6 +52,8 @@ class Location {
       description: json[JsonHelper.description],
       temtemTypes: List<String>.from(json[JsonHelper.temtemTypes] as List),
       type: json[JsonHelper.type],
+      imageWikiThumbnail: json[JsonHelper.imageWikiThumbnail],
+      imageWikiFile: json[JsonHelper.imageWikiFile],
       routes: List<LocationElem>.generate(json[JsonHelper.routes].length,
           (index) => LocationElem.fromJson(json[JsonHelper.routes][index])),
       townsAndVillages: List<LocationElem>.generate(
