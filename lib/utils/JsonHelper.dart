@@ -69,4 +69,8 @@ class JsonHelper {
   static final melee = "Melee";
   static final crystal = "Crystal";
   static final toxic = "Toxic";
+  static final traitMapping = "traitMapping";
+  static final genderRatio = "genderRatio";
+  static final male = "male";
+  static final female = "female";
 }

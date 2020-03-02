@@ -1,6 +1,7 @@
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Details.dart';
 import 'package:temopedia/Models/Evolution.dart';
+import 'package:temopedia/Models/GenderRatio.dart';
 import 'package:temopedia/Models/Stats.dart';
 import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
@@ -25,6 +26,8 @@ class Temtem {
   final List<TemLocation> locations;
   final String icon;
   final String lumaIcon;
+  final GenderRatio genderRatio;
+
   bool owned;
 
   Temtem({
@@ -45,6 +48,7 @@ class Temtem {
     this.locations,
     this.icon,
     this.lumaIcon,
+    this.genderRatio,
     this.owned = false,
   });
 
@@ -92,6 +96,7 @@ class Temtem {
       locations: _locations,
       icon: json[JsonHelper.icon],
       lumaIcon: json[JsonHelper.lumaIcon],
+      genderRatio: GenderRatio.fromJson(json[JsonHelper.genderRatio]),
     );
   }
 

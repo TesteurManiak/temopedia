@@ -6,9 +6,16 @@ class EvolutionNode {
   final int stage;
   final dynamic levels;
   final bool trading;
+  final Map<String, dynamic> traitMapping;
 
-  EvolutionNode(
-      {this.number, this.name, this.stage, this.levels, this.trading});
+  EvolutionNode({
+    this.number,
+    this.name,
+    this.stage,
+    this.levels,
+    this.trading,
+    this.traitMapping,
+  });
 
   factory EvolutionNode.fromJson(Map<String, dynamic> json) {
     return EvolutionNode(
@@ -17,6 +24,7 @@ class EvolutionNode {
       stage: json[JsonHelper.stage],
       levels: json[JsonHelper.levels],
       trading: json[JsonHelper.trading],
+      traitMapping: json[JsonHelper.traitMapping],
     );
   }
 }
