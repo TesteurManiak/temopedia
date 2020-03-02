@@ -27,6 +27,8 @@ class Temtem {
   final String icon;
   final String lumaIcon;
   final GenderRatio genderRatio;
+  final int catchRate;
+  final Stats tvYields;
 
   bool owned;
 
@@ -49,6 +51,8 @@ class Temtem {
     this.icon,
     this.lumaIcon,
     this.genderRatio,
+    this.catchRate,
+    this.tvYields,
     this.owned = false,
   });
 
@@ -97,6 +101,8 @@ class Temtem {
       icon: json[JsonHelper.icon],
       lumaIcon: json[JsonHelper.lumaIcon],
       genderRatio: GenderRatio.fromJson(json[JsonHelper.genderRatio]),
+      catchRate: json[JsonHelper.catchRate],
+      tvYields: Stats.fromTvYieldsJson(json[JsonHelper.tvYields]),
     );
   }
 

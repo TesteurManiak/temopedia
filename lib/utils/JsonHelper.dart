@@ -73,4 +73,6 @@ class JsonHelper {
   static final genderRatio = "genderRatio";
   static final male = "male";
   static final female = "female";
+  static final catchRate = "catchRate";
+  static final tvYields = "tvYields";
 }
