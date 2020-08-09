@@ -17,7 +17,7 @@ class CatchRateCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: MyColors.background,
             borderRadius: BorderRadius.circular(21)),
-        child: Text("Catch rate: $catchRate", style: TextStyles.catchRate),
+        child: Text("Catch rate: $catchRate", style: TextStyles.smallLight),
       ),
     );
   }

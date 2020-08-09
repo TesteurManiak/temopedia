@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Models/SynergyEffects.dart';
 import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -33,16 +34,14 @@ class SynergyInfo extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text("Synergy:", style: TextStyle(color: MyColors.lightFont)),
+              Text("Synergy:", style: TextStyles.lightText),
               SizedBox(width: 10),
               TypeChip(synergyType.name),
             ],
           ),
           ...synergyEffects
-              .map((synergy) => Text(
-                    synergy.effect ?? "Error Synergy Effect",
-                    style: TextStyle(color: MyColors.lightFont),
-                  ))
+              .map((synergy) => Text(synergy.effect ?? "Error Synergy Effect",
+                  style: TextStyles.lightText))
               .toList(),
         ],
       ),

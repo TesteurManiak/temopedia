@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/MapPage/MapPage.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class LocationCard extends StatelessWidget {
   final Temtem temtem;
-  final textStyle = TextStyle(color: MyColors.lightFont);
 
   LocationCard(this.temtem);
 
@@ -35,11 +35,14 @@ class LocationCard extends StatelessWidget {
                           builder: (context) =>
                               MapPage(temtem.locations[index], temtem))),
                       title: Text(temtem.locations[index].location,
-                          overflow: TextOverflow.ellipsis, style: textStyle),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.lightText),
                       subtitle: Text(temtem.locations[index].island,
-                          overflow: TextOverflow.ellipsis, style: textStyle),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.lightText),
                       trailing: Text(temtem.locations[index].frequency,
-                          overflow: TextOverflow.ellipsis, style: textStyle),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyles.lightText),
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TriviaCard extends StatelessWidget {
@@ -13,15 +14,14 @@ class TriviaCard extends StatelessWidget {
         : Container(
             decoration: BoxDecoration(
                 color: MyColors.background,
-                borderRadius: BorderRadius.circular(21.0)),
+                borderRadius: BorderRadius.circular(21)),
             alignment: Alignment.center,
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16),
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   ...trivia
-                      .map((elem) => Text(elem,
-                          style: TextStyle(color: MyColors.lightFont)))
+                      .map((elem) => Text(elem, style: TextStyles.lightText))
                       .toList()
                 ]),
           );

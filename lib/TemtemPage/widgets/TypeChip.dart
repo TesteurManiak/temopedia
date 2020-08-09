@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Type.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -28,7 +29,7 @@ class TypeChip extends StatelessWidget {
         placeholder: (context, url) => Image.asset("assets/unknown.png"),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
-      label: Text(item.name, style: TextStyle(color: MyColors.lightFont)),
+      label: Text(item.name, style: TextStyles.lightText),
     );
   }
 
@@ -41,7 +42,7 @@ class TypeChip extends StatelessWidget {
     return Chip(
       elevation: 0.0,
       backgroundColor: MyColors.lightBackground,
-      label: Text(type, style: TextStyle(color: MyColors.lightFont)),
+      label: Text(type, style: TextStyles.lightText),
       avatar: Image.asset("assets/unknown.png"),
     );
   }

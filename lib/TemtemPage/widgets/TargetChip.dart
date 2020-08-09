@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TargetChip extends StatelessWidget {
@@ -11,7 +12,7 @@ class TargetChip extends StatelessWidget {
     return Chip(
       backgroundColor: MyColors.lightBackground,
       avatar: Icon(Icons.person, color: Colors.white),
-      label: Text(targets, style: TextStyle(color: MyColors.lightFont)),
+      label: Text(targets, style: TextStyles.lightText),
     );
   }
 }

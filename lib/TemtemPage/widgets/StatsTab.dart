@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Stats.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Progress.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
@@ -7,16 +8,15 @@ import 'package:temopedia/extensions/extensions.dart' show WidgetModifier;
 
 class StatsTab extends StatelessWidget {
   final Stats stats;
-  final darkStyle =
-      TextStyle(color: MyColors.darkFont, fontWeight: FontWeight.bold);
 
   StatsTab(this.stats);
 
   Widget _totalStat() {
     return Row(
       children: <Widget>[
-        Expanded(flex: 2, child: Text("Total", style: darkStyle)),
-        Expanded(flex: 1, child: Text("${stats.total}", style: darkStyle)),
+        Expanded(flex: 2, child: Text("Total", style: TextStyles.darkBold)),
+        Expanded(
+            flex: 1, child: Text("${stats.total}", style: TextStyles.darkBold)),
         Expanded(child: Container(), flex: 5),
       ],
     );
@@ -97,8 +97,6 @@ class StatWidget extends StatelessWidget {
   final String value;
   final int maxValue;
 
-  final _textStyle = TextStyle(color: MyColors.lightFont);
-
   StatWidget({
     @required this.label,
     @required double progress,
@@ -111,8 +109,8 @@ class StatWidget extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        Expanded(flex: 2, child: Text(label, style: _textStyle)),
-        Expanded(flex: 1, child: Text(value, style: _textStyle)),
+        Expanded(flex: 2, child: Text(label, style: TextStyles.lightText)),
+        Expanded(flex: 1, child: Text(value, style: TextStyles.lightText)),
         Expanded(
           flex: 5,
           child: ProgressBar(

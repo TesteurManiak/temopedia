@@ -7,13 +7,13 @@ import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
 import 'package:temopedia/TemtemPage/widgets/SynergyInfo.dart';
 import 'package:temopedia/TemtemPage/widgets/TargetChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TechniqueContent extends StatelessWidget {
   final Technique tech;
-  final textStyle = TextStyle(color: MyColors.lightFont);
 
   TechniqueContent(this.tech);
 
@@ -37,7 +37,7 @@ class TechniqueContent extends StatelessWidget {
         ),
         SynergyInfo(tech.synergy, tech.synergyEffects),
         SizedBox(height: 8),
-        Text(tech.description, style: textStyle),
+        Text(tech.description, style: TextStyles.lightText),
       ],
     );
   }
@@ -45,7 +45,6 @@ class TechniqueContent extends StatelessWidget {
 
 class TechniqueList extends StatelessWidget {
   final List<Map<String, dynamic>> techniques;
-  final textStyle = TextStyle(color: MyColors.lightFont);
 
   TechniqueList(this.techniques);
 
@@ -66,12 +65,12 @@ class TechniqueList extends StatelessWidget {
               color: MyColors.lightBackground,
             ),
             child: ListTile(
-              title: Text(item[JsonHelper.name], style: textStyle),
+              title: Text(item[JsonHelper.name], style: TextStyles.lightText),
               trailing: Text(
                   item[JsonHelper.source] == "Levelling"
                       ? "${item[JsonHelper.source]} : ${item[JsonHelper.levels]}"
                       : item[JsonHelper.source],
-                  style: textStyle),
+                  style: TextStyles.lightText),
               onTap: () {
                 Technique _tech = _getTechnique(item[JsonHelper.name]);
                 if (_tech == null) return null;
@@ -81,11 +80,11 @@ class TechniqueList extends StatelessWidget {
                     backgroundColor: MyColors.background,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(21)),
-                    title: Text(_tech.name, style: textStyle),
+                    title: Text(_tech.name, style: TextStyles.lightText),
                     content: TechniqueContent(_tech),
                     actions: <Widget>[
                       FlatButton(
-                          child: Text("Close", style: textStyle),
+                          child: Text("Close", style: TextStyles.lightText),
                           onPressed: () => Navigator.pop(context))
                     ],
                   ),

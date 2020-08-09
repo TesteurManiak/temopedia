@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class SearchBar extends StatefulWidget {
@@ -57,11 +58,11 @@ class _SearchBarState extends State<SearchBar> {
               autofocus: true,
               autocorrect: false,
               onSubmitted: (_) => Navigator.pop(context),
-              style: TextStyle(color: MyColors.background),
+              style: TextStyles.background,
               controller: _filter,
               decoration: InputDecoration(
                 hintText: "Search Temtems",
-                hintStyle: TextStyle(fontSize: 14, color: MyColors.background),
+                hintStyle: TextStyles.background.copyWith(fontSize: 14),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                     icon: Icon(Icons.clear),
