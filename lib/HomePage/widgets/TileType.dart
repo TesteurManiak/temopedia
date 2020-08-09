@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/utils/getTypeColor.dart';
 
 class TileType extends StatelessWidget {
@@ -28,12 +29,7 @@ class TileType extends StatelessWidget {
         ),
         child: Text(
           item,
-          style: TextStyle(
-            fontSize: large ? 12 : 8,
-            height: 0.8,
-            fontWeight: large ? FontWeight.bold : FontWeight.normal,
-            color: Colors.white,
-          ),
+          style: large ? TextStyles.itemLarge : TextStyles.itemSmall,
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class DescriptionCard extends StatelessWidget {
@@ -15,7 +16,7 @@ class DescriptionCard extends StatelessWidget {
       ),
       alignment: Alignment.center,
       padding: EdgeInsets.all(16),
-      child: Text(description, style: TextStyle(color: MyColors.lightFont)),
+      child: Text(description, style: TextStyles.lightText),
     );
   }
 }

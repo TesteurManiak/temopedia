@@ -3,6 +3,7 @@ import 'package:temopedia/Models/Stats.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Progress.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temopedia/extensions/extensions.dart' show WidgetModifier;
 
 class StatsTab extends StatelessWidget {
   final Stats stats;
@@ -71,17 +72,20 @@ class StatsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.0),
-          color: MyColors.background),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          ..._buildStats().expand((stat) => [stat, SizedBox(height: 14)]),
-        ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(21.0),
+            color: MyColors.background),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            ..._buildStats().expand((stat) => [stat, SizedBox(height: 14)]),
+          ],
+        ),
       ),
     );
   }
@@ -119,6 +123,6 @@ class StatWidget extends StatelessWidget {
           ),
         )
       ],
-    );
+    ).padding(EdgeInsets.only(bottom: 12));
   }
 }

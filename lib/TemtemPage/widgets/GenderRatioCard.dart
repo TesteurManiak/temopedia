@@ -11,35 +11,38 @@ class GenderRatioCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: 16, bottom: 16, left: 16),
-      decoration: BoxDecoration(
-        color: MyColors.background,
-        borderRadius: BorderRadius.circular(21),
-      ),
-      child: Row(
-        children: <Widget>[
-          Expanded(child: Text("Gender:", style: textStyle)),
-          Expanded(
-            child: Row(
-              children: <Widget>[
-                Image.asset("assets/male.png", width: 12, height: 12),
-                SizedBox(width: 4),
-                Text("${genderRatio.male} %", style: textStyle),
-              ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: EdgeInsets.only(top: 16, bottom: 16, left: 16),
+        decoration: BoxDecoration(
+          color: MyColors.background,
+          borderRadius: BorderRadius.circular(21),
+        ),
+        child: Row(
+          children: <Widget>[
+            Expanded(child: Text("Gender:", style: textStyle)),
+            Expanded(
+              child: Row(
+                children: <Widget>[
+                  Image.asset("assets/male.png", width: 12, height: 12),
+                  SizedBox(width: 4),
+                  Text("${genderRatio.male} %", style: textStyle),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Row(
-              children: <Widget>[
-                Image.asset("assets/female.png", width: 12, height: 12),
-                SizedBox(width: 4),
-                Text("${genderRatio.female} %", style: textStyle),
-              ],
-            ),
-          )
-        ],
+            Expanded(
+              flex: 2,
+              child: Row(
+                children: <Widget>[
+                  Image.asset("assets/female.png", width: 12, height: 12),
+                  SizedBox(width: 4),
+                  Text("${genderRatio.female} %", style: textStyle),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

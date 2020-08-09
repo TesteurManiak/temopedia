@@ -77,4 +77,5 @@ class JsonHelper {
   static final tvYields = "tvYields";
   static final imageWikiThumbnail = "imageWikiThumbnail";
   static final imageWikiFile = "imageWikiFile";
+  static final gameDescription = "gameDescription";
 }

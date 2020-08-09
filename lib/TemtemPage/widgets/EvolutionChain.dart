@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -43,10 +44,7 @@ class TemtemNode extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 3),
-                Text(
-                  temtem.name,
-                  style: TextStyle(color: MyColors.lightFont),
-                )
+                Text(temtem.name, style: TextStyles.lightText)
               ],
             ),
           );
@@ -68,14 +66,7 @@ class EvolutionChain extends StatelessWidget {
                 children: <Widget>[
                   Icon(Icons.arrow_forward, color: MyColors.lightFont),
                   SizedBox(height: 7),
-                  Text(
-                    "+$level Lvl",
-                    style: TextStyle(
-                      color: MyColors.lightFont,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 12,
-                    ),
-                  ),
+                  Text("+$level Lvl", style: TextStyles.evolLevel),
                 ],
               ),
             )
@@ -88,10 +79,7 @@ class EvolutionChain extends StatelessWidget {
     if (!temtem.evolution.evolves) return _buildRow(temtem.number);
     if (temtem.evolution.type == "special" &&
         temtem.evolution.description != null)
-      return Text(
-        temtem.evolution.description,
-        style: TextStyle(color: MyColors.lightFont),
-      );
+      return Text(temtem.evolution.description, style: TextStyles.lightText);
     List<Widget> _chain = [];
     for (int i = 1; i < temtem.evolution.evolutionTree.length; i++) {
       var previousNode = temtem.evolution.evolutionTree[i - 1];
@@ -104,12 +92,15 @@ class EvolutionChain extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(21.0),
-          color: MyColors.background),
-      child: _buildEvolution(),
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(21.0),
+            color: MyColors.background),
+        child: _buildEvolution(),
+      ),
     );
   }
 }
