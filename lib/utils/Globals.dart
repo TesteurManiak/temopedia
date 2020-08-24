@@ -1,15 +1,11 @@
-import 'package:temopedia/Models/Location.dart';
-import 'package:temopedia/Models/Technique.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/Models/Traits.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/Models/Weakness.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-List<Temtem> temtems = [];
-List<TemType> types = [];
-List<Traits> traits = [];
-List<Technique> techiques = [];
-List<Location> locations = [];
+List<TemTemApiTem> temtems = [];
+List<TemTemApiType> types = [];
+List<TemTemApiTraits> traits = [];
+List<TemTemApiTechnique> techiques = [];
+List<TemTemApiLocation> locations = [];
 List<Weakness> weaknesses = [];
 
 Map<String, int> maxStats = {

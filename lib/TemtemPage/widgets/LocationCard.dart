@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/MapPage/MapPage.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class LocationCard extends StatelessWidget {
-  final Temtem temtem;
+  final TemTemApiTem temtem;
 
   LocationCard(this.temtem);
 

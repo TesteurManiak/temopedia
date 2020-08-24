@@ -19,6 +19,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   cached_network_image: ^2.2.0+1
   http: ^0.12.2
+  temtem_api_wrapper: ^0.1.1+1
 
 dev_dependencies:
   flutter_test:
@@ -33,4 +34,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-

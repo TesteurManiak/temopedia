@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
@@ -15,9 +14,10 @@ import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
 import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemPage extends StatefulWidget {
-  final Temtem temtem;
+  final TemTemApiTem temtem;
   final DatabaseHelper dbHelper;
 
   TemtemPage(this.temtem, this.dbHelper);
@@ -44,11 +44,10 @@ class _TemtemPageState extends State<TemtemPage> {
         elevation: 0,
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
+            // TODO rework favorite
+            icon: Icon(Icons.favorite_border),
             onPressed: () {
               setState(() {
-                widget.temtem.owned = !widget.temtem.owned;
                 widget.dbHelper.update(widget.temtem);
               });
             },
@@ -74,12 +73,23 @@ class _TemtemPageState extends State<TemtemPage> {
                         TemtemName(widget.temtem),
                         _buildType(),
                         GameDescriptionCard(widget.temtem.gameDescription),
-                        DetailsCard(widget.temtem.details),
+                        DetailsCard(widget.temtem.details.heightCm,
+                            widget.temtem.details.weightKg),
                         EvolutionChain(widget.temtem, widget.dbHelper),
-                        StatsTab(widget.temtem.stats),
+                        StatsTab(
+                          total: widget.temtem.stats.total,
+                          hp: widget.temtem.stats.hp,
+                          sta: widget.temtem.stats.sta,
+                          spd: widget.temtem.stats.spd,
+                          atk: widget.temtem.stats.atk,
+                          def: widget.temtem.stats.def,
+                          spatk: widget.temtem.stats.spatk,
+                          spdef: widget.temtem.stats.spdef,
+                        ),
                         TraitsCard(widget.temtem.traits),
                         TechniqueList(widget.temtem.techniques),
-                        GenderRatioCard(widget.temtem.genderRatio),
+                        GenderRatioCard(widget.temtem.genderRatio.male,
+                            widget.temtem.genderRatio.female),
                         CatchRateCard(widget.temtem.catchRate),
                         LocationCard(widget.temtem),
                         EffectivenessCard(widget.temtem.types),

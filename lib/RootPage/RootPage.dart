@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Api/TemtemApi.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
-import 'package:temopedia/Models/Location.dart';
-import 'package:temopedia/Models/Technique.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/Models/Traits.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/Models/Weakness.dart';
 import 'package:temopedia/RootPage/widgets/ErrorDialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class RootPage extends StatefulWidget {
   RootPage();
@@ -20,7 +15,7 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
-  final api = TemtemApi();
+  final api = TemTemApi();
   final dbHelper = DatabaseHelper.instance;
   bool _isLoading = true;
 
@@ -29,8 +24,7 @@ class _RootPageState extends State<RootPage> {
   _loadTemtems() async {
     try {
       setState(() => _loadingText = "Loading Temtems...");
-      var json = await api.getRequest(TemtemApi.allTemtems);
-      json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
+      globals.temtems = await api.getTemTems();
     } catch (e) {
       print(e);
       throw Exception(
@@ -41,8 +35,9 @@ class _RootPageState extends State<RootPage> {
   _loadFavorites() async {
     try {
       setState(() => _loadingText = "Loading Favorites...");
-      for (var temtem in globals.temtems)
-        temtem.owned = await dbHelper.read(temtem.number);
+      // TODO rework favorite
+      // for (var temtem in globals.temtems)
+      //   temtem.owned = await dbHelper.read(temtem.number);
     } catch (e) {
       print(e);
       throw Exception(
@@ -53,8 +48,7 @@ class _RootPageState extends State<RootPage> {
   _loadTypes() async {
     try {
       setState(() => _loadingText = "Loading Types...");
-      var json = await api.getRequest(TemtemApi.types);
-      json.forEach((item) => globals.types.add(TemType.fromJson(item)));
+      globals.types = await api.getTypes();
     } catch (e) {
       print(e);
       throw Exception(
@@ -65,8 +59,7 @@ class _RootPageState extends State<RootPage> {
   _loadTraits() async {
     try {
       setState(() => _loadingText = "Loading Traits...");
-      var json = await api.getRequest(TemtemApi.traits);
-      json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
+      globals.traits = await api.getTraits();
     } catch (e) {
       print(e);
       throw Exception(
@@ -77,8 +70,7 @@ class _RootPageState extends State<RootPage> {
   _loadTechniques() async {
     try {
       setState(() => _loadingText = "Loading Techniques...");
-      var json = await api.getRequest(TemtemApi.techniques);
-      json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
+      globals.techiques = await api.getTechniques();
     } catch (e) {
       print(e);
       throw Exception(
@@ -89,8 +81,7 @@ class _RootPageState extends State<RootPage> {
   _loadLocations() async {
     try {
       setState(() => _loadingText = "Loading Locations...");
-      var json = await api.getRequest(TemtemApi.locations);
-      json.forEach((item) => globals.locations.add(Location.fromJson(item)));
+      globals.locations = await api.getLocations();
     } catch (e) {
       print(e);
       throw Exception(
@@ -101,8 +92,8 @@ class _RootPageState extends State<RootPage> {
   _loadWeaknesses() async {
     try {
       setState(() => _loadingText = "Loading Weaknesses...");
-      var json = await api.getRequest(TemtemApi.weaknesses);
-      (json as Map<String, dynamic>).forEach((key, value) =>
+      final json = await api.getWeaknesses();
+      json.weaknesses.forEach((key, value) =>
           globals.weaknesses.add(Weakness.fromJson(value, key)));
     } catch (e) {
       print(e);

@@ -3,17 +3,16 @@ import 'package:temopedia/MapPage/widgets/DescriptionCard.dart';
 import 'package:temopedia/MapPage/widgets/TemtemAreaList.dart';
 import 'package:temopedia/MapPage/widgets/TemtemLocation.dart';
 import 'package:temopedia/MapPage/widgets/TypeFoundCard.dart';
-import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/TemLocation.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class MapPage extends StatefulWidget {
   final TemLocation location;
-  final Temtem temtem;
+  final TemTemApiTem temtem;
 
   MapPage(this.location, this.temtem);
 
@@ -22,10 +21,10 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  Location _location;
+  TemTemApiLocation _location;
 
-  Location _getLocation() {
-    for (Location location in globals.locations) {
+  TemTemApiLocation _getLocation() {
+    for (final location in globals.locations) {
       if (location.name.toLowerCase() == widget.location.island.toLowerCase())
         return location;
     }

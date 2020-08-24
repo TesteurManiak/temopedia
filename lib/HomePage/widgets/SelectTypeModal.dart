@@ -1,12 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TypeFilter {
-  final TemType type;
+  final TemTemApiType type;
   bool isSelected;
 
   TypeFilter(this.type, {this.isSelected = false});

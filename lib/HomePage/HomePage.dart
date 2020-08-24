@@ -4,11 +4,11 @@ import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Temtem> temtems;
+  final List<TemTemApiTem> temtems;
   final DatabaseHelper dbHelper;
 
   HomePage(this.temtems, this.dbHelper);
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     alignment: FractionalOffset.center,
   );
 
-  List<Temtem> _filteredList;
+  List<TemTemApiTem> _filteredList;
   List<String> _selectedTypes = [];
 
   _resetFilter() {
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     _resetFilter();
     setState(() {
       if (searchTxt.isNotEmpty) {
-        List<Temtem> tmp = [];
+        List<TemTemApiTem> tmp = [];
         _filteredList.forEach((elem) {
           if (elem.name.toLowerCase().contains(searchTxt.toLowerCase()))
             tmp.add(elem);
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _filteredList = widget.temtems;
       if (_selectedTypes.isNotEmpty) {
-        List<Temtem> tmp = [];
+        List<TemTemApiTem> tmp = [];
         _filteredList.forEach((temtem) {
           for (String hasType in temtem.types) {
             if (_selectedTypes.contains(hasType)) {
@@ -94,9 +94,10 @@ class _HomePageState extends State<HomePage> {
   _sortFavorite() {
     _resetFilter();
     setState(() {
-      List<Temtem> tmp = [];
+      List<TemTemApiTem> tmp = [];
       _filteredList.forEach((temtem) {
-        if (temtem.owned) tmp.add(temtem);
+        // TODO rework favorite
+        // if (temtem.owned) tmp.add(temtem);
       });
       _filteredList = tmp;
     });

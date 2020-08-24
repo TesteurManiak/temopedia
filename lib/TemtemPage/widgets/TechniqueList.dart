@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Technique.dart';
 import 'package:temopedia/TemtemPage/widgets/ClassChip.dart';
 import 'package:temopedia/TemtemPage/widgets/HoldChip.dart';
 import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
@@ -11,9 +10,10 @@ import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TechniqueContent extends StatelessWidget {
-  final Technique tech;
+  final TemTemApiTechnique tech;
 
   TechniqueContent(this.tech);
 
@@ -48,7 +48,7 @@ class TechniqueList extends StatelessWidget {
 
   TechniqueList(this.techniques);
 
-  Technique _getTechnique(String name) {
+  TemTemApiTechnique _getTechnique(String name) {
     for (var item in globals.techiques)
       if (item.name.toLowerCase() == name.toLowerCase()) return item;
     return null;
@@ -72,7 +72,7 @@ class TechniqueList extends StatelessWidget {
                       : item[JsonHelper.source],
                   style: TextStyles.lightText),
               onTap: () {
-                Technique _tech = _getTechnique(item[JsonHelper.name]);
+                final _tech = _getTechnique(item[JsonHelper.name]);
                 if (_tech == null) return null;
                 showDialog(
                   context: context,
