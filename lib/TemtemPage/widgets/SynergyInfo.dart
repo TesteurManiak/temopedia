@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/SynergyEffects.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class SynergyInfo extends StatelessWidget {
   final String synergy;
-  final List<SynergyEffects> synergyEffects;
+  final List<SynergyEffect> synergyEffects;
 
   SynergyInfo(this.synergy, this.synergyEffects);
 
-  TemType _getType() {
+  TemTemApiType _getType() {
     for (var elem in globals.types)
       if (elem.name.toLowerCase() == synergy.toLowerCase()) return elem;
     return null;
@@ -20,7 +19,7 @@ class SynergyInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TemType synergyType = _getType();
+    final synergyType = _getType();
 
     if (synergyType == null) return Container();
 

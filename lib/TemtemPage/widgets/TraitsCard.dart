@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Traits.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TraitsCard extends StatelessWidget {
   final List<String> traits;
 
   TraitsCard(this.traits);
 
-  Traits _getTrait(String trait) {
-    for (Traits elem in globals.traits)
+  TemTemApiTraits _getTrait(String trait) {
+    for (final elem in globals.traits)
       if (trait.toLowerCase() == elem.name.toLowerCase()) return elem;
     return null;
   }
