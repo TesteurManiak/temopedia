@@ -2,14 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/Temtem.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TemtemAreaList extends StatelessWidget {
   final List<String> temtems;
   final Location location;
-
-  final _textStyle = TextStyle(color: MyColors.lightFont);
 
   TemtemAreaList(this.temtems, this.location);
 
@@ -36,7 +35,7 @@ class TemtemAreaList extends StatelessWidget {
                   Temtem _temtem = _getTemtem(temtem);
                   if (_temtem == null) return Container();
                   return ListTile(
-                    title: Text(_temtem.name, style: _textStyle),
+                    title: Text(_temtem.name, style: TextStyles.lightText),
                     leading: CircleAvatar(
                       backgroundImage: CachedNetworkImageProvider(
                           _temtem.wikiPortraitUrlLarge),

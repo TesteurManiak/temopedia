@@ -140,25 +140,24 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyColors.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        title: Center(child: _appLogo),
+        elevation: 0,
+        centerTitle: true,
+        title: _appLogo,
       ),
       body: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          child: Scrollbar(
-            child: GridView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: _filteredList == null ? 0 : _filteredList.length,
-              itemBuilder: (context, index) => TemTile(
-                  _filteredList[index], widget.dbHelper,
-                  resetFilter: _resetFilter),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 1.4,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
+        child: Scrollbar(
+          child: GridView.builder(
+            padding: const EdgeInsets.all(8),
+            physics: BouncingScrollPhysics(),
+            itemCount: _filteredList == null ? 0 : _filteredList.length,
+            itemBuilder: (context, index) => TemTile(
+                _filteredList[index], widget.dbHelper,
+                resetFilter: _resetFilter),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 1.4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
           ),
         ),

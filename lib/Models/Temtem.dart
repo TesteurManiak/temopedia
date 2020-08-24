@@ -8,7 +8,6 @@ import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/boolean_int.dart';
 
 class Temtem {
-  // Properties
   final int number;
   final String name;
   final List<String> types;
@@ -29,6 +28,15 @@ class Temtem {
   final GenderRatio genderRatio;
   final int catchRate;
   final Stats tvYields;
+  final String gameDescription;
+  final String wikiRenderStaticUrl;
+  final String wikiRenderAnimatedUrl;
+  final String wikiRenderStaticLumaUrl;
+  final String wikiRenderAnimatedLumaUrl;
+  final String renderStaticImage;
+  final String renderStaticLumaImage;
+  final String renderAnimatedImage;
+  final String renderAnimatedLumaImage;
 
   bool owned;
 
@@ -54,6 +62,15 @@ class Temtem {
     this.catchRate,
     this.tvYields,
     this.owned = false,
+    this.gameDescription,
+    this.wikiRenderStaticUrl,
+    this.wikiRenderAnimatedUrl,
+    this.wikiRenderStaticLumaUrl,
+    this.wikiRenderAnimatedLumaUrl,
+    this.renderStaticImage,
+    this.renderStaticLumaImage,
+    this.renderAnimatedImage,
+    this.renderAnimatedLumaImage,
   });
 
   factory Temtem.fromJson(Map<String, dynamic> json) {
@@ -103,6 +120,7 @@ class Temtem {
       genderRatio: GenderRatio.fromJson(json[JsonHelper.genderRatio]),
       catchRate: json[JsonHelper.catchRate],
       tvYields: Stats.fromTvYieldsJson(json[JsonHelper.tvYields]),
+      gameDescription: json[JsonHelper.gameDescription],
     );
   }
 

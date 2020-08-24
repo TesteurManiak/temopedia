@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TemtemLocation extends StatelessWidget {
   final Temtem temtem;
   final TemLocation location;
   final String imgUrl;
-
-  final _textStyle = TextStyle(color: MyColors.lightFont);
 
   TemtemLocation(this.temtem, this.location, this.imgUrl);
 
@@ -25,15 +24,14 @@ class TemtemLocation extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          Text(location.location, style: _textStyle.copyWith(fontSize: 18)),
+          Text(location.location, style: TextStyles.location),
           SizedBox(height: 8),
           CachedNetworkImage(imageUrl: imgUrl),
           SizedBox(height: 8),
           TemtemImage(temtem.wikiPortraitUrlLarge, 60),
           SizedBox(height: 8),
-          Text(temtem.name,
-              style: _textStyle.copyWith(fontWeight: FontWeight.bold)),
-          Text(location.frequency, style: _textStyle),
+          Text(temtem.name, style: TextStyles.lightBold),
+          Text(location.frequency, style: TextStyles.lightText),
         ],
       ),
     );

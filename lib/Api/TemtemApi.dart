@@ -14,8 +14,6 @@ class TemtemApi {
   static final locations = "/api/locations";
   static final weaknesses = "/api/weaknesses";
 
-  static String temtem(int number) => "/api/temtems/$number";
-
   static String weaknessCalc(String attacking, List<String> defending) =>
       "/api/weaknesses/calculate?attacking=$attacking&defending=${defending.join(',')}";
 
@@ -23,7 +21,7 @@ class TemtemApi {
   /// If response status is valid the method return the decoded
   /// [response.body].
   /// Else it will throw an [Exception].
-  Future getRequest(String request) async {
+  Future<dynamic> getRequest(String request) async {
     try {
       var response = await http.get("$_baseUrl$request");
       if (response.statusCode == 200)

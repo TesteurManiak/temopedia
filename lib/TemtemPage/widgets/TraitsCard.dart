@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Traits.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class TraitsCard extends StatelessWidget {
   final List<String> traits;
-  final TextStyle textStyle = TextStyle(color: MyColors.lightFont);
 
   TraitsCard(this.traits);
 
@@ -33,18 +33,19 @@ class TraitsCard extends StatelessWidget {
                   builder: (context) => AlertDialog(
                     backgroundColor: MyColors.background,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21.0)),
-                    title: Text(_trait.name, style: textStyle),
-                    content: Text(_trait.description, style: textStyle),
+                        borderRadius: BorderRadius.circular(21)),
+                    title: Text(_trait.name, style: TextStyles.lightText),
+                    content:
+                        Text(_trait.description, style: TextStyles.lightText),
                     actions: <Widget>[
                       FlatButton(
-                          child: Text("Close", style: textStyle),
+                          child: Text("Close", style: TextStyles.lightText),
                           onPressed: () => Navigator.pop(context))
                     ],
                   ),
                 );
               },
-              title: Text(item, style: textStyle),
+              title: Text(item, style: TextStyles.lightText),
               trailing:
                   Icon(Icons.arrow_forward_ios, color: MyColors.lightFont),
             ),
@@ -53,14 +54,17 @@ class TraitsCard extends StatelessWidget {
 
     return _children.isEmpty
         ? Container()
-        : Container(
-            padding: const EdgeInsets.all(16.0),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(21.0),
-                color: MyColors.background),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: _children,
+        : Padding(
+            padding: EdgeInsets.only(bottom: 12),
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(21.0),
+                  color: MyColors.background),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: _children,
+              ),
             ),
           );
   }

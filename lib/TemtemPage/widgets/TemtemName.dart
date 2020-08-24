@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 
 class TemtemName extends StatelessWidget {
   final Temtem temtem;
-  final textStyle = TextStyle(
-    color: MyColors.background,
-    fontSize: 19,
-    fontWeight: FontWeight.bold,
-  );
 
   TemtemName(this.temtem);
 
@@ -22,11 +17,9 @@ class TemtemName extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(temtem.name,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: MyColors.lightFont, fontSize: 35)),
+              overflow: TextOverflow.ellipsis, style: TextStyles.mainName),
           Text("Temtem #$number",
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: MyColors.darkFont, fontSize: 22)),
+              overflow: TextOverflow.ellipsis, style: TextStyles.number),
         ],
       ),
     );

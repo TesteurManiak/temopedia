@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class ErrorDialog extends StatelessWidget {
   final dynamic error;
-  final TextStyle _textStyle = TextStyle(color: MyColors.lightFont);
 
   ErrorDialog(this.error);
 
@@ -12,11 +12,11 @@ class ErrorDialog extends StatelessWidget {
     return AlertDialog(
       backgroundColor: MyColors.background,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(21)),
-      title: Text("Error", style: _textStyle),
-      content: Text("$error", style: _textStyle),
+      title: Text("Error", style: TextStyles.lightText),
+      content: Text("$error", style: TextStyles.lightText),
       actions: <Widget>[
         FlatButton(
-          child: Text("Close", style: _textStyle),
+          child: Text("Close", style: TextStyles.lightText),
           onPressed: () => Navigator.of(context).pop(),
         )
       ],

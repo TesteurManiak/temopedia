@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TypeFoundCard extends StatelessWidget {
@@ -19,10 +20,7 @@ class TypeFoundCard extends StatelessWidget {
       padding: EdgeInsets.all(8),
       child: Row(
         children: <Widget>[
-          Text(
-            "Type(s) found:",
-            style: TextStyle(color: MyColors.lightFont),
-          ),
+          Text("Type(s) found:", style: TextStyles.lightText),
           SizedBox(width: 8),
           Wrap(
             spacing: 5,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Details.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class DetailsCard extends StatelessWidget {
@@ -8,11 +9,7 @@ class DetailsCard extends StatelessWidget {
   DetailsCard(this.details);
 
   Widget _buildLabel(String text) {
-    return Text(text,
-        style: TextStyle(
-          color: MyColors.darkFont,
-          height: 0.8,
-        ));
+    return Text(text, style: TextStyles.detailsLabel);
   }
 
   Widget _buildDivider() {
@@ -32,8 +29,7 @@ class DetailsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("${details.heightCm} cm",
-                  style: TextStyle(color: MyColors.lightFont, fontSize: 25)),
+              Text("${details.heightCm} cm", style: TextStyles.detailsHW),
               SizedBox(height: 11),
               _buildLabel("Height"),
             ],
@@ -44,8 +40,7 @@ class DetailsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Text("${details.weightKg} kg",
-                  style: TextStyle(color: MyColors.lightFont, fontSize: 25)),
+              Text("${details.weightKg} kg", style: TextStyles.detailsHW),
               SizedBox(height: 11),
               _buildLabel("Weight"),
             ],
@@ -57,13 +52,16 @@ class DetailsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(21),
-        color: MyColors.background,
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12),
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(21),
+          color: MyColors.background,
+        ),
+        child: _buildDetails(),
       ),
-      child: _buildDetails(),
     );
   }
 }

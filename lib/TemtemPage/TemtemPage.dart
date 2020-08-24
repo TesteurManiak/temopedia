@@ -5,6 +5,7 @@ import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
+import 'package:temopedia/TemtemPage/widgets/GameDescriptionCard.dart';
 import 'package:temopedia/TemtemPage/widgets/GenderRatioCard.dart';
 import 'package:temopedia/TemtemPage/widgets/LocationCard.dart';
 import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
@@ -12,7 +13,6 @@ import 'package:temopedia/TemtemPage/widgets/TechniqueList.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
 import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
-import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
 
@@ -41,7 +41,7 @@ class _TemtemPageState extends State<TemtemPage> {
       backgroundColor: MyColors.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        elevation: 0,
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -64,33 +64,24 @@ class _TemtemPageState extends State<TemtemPage> {
                 children: <Widget>[
                   SizedBox(height: circleHeight - circleHeight / 6),
                   Container(
-                    padding: EdgeInsets.only(
-                        top: 32.0, left: 8.0, right: 8.0, bottom: 32.0),
+                    padding:
+                        EdgeInsets.only(top: 32, left: 8, right: 8, bottom: 32),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16.0),
+                        borderRadius: BorderRadius.circular(16),
                         color: MyColors.lightBackground),
                     child: Column(
                       children: <Widget>[
                         TemtemName(widget.temtem),
                         _buildType(),
-                        TriviaCard(widget.temtem.trivia),
-                        SizedBox(height: 12.0),
+                        GameDescriptionCard(widget.temtem.gameDescription),
                         DetailsCard(widget.temtem.details),
-                        SizedBox(height: 12.0),
                         EvolutionChain(widget.temtem, widget.dbHelper),
-                        SizedBox(height: 12.0),
                         StatsTab(widget.temtem.stats),
-                        SizedBox(height: 12.0),
                         TraitsCard(widget.temtem.traits),
-                        SizedBox(height: 12.0),
                         TechniqueList(widget.temtem.techniques),
-                        SizedBox(height: 12.0),
                         GenderRatioCard(widget.temtem.genderRatio),
-                        SizedBox(height: 12.0),
                         CatchRateCard(widget.temtem.catchRate),
-                        SizedBox(height: 12.0),
                         LocationCard(widget.temtem),
-                        SizedBox(height: 12.0),
                         EffectivenessCard(widget.temtem.types),
                       ],
                     ),
@@ -98,9 +89,12 @@ class _TemtemPageState extends State<TemtemPage> {
                 ],
               ),
               Positioned(
-                  child: TemtemImage(
-                      widget.temtem.wikiPortraitUrlLarge, circleHeight),
-                  top: 0.0),
+                child: TemtemImage(
+                  widget.temtem.wikiPortraitUrlLarge,
+                  circleHeight,
+                ),
+                top: 0,
+              ),
             ],
           ),
         ),

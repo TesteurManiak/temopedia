@@ -7,6 +7,7 @@ import 'package:temopedia/Models/Location.dart';
 import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -21,8 +22,6 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  final _textStyle = TextStyle(color: MyColors.lightFont);
-
   Location _location;
 
   Location _getLocation() {
@@ -43,9 +42,9 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.location.island, style: _textStyle),
+        title: Text(widget.location.island, style: TextStyles.lightText),
         backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        elevation: 0,
       ),
       backgroundColor: MyColors.background,
       body: SafeArea(

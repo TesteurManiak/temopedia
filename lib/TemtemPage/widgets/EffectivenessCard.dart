@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Weakness.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -25,12 +26,9 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
           flex: 2,
           child: Text(
             "x $value",
-            style: TextStyle(
-              color: value > 1
-                  ? Colors.red
-                  : value < 1 ? Colors.green : Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
+            style: value > 1
+                ? TextStyles.weak
+                : value < 1 ? TextStyles.resist : TextStyles.normal,
           ),
         ),
       ],

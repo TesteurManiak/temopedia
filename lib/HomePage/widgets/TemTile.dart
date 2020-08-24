@@ -4,6 +4,7 @@ import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/widgets/TileType.dart';
 import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class TemTile extends StatefulWidget {
@@ -69,12 +70,7 @@ class _TemTileState extends State<TemTile> {
                 color: Colors.transparent,
                 child: Text(
                   widget.temtem.name,
-                  style: TextStyle(
-                    fontSize: 14,
-                    height: 0.7,
-                    fontWeight: FontWeight.bold,
-                    color: MyColors.lightFont,
-                  ),
+                  style: TextStyles.temtemName,
                 ),
               ),
             ),
@@ -101,11 +97,7 @@ class _TemTileState extends State<TemTile> {
         right: 14,
         child: Text(
           "#${widget.temtem.number}",
-          style: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-            color: Colors.white.withOpacity(0.4),
-          ),
+          style: TextStyles.temtemNumber,
         ),
       ),
     ];

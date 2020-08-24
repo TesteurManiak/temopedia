@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Models/Type.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
@@ -28,7 +29,7 @@ class _TypeFilterWidgetState extends State<TypeFilterWidget> {
       backgroundColor: MyColors.lightBackground,
       padding: EdgeInsets.all(10),
       label: Text(widget.filter.type.name),
-      labelStyle: TextStyle(color: MyColors.lightFont),
+      labelStyle: TextStyles.lightText,
       avatar: CachedNetworkImage(
         imageUrl: "https://temtem-api.mael.tech${widget.filter.type.icon}",
         placeholder: (context, url) => Image.asset("assets/unknown.png"),
@@ -66,8 +67,7 @@ class SelectTypeModal extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text("Choose types you want to filter",
-              style: TextStyle(color: MyColors.lightFont)),
+          Text("Choose types you want to filter", style: TextStyles.lightText),
           SizedBox(height: 8),
           Wrap(
             alignment: WrapAlignment.center,

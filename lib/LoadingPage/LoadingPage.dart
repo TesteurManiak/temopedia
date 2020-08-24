@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/styles/Images.dart';
+import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class LoadingPage extends StatelessWidget {
@@ -11,21 +13,15 @@ class LoadingPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.background,
       body: Container(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset("assets/logo.png"),
+            Image.asset(Images.logo),
             Padding(
               padding: EdgeInsets.only(bottom: 10),
-              child: Text(
-                loadingText,
-                style: TextStyle(
-                  color: MyColors.lightFont,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              child: Text(loadingText, style: TextStyles.lightBold),
             ),
             CircularProgressIndicator(
               backgroundColor: Colors.transparent,
