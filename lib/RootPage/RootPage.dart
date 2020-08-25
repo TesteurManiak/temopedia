@@ -21,10 +21,36 @@ class _RootPageState extends State<RootPage> {
 
   String _loadingText;
 
+  _updateMaxStats() {
+    for (final e in globals.temtems) {
+      globals.maxStats.hp =
+          e.stats.hp > globals.maxStats.hp ? e.stats.hp : globals.maxStats.hp;
+      globals.maxStats.sta = e.stats.sta > globals.maxStats.sta
+          ? e.stats.sta
+          : globals.maxStats.sta;
+      globals.maxStats.spd = e.stats.spd > globals.maxStats.spd
+          ? e.stats.spd
+          : globals.maxStats.spd;
+      globals.maxStats.atk = e.stats.atk > globals.maxStats.atk
+          ? e.stats.atk
+          : globals.maxStats.atk;
+      globals.maxStats.def = e.stats.def > globals.maxStats.def
+          ? e.stats.def
+          : globals.maxStats.def;
+      globals.maxStats.spatk = e.stats.atk > globals.maxStats.spatk
+          ? e.stats.atk
+          : globals.maxStats.spatk;
+      globals.maxStats.spdef = e.stats.spdef > globals.maxStats.spdef
+          ? e.stats.spdef
+          : globals.maxStats.spdef;
+    }
+  }
+
   _loadTemtems() async {
     try {
       setState(() => _loadingText = "Loading Temtems...");
       globals.temtems = await api.getTemTems();
+      _updateMaxStats();
     } catch (e) {
       print(e);
       throw Exception(
@@ -35,9 +61,14 @@ class _RootPageState extends State<RootPage> {
   _loadFavorites() async {
     try {
       setState(() => _loadingText = "Loading Favorites...");
-      // TODO rework favorite
-      // for (var temtem in globals.temtems)
-      //   temtem.owned = await dbHelper.read(temtem.number);
+      final favs = await dbHelper.readAllFav();
+      for (final fav in favs) {
+        if (fav['favorite'] == 1) {
+          final newFav =
+              globals.temtems.firstWhere((e) => e.number == fav['number']);
+          globals.favorites.add(newFav);
+        }
+      }
     } catch (e) {
       print(e);
       throw Exception(

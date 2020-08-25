@@ -14,6 +14,8 @@ import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
 import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemPage extends StatefulWidget {
@@ -44,10 +46,14 @@ class _TemtemPageState extends State<TemtemPage> {
         elevation: 0,
         actions: <Widget>[
           IconButton(
-            // TODO rework favorite
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(
+                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
             onPressed: () {
               setState(() {
+                if (widget.temtem.owned)
+                  globals.favorites.remove(widget.temtem);
+                else
+                  globals.favorites.add(widget.temtem);
                 widget.dbHelper.update(widget.temtem);
               });
             },

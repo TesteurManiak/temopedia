@@ -3,7 +3,6 @@ import 'package:temopedia/MapPage/widgets/DescriptionCard.dart';
 import 'package:temopedia/MapPage/widgets/TemtemAreaList.dart';
 import 'package:temopedia/MapPage/widgets/TemtemLocation.dart';
 import 'package:temopedia/MapPage/widgets/TypeFoundCard.dart';
-import 'package:temopedia/Models/TemLocation.dart';
 import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';

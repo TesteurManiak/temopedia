@@ -6,6 +6,7 @@ import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
 
 class HomePage extends StatefulWidget {
   final List<TemTemApiTem> temtems;
@@ -96,8 +97,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       List<TemTemApiTem> tmp = [];
       _filteredList.forEach((temtem) {
-        // TODO rework favorite
-        // if (temtem.owned) tmp.add(temtem);
+        if (temtem.owned) tmp.add(temtem);
       });
       _filteredList = tmp;
     });

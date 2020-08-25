@@ -18,8 +18,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   cached_network_image: ^2.2.0+1
-  http: ^0.12.2
-  temtem_api_wrapper: ^0.1.1+1
+  temtem_api_wrapper: ^0.1.1+3
 
 dev_dependencies:
   flutter_test:

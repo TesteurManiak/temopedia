@@ -8,7 +8,6 @@ import 'package:temopedia/TemtemPage/widgets/TargetChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
-import 'package:temopedia/utils/JsonHelper.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
@@ -44,12 +43,12 @@ class TechniqueContent extends StatelessWidget {
 }
 
 class TechniqueList extends StatelessWidget {
-  final List<Map<String, dynamic>> techniques;
+  final List<Technique> techniques;
 
   TechniqueList(this.techniques);
 
   TemTemApiTechnique _getTechnique(String name) {
-    for (var item in globals.techiques)
+    for (final item in globals.techiques)
       if (item.name.toLowerCase() == name.toLowerCase()) return item;
     return null;
   }
@@ -65,14 +64,14 @@ class TechniqueList extends StatelessWidget {
               color: MyColors.lightBackground,
             ),
             child: ListTile(
-              title: Text(item[JsonHelper.name], style: TextStyles.lightText),
+              title: Text(item.name, style: TextStyles.lightText),
               trailing: Text(
-                  item[JsonHelper.source] == "Levelling"
-                      ? "${item[JsonHelper.source]} : ${item[JsonHelper.levels]}"
-                      : item[JsonHelper.source],
+                  item.source == "Levelling"
+                      ? "${item.source} : ${item.levels}"
+                      : item.source,
                   style: TextStyles.lightText),
               onTap: () {
-                final _tech = _getTechnique(item[JsonHelper.name]);
+                final _tech = _getTechnique(item.name);
                 if (_tech == null) return null;
                 showDialog(
                   context: context,

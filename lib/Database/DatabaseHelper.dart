@@ -57,6 +57,11 @@ class DatabaseHelper {
     return false;
   }
 
+  Future<List<Map<String, dynamic>>> readAllFav() async {
+    final db = await instance.database;
+    return await db.query(tableFavorite);
+  }
+
   Future<int> update(TemTemApiTem temtem) async {
     Database db = await instance.database;
     var exists = await _columnExists(temtem, db);
