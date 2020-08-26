@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
@@ -9,9 +8,8 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemNode extends StatelessWidget {
   final int number;
-  final DatabaseHelper dbHelper;
 
-  TemtemNode(this.number, this.dbHelper);
+  TemtemNode(this.number);
 
   TemTemApiTem _getTemtem() {
     for (final elem in globals.temtems) if (elem.number == number) return elem;
@@ -30,7 +28,7 @@ class TemtemNode extends StatelessWidget {
             onTap: () => Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => TemtemPage(temtem, dbHelper))),
+                    builder: (context) => TemtemPage(temtem))),
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
@@ -53,13 +51,12 @@ class TemtemNode extends StatelessWidget {
 
 class EvolutionChain extends StatelessWidget {
   final TemTemApiTem temtem;
-  final DatabaseHelper dbHelper;
 
-  EvolutionChain(this.temtem, this.dbHelper);
+  EvolutionChain(this.temtem);
 
   Widget _buildRow(int current, {int next, int level}) {
     return Row(children: <Widget>[
-      Expanded(child: TemtemNode(current, dbHelper)),
+      Expanded(child: TemtemNode(current)),
       level != null
           ? Expanded(
               child: Column(
@@ -71,7 +68,7 @@ class EvolutionChain extends StatelessWidget {
               ),
             )
           : Container(),
-      next != null ? Expanded(child: TemtemNode(next, dbHelper)) : Container(),
+      next != null ? Expanded(child: TemtemNode(next)) : Container(),
     ]);
   }
 

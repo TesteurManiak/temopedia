@@ -4,7 +4,7 @@ import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 List<TemTemApiTem> _emptyList = [];
-MaterialApp testApp = MaterialApp(home: HomePage(_emptyList, null));
+MaterialApp testApp = MaterialApp(home: HomePage(_emptyList));
 
 void main() {
   testWidgets('HomePage render test', (WidgetTester tester) async {

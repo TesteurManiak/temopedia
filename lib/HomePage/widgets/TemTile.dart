@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/widgets/TileType.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
 import 'package:temopedia/styles/TextStyles.dart';
@@ -10,9 +9,8 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class TemTile extends StatefulWidget {
   final VoidCallback resetFilter;
   final TemTemApiTem temtem;
-  final DatabaseHelper dbHelper;
 
-  TemTile(this.temtem, this.dbHelper, {@required this.resetFilter});
+  TemTile(this.temtem, {@required this.resetFilter});
 
   @override
   State<StatefulWidget> createState() => _TemTileState();
@@ -37,8 +35,7 @@ class _TemTileState extends State<TemTile> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>
-                              TemtemPage(widget.temtem, widget.dbHelper)));
+                          builder: (context) => TemtemPage(widget.temtem)));
                 },
                 splashColor: Colors.white10,
                 highlightColor: Colors.white10,

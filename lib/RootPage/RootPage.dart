@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
@@ -16,7 +17,6 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   final api = TemTemApi();
-  final dbHelper = DatabaseHelper.instance;
   bool _isLoading = true;
 
   String _loadingText;
@@ -59,20 +59,22 @@ class _RootPageState extends State<RootPage> {
   }
 
   _loadFavorites() async {
-    try {
-      setState(() => _loadingText = "Loading Favorites...");
-      final favs = await dbHelper.readAllFav();
-      for (final fav in favs) {
-        if (fav['favorite'] == 1) {
-          final newFav =
-              globals.temtems.firstWhere((e) => e.number == fav['number']);
-          globals.favorites.add(newFav);
+    if (!kIsWeb) {
+      try {
+        setState(() => _loadingText = "Loading Favorites...");
+        final favs = await DatabaseHelper.instance.readAllFav();
+        for (final fav in favs) {
+          if (fav['favorite'] == 1) {
+            final newFav =
+                globals.temtems.firstWhere((e) => e.number == fav['number']);
+            globals.favorites.add(newFav);
+          }
         }
+      } catch (e) {
+        print(e);
+        throw Exception(
+            "Error while loading Favorites. Please restart the app or report an issue.");
       }
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Favorites. Please restart the app or report an issue.");
     }
   }
 
@@ -159,7 +161,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     switch (_isLoading) {
       case false:
-        return HomePage(globals.temtems, dbHelper);
+        return HomePage(globals.temtems);
       default:
         return LoadingPage(loadingText: _loadingText);
     }

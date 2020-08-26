@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
@@ -20,9 +21,8 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemPage extends StatefulWidget {
   final TemTemApiTem temtem;
-  final DatabaseHelper dbHelper;
 
-  TemtemPage(this.temtem, this.dbHelper);
+  TemtemPage(this.temtem);
 
   @override
   State<StatefulWidget> createState() => _TemtemPageState();
@@ -54,7 +54,7 @@ class _TemtemPageState extends State<TemtemPage> {
                   globals.favorites.remove(widget.temtem);
                 else
                   globals.favorites.add(widget.temtem);
-                widget.dbHelper.update(widget.temtem);
+                if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
               });
             },
           )
@@ -81,7 +81,7 @@ class _TemtemPageState extends State<TemtemPage> {
                         GameDescriptionCard(widget.temtem.gameDescription),
                         DetailsCard(widget.temtem.details.heightCm,
                             widget.temtem.details.weightKg),
-                        EvolutionChain(widget.temtem, widget.dbHelper),
+                        EvolutionChain(widget.temtem),
                         StatsTab(
                           total: widget.temtem.stats.total,
                           hp: widget.temtem.stats.hp,
