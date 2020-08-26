@@ -145,20 +145,17 @@ class _HomePageState extends State<HomePage> {
         title: _appLogo,
       ),
       body: SafeArea(
-        child: Scrollbar(
-          child: GridView.builder(
-            padding: const EdgeInsets.all(8),
-            physics: BouncingScrollPhysics(),
-            itemCount: _filteredList == null ? 0 : _filteredList.length,
-            itemBuilder: (context, index) =>
-                TemTile(_filteredList[index], resetFilter: _resetFilter),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.4,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-            ),
-          ),
+        child: GridView.count(
+          crossAxisCount: 2,
+          padding: EdgeInsets.all(8),
+          childAspectRatio: 1.4,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          children: <Widget>[
+            ..._filteredList
+                .map<Widget>((e) => TemTile(e, resetFilter: _resetFilter))
+                .toList(),
+          ],
         ),
       ),
     );
