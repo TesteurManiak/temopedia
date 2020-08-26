@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/Images.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
@@ -18,7 +17,7 @@ class LoadingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset(Images.logo),
+            Image.asset(MyImages.logo),
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(loadingText, style: TextStyles.lightBold),

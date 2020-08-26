@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/utils/getTypeColor.dart';
+import 'package:temopedia/extensions/extensions.dart' show StringModifier;
 
 class TileType extends StatelessWidget {
   final String type;
@@ -20,11 +20,11 @@ class TileType extends StatelessWidget {
         alignment: Alignment.center,
         width: large ? 78 : 60,
         padding: EdgeInsets.symmetric(
-          horizontal: large ? 19 : 12,
+          horizontal: large ? 18 : 12,
           vertical: large ? 6 : 4,
         ),
         decoration: ShapeDecoration(
-          shape: StadiumBorder(side: BorderSide(color: getTypeColor(type))),
+          shape: StadiumBorder(side: BorderSide(color: type.toTypeColor())),
           color: Colors.white.withOpacity(0.2),
         ),
         child: Text(
