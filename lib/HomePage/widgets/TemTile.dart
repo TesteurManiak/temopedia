@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/HomePage/widgets/TileType.dart';
 import 'package:temopedia/TemtemPage/TemtemPage.dart';
-import 'package:temopedia/bloc/blocProvider.dart';
-import 'package:temopedia/bloc/searchBloc.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -18,15 +16,6 @@ class TemTile extends StatefulWidget {
 }
 
 class _TemTileState extends State<TemTile> {
-  SearchBloc _searchBloc;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _searchBloc = BlocProvider.of<SearchBloc>(context);
-  }
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -41,7 +30,6 @@ class _TemTileState extends State<TemTile> {
               color: MyColors.lightBackground,
               child: InkWell(
                 onTap: () {
-                  _searchBloc.resetFilteredList();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

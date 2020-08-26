@@ -46,7 +46,7 @@ class SearchBloc implements BlocBase {
       _filteredTemtemsController.sink.add(globals.temtems);
     } else
       _searchTextController.sink.add(_filter.text);
-    filterList();
+    filterList(globals.temtems);
   }
 
   void resetFilteredList() {
@@ -67,12 +67,14 @@ class SearchBloc implements BlocBase {
     }
   }
 
-  void filterList() {
-    _filteredTemtemsController.sink.add(globals.temtems);
+  void filterList(List<TemTemApiTem> initialVal) {
+    _filteredTemtemsController.sink.add(initialVal);
     List<TemTemApiTem> tmp = [];
     for (final tem in filteredTemtems) {
       if (tem.name.toLowerCase().contains(searchText)) tmp.add(tem);
     }
     _filteredTemtemsController.sink.add(tmp);
   }
+
+  void favoriteFilter() => filterList(globals.favorites);
 }
