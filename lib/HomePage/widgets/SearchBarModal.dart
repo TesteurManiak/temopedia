@@ -3,10 +3,6 @@ import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/SearchBar.dart';
 
 class SearchBarModal extends StatelessWidget {
-  final Function(String) refresh;
-
-  SearchBarModal({this.refresh});
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,10 +26,7 @@ class SearchBarModal extends StatelessWidget {
             ),
           ),
           SizedBox(height: 18),
-          SearchBar(
-            margin: EdgeInsets.all(0),
-            refresh: refresh,
-          ),
+          SearchBar(margin: EdgeInsets.all(0)),
           SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 18)
         ],
       ),

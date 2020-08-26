@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:temopedia/RootPage/RootPage.dart';
+import 'package:temopedia/bloc/bloc.dart';
+import 'package:temopedia/bloc/blocProvider.dart';
+import 'package:temopedia/bloc/searchBloc.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
+    (_) => runApp(
+      BlocProvider(
+        child: MyApp(),
+        blocs: <BlocBase>[SearchBloc()],
+        key: GlobalKey(),
+      ),
+    ),
+  );
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       title: 'Temopedia',
       theme: ThemeData(

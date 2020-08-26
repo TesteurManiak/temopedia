@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
-import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
+import 'package:temopedia/bloc/blocProvider.dart';
+import 'package:temopedia/bloc/searchBloc.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
-import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
 
 class HomePage extends StatefulWidget {
   final List<TemTemApiTem> temtems;
@@ -24,83 +24,31 @@ class _HomePageState extends State<HomePage> {
     alignment: FractionalOffset.center,
   );
 
-  List<TemTemApiTem> _filteredList;
-  List<String> _selectedTypes = [];
-
-  _resetFilter() {
-    _filteredList = widget.temtems;
-    _selectedTypes.clear();
-  }
+  SearchBloc _searchBloc;
 
   @override
   void initState() {
     super.initState();
-    _filteredList = widget.temtems;
-  }
-
-  _refreshSearch(String searchTxt) {
-    _resetFilter();
-    setState(() {
-      if (searchTxt.isNotEmpty) {
-        List<TemTemApiTem> tmp = [];
-        _filteredList.forEach((elem) {
-          if (elem.name.toLowerCase().contains(searchTxt.toLowerCase()))
-            tmp.add(elem);
-        });
-        _filteredList = tmp;
-      }
-    });
-  }
-
-  _refreshType(String type, bool toAdd) {
-    if (toAdd)
-      _selectedTypes.add(type);
-    else
-      _selectedTypes.remove(type);
-    setState(() {
-      _filteredList = widget.temtems;
-      if (_selectedTypes.isNotEmpty) {
-        List<TemTemApiTem> tmp = [];
-        _filteredList.forEach((temtem) {
-          for (String hasType in temtem.types) {
-            if (_selectedTypes.contains(hasType)) {
-              tmp.add(temtem);
-              break;
-            }
-          }
-        });
-        _filteredList = tmp;
-      }
-    });
+    _searchBloc = BlocProvider.of<SearchBloc>(context);
+    _searchBloc.firstInitFilteredTemtems();
   }
 
   _showSearchModal() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => SearchBarModal(refresh: _refreshSearch),
+      builder: (context) => SearchBarModal(),
       backgroundColor: Colors.transparent,
     );
   }
 
-  _showTypeModal() {
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      builder: (context) =>
-          SelectTypeModal(refresh: _refreshType, selectedTypes: _selectedTypes),
-    );
-  }
-
-  _sortFavorite() {
-    _resetFilter();
-    setState(() {
-      List<TemTemApiTem> tmp = [];
-      _filteredList.forEach((temtem) {
-        if (temtem.owned) tmp.add(temtem);
-      });
-      _filteredList = tmp;
-    });
-  }
+  // _showTypeModal() {
+  //   showModalBottomSheet(
+  //     context: context,
+  //     backgroundColor: Colors.transparent,
+  //     builder: (context) => SelectTypeModal(
+  //         refresh: _refreshType, selectedTypes: _searchBloc.selectedTypes),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         animatedIconTheme: IconThemeData(size: 22, color: MyColors.lightFont),
         backgroundColor: MyColors.background,
         elevation: 8,
-        children: [
+        children: <SpeedDialChild>[
           SpeedDialChild(
             label: "Search name",
             backgroundColor: MyColors.background,
@@ -121,19 +69,19 @@ class _HomePageState extends State<HomePage> {
             label: "Type",
             backgroundColor: MyColors.background,
             child: Icon(Icons.sort, color: MyColors.lightFont),
-            onTap: _showTypeModal,
+            onTap: () {},
           ),
           SpeedDialChild(
             label: "Favorite",
             backgroundColor: MyColors.background,
             child: Icon(Icons.favorite),
-            onTap: _sortFavorite,
+            onTap: () {},
           ),
           SpeedDialChild(
             label: "Clear Filter",
             backgroundColor: MyColors.background,
             child: Icon(Icons.clear),
-            onTap: () => setState(() => _resetFilter()),
+            onTap: () => _searchBloc.resetFilteredList(),
           ),
         ],
       ),
@@ -145,17 +93,22 @@ class _HomePageState extends State<HomePage> {
         title: _appLogo,
       ),
       body: SafeArea(
-        child: GridView.count(
-          crossAxisCount: 2,
-          padding: EdgeInsets.all(8),
-          childAspectRatio: 1.4,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          children: <Widget>[
-            ..._filteredList
-                .map<Widget>((e) => TemTile(e, resetFilter: _resetFilter))
-                .toList(),
-          ],
+        child: StreamBuilder<List<TemTemApiTem>>(
+          stream: _searchBloc.onFilteredTemtemsChanged,
+          builder: (context, snapshot) {
+            if (!snapshot.hasData)
+              return Center(child: CircularProgressIndicator());
+            return GridView.count(
+              crossAxisCount: 2,
+              padding: EdgeInsets.all(8),
+              childAspectRatio: 1.4,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+              children: <Widget>[
+                ...snapshot.data.map<Widget>((e) => TemTile(e)).toList(),
+              ],
+            );
+          },
         ),
       ),
     );

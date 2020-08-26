@@ -1,41 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/bloc/blocProvider.dart';
+import 'package:temopedia/bloc/searchBloc.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class SearchBar extends StatefulWidget {
   final EdgeInsets margin;
-  final Function(String) refresh;
 
-  SearchBar({
-    this.margin = const EdgeInsets.symmetric(horizontal: 28),
-    this.refresh,
-  });
+  SearchBar({this.margin = const EdgeInsets.symmetric(horizontal: 28)});
 
   @override
   State<StatefulWidget> createState() => _SearchBarState();
 }
 
 class _SearchBarState extends State<SearchBar> {
-  static String searchText = "";
-  TextEditingController _filter;
+  SearchBloc _searchBloc;
 
   @override
   void initState() {
     super.initState();
-    _filter = TextEditingController(text: searchText);
-    _filter.addListener(() {
-      if (_filter.text.isEmpty)
-        searchText = "";
-      else
-        searchText = _filter.text;
-      if (widget.refresh != null) widget.refresh(searchText);
-    });
-  }
-
-  @override
-  void dispose() {
-    _filter.dispose();
-    super.dispose();
+    _searchBloc = BlocProvider.of<SearchBloc>(context);
   }
 
   @override
@@ -59,15 +43,14 @@ class _SearchBarState extends State<SearchBar> {
               autocorrect: false,
               onSubmitted: (_) => Navigator.pop(context),
               style: TextStyles.background,
-              controller: _filter,
+              controller: _searchBloc.filter,
               decoration: InputDecoration(
                 hintText: "Search Temtems",
                 hintStyle: TextStyles.background.copyWith(fontSize: 14),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                     icon: Icon(Icons.clear),
-                    onPressed: () => WidgetsBinding.instance
-                        .addPostFrameCallback((_) => _filter.clear())),
+                    onPressed: () => _searchBloc.resetTextSearch()),
               ),
             ),
           )
