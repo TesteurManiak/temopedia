@@ -3,9 +3,9 @@ import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class LoadingPage extends StatelessWidget {
-  final String loadingText;
+  final Stream<String> loadingTextStream;
 
-  LoadingPage({this.loadingText = "Loading..."});
+  LoadingPage(this.loadingTextStream);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +18,12 @@ class LoadingPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image.asset(MyImages.logo),
-            Padding(
-              padding: EdgeInsets.only(bottom: 10),
-              child: Text(loadingText, style: TextStyles.lightBold),
+            StreamBuilder<String>(
+              stream: loadingTextStream,
+              builder: (context, snapshot) =>
+                  Text('${snapshot.data}...', style: TextStyles.lightBold),
             ),
+            SizedBox(height: 10),
             CircularProgressIndicator(
               backgroundColor: Colors.transparent,
               valueColor: AlwaysStoppedAnimation<Color>(MyColors.lightFont),
