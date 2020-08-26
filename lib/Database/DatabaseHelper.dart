@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:temopedia/utils/boolean_int.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
-import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
+import 'package:temopedia/extensions/extensions.dart'
+    show TemTemApiTemModifier, IntModifier;
 
 class DatabaseHelper {
   static final _databaseName = "temopedia.db";
@@ -53,7 +53,7 @@ class DatabaseHelper {
     var query = await db
         .query(tableFavorite, where: '$columnNumber = ?', whereArgs: [temtem]);
     if (query != null && query.isNotEmpty)
-      return intToBool(query.first[columnFavorite]);
+      return (query.first[columnFavorite] as int).toBool();
     return false;
   }
 
