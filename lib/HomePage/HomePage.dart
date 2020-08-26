@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
@@ -149,9 +150,8 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.all(8),
             physics: BouncingScrollPhysics(),
             itemCount: _filteredList == null ? 0 : _filteredList.length,
-            itemBuilder: (context, index) => TemTile(
-                _filteredList[index],
-                resetFilter: _resetFilter),
+            itemBuilder: (context, index) =>
+                TemTile(_filteredList[index], resetFilter: _resetFilter),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 1.4,

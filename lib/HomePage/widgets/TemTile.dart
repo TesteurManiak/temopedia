@@ -16,9 +16,10 @@ class TemTile extends StatefulWidget {
   State<StatefulWidget> createState() => _TemTileState();
 }
 
-class _TemTileState extends State<TemTile> {
+class _TemTileState extends State<TemTile> with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return LayoutBuilder(
       builder: (context, constrains) {
         final itemHeight = constrains.maxHeight;
@@ -121,4 +122,7 @@ class _TemTileState extends State<TemTile> {
       alignment: Alignment.bottomRight,
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
