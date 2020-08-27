@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
@@ -31,10 +32,24 @@ class TemtemPage extends StatefulWidget {
 class _TemtemPageState extends State<TemtemPage> {
   final double circleHeight = 180;
 
+  BehaviorSubject<bool> _isFavoriteController;
+
   Widget _buildType() {
     List<Widget> _types = List();
     widget.temtem.types.forEach((type) => _types.add(TypeChip(type)));
     return Wrap(children: _types, spacing: 4);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavoriteController = BehaviorSubject<bool>.seeded(widget.temtem.owned);
+  }
+
+  @override
+  void dispose() {
+    _isFavoriteController.close();
+    super.dispose();
   }
 
   @override
@@ -45,19 +60,25 @@ class _TemtemPageState extends State<TemtemPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              setState(() {
-                if (widget.temtem.owned)
-                  globals.favorites.remove(widget.temtem);
-                else
-                  globals.favorites.add(widget.temtem);
-                if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
-              });
-            },
-          )
+          StreamBuilder<bool>(
+              stream: _isFavoriteController.stream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return Container();
+                return IconButton(
+                  icon: Icon(
+                      snapshot.data ? Icons.favorite : Icons.favorite_border),
+                  onPressed: () {
+                    if (snapshot.data) {
+                      globals.favorites.remove(widget.temtem);
+                      _isFavoriteController.sink.add(false);
+                    } else {
+                      globals.favorites.add(widget.temtem);
+                      _isFavoriteController.sink.add(true);
+                    }
+                    if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
+                  },
+                );
+              })
         ],
       ),
       body: SafeArea(
