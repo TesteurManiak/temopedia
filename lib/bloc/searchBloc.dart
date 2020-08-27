@@ -25,6 +25,8 @@ class SearchBloc implements BlocBase {
       _selectedTypesController.stream;
   List<String> get selectedTypes => _selectedTypesController.value;
 
+  List<TemTemApiTem> _unusedTemTems = [];
+
   @override
   void dispose() {
     _searchTextController.close();
@@ -41,24 +43,24 @@ class SearchBloc implements BlocBase {
   }
 
   void _filterListener() {
-    if (filter.text.isEmpty) {
+    if (filter.text.isEmpty)
       _searchTextController.sink.add('');
-      _filteredTemtemsController.sink.add(globals.temtems);
-    } else
+    else
       _searchTextController.sink.add(_filter.text);
-    filterList(globals.temtems);
+    filterByName();
   }
 
   void resetFilteredList() {
     _filteredTemtemsController.sink.add(globals.temtems);
+    _unusedTemTems.clear();
     _selectedTypesController.sink.add([]);
     _searchTextController.sink.add('');
   }
 
   void resetTextSearch() {
-    _filteredTemtemsController.sink.add(globals.temtems);
     _searchTextController.sink.add('');
     _filter.clear();
+    filterByName();
   }
 
   void firstInitFilteredTemtems() {
@@ -67,14 +69,33 @@ class SearchBloc implements BlocBase {
     }
   }
 
-  void filterList(List<TemTemApiTem> initialVal) {
-    _filteredTemtemsController.sink.add(initialVal);
+  void filterByName() {
     List<TemTemApiTem> tmp = [];
+    List<TemTemApiTem> tmpUnused = [];
     for (final tem in filteredTemtems) {
-      if (tem.name.toLowerCase().contains(searchText)) tmp.add(tem);
+      if (tem.name.toLowerCase().contains(searchText))
+        tmp.add(tem);
+      else
+        tmpUnused.add(tem);
     }
+    for (final tem in _unusedTemTems) {
+      if (tem.name.toLowerCase().contains(searchText))
+        tmp.add(tem);
+      else
+        tmpUnused.add(tem);
+    }
+    tmp.sort((a, b) => a.number.compareTo(b.number));
     _filteredTemtemsController.sink.add(tmp);
+    _unusedTemTems = tmpUnused;
   }
 
-  void favoriteFilter() => filterList(globals.favorites);
+  void filterList() {
+    filterByName();
+  }
+
+  void favoriteFilter() {
+    _filteredTemtemsController.sink.add(globals.favorites);
+    _unusedTemTems.clear();
+    filterList();
+  }
 }
