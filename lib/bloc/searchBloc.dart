@@ -70,51 +70,25 @@ class SearchBloc implements BlocBase {
     }
   }
 
-  void _filterByName() {
-    List<TemTemApiTem> tmp = [];
-    List<TemTemApiTem> tmpUnused = [];
-
-    if (searchText.isEmpty) return;
-
-    final completeList =
-        List<TemTemApiTem>.from(filteredTemtems + _unusedTemTems);
-    for (final tem in completeList) {
-      if (tem.name.toLowerCase().contains(searchText))
-        tmp.add(tem);
-      else
-        tmpUnused.add(tem);
-    }
-    tmp.sort((a, b) => a.number.compareTo(b.number));
-    _filteredTemtemsController.sink.add(tmp);
-    _unusedTemTems = tmpUnused;
-  }
-
-  void _filterByType() {
-    List<TemTemApiTem> tmp = [];
-    List<TemTemApiTem> tmpUnused = [];
-
-    if (selectedTypes.isEmpty) return;
-
-    final completeList =
-        List<TemTemApiTem>.from(filteredTemtems + _unusedTemTems);
-    for (final tem in completeList) {
-      bool addTem = false;
-      for (final type in tem.types)
-        if (selectedTypes.contains(type)) addTem = true;
-      if (addTem)
-        tmp.add(tem);
-      else
-        tmpUnused.add(tem);
-    }
-
-    tmp.sort((a, b) => a.number.compareTo(b.number));
-    _filteredTemtemsController.sink.add(tmp);
-    _unusedTemTems = tmpUnused;
-  }
-
   void filterList() {
-    _filterByName();
-    _filterByType();
+    List<TemTemApiTem> tmp = [];
+    List<TemTemApiTem> tmpUnused = [];
+
+    final completeList =
+        List<TemTemApiTem>.from(filteredTemtems + _unusedTemTems);
+    for (final tem in completeList) {
+      bool hasType = selectedTypes.isEmpty;
+      for (final type in tem.types) {
+        if (selectedTypes.contains(type)) hasType = true;
+      }
+      if (hasType && tem.name.toLowerCase().contains(searchText))
+        tmp.add(tem);
+      else
+        tmpUnused.add(tem);
+    }
+    tmp.sort((a, b) => a.number.compareTo(b.number));
+    _filteredTemtemsController.sink.add(tmp);
+    _unusedTemTems = tmpUnused;
   }
 
   void favoriteFilter() {
