@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
+import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
 import 'package:temopedia/bloc/blocProvider.dart';
 import 'package:temopedia/bloc/searchBloc.dart';
@@ -41,14 +42,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // _showTypeModal() {
-  //   showModalBottomSheet(
-  //     context: context,
-  //     backgroundColor: Colors.transparent,
-  //     builder: (context) => SelectTypeModal(
-  //         refresh: _refreshType, selectedTypes: _searchBloc.selectedTypes),
-  //   );
-  // }
+  _showTypeModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => SelectTypeModal(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
             label: "Type",
             backgroundColor: MyColors.background,
             child: Icon(Icons.sort, color: MyColors.lightFont),
-            onTap: () {},
+            onTap: _showTypeModal,
           ),
           SpeedDialChild(
             label: "Favorite",

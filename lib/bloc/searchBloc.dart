@@ -26,6 +26,7 @@ class SearchBloc implements BlocBase {
   List<String> get selectedTypes => _selectedTypesController.value;
 
   List<TemTemApiTem> _unusedTemTems = [];
+  bool _isFavSelected = false;
 
   @override
   void dispose() {
@@ -47,7 +48,7 @@ class SearchBloc implements BlocBase {
       _searchTextController.sink.add('');
     else
       _searchTextController.sink.add(_filter.text);
-    filterByName();
+    filterList();
   }
 
   void resetFilteredList() {
@@ -60,7 +61,7 @@ class SearchBloc implements BlocBase {
   void resetTextSearch() {
     _searchTextController.sink.add('');
     _filter.clear();
-    filterByName();
+    filterList();
   }
 
   void firstInitFilteredTemtems() {
@@ -69,16 +70,15 @@ class SearchBloc implements BlocBase {
     }
   }
 
-  void filterByName() {
+  void _filterByName() {
     List<TemTemApiTem> tmp = [];
     List<TemTemApiTem> tmpUnused = [];
-    for (final tem in filteredTemtems) {
-      if (tem.name.toLowerCase().contains(searchText))
-        tmp.add(tem);
-      else
-        tmpUnused.add(tem);
-    }
-    for (final tem in _unusedTemTems) {
+
+    if (searchText.isEmpty) return;
+
+    final completeList =
+        List<TemTemApiTem>.from(filteredTemtems + _unusedTemTems);
+    for (final tem in completeList) {
       if (tem.name.toLowerCase().contains(searchText))
         tmp.add(tem);
       else
@@ -89,13 +89,57 @@ class SearchBloc implements BlocBase {
     _unusedTemTems = tmpUnused;
   }
 
+  void _filterByType() {
+    List<TemTemApiTem> tmp = [];
+    List<TemTemApiTem> tmpUnused = [];
+
+    if (selectedTypes.isEmpty) return;
+
+    final completeList =
+        List<TemTemApiTem>.from(filteredTemtems + _unusedTemTems);
+    for (final tem in completeList) {
+      bool addTem = false;
+      for (final type in tem.types)
+        if (selectedTypes.contains(type)) addTem = true;
+      if (addTem)
+        tmp.add(tem);
+      else
+        tmpUnused.add(tem);
+    }
+
+    tmp.sort((a, b) => a.number.compareTo(b.number));
+    _filteredTemtemsController.sink.add(tmp);
+    _unusedTemTems = tmpUnused;
+  }
+
   void filterList() {
-    filterByName();
+    _filterByName();
+    _filterByType();
   }
 
   void favoriteFilter() {
-    _filteredTemtemsController.sink.add(globals.favorites);
+    if (_isFavSelected) {
+      _isFavSelected = false;
+      _filteredTemtemsController.sink.add(globals.temtems);
+    } else {
+      _isFavSelected = true;
+      _filteredTemtemsController.sink.add(globals.favorites);
+    }
     _unusedTemTems.clear();
+    filterList();
+  }
+
+  void addTypeFilter(String filter) {
+    List<String> tmp = selectedTypes;
+    tmp.add(filter);
+    _selectedTypesController.sink.add(tmp);
+    filterList();
+  }
+
+  void removeTypeFilter(String filter) {
+    List<String> tmp = selectedTypes;
+    tmp.remove(filter);
+    _selectedTypesController.sink.add(tmp);
     filterList();
   }
 }
