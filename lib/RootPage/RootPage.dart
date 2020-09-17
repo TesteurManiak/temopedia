@@ -10,7 +10,7 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class RootPage extends StatefulWidget {
-  RootPage();
+  static const routeName = '/';
 
   @override
   State<StatefulWidget> createState() => _RootPageState();

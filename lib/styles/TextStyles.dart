@@ -22,7 +22,7 @@ class TextStyles {
   static TextStyle temtemNumber = TextStyle(
     color: Colors.white.withOpacity(0.4),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 14
   );
   static TextStyle itemLarge = TextStyle(
     height: 0.8,

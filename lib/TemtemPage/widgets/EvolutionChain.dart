@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
@@ -25,10 +26,9 @@ class TemtemNode extends StatelessWidget {
     return temtem == null
         ? Container()
         : GestureDetector(
-            onTap: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => TemtemPage(temtem))),
+            onTap: () => Navigator.pushReplacementNamed(
+                context, TemtemPageArgs.routeName,
+                arguments: TemtemArgs(temtem: temtem)),
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(

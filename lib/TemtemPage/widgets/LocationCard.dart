@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/MapPage/MapPage.dart';
+import 'package:temopedia/MapPage/MapArgs.dart';
+import 'package:temopedia/MapPage/MapPageArgs.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -31,9 +32,11 @@ class LocationCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30),
                         color: MyColors.lightBackground),
                     child: ListTile(
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              MapPage(temtem.locations[index], temtem))),
+                      onTap: () => Navigator.pushNamed(
+                          context, MapPageArgs.routeName,
+                          arguments: MapArgs(
+                              location: temtem.locations[index],
+                              temtem: temtem)),
                       title: Text(temtem.locations[index].location,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyles.lightText),

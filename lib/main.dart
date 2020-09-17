@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:temopedia/MapPage/MapPageArgs.dart';
 import 'package:temopedia/RootPage/RootPage.dart';
+import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
 import 'package:temopedia/bloc/bloc.dart';
 import 'package:temopedia/bloc/blocProvider.dart';
 import 'package:temopedia/bloc/searchBloc.dart';
@@ -24,10 +26,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Temopedia',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: RootPage(),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      routes: {
+        RootPage.routeName: (context) => RootPage(),
+        TemtemPageArgs.routeName: (context) => TemtemPageArgs(),
+        MapPageArgs.routeName: (context) => MapPageArgs(),
+      },
     );
   }
 }
