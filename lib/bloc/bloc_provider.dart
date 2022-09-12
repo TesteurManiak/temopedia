@@ -62,9 +62,7 @@ class _BlocProviderState extends State<BlocProvider> {
 class _BlocProviderInherited extends InheritedWidget {
   final List<BlocBase> blocs;
 
-  const _BlocProviderInherited(
-      {Key? key, required Widget child, required this.blocs})
-      : super(key: key, child: child);
+  const _BlocProviderInherited({required super.child, required this.blocs});
 
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) => false;

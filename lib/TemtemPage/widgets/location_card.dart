@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/MapPage/MapArgs.dart';
-import 'package:temopedia/MapPage/MapPageArgs.dart';
+
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../map/map_args.dart';
+import '../../map/map_page_args.dart';
+
 class LocationCard extends StatelessWidget {
   final TemTemApiTem temtem;
 
-  LocationCard(this.temtem);
+  const LocationCard(this.temtem, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return temtem.locations?.isEmpty ?? true
-        ? SizedBox.shrink()
+        ? const SizedBox.shrink()
         : Padding(
-            padding: EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.only(bottom: 12),
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -29,7 +31,7 @@ class LocationCard extends StatelessWidget {
                   (index) {
                     final location = temtem.locations![index];
                     return Container(
-                      margin: EdgeInsets.only(top: 6),
+                      margin: const EdgeInsets.only(top: 6),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
                           color: MyColors.lightBackground),

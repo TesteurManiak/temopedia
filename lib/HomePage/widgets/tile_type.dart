@@ -7,7 +7,7 @@ class TileType extends StatelessWidget {
   final Type type;
   final bool large;
 
-  TileType(this.type, {this.large = false});
+  const TileType(this.type, {super.key, this.large = false});
 
   @override
   Widget build(BuildContext context) {

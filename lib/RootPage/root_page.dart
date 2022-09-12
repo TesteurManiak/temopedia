@@ -1,16 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
-import 'package:temopedia/HomePage/HomePage.dart';
-import 'package:temopedia/LoadingPage/LoadingPage.dart';
+import 'package:temopedia/Database/database_helper.dart';
+import 'package:temopedia/HomePage/home_page.dart';
+import 'package:temopedia/LoadingPage/loading_page.dart';
 import 'package:temopedia/Models/Weakness.dart';
-import 'package:temopedia/RootPage/widgets/ErrorDialog.dart';
+import 'package:temopedia/RootPage/widgets/error_dialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class RootPage extends StatefulWidget {
   static const routeName = '/';
+
+  const RootPage({super.key});
 
   @override
   State<StatefulWidget> createState() => _RootPageState();

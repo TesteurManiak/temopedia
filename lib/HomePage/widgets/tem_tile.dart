@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/HomePage/widgets/TileType.dart';
+import 'package:temopedia/HomePage/widgets/tile_type.dart';
 import 'package:temopedia/TemtemPage/TemtemArgs.dart';
 import 'package:temopedia/TemtemPage/temtem_page_args.dart';
 import 'package:temopedia/styles/TextStyles.dart';
@@ -10,7 +10,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class TemTile extends StatefulWidget {
   final TemTemApiTem temtem;
 
-  const TemTile(this.temtem);
+  const TemTile(this.temtem, {super.key});
 
   @override
   State<StatefulWidget> createState() => _TemTileState();

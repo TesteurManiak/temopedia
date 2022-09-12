@@ -5,7 +5,7 @@ import 'package:temopedia/styles/Theme.dart';
 class LoadingPage extends StatelessWidget {
   final Stream<String> loadingTextStream;
 
-  LoadingPage(this.loadingTextStream);
+  const LoadingPage(this.loadingTextStream, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,8 @@ class LoadingPage extends StatelessWidget {
               builder: (context, snapshot) =>
                   Text('${snapshot.data}...', style: TextStyles.lightBold),
             ),
-            SizedBox(height: 10),
-            CircularProgressIndicator(
+            const SizedBox(height: 10),
+            const CircularProgressIndicator(
               backgroundColor: Colors.transparent,
               valueColor: AlwaysStoppedAnimation<Color>(MyColors.lightFont),
             ),

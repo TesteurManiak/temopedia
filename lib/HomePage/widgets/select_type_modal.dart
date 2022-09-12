@@ -17,7 +17,7 @@ class TypeFilter {
 class TypeFilterWidget extends StatefulWidget {
   final TypeFilter filter;
 
-  const TypeFilterWidget({required this.filter});
+  const TypeFilterWidget({super.key, required this.filter});
 
   @override
   State<StatefulWidget> createState() => _TypeFilterWidgetState();
@@ -53,6 +53,8 @@ class _TypeFilterWidgetState extends State<TypeFilterWidget> {
 }
 
 class SelectTypeModal extends StatelessWidget {
+  const SelectTypeModal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

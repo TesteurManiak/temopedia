@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
+import 'package:temopedia/Database/database_helper.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/effectiveness_card.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
 import 'package:temopedia/TemtemPage/widgets/GameDescriptionCard.dart';
 import 'package:temopedia/TemtemPage/widgets/GenderRatioCard.dart';
-import 'package:temopedia/TemtemPage/widgets/LocationCard.dart';
+import 'package:temopedia/TemtemPage/widgets/location_card.dart';
 import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
 import 'package:temopedia/TemtemPage/widgets/TechniqueList.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
-import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
-import 'package:temopedia/HomePage/widgets/TemTile.dart';
+import 'package:temopedia/HomePage/widgets/search_bar_modal.dart';
+import 'package:temopedia/HomePage/widgets/select_type_modal.dart';
+import 'package:temopedia/HomePage/widgets/tem_tile.dart';
 import 'package:temopedia/bloc/bloc_provider.dart';
 import 'package:temopedia/bloc/search_bloc.dart';
 import 'package:temopedia/styles/Theme.dart';
@@ -11,7 +11,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class HomePage extends StatefulWidget {
   final List<TemTemApiTem> temtems;
 
-  const HomePage(this.temtems);
+  const HomePage(this.temtems, {super.key});
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
   _showSearchModal() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => SearchBarModal(),
+      builder: (context) => const SearchBarModal(),
       backgroundColor: Colors.transparent,
     );
   }
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (context) => SelectTypeModal(),
+      builder: (_) => const SelectTypeModal(),
     );
   }
 

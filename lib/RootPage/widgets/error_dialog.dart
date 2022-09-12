@@ -5,7 +5,7 @@ import 'package:temopedia/styles/Theme.dart';
 class ErrorDialog extends StatelessWidget {
   final dynamic error;
 
-  ErrorDialog(this.error);
+  const ErrorDialog(this.error, {super.key});
 
   @override
   Widget build(BuildContext context) {

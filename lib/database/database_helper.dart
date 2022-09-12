@@ -7,14 +7,14 @@ import 'package:temopedia/extensions/extensions.dart'
     show TemTemApiTemModifier, IntModifier;
 
 class DatabaseHelper {
-  static final _databaseName = "temopedia.db";
-  static final _databaseVersion = 1;
+  static const _databaseName = "temopedia.db";
+  static const _databaseVersion = 1;
 
-  static final tableFavorite = "favoriteTable";
+  static const tableFavorite = "favoriteTable";
 
-  static final columnId = "_id";
-  static final columnNumber = "number";
-  static final columnFavorite = "favorite";
+  static const columnId = "_id";
+  static const columnNumber = "number";
+  static const columnFavorite = "favorite";
 
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();

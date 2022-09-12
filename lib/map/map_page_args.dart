@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/MapPage/MapArgs.dart';
-import 'package:temopedia/MapPage/MapPage.dart';
+
+import 'map_args.dart';
+import 'map_page.dart';
 
 class MapPageArgs extends StatelessWidget {
   static const routeName = '/map';
+
+  const MapPageArgs({super.key});
 
   @override
   Widget build(BuildContext context) {

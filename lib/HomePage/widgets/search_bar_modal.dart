@@ -3,11 +3,13 @@ import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/SearchBar.dart';
 
 class SearchBarModal extends StatelessWidget {
+  const SearchBarModal({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 14, horizontal: 26),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 26),
+      decoration: const BoxDecoration(
         color: MyColors.background,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -20,13 +22,13 @@ class SearchBarModal extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width * 0.2,
             height: 3,
-            decoration: ShapeDecoration(
+            decoration: const ShapeDecoration(
               shape: StadiumBorder(),
               color: Color(0xFFF4F5F4),
             ),
           ),
-          SizedBox(height: 18),
-          SearchBar(margin: EdgeInsets.all(0)),
+          const SizedBox(height: 18),
+          const SearchBar(margin: EdgeInsets.all(0)),
           SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 18)
         ],
       ),
