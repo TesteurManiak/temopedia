@@ -19,12 +19,12 @@ class DatabaseHelper {
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
 
-  static Database _database;
+  static Database? _database;
 
   Future<Database> get database async {
-    if (_database != null) return _database;
+    if (_database != null) return _database!;
     _database = await _initDatabase();
-    return _database;
+    return _database!;
   }
 
   Future<Database> _initDatabase() async {
@@ -52,8 +52,7 @@ class DatabaseHelper {
     Database db = await instance.database;
     var query = await db
         .query(tableFavorite, where: '$columnNumber = ?', whereArgs: [temtem]);
-    if (query != null && query.isNotEmpty)
-      return (query.first[columnFavorite] as int).toBool();
+    if (query.isNotEmpty) return (query.first[columnFavorite] as int).toBool();
     return false;
   }
 
@@ -64,16 +63,6 @@ class DatabaseHelper {
 
   Future<int> update(TemTemApiTem temtem) async {
     Database db = await instance.database;
-    var exists = await _columnExists(temtem, db);
-    if (exists != null)
-      return await db.update(tableFavorite, temtem.toSqlite());
-    return create(temtem);
-  }
-
-  Future<List<Map<String, dynamic>>> _columnExists(
-      TemTemApiTem temtem, Database db) async {
-    var rows = await db.query(tableFavorite,
-        where: '$columnNumber = ?', whereArgs: [temtem.number]);
-    return rows == null || rows.isEmpty ? null : rows;
+    return db.update(tableFavorite, temtem.toSqlite());
   }
 }

@@ -99,7 +99,7 @@ class _TemTileState extends State<TemTile> {
   List<Widget> _buildTypes() {
     final widgetTypes = widget.temtem.types
         .map((type) => Hero(
-              tag: widget.temtem.name + type,
+              tag: widget.temtem.name + type.name,
               child: TileType(type),
             ))
         .expand((item) => [item, SizedBox(height: 6)]);

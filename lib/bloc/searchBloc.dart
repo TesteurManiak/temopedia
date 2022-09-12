@@ -14,7 +14,7 @@ class SearchBloc implements BlocBase {
   String get searchText => _searchTextController.value;
 
   BehaviorSubject<List<TemTemApiTem>> _filteredTemtemsController =
-      BehaviorSubject<List<TemTemApiTem>>.seeded(null);
+      BehaviorSubject<List<TemTemApiTem>>.seeded([]);
   Stream<List<TemTemApiTem>> get onFilteredTemtemsChanged =>
       _filteredTemtemsController.stream;
   List<TemTemApiTem> get filteredTemtems => _filteredTemtemsController.value;
@@ -65,9 +65,7 @@ class SearchBloc implements BlocBase {
   }
 
   void firstInitFilteredTemtems() {
-    if (filteredTemtems == null) {
-      _filteredTemtemsController.sink.add(globals.temtems);
-    }
+    _filteredTemtemsController.sink.add(globals.temtems);
   }
 
   void filterList() {

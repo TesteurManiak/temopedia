@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
@@ -25,7 +24,7 @@ class _HomePageState extends State<HomePage> {
     alignment: FractionalOffset.center,
   );
 
-  SearchBloc _searchBloc;
+  late final SearchBloc _searchBloc;
 
   @override
   void initState() {
@@ -96,8 +95,10 @@ class _HomePageState extends State<HomePage> {
         child: StreamBuilder<List<TemTemApiTem>>(
           stream: _searchBloc.onFilteredTemtemsChanged,
           builder: (context, snapshot) {
-            if (!snapshot.hasData)
+            final data = snapshot.data;
+            if (!snapshot.hasData || data == null) {
               return Center(child: CircularProgressIndicator());
+            }
             return GridView.count(
               crossAxisCount: 2,
               padding: EdgeInsets.all(8),
@@ -105,7 +106,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
               children: <Widget>[
-                ...snapshot.data.map<Widget>((e) => TemTile(e)).toList(),
+                ...data.map<Widget>((e) => TemTile(e)).toList(),
               ],
             );
           },

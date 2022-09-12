@@ -17,14 +17,14 @@ class TypeFilter {
 class TypeFilterWidget extends StatefulWidget {
   final TypeFilter filter;
 
-  TypeFilterWidget({@required this.filter});
+  TypeFilterWidget({required this.filter});
 
   @override
   State<StatefulWidget> createState() => _TypeFilterWidgetState();
 }
 
 class _TypeFilterWidgetState extends State<TypeFilterWidget> {
-  SearchBloc _searchBloc;
+  late final SearchBloc _searchBloc;
 
   @override
   void initState() {
@@ -73,7 +73,10 @@ class SelectTypeModal extends StatelessWidget {
               stream:
                   BlocProvider.of<SearchBloc>(context).onSelectedTypesChanged,
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return Container();
+                final data = snapshot.data;
+                if (!snapshot.hasData || data == null) {
+                  return SizedBox.shrink();
+                }
                 return Wrap(
                   alignment: WrapAlignment.center,
                   spacing: 8,
@@ -81,8 +84,8 @@ class SelectTypeModal extends StatelessWidget {
                     globals.types.length,
                     (int index) => TypeFilterWidget(
                         filter: TypeFilter(globals.types[index],
-                            isSelected: snapshot.data
-                                .contains(globals.types[index].name))),
+                            isSelected:
+                                data.contains(globals.types[index].name))),
                   ),
                 );
               }),

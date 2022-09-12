@@ -6,44 +6,43 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
   final List<T> blocs;
 
   BlocProvider({
-    Key key,
-    @required this.child,
-    @required this.blocs,
+    required GlobalKey key,
+    required this.child,
+    required this.blocs,
   }) : super(key: key);
 
   @override
   _BlocProviderState createState() {
-    if (key != null) masterKey = key;
+    if (key != null) masterKey = key as GlobalKey;
     return _BlocProviderState();
   }
 
   static T of<T extends BlocBase>(BuildContext context) {
-    _BlocProviderInherited provider = context
-        .getElementForInheritedWidgetOfExactType<_BlocProviderInherited>()
-        ?.widget;
-    return provider?.blocs?.firstWhere((x) => x is T);
+    final provider = context
+        .getElementForInheritedWidgetOfExactType<_BlocProviderInherited>()!
+        .widget as _BlocProviderInherited;
+    return provider.blocs.firstWhere((x) => x is T) as T;
   }
 
   static T master<T extends BlocBase>() {
-    assert(masterKey != null);
     return (masterKey.currentWidget as BlocProvider)
         .blocs
-        ?.firstWhere((x) => x is T);
+        .firstWhere((x) => x is T) as T;
   }
 
-  static GlobalKey masterKey;
+  static late GlobalKey masterKey;
 }
 
 class _BlocProviderState extends State<BlocProvider> {
   @override
   void initState() {
     super.initState();
-    widget.blocs?.forEach((bloc) => bloc.initState());
+    widget.blocs.forEach((bloc) => bloc.initState());
   }
 
   @override
   void dispose() {
-    widget.blocs?.forEach((bloc) => bloc.dispose());
+    widget.blocs.forEach((bloc) => bloc.dispose());
     super.dispose();
   }
 
@@ -59,8 +58,7 @@ class _BlocProviderState extends State<BlocProvider> {
 class _BlocProviderInherited extends InheritedWidget {
   final List<BlocBase> blocs;
 
-  _BlocProviderInherited(
-      {Key key, @required Widget child, @required this.blocs})
+  _BlocProviderInherited({Key? key, required Widget child, required this.blocs})
       : super(key: key, child: child);
 
   @override

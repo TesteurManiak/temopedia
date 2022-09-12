@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/extensions/extensions.dart';
 import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/extensions/extensions.dart' show StringModifier;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TileType extends StatelessWidget {
-  final String type;
+  final Type type;
   final bool large;
 
   TileType(this.type, {this.large = false});
 
   @override
   Widget build(BuildContext context) {
-    return _typeWidget(type);
-  }
-
-  Widget _typeWidget(String item) {
     return Material(
       color: Colors.transparent,
       child: Container(
@@ -28,7 +25,7 @@ class TileType extends StatelessWidget {
           color: Colors.white.withOpacity(0.2),
         ),
         child: Text(
-          item,
+          type.name,
           style: large ? TextStyles.itemLarge : TextStyles.itemSmall,
         ),
       ),

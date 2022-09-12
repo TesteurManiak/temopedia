@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-extension StringModifier on String {
+extension TypeModifier on Type {
   Color toTypeColor() {
-    switch (this.toLowerCase()) {
+    switch (name.toLowerCase()) {
       case "fire":
         return MyColors.fire;
       case "nature":

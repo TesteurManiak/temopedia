@@ -20,9 +20,9 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  TemTemApiLocation _location;
+  late final _location = _getLocation();
 
-  TemTemApiLocation _getLocation() {
+  TemTemApiLocation? _getLocation() {
     for (final location in globals.locations) {
       if (location.name.toLowerCase() == widget.location.island.toLowerCase())
         return location;
@@ -31,13 +31,10 @@ class _MapPageState extends State<MapPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _location = _getLocation();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final imageWikiThumbnail = _location?.imageWikiThumbnail;
+    final location = _location;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.location.island, style: TextStyles.lightText),
@@ -58,16 +55,25 @@ class _MapPageState extends State<MapPage> {
                   ),
                   child: Column(
                     children: <Widget>[
-                      TemtemLocation(widget.temtem, widget.location,
-                          _location.imageWikiThumbnail),
-                      SizedBox(height: 12),
-                      DescriptionCard(_location.description),
-                      SizedBox(height: 12),
-                      TypeFoundCard(_location.temtemTypes, widget.temtem),
-                      SizedBox(height: 12),
-                      TemtemAreaList(_location.temtem, _location),
-                      SizedBox(height: 12),
-                      TriviaCard(_location.trivia),
+                      if (imageWikiThumbnail != null)
+                        TemtemLocation(
+                            widget.temtem, widget.location, imageWikiThumbnail),
+                      if (location != null) ...[
+                        SizedBox(height: 12),
+                        DescriptionCard(location.description)
+                      ],
+                      if (location != null) ...[
+                        SizedBox(height: 12),
+                        TypeFoundCard(location.temtemTypes, widget.temtem),
+                      ],
+                      if (location != null) ...[
+                        SizedBox(height: 12),
+                        TemtemAreaList(location.temtem, location)
+                      ],
+                      if (location != null) ...[
+                        SizedBox(height: 12),
+                        TriviaCard(location.trivia),
+                      ],
                     ],
                   ),
                 ),
