@@ -9,14 +9,14 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class EffectivenessCard extends StatefulWidget {
   final List<Type> types;
 
-  EffectivenessCard(this.types);
+  const EffectivenessCard(this.types, {super.key});
 
   @override
   State<StatefulWidget> createState() => _EffectivenessCardState();
 }
 
 class _EffectivenessCardState extends State<EffectivenessCard> {
-  List<Weakness> _weaknesses = [];
+  final List<Weakness> _weaknesses = [];
 
   _buildWeakness(String label, double? value) {
     final modifier = value ?? 0.0;
@@ -40,9 +40,11 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
   }
 
   _getWeaknesses() {
-    globals.weaknesses.forEach((weakness) {
-      if (widget.types.contains(weakness.name)) _weaknesses.add(weakness);
-    });
+    for (var weakness in globals.weaknesses) {
+      if (widget.types.map((e) => e.name).contains(weakness.name)) {
+        _weaknesses.add(weakness);
+      }
+    }
   }
 
   @override
@@ -56,7 +58,7 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
     return _weaknesses.isEmpty
         ? Container()
         : Container(
-            padding: EdgeInsets.symmetric(vertical: 16),
+            padding: const EdgeInsets.symmetric(vertical: 16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(21),
               color: MyColors.background,

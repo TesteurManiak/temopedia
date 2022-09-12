@@ -4,7 +4,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
-import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
+import 'package:temopedia/TemtemPage/widgets/effectiveness_card.dart';
 import 'package:temopedia/TemtemPage/widgets/EvolutionChain.dart';
 import 'package:temopedia/TemtemPage/widgets/GameDescriptionCard.dart';
 import 'package:temopedia/TemtemPage/widgets/GenderRatioCard.dart';
@@ -23,7 +23,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class TemtemPage extends StatefulWidget {
   final TemTemApiTem temtem;
 
-  TemtemPage(this.temtem);
+  const TemtemPage(this.temtem, {super.key});
 
   @override
   State<StatefulWidget> createState() => _TemtemPageState();
@@ -59,7 +59,9 @@ class _TemtemPageState extends State<TemtemPage> {
               stream: _isFavoriteController.stream,
               builder: (context, snapshot) {
                 final data = snapshot.data;
-                if (!snapshot.hasData || data == null) return SizedBox.shrink();
+                if (!snapshot.hasData || data == null) {
+                  return const SizedBox.shrink();
+                }
                 return IconButton(
                   icon: Icon(data ? Icons.favorite : Icons.favorite_border),
                   onPressed: () {
@@ -85,8 +87,8 @@ class _TemtemPageState extends State<TemtemPage> {
                 children: <Widget>[
                   SizedBox(height: circleHeight - circleHeight / 6),
                   Container(
-                    padding:
-                        EdgeInsets.only(top: 32, left: 8, right: 8, bottom: 32),
+                    padding: const EdgeInsets.only(
+                        top: 32, left: 8, right: 8, bottom: 32),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: MyColors.lightBackground),
@@ -94,10 +96,10 @@ class _TemtemPageState extends State<TemtemPage> {
                       children: <Widget>[
                         TemtemName(widget.temtem),
                         Wrap(
+                          spacing: 4,
                           children: widget.temtem.types
                               .map((e) => TypeChip(e.name))
                               .toList(),
-                          spacing: 4,
                         ),
                         GameDescriptionCard(widget.temtem.gameDescription),
                         DetailsCard(widget.temtem.details.heightCm,
@@ -126,11 +128,11 @@ class _TemtemPageState extends State<TemtemPage> {
                 ],
               ),
               Positioned(
+                top: 0,
                 child: TemtemImage(
                   widget.temtem.wikiPortraitUrlLarge,
                   circleHeight,
                 ),
-                top: 0,
               ),
             ],
           ),

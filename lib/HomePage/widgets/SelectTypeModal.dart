@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/bloc/blocProvider.dart';
-import 'package:temopedia/bloc/searchBloc.dart';
+import 'package:temopedia/bloc/bloc_provider.dart';
+import 'package:temopedia/bloc/search_bloc.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
@@ -17,7 +17,7 @@ class TypeFilter {
 class TypeFilterWidget extends StatefulWidget {
   final TypeFilter filter;
 
-  TypeFilterWidget({required this.filter});
+  const TypeFilterWidget({required this.filter});
 
   @override
   State<StatefulWidget> createState() => _TypeFilterWidgetState();
@@ -36,13 +36,13 @@ class _TypeFilterWidgetState extends State<TypeFilterWidget> {
   Widget build(BuildContext context) {
     return ChoiceChip(
       backgroundColor: MyColors.lightBackground,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       label: Text(widget.filter.type.name),
       labelStyle: TextStyles.lightText,
       avatar: CachedNetworkImage(
         imageUrl: "https://temtem-api.mael.tech${widget.filter.type.icon}",
         placeholder: (context, url) => Image.asset("assets/unknown.png"),
-        errorWidget: (context, url, error) => Icon(Icons.error),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
       selected: widget.filter.isSelected,
       onSelected: (val) => val
@@ -56,8 +56,8 @@ class SelectTypeModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(12),
+      decoration: const BoxDecoration(
         color: MyColors.background,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -68,14 +68,14 @@ class SelectTypeModal extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text("Choose types you want to filter", style: TextStyles.lightText),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           StreamBuilder<List<String>>(
               stream:
                   BlocProvider.of<SearchBloc>(context).onSelectedTypesChanged,
               builder: (context, snapshot) {
                 final data = snapshot.data;
                 if (!snapshot.hasData || data == null) {
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 }
                 return Wrap(
                   alignment: WrapAlignment.center,

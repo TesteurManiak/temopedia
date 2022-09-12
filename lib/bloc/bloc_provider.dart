@@ -5,14 +5,14 @@ class BlocProvider<T extends BlocBase> extends StatefulWidget {
   final Widget child;
   final List<T> blocs;
 
-  BlocProvider({
+  const BlocProvider({
     required GlobalKey key,
     required this.child,
     required this.blocs,
   }) : super(key: key);
 
   @override
-  _BlocProviderState createState() {
+  State<BlocProvider> createState() {
     if (key != null) masterKey = key as GlobalKey;
     return _BlocProviderState();
   }
@@ -37,12 +37,16 @@ class _BlocProviderState extends State<BlocProvider> {
   @override
   void initState() {
     super.initState();
-    widget.blocs.forEach((bloc) => bloc.initState());
+    for (var bloc in widget.blocs) {
+      bloc.initState();
+    }
   }
 
   @override
   void dispose() {
-    widget.blocs.forEach((bloc) => bloc.dispose());
+    for (var bloc in widget.blocs) {
+      bloc.dispose();
+    }
     super.dispose();
   }
 
@@ -58,7 +62,8 @@ class _BlocProviderState extends State<BlocProvider> {
 class _BlocProviderInherited extends InheritedWidget {
   final List<BlocBase> blocs;
 
-  _BlocProviderInherited({Key? key, required Widget child, required this.blocs})
+  const _BlocProviderInherited(
+      {Key? key, required Widget child, required this.blocs})
       : super(key: key, child: child);
 
   @override

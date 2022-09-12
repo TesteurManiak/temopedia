@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/bloc/blocProvider.dart';
-import 'package:temopedia/bloc/searchBloc.dart';
+import 'package:temopedia/bloc/bloc_provider.dart';
+import 'package:temopedia/bloc/search_bloc.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class SearchBar extends StatefulWidget {
   final EdgeInsets margin;
 
-  SearchBar({this.margin = const EdgeInsets.symmetric(horizontal: 28)});
+  const SearchBar({this.margin = const EdgeInsets.symmetric(horizontal: 28)});
 
   @override
   State<StatefulWidget> createState() => _SearchBarState();
@@ -27,7 +27,7 @@ class _SearchBarState extends State<SearchBar> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       margin: widget.margin,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         shape: StadiumBorder(),
         color: MyColors.lightFont,
       ),
@@ -35,8 +35,8 @@ class _SearchBarState extends State<SearchBar> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Icon(Icons.search, color: MyColors.background),
-          SizedBox(width: 13),
+          const Icon(Icons.search, color: MyColors.background),
+          const SizedBox(width: 13),
           Expanded(
             child: TextField(
               autofocus: true,
@@ -49,7 +49,7 @@ class _SearchBarState extends State<SearchBar> {
                 hintStyle: TextStyles.background.copyWith(fontSize: 14),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
-                    icon: Icon(Icons.clear),
+                    icon: const Icon(Icons.clear),
                     onPressed: () => _searchBloc.resetTextSearch()),
               ),
             ),

@@ -5,21 +5,21 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 
 class SearchBloc implements BlocBase {
-  TextEditingController _filter = TextEditingController();
+  final TextEditingController _filter = TextEditingController();
   TextEditingController get filter => _filter;
 
-  BehaviorSubject<String> _searchTextController =
+  final BehaviorSubject<String> _searchTextController =
       BehaviorSubject<String>.seeded('');
   Stream<String> get onSearchTextChanged => _searchTextController.stream;
   String get searchText => _searchTextController.value;
 
-  BehaviorSubject<List<TemTemApiTem>> _filteredTemtemsController =
+  final BehaviorSubject<List<TemTemApiTem>> _filteredTemtemsController =
       BehaviorSubject<List<TemTemApiTem>>.seeded([]);
   Stream<List<TemTemApiTem>> get onFilteredTemtemsChanged =>
       _filteredTemtemsController.stream;
   List<TemTemApiTem> get filteredTemtems => _filteredTemtemsController.value;
 
-  BehaviorSubject<List<String>> _selectedTypesController =
+  final BehaviorSubject<List<String>> _selectedTypesController =
       BehaviorSubject<List<String>>.seeded([]);
   Stream<List<String>> get onSelectedTypesChanged =>
       _selectedTypesController.stream;
@@ -44,10 +44,11 @@ class SearchBloc implements BlocBase {
   }
 
   void _filterListener() {
-    if (filter.text.isEmpty)
+    if (filter.text.isEmpty) {
       _searchTextController.sink.add('');
-    else
+    } else {
       _searchTextController.sink.add(_filter.text);
+    }
     filterList();
   }
 
@@ -77,12 +78,13 @@ class SearchBloc implements BlocBase {
     for (final tem in completeList) {
       bool hasType = selectedTypes.isEmpty;
       for (final type in tem.types) {
-        if (selectedTypes.contains(type)) hasType = true;
+        if (selectedTypes.contains(type.name)) hasType = true;
       }
-      if (hasType && tem.name.toLowerCase().contains(searchText))
+      if (hasType && tem.name.toLowerCase().contains(searchText)) {
         tmp.add(tem);
-      else
+      } else {
         tmpUnused.add(tem);
+      }
     }
     tmp.sort((a, b) => a.number.compareTo(b.number));
     _filteredTemtemsController.sink.add(tmp);

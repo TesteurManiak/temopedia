@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/TemtemPage/TemtemArgs.dart';
-import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/TemtemPage/temtem_page.dart';
 
 class TemtemPageArgs extends StatelessWidget {
   static const routeName = '/temtem';
+
+  const TemtemPageArgs({super.key});
 
   @override
   Widget build(BuildContext context) {

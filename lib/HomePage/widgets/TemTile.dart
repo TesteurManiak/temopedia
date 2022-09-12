@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/HomePage/widgets/TileType.dart';
 import 'package:temopedia/TemtemPage/TemtemArgs.dart';
-import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
+import 'package:temopedia/TemtemPage/temtem_page_args.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -10,7 +10,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class TemTile extends StatefulWidget {
   final TemTemApiTem temtem;
 
-  TemTile(this.temtem);
+  const TemTile(this.temtem);
 
   @override
   State<StatefulWidget> createState() => _TemTileState();
@@ -23,7 +23,7 @@ class _TemTileState extends State<TemTile> {
       builder: (context, constrains) {
         final itemHeight = constrains.maxHeight;
         return Container(
-          padding: EdgeInsets.all(0),
+          padding: const EdgeInsets.all(0),
           decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
@@ -67,7 +67,7 @@ class _TemTileState extends State<TemTile> {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ..._buildTypes(),
           ],
         ),
@@ -102,7 +102,7 @@ class _TemTileState extends State<TemTile> {
               tag: widget.temtem.name + type.name,
               child: TileType(type),
             ))
-        .expand((item) => [item, SizedBox(height: 6)]);
+        .expand((item) => [item, const SizedBox(height: 6)]);
     return widgetTypes.toList();
   }
 
@@ -110,7 +110,7 @@ class _TemTileState extends State<TemTile> {
     return CachedNetworkImage(
       imageUrl: widget.temtem.wikiPortraitUrlLarge,
       placeholder: (context, url) => Image.asset("assets/temtem_unknown.png"),
-      errorWidget: (context, url, error) => Icon(Icons.error),
+      errorWidget: (context, url, error) => const Icon(Icons.error),
       fit: BoxFit.contain,
       width: itemHeight * 0.6,
       height: itemHeight * 0.6,

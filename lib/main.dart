@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:temopedia/MapPage/MapPageArgs.dart';
 import 'package:temopedia/RootPage/RootPage.dart';
-import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
+import 'package:temopedia/TemtemPage/temtem_page_args.dart';
 import 'package:temopedia/bloc/bloc.dart';
-import 'package:temopedia/bloc/blocProvider.dart';
-import 'package:temopedia/bloc/searchBloc.dart';
+import 'package:temopedia/bloc/bloc_provider.dart';
+import 'package:temopedia/bloc/search_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,9 +13,9 @@ void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(
       BlocProvider(
-        child: MyApp(),
         blocs: <BlocBase>[SearchBloc()],
         key: GlobalKey(),
+        child: MyApp(),
       ),
     ),
   );
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       routes: {
         RootPage.routeName: (context) => RootPage(),
-        TemtemPageArgs.routeName: (context) => TemtemPageArgs(),
+        TemtemPageArgs.routeName: (context) => const TemtemPageArgs(),
         MapPageArgs.routeName: (context) => MapPageArgs(),
       },
     );

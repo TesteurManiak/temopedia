@@ -3,22 +3,22 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temopedia/HomePage/widgets/SearchBarModal.dart';
 import 'package:temopedia/HomePage/widgets/SelectTypeModal.dart';
 import 'package:temopedia/HomePage/widgets/TemTile.dart';
-import 'package:temopedia/bloc/blocProvider.dart';
-import 'package:temopedia/bloc/searchBloc.dart';
+import 'package:temopedia/bloc/bloc_provider.dart';
+import 'package:temopedia/bloc/search_bloc.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class HomePage extends StatefulWidget {
   final List<TemTemApiTem> temtems;
 
-  HomePage(this.temtems);
+  const HomePage(this.temtems);
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final _appLogo = Image(
+  final _appLogo = const Image(
     image: ExactAssetImage("assets/logo.png"),
     height: 42.0,
     alignment: FractionalOffset.center,
@@ -54,32 +54,33 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        animatedIconTheme: IconThemeData(size: 22, color: MyColors.lightFont),
+        animatedIconTheme:
+            const IconThemeData(size: 22, color: MyColors.lightFont),
         backgroundColor: MyColors.background,
         elevation: 8,
         children: <SpeedDialChild>[
           SpeedDialChild(
             label: "Search name",
             backgroundColor: MyColors.background,
-            child: Icon(Icons.search, color: MyColors.lightFont),
+            child: const Icon(Icons.search, color: MyColors.lightFont),
             onTap: _showSearchModal,
           ),
           SpeedDialChild(
             label: "Type",
             backgroundColor: MyColors.background,
-            child: Icon(Icons.sort, color: MyColors.lightFont),
+            child: const Icon(Icons.sort, color: MyColors.lightFont),
             onTap: _showTypeModal,
           ),
           SpeedDialChild(
             label: "Favorite",
             backgroundColor: MyColors.background,
-            child: Icon(Icons.favorite),
+            child: const Icon(Icons.favorite),
             onTap: _searchBloc.favoriteFilter,
           ),
           SpeedDialChild(
             label: "Clear Filter",
             backgroundColor: MyColors.background,
-            child: Icon(Icons.clear),
+            child: const Icon(Icons.clear),
             onTap: _searchBloc.resetFilteredList,
           ),
         ],
@@ -97,11 +98,11 @@ class _HomePageState extends State<HomePage> {
           builder: (context, snapshot) {
             final data = snapshot.data;
             if (!snapshot.hasData || data == null) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             return GridView.count(
               crossAxisCount: 2,
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               childAspectRatio: 1.4,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10,
