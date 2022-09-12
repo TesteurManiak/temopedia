@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../Database/database_helper.dart';
 import '../Models/weakness.dart';
 import '../home/home_page.dart';
 import '../loading/loading_page.dart';
