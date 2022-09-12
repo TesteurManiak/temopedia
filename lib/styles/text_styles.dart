@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import 'theme.dart';
 
 class TextStyles {
   static TextStyle lightText = const TextStyle(color: MyColors.lightFont);

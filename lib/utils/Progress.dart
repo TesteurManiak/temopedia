@@ -4,7 +4,8 @@ class ProgressBar extends StatelessWidget {
   final double progress;
   final Color color;
 
-  ProgressBar({
+  const ProgressBar({
+    super.key,
     required this.progress,
     this.color = Colors.red,
   });
@@ -14,16 +15,16 @@ class ProgressBar extends StatelessWidget {
     return Container(
       height: 3,
       alignment: Alignment.centerLeft,
-      decoration: ShapeDecoration(
+      decoration: const ShapeDecoration(
         shape: StadiumBorder(),
         color: Colors.transparent,
       ),
       child: FractionallySizedBox(
         widthFactor: progress,
         heightFactor: 1.0,
-        child: Container(
+        child: DecoratedBox(
           decoration: ShapeDecoration(
-            shape: StadiumBorder(),
+            shape: const StadiumBorder(),
             color: color,
           ),
         ),

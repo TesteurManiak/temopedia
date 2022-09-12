@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/theme.dart';
 
 class PriorityChip extends StatelessWidget {
   final String priority;
 
-  const PriorityChip(this.priority);
+  const PriorityChip(this.priority, {super.key});
 
   @override
   Widget build(BuildContext context) {

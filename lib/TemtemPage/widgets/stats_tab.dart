@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Progress.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
-import 'package:temopedia/extensions/extensions.dart' show WidgetModifier;
+
+import '../../extensions/extensions.dart' show WidgetModifier;
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
+import '../../utils/globals.dart' as globals;
+import '../../utils/progress.dart';
 
 class StatsTab extends StatelessWidget {
   final int total;
@@ -16,6 +17,7 @@ class StatsTab extends StatelessWidget {
   final int spdef;
 
   const StatsTab({
+    super.key,
     required this.total,
     required this.hp,
     required this.sta,
@@ -128,6 +130,7 @@ class StatWidget extends StatelessWidget {
   final int maxValue;
 
   const StatWidget({
+    super.key,
     required this.label,
     required double progress,
     required this.value,

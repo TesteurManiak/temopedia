@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/bloc/bloc_provider.dart';
-import 'package:temopedia/bloc/search_bloc.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../bloc/bloc_provider.dart';
+import '../bloc/search_bloc.dart';
+import '../styles/text_styles.dart';
+import '../styles/theme.dart';
 
 class SearchBar extends StatefulWidget {
   final EdgeInsets margin;
 
-  const SearchBar({this.margin = const EdgeInsets.symmetric(horizontal: 28)});
+  const SearchBar({
+    super.key,
+    this.margin = const EdgeInsets.symmetric(horizontal: 28),
+  });
 
   @override
   State<StatefulWidget> createState() => _SearchBarState();

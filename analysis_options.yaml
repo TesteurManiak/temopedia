@@ -10,3 +10,5 @@ linter:
     - use_decorated_box
     - use_colored_box
     - require_trailing_commas
+    - prefer_relative_imports
+    - directives_ordering

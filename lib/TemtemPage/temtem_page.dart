@@ -1,24 +1,25 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:temopedia/Database/database_helper.dart';
-import 'package:temopedia/TemtemPage/widgets/catch_rate_card.dart';
-import 'package:temopedia/TemtemPage/widgets/details_card.dart';
-import 'package:temopedia/TemtemPage/widgets/effectiveness_card.dart';
-import 'package:temopedia/TemtemPage/widgets/evolution_chain.dart';
-import 'package:temopedia/TemtemPage/widgets/game_descriptionCard.dart';
-import 'package:temopedia/TemtemPage/widgets/gender_ratio_card.dart';
-import 'package:temopedia/TemtemPage/widgets/location_card.dart';
-import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
-import 'package:temopedia/TemtemPage/widgets/technique_list.dart';
-import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
-import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
-import 'package:temopedia/TemtemPage/widgets/traits_card.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
-import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../Database/database_helper.dart';
+import '../extensions/extensions.dart' show TemTemApiTemModifier;
+import '../styles/theme.dart';
+import '../utils/globals.dart' as globals;
+import 'widgets/TemtemImage.dart';
+import 'widgets/TemtemName.dart';
+import 'widgets/TypeChip.dart';
+import 'widgets/catch_rate_card.dart';
+import 'widgets/details_card.dart';
+import 'widgets/effectiveness_card.dart';
+import 'widgets/evolution_chain.dart';
+import 'widgets/game_description_card.dart';
+import 'widgets/gender_ratio_card.dart';
+import 'widgets/location_card.dart';
+import 'widgets/stats_tab.dart';
+import 'widgets/technique_list.dart';
+import 'widgets/traits_card.dart';
 
 class TemtemPage extends StatefulWidget {
   final TemTemApiTem temtem;

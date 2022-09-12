@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/widgets/class_chip.dart';
-import 'package:temopedia/TemtemPage/widgets/HoldChip.dart';
-import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
-import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
-import 'package:temopedia/TemtemPage/widgets/SynergyInfo.dart';
-import 'package:temopedia/TemtemPage/widgets/TargetChip.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
+import '../../utils/globals.dart' as globals;
+import 'TargetChip.dart';
+import 'TypeChip.dart';
+import 'class_chip.dart';
+import 'hold_chip.dart';
+import 'priority_chip.dart';
+import 'stamina_chip.dart';
+import 'synergy_info.dart';
 
 class TechniqueContent extends StatelessWidget {
   final TemTemApiTechnique tech;
 
-  const TechniqueContent(this.tech);
+  const TechniqueContent(this.tech, {super.key});
 
   @override
   Widget build(BuildContext context) {

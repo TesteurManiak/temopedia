@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../styles/theme.dart';
 
 extension TypeModifier on Type {
   Color toTypeColor() {

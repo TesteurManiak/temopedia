@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/weakness.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../../Models/weakness.dart';
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
+import '../../utils/globals.dart' as globals;
+import 'TypeChip.dart';
 
 class EffectivenessCard extends StatefulWidget {
   final List<Type> types;

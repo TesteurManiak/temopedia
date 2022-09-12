@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../../TemtemPage/widgets/TypeChip.dart';
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class TypeFoundCard extends StatelessWidget {
   final List<String> types;

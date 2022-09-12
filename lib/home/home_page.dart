@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:temopedia/HomePage/widgets/search_bar_modal.dart';
-import 'package:temopedia/HomePage/widgets/select_type_modal.dart';
-import 'package:temopedia/HomePage/widgets/tem_tile.dart';
-import 'package:temopedia/bloc/bloc_provider.dart';
-import 'package:temopedia/bloc/search_bloc.dart';
-import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../bloc/bloc_provider.dart';
+import '../bloc/search_bloc.dart';
+import '../styles/theme.dart';
+import 'widgets/search_bar_modal.dart';
+import 'widgets/select_type_modal.dart';
+import 'widgets/tem_tile.dart';
 
 class HomePage extends StatefulWidget {
   final List<TemTemApiTem> temtems;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/bloc/bloc.dart';
+import 'bloc.dart';
 
 class BlocProvider<T extends BlocBase> extends StatefulWidget {
   final Widget child;

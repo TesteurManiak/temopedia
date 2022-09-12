@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class HoldChip extends StatelessWidget {
   final int hold;
 
-  const HoldChip(this.hold);
+  const HoldChip(this.hold, {super.key});
 
   @override
   Widget build(BuildContext context) {

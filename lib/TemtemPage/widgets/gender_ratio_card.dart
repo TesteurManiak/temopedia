@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class GenderRatioCard extends StatelessWidget {
   final double male;
   final double female;
 
-  const GenderRatioCard(this.male, this.female);
+  const GenderRatioCard(this.male, this.female, {super.key});
 
   @override
   Widget build(BuildContext context) {

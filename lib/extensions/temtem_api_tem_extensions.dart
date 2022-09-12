@@ -1,6 +1,7 @@
-import 'package:temopedia/Database/database_helper.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
+
+import '../Database/database_helper.dart';
+import '../utils/globals.dart' as globals;
 import 'bool_extensions.dart';
 
 extension TemTemApiTemModifier on TemTemApiTem {

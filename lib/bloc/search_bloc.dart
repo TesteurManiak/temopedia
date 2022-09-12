@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:temopedia/bloc/bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
+
+import '../utils/globals.dart' as globals;
+import 'bloc.dart';
 
 class SearchBloc implements BlocBase {
   final TextEditingController _filter = TextEditingController();

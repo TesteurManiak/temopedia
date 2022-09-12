@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class DescriptionCard extends StatelessWidget {
   final String description;

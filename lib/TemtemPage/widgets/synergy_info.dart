@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
+import '../../utils/globals.dart' as globals;
+import 'TypeChip.dart';
 
 class SynergyInfo extends StatelessWidget {
   final String synergy;
   final List<SynergyEffect> synergyEffects;
 
-  const SynergyInfo(this.synergy, this.synergyEffects);
+  const SynergyInfo(this.synergy, this.synergyEffects, {super.key});
 
   TemTemApiType? _getType() {
     for (var elem in globals.types) {

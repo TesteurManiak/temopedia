@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
-import 'package:temopedia/map/widgets/description_card.dart';
-import 'package:temopedia/map/widgets/temtem_location.dart';
-import 'package:temopedia/map/widgets/type_found_card.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
-import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../TemtemPage/widgets/TriviaCard.dart';
+import '../styles/text_styles.dart';
+import '../styles/theme.dart';
+import '../utils/globals.dart' as globals;
+import 'widgets/description_card.dart';
 import 'widgets/temtem_area_list.dart';
+import 'widgets/temtem_location.dart';
+import 'widgets/type_found_card.dart';
 
 class MapPage extends StatefulWidget {
   final TemLocation location;
