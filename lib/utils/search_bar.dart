@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../bloc/search_bloc.dart';
 import '../styles/text_styles.dart';
 import '../styles/theme.dart';
 
@@ -17,8 +16,6 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  late final SearchBloc _searchBloc;
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,14 +37,13 @@ class _SearchBarState extends State<SearchBar> {
               autocorrect: false,
               onSubmitted: (_) => Navigator.pop(context),
               style: TextStyles.background,
-              controller: _searchBloc.filter,
               decoration: InputDecoration(
                 hintText: "Search Temtems",
                 hintStyle: TextStyles.background.copyWith(fontSize: 14),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear),
-                  onPressed: () => _searchBloc.resetTextSearch(),
+                  onPressed: () {},
                 ),
               ),
             ),

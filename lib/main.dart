@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/search_cubit.dart';
 import 'map/map_page_args.dart';
+import 'providers/service.dart';
 import 'root/root_page.dart';
 import 'temtem/temtem_page_args.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(
-      BlocProvider(
-        create: (_) => SearchCubit(),
-        child: const MyApp(),
+      const ServiceProviders(
+        child: MyApp(),
       ),
     ),
   );

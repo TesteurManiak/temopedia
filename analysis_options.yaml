@@ -1,6 +1,10 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
+  exclude:
+    - lib/**.g.dart
+    - test/**.mocks.dart
+    - lib/generated_plugin_registrant.dart
   errors:
     iterable_contains_unrelated_type: error
     always_declare_return_types: warning

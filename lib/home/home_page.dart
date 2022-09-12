@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../bloc/search_bloc.dart';
 import '../styles/theme.dart';
 import 'widgets/search_bar_modal.dart';
 import 'widgets/select_type_modal.dart';
@@ -23,14 +22,6 @@ class _HomePageState extends State<HomePage> {
     height: 42.0,
     alignment: FractionalOffset.center,
   );
-
-  late final SearchBloc _searchBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchBloc.firstInitFilteredTemtems();
-  }
 
   void _showSearchModal() {
     showModalBottomSheet(
@@ -74,13 +65,13 @@ class _HomePageState extends State<HomePage> {
             label: "Favorite",
             backgroundColor: MyColors.background,
             child: const Icon(Icons.favorite),
-            onTap: _searchBloc.favoriteFilter,
+            onTap: () {},
           ),
           SpeedDialChild(
             label: "Clear Filter",
             backgroundColor: MyColors.background,
             child: const Icon(Icons.clear),
-            onTap: _searchBloc.resetFilteredList,
+            onTap: () {},
           ),
         ],
       ),
@@ -93,7 +84,6 @@ class _HomePageState extends State<HomePage> {
       ),
       body: SafeArea(
         child: StreamBuilder<List<TemTemApiTem>>(
-          stream: _searchBloc.onFilteredTemtemsChanged,
           builder: (context, snapshot) {
             final data = snapshot.data;
             if (!snapshot.hasData || data == null) {

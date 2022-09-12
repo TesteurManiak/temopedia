@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -36,7 +35,7 @@ class _TemtemPageState extends State<TemtemPage> {
   @override
   void initState() {
     super.initState();
-    _isFavoriteController = BehaviorSubject<bool>.seeded(widget.temtem.owned);
+    _isFavoriteController = BehaviorSubject<bool>.seeded(false);
   }
 
   @override
@@ -71,7 +70,6 @@ class _TemtemPageState extends State<TemtemPage> {
                     globals.favorites.add(widget.temtem);
                     _isFavoriteController.sink.add(true);
                   }
-                  if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
                 },
               );
             },

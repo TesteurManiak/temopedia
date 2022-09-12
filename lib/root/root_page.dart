@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -54,20 +53,6 @@ class _RootPageState extends State<RootPage> {
     _updateMaxStats();
   }
 
-  Future<void> _loadFavorites() async {
-    if (!kIsWeb) {
-      _loadingTextController.sink.add("Loading Favorites");
-      final favs = await DatabaseHelper.instance.readAllFav();
-      for (final fav in favs) {
-        if (fav['favorite'] == 1) {
-          final newFav =
-              globals.temtems.firstWhere((e) => e.number == fav['number']);
-          globals.favorites.add(newFav);
-        }
-      }
-    }
-  }
-
   Future<void> _loadTypes() async {
     _loadingTextController.sink.add("Loading Types");
     globals.types = await api.getTypes();
@@ -99,7 +84,6 @@ class _RootPageState extends State<RootPage> {
   Future<void> _loadList() async {
     try {
       await _loadTemtems();
-      await _loadFavorites();
       await _loadTypes();
       await _loadTraits();
       await _loadTechniques();
