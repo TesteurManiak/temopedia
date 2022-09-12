@@ -4,13 +4,13 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
-import 'TargetChip.dart';
-import 'TypeChip.dart';
 import 'class_chip.dart';
 import 'hold_chip.dart';
 import 'priority_chip.dart';
 import 'stamina_chip.dart';
 import 'synergy_info.dart';
+import 'target_chip.dart';
+import 'type_chip.dart';
 
 class TechniqueContent extends StatelessWidget {
   final TemTemApiTechnique tech;

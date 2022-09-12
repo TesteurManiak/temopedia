@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/theme.dart';
 
 class TemtemImage extends StatelessWidget {
   final String url;

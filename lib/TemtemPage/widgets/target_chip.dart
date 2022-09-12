@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class TargetChip extends StatelessWidget {
   final String targets;
 
-  const TargetChip(this.targets);
+  const TargetChip(this.targets, {super.key});
 
   @override
   Widget build(BuildContext context) {

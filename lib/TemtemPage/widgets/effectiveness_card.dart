@@ -5,7 +5,7 @@ import '../../Models/weakness.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
-import 'TypeChip.dart';
+import 'type_chip.dart';
 
 class EffectivenessCard extends StatefulWidget {
   final List<Type> types;

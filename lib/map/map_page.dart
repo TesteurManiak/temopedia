@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../TemtemPage/widgets/TriviaCard.dart';
+import '../TemtemPage/widgets/trivia_card.dart';
 import '../styles/text_styles.dart';
 import '../styles/theme.dart';
 import '../utils/globals.dart' as globals;

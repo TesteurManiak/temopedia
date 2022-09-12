@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
-import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TypeChip extends StatelessWidget {
   final String type;
   final bool dispTitle;
 
-  const TypeChip(this.type, {this.dispTitle = true});
+  const TypeChip(this.type, {super.key, this.dispTitle = true});
 
   Widget _typeWidget(TemTemApiType item) {
     if (!dispTitle) {

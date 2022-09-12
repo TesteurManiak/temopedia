@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../TemtemPage/widgets/TemtemImage.dart';
+import '../../TemtemPage/widgets/temtem_image.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 

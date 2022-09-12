@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../TemtemPage/widgets/TypeChip.dart';
+import '../../TemtemPage/widgets/type_chip.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 

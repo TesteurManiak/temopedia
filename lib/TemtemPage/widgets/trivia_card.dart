@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/text_styles.dart';
-import 'package:temopedia/styles/theme.dart';
+
+import '../../styles/text_styles.dart';
+import '../../styles/theme.dart';
 
 class TriviaCard extends StatelessWidget {
   final List<String> trivia;
 
-  const TriviaCard(this.trivia);
+  const TriviaCard(this.trivia, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,9 +7,6 @@ import '../Database/database_helper.dart';
 import '../extensions/extensions.dart' show TemTemApiTemModifier;
 import '../styles/theme.dart';
 import '../utils/globals.dart' as globals;
-import 'widgets/TemtemImage.dart';
-import 'widgets/TemtemName.dart';
-import 'widgets/TypeChip.dart';
 import 'widgets/catch_rate_card.dart';
 import 'widgets/details_card.dart';
 import 'widgets/effectiveness_card.dart';
@@ -19,7 +16,10 @@ import 'widgets/gender_ratio_card.dart';
 import 'widgets/location_card.dart';
 import 'widgets/stats_tab.dart';
 import 'widgets/technique_list.dart';
+import 'widgets/temtem_image.dart';
+import 'widgets/temtem_name.dart';
 import 'widgets/traits_card.dart';
+import 'widgets/type_chip.dart';
 
 class TemtemPage extends StatefulWidget {
   final TemTemApiTem temtem;
