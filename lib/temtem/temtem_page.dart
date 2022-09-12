@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../Database/database_helper.dart';
-import '../extensions/extensions.dart' show TemTemApiTemModifier;
 import '../styles/theme.dart';
 import '../utils/globals.dart' as globals;
 import 'widgets/catch_rate_card.dart';

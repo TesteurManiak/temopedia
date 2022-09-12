@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../bloc/bloc_provider.dart';
 import '../bloc/search_bloc.dart';
 import '../styles/theme.dart';
 import 'widgets/search_bar_modal.dart';
@@ -30,11 +29,10 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    _searchBloc = BlocProvider.of<SearchBloc>(context);
     _searchBloc.firstInitFilteredTemtems();
   }
 
-  _showSearchModal() {
+  void _showSearchModal() {
     showModalBottomSheet(
       context: context,
       builder: (context) => const SearchBarModal(),
@@ -42,7 +40,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  _showTypeModal() {
+  void _showTypeModal() {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,

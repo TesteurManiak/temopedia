@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../bloc/bloc_provider.dart';
 import '../bloc/search_bloc.dart';
 import '../styles/text_styles.dart';
 import '../styles/theme.dart';
@@ -19,12 +18,6 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   late final SearchBloc _searchBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchBloc = BlocProvider.of<SearchBloc>(context);
-  }
 
   @override
   Widget build(BuildContext context) {

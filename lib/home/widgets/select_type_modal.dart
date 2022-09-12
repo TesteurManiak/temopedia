@@ -1,9 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../bloc/bloc_provider.dart';
 import '../../bloc/search_bloc.dart';
+import '../../bloc/search_cubit.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
@@ -26,12 +27,6 @@ class TypeFilterWidget extends StatefulWidget {
 
 class _TypeFilterWidgetState extends State<TypeFilterWidget> {
   late final SearchBloc _searchBloc;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchBloc = BlocProvider.of<SearchBloc>(context);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +68,8 @@ class SelectTypeModal extends StatelessWidget {
           Text("Choose types you want to filter", style: TextStyles.lightText),
           const SizedBox(height: 8),
           StreamBuilder<List<String>>(
-            stream: BlocProvider.of<SearchBloc>(context).onSelectedTypesChanged,
+            stream:
+                BlocProvider.of<SearchCubit>(context).onSelectedTypesChanged,
             builder: (context, snapshot) {
               final data = snapshot.data;
               if (!snapshot.hasData || data == null) {

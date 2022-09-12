@@ -23,7 +23,7 @@ class _RootPageState extends State<RootPage> {
   final _loadingTextController = BehaviorSubject<String>.seeded('Loading');
   final _isLoadingController = BehaviorSubject<bool>.seeded(true);
 
-  _updateMaxStats() {
+  void _updateMaxStats() {
     for (final e in globals.temtems) {
       globals.maxStats.hp =
           e.stats.hp > globals.maxStats.hp ? e.stats.hp : globals.maxStats.hp;
@@ -48,13 +48,13 @@ class _RootPageState extends State<RootPage> {
     }
   }
 
-  _loadTemtems() async {
+  Future<void> _loadTemtems() async {
     _loadingTextController.sink.add('Loading Temtems');
     globals.temtems = await api.getTemTems();
     _updateMaxStats();
   }
 
-  _loadFavorites() async {
+  Future<void> _loadFavorites() async {
     if (!kIsWeb) {
       _loadingTextController.sink.add("Loading Favorites");
       final favs = await DatabaseHelper.instance.readAllFav();
@@ -68,27 +68,27 @@ class _RootPageState extends State<RootPage> {
     }
   }
 
-  _loadTypes() async {
+  Future<void> _loadTypes() async {
     _loadingTextController.sink.add("Loading Types");
     globals.types = await api.getTypes();
   }
 
-  _loadTraits() async {
+  Future<void> _loadTraits() async {
     _loadingTextController.sink.add('Loading Traits');
     globals.traits = await api.getTraits();
   }
 
-  _loadTechniques() async {
+  Future<void> _loadTechniques() async {
     _loadingTextController.sink.add('Loading Techniques');
     globals.techiques = await api.getTechniques();
   }
 
-  _loadLocations() async {
+  Future<void> _loadLocations() async {
     _loadingTextController.sink.add('Loading Locations');
     globals.locations = await api.getLocations();
   }
 
-  _loadWeaknesses() async {
+  Future<void> _loadWeaknesses() async {
     _loadingTextController.sink.add('Loading Weaknesses');
     final json = await api.getWeaknesses();
     json.weaknesses.forEach(

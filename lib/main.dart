@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/bloc.dart';
-import 'bloc/bloc_provider.dart';
-import 'bloc/search_bloc.dart';
+import 'bloc/search_cubit.dart';
 import 'map/map_page_args.dart';
 import 'root/root_page.dart';
 import 'temtem/temtem_page_args.dart';
@@ -14,8 +13,7 @@ void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) => runApp(
       BlocProvider(
-        blocs: <BlocBase>[SearchBloc()],
-        key: GlobalKey(),
+        create: (_) => SearchCubit(),
         child: const MyApp(),
       ),
     ),

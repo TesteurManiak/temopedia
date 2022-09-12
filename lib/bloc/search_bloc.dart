@@ -3,9 +3,8 @@ import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../utils/globals.dart' as globals;
-import 'bloc.dart';
 
-class SearchBloc implements BlocBase {
+class SearchBloc {
   final TextEditingController _filter = TextEditingController();
   TextEditingController get filter => _filter;
 
@@ -29,7 +28,6 @@ class SearchBloc implements BlocBase {
   List<TemTemApiTem> _unusedTemTems = [];
   bool _isFavSelected = false;
 
-  @override
   void dispose() {
     _searchTextController.close();
     _filteredTemtemsController.close();
@@ -39,7 +37,6 @@ class SearchBloc implements BlocBase {
     _filter.dispose();
   }
 
-  @override
   void initState() {
     _filter.addListener(_filterListener);
   }
