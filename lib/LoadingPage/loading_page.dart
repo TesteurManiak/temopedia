@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class LoadingPage extends StatelessWidget {
   final Stream<String> loadingTextStream;

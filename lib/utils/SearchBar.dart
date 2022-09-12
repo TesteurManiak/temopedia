@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/bloc/bloc_provider.dart';
 import 'package:temopedia/bloc/search_bloc.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class SearchBar extends StatefulWidget {
   final EdgeInsets margin;
@@ -49,8 +49,9 @@ class _SearchBarState extends State<SearchBar> {
                 hintStyle: TextStyles.background.copyWith(fontSize: 14),
                 border: InputBorder.none,
                 suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: () => _searchBloc.resetTextSearch()),
+                  icon: const Icon(Icons.clear),
+                  onPressed: () => _searchBloc.resetTextSearch(),
+                ),
               ),
             ),
           )

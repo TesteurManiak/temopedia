@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../../map/map_args.dart';
@@ -33,13 +33,16 @@ class LocationCard extends StatelessWidget {
                     return Container(
                       margin: const EdgeInsets.only(top: 6),
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: MyColors.lightBackground),
+                        borderRadius: BorderRadius.circular(30),
+                        color: MyColors.lightBackground,
+                      ),
                       child: ListTile(
                         onTap: () => Navigator.pushNamed(
-                            context, MapPageArgs.routeName,
-                            arguments:
-                                MapArgs(location: location, temtem: temtem)),
+                          context,
+                          MapPageArgs.routeName,
+                          arguments:
+                              MapArgs(location: location, temtem: temtem),
+                        ),
                         title: Text(
                           location.location,
                           overflow: TextOverflow.ellipsis,

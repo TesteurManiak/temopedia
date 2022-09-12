@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class DetailsCard extends StatelessWidget {
   final int heightCm;
   final int weightKg;
 
-  DetailsCard(this.heightCm, this.weightKg);
+  const DetailsCard(this.heightCm, this.weightKg);
 
   Widget _buildLabel(String text) {
     return Text(text, style: TextStyles.detailsLabel);
   }
 
   Widget _buildDivider() {
-    return Container(
+    return const SizedBox(
       height: 30,
       child: VerticalDivider(
         color: MyColors.darkFont,
@@ -30,7 +30,7 @@ class DetailsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text("$heightCm cm", style: TextStyles.detailsHW),
-              SizedBox(height: 11),
+              const SizedBox(height: 11),
               _buildLabel("Height"),
             ],
           ),
@@ -41,7 +41,7 @@ class DetailsCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text("$weightKg kg", style: TextStyles.detailsHW),
-              SizedBox(height: 11),
+              const SizedBox(height: 11),
               _buildLabel("Weight"),
             ],
           ),
@@ -53,7 +53,7 @@ class DetailsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(

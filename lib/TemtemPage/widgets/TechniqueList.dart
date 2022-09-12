@@ -6,15 +6,15 @@ import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
 import 'package:temopedia/TemtemPage/widgets/SynergyInfo.dart';
 import 'package:temopedia/TemtemPage/widgets/TargetChip.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TechniqueContent extends StatelessWidget {
   final TemTemApiTechnique tech;
 
-  TechniqueContent(this.tech);
+  const TechniqueContent(this.tech);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class TechniqueContent extends StatelessWidget {
           ],
         ),
         SynergyInfo(tech.synergy, tech.synergyEffects),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Text(tech.description, style: TextStyles.lightText),
       ],
     );
@@ -45,7 +45,7 @@ class TechniqueContent extends StatelessWidget {
 class TechniqueList extends StatelessWidget {
   final List<Technique> techniques;
 
-  TechniqueList(this.techniques);
+  const TechniqueList(this.techniques);
 
   TemTemApiTechnique? _getTechnique(String name) {
     for (final item in globals.techiques) {
@@ -58,48 +58,52 @@ class TechniqueList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> _allTechniques = [];
-    techniques.forEach((item) => _allTechniques.add(
-          Container(
-            margin: const EdgeInsets.only(top: 6.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.0),
-              color: MyColors.lightBackground,
-            ),
-            child: ListTile(
-              title: Text(item.name, style: TextStyles.lightText),
-              trailing: Text(
-                  item.source == "Levelling"
-                      ? "${item.source} : ${item.levels}"
-                      : item.source,
-                  style: TextStyles.lightText),
-              onTap: () {
-                final _tech = _getTechnique(item.name);
-                if (_tech == null) return null;
-                showDialog(
-                  context: context,
-                  builder: (context) => AlertDialog(
-                    backgroundColor: MyColors.background,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(21)),
-                    title: Text(_tech.name, style: TextStyles.lightText),
-                    content: TechniqueContent(_tech),
-                    actions: <Widget>[
-                      TextButton(
-                        child: Text("Close", style: TextStyles.lightText),
-                        onPressed: () => Navigator.pop(context),
-                      )
-                    ],
-                  ),
-                );
-              },
-            ),
+    List<Widget> allTechniques = [];
+    for (var item in techniques) {
+      allTechniques.add(
+        Container(
+          margin: const EdgeInsets.only(top: 6.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30.0),
+            color: MyColors.lightBackground,
           ),
-        ));
-    return _allTechniques.isEmpty
+          child: ListTile(
+            title: Text(item.name, style: TextStyles.lightText),
+            trailing: Text(
+              item.source == "Levelling"
+                  ? "${item.source} : ${item.levels}"
+                  : item.source,
+              style: TextStyles.lightText,
+            ),
+            onTap: () {
+              final tech = _getTechnique(item.name);
+              if (tech == null) return;
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  backgroundColor: MyColors.background,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(21),
+                  ),
+                  title: Text(tech.name, style: TextStyles.lightText),
+                  content: TechniqueContent(tech),
+                  actions: <Widget>[
+                    TextButton(
+                      child: Text("Close", style: TextStyles.lightText),
+                      onPressed: () => Navigator.pop(context),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
+      );
+    }
+    return allTechniques.isEmpty
         ? Container()
         : Padding(
-            padding: EdgeInsets.only(bottom: 12),
+            padding: const EdgeInsets.only(bottom: 12),
             child: Container(
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
@@ -108,7 +112,7 @@ class TechniqueList extends StatelessWidget {
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: _allTechniques,
+                children: allTechniques,
               ),
             ),
           );

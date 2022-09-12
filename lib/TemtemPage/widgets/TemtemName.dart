@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
+import 'package:temopedia/styles/text_styles.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemName extends StatelessWidget {
   final TemTemApiTem temtem;
 
-  TemtemName(this.temtem);
+  const TemtemName(this.temtem);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,16 @@ class TemtemName extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          Text(temtem.name,
-              overflow: TextOverflow.ellipsis, style: TextStyles.mainName),
-          Text("Temtem #$number",
-              overflow: TextOverflow.ellipsis, style: TextStyles.number),
+          Text(
+            temtem.name,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyles.mainName,
+          ),
+          Text(
+            "Temtem #$number",
+            overflow: TextOverflow.ellipsis,
+            style: TextStyles.number,
+          ),
         ],
       ),
     );

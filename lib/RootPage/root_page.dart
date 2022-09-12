@@ -106,7 +106,7 @@ class _RootPageState extends State<RootPage> {
       await _loadLocations();
       await _loadWeaknesses();
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       showDialog(context: context, builder: (context) => ErrorDialog(e));
     }
   }

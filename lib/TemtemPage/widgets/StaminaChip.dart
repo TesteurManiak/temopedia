@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
+import 'package:temopedia/styles/text_styles.dart';
 
 class StaminaChip extends StatelessWidget {
   final int staminaCost;
 
-  StaminaChip(this.staminaCost);
+  const StaminaChip(this.staminaCost);
 
   @override
   Widget build(BuildContext context) {

@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/TemtemPage/TemtemArgs.dart';
 import 'package:temopedia/TemtemPage/temtem_page_args.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
@@ -29,8 +29,10 @@ class TemtemNode extends StatelessWidget {
         ? Container()
         : GestureDetector(
             onTap: () => Navigator.pushReplacementNamed(
-                context, TemtemPageArgs.routeName,
-                arguments: TemtemArgs(temtem: temtem)),
+              context,
+              TemtemPageArgs.routeName,
+              arguments: TemtemArgs(temtem: temtem),
+            ),
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
@@ -57,21 +59,23 @@ class EvolutionChain extends StatelessWidget {
   const EvolutionChain(this.temtem);
 
   Widget _buildRow(int current, {int? next, int? level}) {
-    return Row(children: <Widget>[
-      Expanded(child: TemtemNode(current)),
-      level != null
-          ? Expanded(
-              child: Column(
-                children: <Widget>[
-                  const Icon(Icons.arrow_forward, color: MyColors.lightFont),
-                  const SizedBox(height: 7),
-                  Text("+$level Lvl", style: TextStyles.evolLevel),
-                ],
-              ),
-            )
-          : Container(),
-      next != null ? Expanded(child: TemtemNode(next)) : Container(),
-    ]);
+    return Row(
+      children: <Widget>[
+        Expanded(child: TemtemNode(current)),
+        level != null
+            ? Expanded(
+                child: Column(
+                  children: <Widget>[
+                    const Icon(Icons.arrow_forward, color: MyColors.lightFont),
+                    const SizedBox(height: 7),
+                    Text("+$level Lvl", style: TextStyles.evolLevel),
+                  ],
+                ),
+              )
+            : Container(),
+        next != null ? Expanded(child: TemtemNode(next)) : Container(),
+      ],
+    );
   }
 
   Widget _buildEvolution() {
@@ -102,8 +106,9 @@ class EvolutionChain extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16.0),
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(21.0),
-            color: MyColors.background),
+          borderRadius: BorderRadius.circular(21.0),
+          color: MyColors.background,
+        ),
         child: _buildEvolution(),
       ),
     );

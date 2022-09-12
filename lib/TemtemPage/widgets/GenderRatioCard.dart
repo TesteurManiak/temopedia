@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class GenderRatioCard extends StatelessWidget {
   final double male;
   final double female;
 
-  GenderRatioCard(this.male, this.female);
+  const GenderRatioCard(this.male, this.female);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Container(
-        padding: EdgeInsets.only(top: 16, bottom: 16, left: 16),
+        padding: const EdgeInsets.only(top: 16, bottom: 16, left: 16),
         decoration: BoxDecoration(
           color: MyColors.background,
           borderRadius: BorderRadius.circular(21),
@@ -25,7 +25,7 @@ class GenderRatioCard extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Image.asset("assets/male.png", width: 12, height: 12),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Text("$male %", style: TextStyles.smallLight),
                 ],
               ),
@@ -35,7 +35,7 @@ class GenderRatioCard extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Image.asset("assets/female.png", width: 12, height: 12),
-                  SizedBox(width: 4),
+                  const SizedBox(width: 4),
                   Text("$female %", style: TextStyles.smallLight),
                 ],
               ),

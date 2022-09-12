@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:temopedia/HomePage/widgets/tile_type.dart';
 import 'package:temopedia/TemtemPage/TemtemArgs.dart';
 import 'package:temopedia/TemtemPage/temtem_page_args.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemTile extends StatefulWidget {

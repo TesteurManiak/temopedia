@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temopedia/utils/SearchBar.dart';
 
 class SearchBarModal extends StatelessWidget {

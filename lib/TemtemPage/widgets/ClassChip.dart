@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/TextStyles.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/text_styles.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class ClassChip extends StatelessWidget {
   final String className;
   final int damage;
 
-  ClassChip(this.className, this.damage);
+  const ClassChip(this.className, this.damage);
 
   @override
   Widget build(BuildContext context) {

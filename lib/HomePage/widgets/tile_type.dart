@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/extensions/extensions.dart';
-import 'package:temopedia/styles/TextStyles.dart';
+import 'package:temopedia/styles/text_styles.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TileType extends StatelessWidget {

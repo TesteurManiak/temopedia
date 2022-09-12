@@ -13,9 +13,9 @@ import 'package:temopedia/TemtemPage/widgets/StatsTab.dart';
 import 'package:temopedia/TemtemPage/widgets/TechniqueList.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemImage.dart';
 import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
-import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
+import 'package:temopedia/TemtemPage/widgets/traits_card.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -56,26 +56,27 @@ class _TemtemPageState extends State<TemtemPage> {
         elevation: 0,
         actions: <Widget>[
           StreamBuilder<bool>(
-              stream: _isFavoriteController.stream,
-              builder: (context, snapshot) {
-                final data = snapshot.data;
-                if (!snapshot.hasData || data == null) {
-                  return const SizedBox.shrink();
-                }
-                return IconButton(
-                  icon: Icon(data ? Icons.favorite : Icons.favorite_border),
-                  onPressed: () {
-                    if (data) {
-                      globals.favorites.remove(widget.temtem);
-                      _isFavoriteController.sink.add(false);
-                    } else {
-                      globals.favorites.add(widget.temtem);
-                      _isFavoriteController.sink.add(true);
-                    }
-                    if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
-                  },
-                );
-              })
+            stream: _isFavoriteController.stream,
+            builder: (context, snapshot) {
+              final data = snapshot.data;
+              if (!snapshot.hasData || data == null) {
+                return const SizedBox.shrink();
+              }
+              return IconButton(
+                icon: Icon(data ? Icons.favorite : Icons.favorite_border),
+                onPressed: () {
+                  if (data) {
+                    globals.favorites.remove(widget.temtem);
+                    _isFavoriteController.sink.add(false);
+                  } else {
+                    globals.favorites.add(widget.temtem);
+                    _isFavoriteController.sink.add(true);
+                  }
+                  if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
+                },
+              );
+            },
+          )
         ],
       ),
       body: SafeArea(
@@ -88,10 +89,15 @@ class _TemtemPageState extends State<TemtemPage> {
                   SizedBox(height: circleHeight - circleHeight / 6),
                   Container(
                     padding: const EdgeInsets.only(
-                        top: 32, left: 8, right: 8, bottom: 32),
+                      top: 32,
+                      left: 8,
+                      right: 8,
+                      bottom: 32,
+                    ),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: MyColors.lightBackground),
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColors.lightBackground,
+                    ),
                     child: Column(
                       children: <Widget>[
                         TemtemName(widget.temtem),
@@ -102,8 +108,10 @@ class _TemtemPageState extends State<TemtemPage> {
                               .toList(),
                         ),
                         GameDescriptionCard(widget.temtem.gameDescription),
-                        DetailsCard(widget.temtem.details.heightCm,
-                            widget.temtem.details.weightKg),
+                        DetailsCard(
+                          widget.temtem.details.heightCm,
+                          widget.temtem.details.weightKg,
+                        ),
                         EvolutionChain(widget.temtem),
                         StatsTab(
                           total: widget.temtem.stats.total,
@@ -117,8 +125,10 @@ class _TemtemPageState extends State<TemtemPage> {
                         ),
                         TraitsCard(widget.temtem.traits),
                         if (techniques != null) TechniqueList(techniques),
-                        GenderRatioCard(widget.temtem.genderRatio.male,
-                            widget.temtem.genderRatio.female),
+                        GenderRatioCard(
+                          widget.temtem.genderRatio.male,
+                          widget.temtem.genderRatio.female,
+                        ),
                         CatchRateCard(widget.temtem.catchRate),
                         LocationCard(widget.temtem),
                         EffectivenessCard(widget.temtem.types),

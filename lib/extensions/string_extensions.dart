@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 extension TypeModifier on Type {

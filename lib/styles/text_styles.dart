@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/theme.dart';
 
 class TextStyles {
-  static TextStyle lightText = TextStyle(color: MyColors.lightFont);
-  static TextStyle darkText = TextStyle(color: MyColors.darkFont);
-  static TextStyle background = TextStyle(color: MyColors.background);
+  static TextStyle lightText = const TextStyle(color: MyColors.lightFont);
+  static TextStyle darkText = const TextStyle(color: MyColors.darkFont);
+  static TextStyle background = const TextStyle(color: MyColors.background);
   static TextStyle lightBold = lightText.copyWith(fontWeight: FontWeight.bold);
   static TextStyle darkBold = darkText.copyWith(fontWeight: FontWeight.bold);
   static TextStyle location = lightText.copyWith(fontSize: 18);
@@ -14,23 +14,23 @@ class TextStyles {
   static TextStyle detailsLabel = darkText.copyWith(height: 0.8);
   static TextStyle detailsHW = lightText.copyWith(fontSize: 25);
   static TextStyle weak =
-      TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
+      const TextStyle(color: Colors.red, fontWeight: FontWeight.bold);
   static TextStyle normal =
-      TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
+      const TextStyle(color: Colors.white, fontWeight: FontWeight.bold);
   static TextStyle resist =
-      TextStyle(color: Colors.green, fontWeight: FontWeight.bold);
+      const TextStyle(color: Colors.green, fontWeight: FontWeight.bold);
   static TextStyle temtemNumber = TextStyle(
     color: Colors.white.withOpacity(0.4),
     fontWeight: FontWeight.bold,
-    fontSize: 14
+    fontSize: 14,
   );
-  static TextStyle itemLarge = TextStyle(
+  static TextStyle itemLarge = const TextStyle(
     height: 0.8,
     fontSize: 12,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
-  static TextStyle itemSmall = TextStyle(
+  static TextStyle itemSmall = const TextStyle(
     fontSize: 8,
     height: 0.8,
     color: Colors.white,

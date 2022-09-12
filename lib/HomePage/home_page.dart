@@ -5,7 +5,7 @@ import 'package:temopedia/HomePage/widgets/select_type_modal.dart';
 import 'package:temopedia/HomePage/widgets/tem_tile.dart';
 import 'package:temopedia/bloc/bloc_provider.dart';
 import 'package:temopedia/bloc/search_bloc.dart';
-import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/styles/theme.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class HomePage extends StatefulWidget {
