@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TypeChip extends StatelessWidget {
   final String type;
@@ -11,7 +11,7 @@ class TypeChip extends StatelessWidget {
 
   TypeChip(this.type, {this.dispTitle = true});
 
-  Widget _typeWidget(TemType item) {
+  Widget _typeWidget(TemTemApiType item) {
     if (!dispTitle)
       return CircleAvatar(
         backgroundColor: MyColors.lightBackground,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/TextStyles.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemName extends StatelessWidget {
-  final Temtem temtem;
+  final TemTemApiTem temtem;
 
   TemtemName(this.temtem);
 

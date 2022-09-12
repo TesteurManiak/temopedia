@@ -1,20 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemNode extends StatelessWidget {
   final int number;
-  final DatabaseHelper dbHelper;
 
-  TemtemNode(this.number, this.dbHelper);
+  TemtemNode(this.number);
 
-  Temtem _getTemtem() {
-    for (Temtem elem in globals.temtems) if (elem.number == number) return elem;
+  TemTemApiTem _getTemtem() {
+    for (final elem in globals.temtems) if (elem.number == number) return elem;
     return null;
   }
 
@@ -22,15 +21,14 @@ class TemtemNode extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final calcSize = screenHeight * 0.1;
-    final Temtem temtem = _getTemtem();
+    final temtem = _getTemtem();
 
     return temtem == null
         ? Container()
         : GestureDetector(
-            onTap: () => Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => TemtemPage(temtem, dbHelper))),
+            onTap: () => Navigator.pushReplacementNamed(
+                context, TemtemPageArgs.routeName,
+                arguments: TemtemArgs(temtem: temtem)),
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
@@ -52,14 +50,13 @@ class TemtemNode extends StatelessWidget {
 }
 
 class EvolutionChain extends StatelessWidget {
-  final Temtem temtem;
-  final DatabaseHelper dbHelper;
+  final TemTemApiTem temtem;
 
-  EvolutionChain(this.temtem, this.dbHelper);
+  EvolutionChain(this.temtem);
 
   Widget _buildRow(int current, {int next, int level}) {
     return Row(children: <Widget>[
-      Expanded(child: TemtemNode(current, dbHelper)),
+      Expanded(child: TemtemNode(current)),
       level != null
           ? Expanded(
               child: Column(
@@ -71,7 +68,7 @@ class EvolutionChain extends StatelessWidget {
               ),
             )
           : Container(),
-      next != null ? Expanded(child: TemtemNode(next, dbHelper)) : Container(),
+      next != null ? Expanded(child: TemtemNode(next)) : Container(),
     ]);
   }
 

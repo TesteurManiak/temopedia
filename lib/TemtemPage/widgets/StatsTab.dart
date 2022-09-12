@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Stats.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Progress.dart';
@@ -7,16 +6,31 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temopedia/extensions/extensions.dart' show WidgetModifier;
 
 class StatsTab extends StatelessWidget {
-  final Stats stats;
+  final int total;
+  final int hp;
+  final int sta;
+  final int spd;
+  final int atk;
+  final int def;
+  final int spatk;
+  final int spdef;
 
-  StatsTab(this.stats);
+  StatsTab({
+    this.total,
+    this.hp,
+    this.sta,
+    this.spd,
+    this.atk,
+    this.def,
+    this.spatk,
+    this.spdef,
+  });
 
   Widget _totalStat() {
     return Row(
       children: <Widget>[
         Expanded(flex: 2, child: Text("Total", style: TextStyles.darkBold)),
-        Expanded(
-            flex: 1, child: Text("${stats.total}", style: TextStyles.darkBold)),
+        Expanded(flex: 1, child: Text("$total", style: TextStyles.darkBold)),
         Expanded(child: Container(), flex: 5),
       ],
     );
@@ -26,44 +40,44 @@ class StatsTab extends StatelessWidget {
     List<Widget> _stats = [];
     _stats.add(StatWidget(
       label: "Hp",
-      progress: stats.hp.toDouble(),
-      value: stats.hp.toString(),
+      progress: hp.toDouble(),
+      value: hp.toString(),
       maxValue: globals.maxStats['hp'],
     ));
     _stats.add(StatWidget(
       label: "Sta",
-      progress: stats.sta.toDouble(),
-      value: stats.sta.toString(),
+      progress: sta.toDouble(),
+      value: sta.toString(),
       maxValue: globals.maxStats['sta'],
     ));
     _stats.add(StatWidget(
       label: "Spd",
-      progress: stats.spd.toDouble(),
-      value: stats.spd.toString(),
+      progress: spd.toDouble(),
+      value: spd.toString(),
       maxValue: globals.maxStats['spd'],
     ));
     _stats.add(StatWidget(
       label: "Atk",
-      progress: stats.atk.toDouble(),
-      value: stats.atk.toString(),
+      progress: atk.toDouble(),
+      value: atk.toString(),
       maxValue: globals.maxStats['atk'],
     ));
     _stats.add(StatWidget(
       label: "Def",
-      progress: stats.def.toDouble(),
-      value: stats.def.toString(),
+      progress: def.toDouble(),
+      value: def.toString(),
       maxValue: globals.maxStats['def'],
     ));
     _stats.add(StatWidget(
       label: "SpAtk",
-      progress: stats.spatk.toDouble(),
-      value: stats.spatk.toString(),
+      progress: spatk.toDouble(),
+      value: spatk.toString(),
       maxValue: globals.maxStats['spatk'],
     ));
     _stats.add(StatWidget(
       label: "SpDef",
-      progress: stats.spdef.toDouble(),
-      value: stats.spdef.toString(),
+      progress: spdef.toDouble(),
+      value: spdef.toString(),
       maxValue: globals.maxStats['spdef'],
     ));
     _stats.add(_totalStat());

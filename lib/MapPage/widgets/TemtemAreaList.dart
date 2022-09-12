@@ -1,18 +1,17 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Location.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemAreaList extends StatelessWidget {
   final List<String> temtems;
-  final Location location;
+  final TemTemApiLocation location;
 
   TemtemAreaList(this.temtems, this.location);
 
-  Temtem _getTemtem(String name) {
+  TemTemApiTem _getTemtem(String name) {
     for (var temtem in globals.temtems) {
       if (name.toLowerCase() == temtem.name.toLowerCase()) return temtem;
     }
@@ -32,7 +31,7 @@ class TemtemAreaList extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 ...temtems.map((temtem) {
-                  Temtem _temtem = _getTemtem(temtem);
+                  TemTemApiTem _temtem = _getTemtem(temtem);
                   if (_temtem == null) return Container();
                   return ListTile(
                     title: Text(_temtem.name, style: TextStyles.lightText),

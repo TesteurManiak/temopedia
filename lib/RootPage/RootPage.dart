@@ -1,117 +1,99 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Api/TemtemApi.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/HomePage.dart';
 import 'package:temopedia/LoadingPage/LoadingPage.dart';
-import 'package:temopedia/Models/Location.dart';
-import 'package:temopedia/Models/Technique.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/Models/Traits.dart';
-import 'package:temopedia/Models/Type.dart';
 import 'package:temopedia/Models/Weakness.dart';
 import 'package:temopedia/RootPage/widgets/ErrorDialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class RootPage extends StatefulWidget {
-  RootPage();
+  static const routeName = '/';
 
   @override
   State<StatefulWidget> createState() => _RootPageState();
 }
 
 class _RootPageState extends State<RootPage> {
-  final api = TemtemApi();
-  final dbHelper = DatabaseHelper.instance;
-  bool _isLoading = true;
+  final api = TemTemApi();
+  final _loadingTextController = BehaviorSubject<String>.seeded('Loading');
+  final _isLoadingController = BehaviorSubject<bool>.seeded(true);
 
-  String _loadingText;
-
-  _loadTemtems() async {
-    try {
-      setState(() => _loadingText = "Loading Temtems...");
-      var json = await api.getRequest(TemtemApi.allTemtems);
-      json.forEach((item) => globals.temtems.add(Temtem.fromJson(item)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Temtems. Please restart the app or report an issue.");
+  _updateMaxStats() {
+    for (final e in globals.temtems) {
+      globals.maxStats.hp =
+          e.stats.hp > globals.maxStats.hp ? e.stats.hp : globals.maxStats.hp;
+      globals.maxStats.sta = e.stats.sta > globals.maxStats.sta
+          ? e.stats.sta
+          : globals.maxStats.sta;
+      globals.maxStats.spd = e.stats.spd > globals.maxStats.spd
+          ? e.stats.spd
+          : globals.maxStats.spd;
+      globals.maxStats.atk = e.stats.atk > globals.maxStats.atk
+          ? e.stats.atk
+          : globals.maxStats.atk;
+      globals.maxStats.def = e.stats.def > globals.maxStats.def
+          ? e.stats.def
+          : globals.maxStats.def;
+      globals.maxStats.spatk = e.stats.atk > globals.maxStats.spatk
+          ? e.stats.atk
+          : globals.maxStats.spatk;
+      globals.maxStats.spdef = e.stats.spdef > globals.maxStats.spdef
+          ? e.stats.spdef
+          : globals.maxStats.spdef;
     }
   }
 
+  _loadTemtems() async {
+    _loadingTextController.sink.add('Loading Temtems');
+    globals.temtems = await api.getTemTems();
+    _updateMaxStats();
+  }
+
   _loadFavorites() async {
-    try {
-      setState(() => _loadingText = "Loading Favorites...");
-      for (var temtem in globals.temtems)
-        temtem.owned = await dbHelper.read(temtem.number);
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Favorites. Please restart the app or report an issue.");
+    if (!kIsWeb) {
+      _loadingTextController.sink.add("Loading Favorites");
+      final favs = await DatabaseHelper.instance.readAllFav();
+      for (final fav in favs) {
+        if (fav['favorite'] == 1) {
+          final newFav =
+              globals.temtems.firstWhere((e) => e.number == fav['number']);
+          globals.favorites.add(newFav);
+        }
+      }
     }
   }
 
   _loadTypes() async {
-    try {
-      setState(() => _loadingText = "Loading Types...");
-      var json = await api.getRequest(TemtemApi.types);
-      json.forEach((item) => globals.types.add(TemType.fromJson(item)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Types. Please restart the app or report an issue.");
-    }
+    _loadingTextController.sink.add("Loading Types");
+    globals.types = await api.getTypes();
   }
 
   _loadTraits() async {
-    try {
-      setState(() => _loadingText = "Loading Traits...");
-      var json = await api.getRequest(TemtemApi.traits);
-      json.forEach((item) => globals.traits.add(Traits.fromJson(item)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Traits. Please restart the app or report an issue.");
-    }
+    _loadingTextController.sink.add('Loading Traits');
+    globals.traits = await api.getTraits();
   }
 
   _loadTechniques() async {
-    try {
-      setState(() => _loadingText = "Loading Techniques...");
-      var json = await api.getRequest(TemtemApi.techniques);
-      json.forEach((item) => globals.techiques.add(Technique.fromJson(item)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Techniques. Please restart the app or report an issue.");
-    }
+    _loadingTextController.sink.add('Loading Techniques');
+    globals.techiques = await api.getTechniques();
   }
 
   _loadLocations() async {
-    try {
-      setState(() => _loadingText = "Loading Locations...");
-      var json = await api.getRequest(TemtemApi.locations);
-      json.forEach((item) => globals.locations.add(Location.fromJson(item)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Locations. Please restart the app or report an issue.");
-    }
+    _loadingTextController.sink.add('Loading Locations');
+    globals.locations = await api.getLocations();
   }
 
   _loadWeaknesses() async {
-    try {
-      setState(() => _loadingText = "Loading Weaknesses...");
-      var json = await api.getRequest(TemtemApi.weaknesses);
-      (json as Map<String, dynamic>).forEach((key, value) =>
-          globals.weaknesses.add(Weakness.fromJson(value, key)));
-    } catch (e) {
-      print(e);
-      throw Exception(
-          "Error while loading Weaknesses. Please restart the app or report an issue.");
-    }
+    _loadingTextController.sink.add('Loading Weaknesses');
+    final json = await api.getWeaknesses();
+    json.weaknesses.forEach(
+        (key, value) => globals.weaknesses.add(Weakness.fromJson(value, key)));
   }
 
-  _loadList() async {
+  Future<void> _loadList() async {
     try {
       await _loadTemtems();
       await _loadFavorites();
@@ -120,7 +102,6 @@ class _RootPageState extends State<RootPage> {
       await _loadTechniques();
       await _loadLocations();
       await _loadWeaknesses();
-      setState(() => _isLoading = false);
     } catch (e) {
       print(e);
       showDialog(context: context, builder: (context) => ErrorDialog(e));
@@ -130,16 +111,28 @@ class _RootPageState extends State<RootPage> {
   @override
   void initState() {
     super.initState();
-    _loadList();
+    _loadList().then((_) => _isLoadingController.sink.add(false));
+  }
+
+  @override
+  void dispose() {
+    _loadingTextController.close();
+    _isLoadingController.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    switch (_isLoading) {
-      case false:
-        return HomePage(globals.temtems, dbHelper);
-      default:
-        return LoadingPage(loadingText: _loadingText);
-    }
+    return StreamBuilder<bool>(
+      stream: _isLoadingController.stream,
+      builder: (context, snapshot) {
+        switch (snapshot.data) {
+          case false:
+            return HomePage(globals.temtems);
+          default:
+            return LoadingPage(_loadingTextController.stream);
+        }
+      },
+    );
   }
 }

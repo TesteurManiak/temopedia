@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/GenderRatio.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 
 class GenderRatioCard extends StatelessWidget {
-  final GenderRatio genderRatio;
+  final double male;
+  final double female;
 
-  GenderRatioCard(this.genderRatio);
+  GenderRatioCard(this.male, this.female);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class GenderRatioCard extends StatelessWidget {
                 children: <Widget>[
                   Image.asset("assets/male.png", width: 12, height: 12),
                   SizedBox(width: 4),
-                  Text("${genderRatio.male} %", style: TextStyles.smallLight),
+                  Text("$male %", style: TextStyles.smallLight),
                 ],
               ),
             ),
@@ -36,7 +36,7 @@ class GenderRatioCard extends StatelessWidget {
                 children: <Widget>[
                   Image.asset("assets/female.png", width: 12, height: 12),
                   SizedBox(width: 4),
-                  Text("${genderRatio.female} %", style: TextStyles.smallLight),
+                  Text("$female %", style: TextStyles.smallLight),
                 ],
               ),
             )

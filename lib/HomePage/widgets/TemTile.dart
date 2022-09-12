@@ -1,18 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/Database/DatabaseHelper.dart';
 import 'package:temopedia/HomePage/widgets/TileType.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/TemtemPage/TemtemPage.dart';
+import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/TemtemPageArgs.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemTile extends StatefulWidget {
-  final VoidCallback resetFilter;
-  final Temtem temtem;
-  final DatabaseHelper dbHelper;
+  final TemTemApiTem temtem;
 
-  TemTile(this.temtem, this.dbHelper, {@required this.resetFilter});
+  TemTile(this.temtem);
 
   @override
   State<StatefulWidget> createState() => _TemTileState();
@@ -32,14 +30,9 @@ class _TemTileState extends State<TemTile> {
             child: Material(
               color: MyColors.lightBackground,
               child: InkWell(
-                onTap: () {
-                  widget.resetFilter();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              TemtemPage(widget.temtem, widget.dbHelper)));
-                },
+                onTap: () => Navigator.pushNamed(
+                    context, TemtemPageArgs.routeName,
+                    arguments: TemtemArgs(temtem: widget.temtem)),
                 splashColor: Colors.white10,
                 highlightColor: Colors.white10,
                 child: Stack(

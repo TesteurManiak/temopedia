@@ -2,8 +2,9 @@ import 'dart:io';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:temopedia/Models/Temtem.dart';
-import 'package:temopedia/utils/boolean_int.dart';
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
+import 'package:temopedia/extensions/extensions.dart'
+    show TemTemApiTemModifier, IntModifier;
 
 class DatabaseHelper {
   static final _databaseName = "temopedia.db";
@@ -42,7 +43,7 @@ class DatabaseHelper {
     ''');
   }
 
-  Future<int> create(Temtem temtem) async {
+  Future<int> create(TemTemApiTem temtem) async {
     Database db = await instance.database;
     return await db.insert(tableFavorite, temtem.toSqlite());
   }
@@ -52,11 +53,16 @@ class DatabaseHelper {
     var query = await db
         .query(tableFavorite, where: '$columnNumber = ?', whereArgs: [temtem]);
     if (query != null && query.isNotEmpty)
-      return intToBool(query.first[columnFavorite]);
+      return (query.first[columnFavorite] as int).toBool();
     return false;
   }
 
-  Future<int> update(Temtem temtem) async {
+  Future<List<Map<String, dynamic>>> readAllFav() async {
+    final db = await instance.database;
+    return await db.query(tableFavorite);
+  }
+
+  Future<int> update(TemTemApiTem temtem) async {
     Database db = await instance.database;
     var exists = await _columnExists(temtem, db);
     if (exists != null)
@@ -65,7 +71,7 @@ class DatabaseHelper {
   }
 
   Future<List<Map<String, dynamic>>> _columnExists(
-      Temtem temtem, Database db) async {
+      TemTemApiTem temtem, Database db) async {
     var rows = await db.query(tableFavorite,
         where: '$columnNumber = ?', whereArgs: [temtem.number]);
     return rows == null || rows.isEmpty ? null : rows;

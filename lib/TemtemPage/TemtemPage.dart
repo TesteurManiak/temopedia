@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:temopedia/Database/DatabaseHelper.dart';
-import 'package:temopedia/Models/Temtem.dart';
 import 'package:temopedia/TemtemPage/widgets/CatchRateCard.dart';
 import 'package:temopedia/TemtemPage/widgets/DetailsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/EffectivenessCard.dart';
@@ -15,12 +16,14 @@ import 'package:temopedia/TemtemPage/widgets/TemtemName.dart';
 import 'package:temopedia/TemtemPage/widgets/TraitsCard.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/Theme.dart';
+import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temopedia/extensions/extensions.dart' show TemTemApiTemModifier;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TemtemPage extends StatefulWidget {
-  final Temtem temtem;
-  final DatabaseHelper dbHelper;
+  final TemTemApiTem temtem;
 
-  TemtemPage(this.temtem, this.dbHelper);
+  TemtemPage(this.temtem);
 
   @override
   State<StatefulWidget> createState() => _TemtemPageState();
@@ -29,10 +32,24 @@ class TemtemPage extends StatefulWidget {
 class _TemtemPageState extends State<TemtemPage> {
   final double circleHeight = 180;
 
+  BehaviorSubject<bool> _isFavoriteController;
+
   Widget _buildType() {
     List<Widget> _types = List();
     widget.temtem.types.forEach((type) => _types.add(TypeChip(type)));
     return Wrap(children: _types, spacing: 4);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _isFavoriteController = BehaviorSubject<bool>.seeded(widget.temtem.owned);
+  }
+
+  @override
+  void dispose() {
+    _isFavoriteController.close();
+    super.dispose();
   }
 
   @override
@@ -43,16 +60,25 @@ class _TemtemPageState extends State<TemtemPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-                widget.temtem.owned ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {
-              setState(() {
-                widget.temtem.owned = !widget.temtem.owned;
-                widget.dbHelper.update(widget.temtem);
-              });
-            },
-          )
+          StreamBuilder<bool>(
+              stream: _isFavoriteController.stream,
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return Container();
+                return IconButton(
+                  icon: Icon(
+                      snapshot.data ? Icons.favorite : Icons.favorite_border),
+                  onPressed: () {
+                    if (snapshot.data) {
+                      globals.favorites.remove(widget.temtem);
+                      _isFavoriteController.sink.add(false);
+                    } else {
+                      globals.favorites.add(widget.temtem);
+                      _isFavoriteController.sink.add(true);
+                    }
+                    if (!kIsWeb) DatabaseHelper.instance.update(widget.temtem);
+                  },
+                );
+              })
         ],
       ),
       body: SafeArea(
@@ -74,12 +100,23 @@ class _TemtemPageState extends State<TemtemPage> {
                         TemtemName(widget.temtem),
                         _buildType(),
                         GameDescriptionCard(widget.temtem.gameDescription),
-                        DetailsCard(widget.temtem.details),
-                        EvolutionChain(widget.temtem, widget.dbHelper),
-                        StatsTab(widget.temtem.stats),
+                        DetailsCard(widget.temtem.details.heightCm,
+                            widget.temtem.details.weightKg),
+                        EvolutionChain(widget.temtem),
+                        StatsTab(
+                          total: widget.temtem.stats.total,
+                          hp: widget.temtem.stats.hp,
+                          sta: widget.temtem.stats.sta,
+                          spd: widget.temtem.stats.spd,
+                          atk: widget.temtem.stats.atk,
+                          def: widget.temtem.stats.def,
+                          spatk: widget.temtem.stats.spatk,
+                          spdef: widget.temtem.stats.spdef,
+                        ),
                         TraitsCard(widget.temtem.traits),
                         TechniqueList(widget.temtem.techniques),
-                        GenderRatioCard(widget.temtem.genderRatio),
+                        GenderRatioCard(widget.temtem.genderRatio.male,
+                            widget.temtem.genderRatio.female),
                         CatchRateCard(widget.temtem.catchRate),
                         LocationCard(widget.temtem),
                         EffectivenessCard(widget.temtem.types),
