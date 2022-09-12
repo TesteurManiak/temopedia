@@ -34,13 +34,15 @@ class DatabaseHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
+    await db.execute(
+      '''
       CREATE TABLE $tableFavorite (
       $columnId INTEGER PRIMARY KEY,
       $columnNumber INTEGER NOT NULL,
       $columnFavorite INTEGER NOT NULL
     )
-    ''');
+    ''',
+    );
   }
 
   Future<int> create(TemTemApiTem temtem) async {

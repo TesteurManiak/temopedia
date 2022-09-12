@@ -8,7 +8,7 @@ class TypeFoundCard extends StatelessWidget {
   final List<String> types;
   final TemTemApiTem temtem;
 
-  TypeFoundCard(this.types, this.temtem);
+  const TypeFoundCard(this.types, this.temtem, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +17,11 @@ class TypeFoundCard extends StatelessWidget {
         color: MyColors.background,
         borderRadius: BorderRadius.circular(21),
       ),
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Row(
         children: <Widget>[
           Text("Type(s) found:", style: TextStyles.lightText),
-          SizedBox(width: 8),
+          const SizedBox(width: 8),
           Wrap(
             spacing: 5,
             children: <Widget>[...types.map((type) => TypeChip(type)).toList()],

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:temopedia/TemtemPage/widgets/TriviaCard.dart';
-import 'package:temopedia/map/widgets/DescriptionCard.dart';
-import 'package:temopedia/map/widgets/TemtemLocation.dart';
-import 'package:temopedia/map/widgets/TypeFoundCard.dart';
+import 'package:temopedia/map/widgets/description_card.dart';
+import 'package:temopedia/map/widgets/temtem_location.dart';
+import 'package:temopedia/map/widgets/type_found_card.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import 'widgets/TemtemAreaList.dart';
+import 'widgets/temtem_area_list.dart';
 
 class MapPage extends StatefulWidget {
   final TemLocation location;
@@ -60,7 +60,10 @@ class _MapPageState extends State<MapPage> {
                     children: <Widget>[
                       if (imageWikiThumbnail != null)
                         TemtemLocation(
-                            widget.temtem, widget.location, imageWikiThumbnail),
+                          widget.temtem,
+                          widget.location,
+                          imageWikiThumbnail,
+                        ),
                       if (location != null) ...[
                         const SizedBox(height: 12),
                         DescriptionCard(location.description)

@@ -10,13 +10,13 @@ class TemtemLocation extends StatelessWidget {
   final TemLocation location;
   final String imgUrl;
 
-  TemtemLocation(this.temtem, this.location, this.imgUrl);
+  const TemtemLocation(this.temtem, this.location, this.imgUrl, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(21),
         color: MyColors.background,
@@ -24,11 +24,11 @@ class TemtemLocation extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(location.location, style: TextStyles.location),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           CachedNetworkImage(imageUrl: imgUrl),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           TemtemImage(temtem.wikiPortraitUrlLarge, 60),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(temtem.name, style: TextStyles.lightBold),
           Text(location.frequency, style: TextStyles.lightText),
         ],

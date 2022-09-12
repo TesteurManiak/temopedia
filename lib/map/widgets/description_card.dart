@@ -5,7 +5,7 @@ import 'package:temopedia/styles/Theme.dart';
 class DescriptionCard extends StatelessWidget {
   final String description;
 
-  DescriptionCard(this.description);
+  const DescriptionCard(this.description, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class DescriptionCard extends StatelessWidget {
         color: MyColors.background,
       ),
       alignment: Alignment.center,
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Text(description, style: TextStyles.lightText),
     );
   }

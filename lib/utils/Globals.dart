@@ -1,4 +1,4 @@
-import 'package:temopedia/Models/Weakness.dart';
+import 'package:temopedia/Models/weakness.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 List<TemTemApiTem> temtems = [];

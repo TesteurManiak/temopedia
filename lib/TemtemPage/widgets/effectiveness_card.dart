@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/Models/Weakness.dart';
+import 'package:temopedia/Models/weakness.dart';
 import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
@@ -65,14 +65,18 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
             ),
             child: Column(
               children: List<Widget>.generate(
-                  globals.weaknesses.length,
-                  (index) => _buildWeakness(
-                      globals.weaknesses[index].name,
-                      widget.types
-                          .map((type) =>
-                              globals.weaknesses[index].weaknesses[type.name])
-                          .toList()
-                          .reduce((a, b) => (a ?? 0.0) * (b ?? 0.0)))),
+                globals.weaknesses.length,
+                (index) => _buildWeakness(
+                  globals.weaknesses[index].name,
+                  widget.types
+                      .map(
+                        (type) =>
+                            globals.weaknesses[index].weaknesses[type.name],
+                      )
+                      .toList()
+                      .reduce((a, b) => (a ?? 0.0) * (b ?? 0.0)),
+                ),
+              ),
             ),
           );
   }

@@ -72,25 +72,27 @@ class SelectTypeModal extends StatelessWidget {
           Text("Choose types you want to filter", style: TextStyles.lightText),
           const SizedBox(height: 8),
           StreamBuilder<List<String>>(
-              stream:
-                  BlocProvider.of<SearchBloc>(context).onSelectedTypesChanged,
-              builder: (context, snapshot) {
-                final data = snapshot.data;
-                if (!snapshot.hasData || data == null) {
-                  return const SizedBox.shrink();
-                }
-                return Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 8,
-                  children: List<Widget>.generate(
-                    globals.types.length,
-                    (int index) => TypeFilterWidget(
-                        filter: TypeFilter(globals.types[index],
-                            isSelected:
-                                data.contains(globals.types[index].name))),
+            stream: BlocProvider.of<SearchBloc>(context).onSelectedTypesChanged,
+            builder: (context, snapshot) {
+              final data = snapshot.data;
+              if (!snapshot.hasData || data == null) {
+                return const SizedBox.shrink();
+              }
+              return Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 8,
+                children: List<Widget>.generate(
+                  globals.types.length,
+                  (int index) => TypeFilterWidget(
+                    filter: TypeFilter(
+                      globals.types[index],
+                      isSelected: data.contains(globals.types[index].name),
+                    ),
                   ),
-                );
-              }),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );

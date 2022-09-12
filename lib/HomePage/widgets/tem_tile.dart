@@ -31,8 +31,10 @@ class _TemTileState extends State<TemTile> {
               color: MyColors.lightBackground,
               child: InkWell(
                 onTap: () => Navigator.pushNamed(
-                    context, TemtemPageArgs.routeName,
-                    arguments: TemtemArgs(temtem: widget.temtem)),
+                  context,
+                  TemtemPageArgs.routeName,
+                  arguments: TemtemArgs(temtem: widget.temtem),
+                ),
                 splashColor: Colors.white10,
                 highlightColor: Colors.white10,
                 child: Stack(
@@ -98,10 +100,12 @@ class _TemTileState extends State<TemTile> {
 
   List<Widget> _buildTypes() {
     final widgetTypes = widget.temtem.types
-        .map((type) => Hero(
-              tag: widget.temtem.name + type.name,
-              child: TileType(type),
-            ))
+        .map(
+          (type) => Hero(
+            tag: widget.temtem.name + type.name,
+            child: TileType(type),
+          ),
+        )
         .expand((item) => [item, const SizedBox(height: 6)]);
     return widgetTypes.toList();
   }

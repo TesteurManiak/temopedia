@@ -4,7 +4,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:temopedia/Database/database_helper.dart';
 import 'package:temopedia/HomePage/home_page.dart';
 import 'package:temopedia/LoadingPage/loading_page.dart';
-import 'package:temopedia/Models/Weakness.dart';
+import 'package:temopedia/Models/weakness.dart';
 import 'package:temopedia/RootPage/widgets/error_dialog.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
@@ -92,7 +92,8 @@ class _RootPageState extends State<RootPage> {
     _loadingTextController.sink.add('Loading Weaknesses');
     final json = await api.getWeaknesses();
     json.weaknesses.forEach(
-        (key, value) => globals.weaknesses.add(Weakness.fromJson(value, key)));
+      (key, value) => globals.weaknesses.add(Weakness.fromJson(value, key)),
+    );
   }
 
   Future<void> _loadList() async {
