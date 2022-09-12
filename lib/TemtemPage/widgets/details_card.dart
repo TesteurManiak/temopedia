@@ -6,7 +6,7 @@ class DetailsCard extends StatelessWidget {
   final int heightCm;
   final int weightKg;
 
-  const DetailsCard(this.heightCm, this.weightKg);
+  const DetailsCard(this.heightCm, this.weightKg, {super.key});
 
   Widget _buildLabel(String text) {
     return Text(text, style: TextStyles.detailsLabel);

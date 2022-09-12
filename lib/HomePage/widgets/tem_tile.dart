@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/HomePage/widgets/tile_type.dart';
-import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/temtem_args.dart';
 import 'package:temopedia/TemtemPage/temtem_page_args.dart';
 import 'package:temopedia/styles/text_styles.dart';
 import 'package:temopedia/styles/theme.dart';

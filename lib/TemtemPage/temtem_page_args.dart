@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/temtem_args.dart';
 import 'package:temopedia/TemtemPage/temtem_page.dart';
 
 class TemtemPageArgs extends StatelessWidget {

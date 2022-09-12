@@ -5,7 +5,7 @@ import 'package:temopedia/styles/theme.dart';
 class CatchRateCard extends StatelessWidget {
   final int catchRate;
 
-  const CatchRateCard(this.catchRate);
+  const CatchRateCard(this.catchRate, {super.key});
 
   @override
   Widget build(BuildContext context) {

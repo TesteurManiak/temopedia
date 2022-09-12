@@ -6,7 +6,7 @@ class ClassChip extends StatelessWidget {
   final String className;
   final int damage;
 
-  const ClassChip(this.className, this.damage);
+  const ClassChip(this.className, this.damage, {super.key});
 
   @override
   Widget build(BuildContext context) {

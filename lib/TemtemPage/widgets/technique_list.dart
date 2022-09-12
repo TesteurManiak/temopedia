@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/widgets/ClassChip.dart';
+import 'package:temopedia/TemtemPage/widgets/class_chip.dart';
 import 'package:temopedia/TemtemPage/widgets/HoldChip.dart';
 import 'package:temopedia/TemtemPage/widgets/PriorityChip.dart';
 import 'package:temopedia/TemtemPage/widgets/StaminaChip.dart';
@@ -45,7 +45,7 @@ class TechniqueContent extends StatelessWidget {
 class TechniqueList extends StatelessWidget {
   final List<Technique> techniques;
 
-  const TechniqueList(this.techniques);
+  const TechniqueList(this.techniques, {super.key});
 
   TemTemApiTechnique? _getTechnique(String name) {
     for (final item in globals.techiques) {

@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:temopedia/TemtemPage/TemtemArgs.dart';
+import 'package:temopedia/TemtemPage/temtem_args.dart';
 import 'package:temopedia/TemtemPage/temtem_page_args.dart';
 import 'package:temopedia/styles/text_styles.dart';
 import 'package:temopedia/styles/theme.dart';
@@ -10,7 +10,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 class TemtemNode extends StatelessWidget {
   final int number;
 
-  const TemtemNode(this.number);
+  const TemtemNode(this.number, {super.key});
 
   TemTemApiTem? _getTemtem() {
     for (final elem in globals.temtems) {
@@ -56,7 +56,7 @@ class TemtemNode extends StatelessWidget {
 class EvolutionChain extends StatelessWidget {
   final TemTemApiTem temtem;
 
-  const EvolutionChain(this.temtem);
+  const EvolutionChain(this.temtem, {super.key});
 
   Widget _buildRow(int current, {int? next, int? level}) {
     return Row(

@@ -6,7 +6,7 @@ class TemtemImage extends StatelessWidget {
   final String url;
   final double height;
 
-  const TemtemImage(this.url, this.height);
+  const TemtemImage(this.url, this.height, {super.key});
 
   @override
   Widget build(BuildContext context) {

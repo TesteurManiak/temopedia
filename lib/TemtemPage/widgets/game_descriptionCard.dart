@@ -5,7 +5,7 @@ import 'package:temopedia/styles/theme.dart';
 class GameDescriptionCard extends StatelessWidget {
   final String gameDescription;
 
-  const GameDescriptionCard(this.gameDescription);
+  const GameDescriptionCard(this.gameDescription, {super.key});
 
   @override
   Widget build(BuildContext context) {
