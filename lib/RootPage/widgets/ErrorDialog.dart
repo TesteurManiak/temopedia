@@ -15,7 +15,7 @@ class ErrorDialog extends StatelessWidget {
       title: Text("Error", style: TextStyles.lightText),
       content: Text("$error", style: TextStyles.lightText),
       actions: <Widget>[
-        FlatButton(
+        TextButton(
           child: Text("Close", style: TextStyles.lightText),
           onPressed: () => Navigator.of(context).pop(),
         )

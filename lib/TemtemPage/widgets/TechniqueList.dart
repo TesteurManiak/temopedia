@@ -47,9 +47,12 @@ class TechniqueList extends StatelessWidget {
 
   TechniqueList(this.techniques);
 
-  TemTemApiTechnique _getTechnique(String name) {
-    for (final item in globals.techiques)
-      if (item.name.toLowerCase() == name.toLowerCase()) return item;
+  TemTemApiTechnique? _getTechnique(String name) {
+    for (final item in globals.techiques) {
+      if (item.name.toLowerCase() == name.toLowerCase()) {
+        return item;
+      }
+    }
     return null;
   }
 
@@ -82,9 +85,10 @@ class TechniqueList extends StatelessWidget {
                     title: Text(_tech.name, style: TextStyles.lightText),
                     content: TechniqueContent(_tech),
                     actions: <Widget>[
-                      FlatButton(
-                          child: Text("Close", style: TextStyles.lightText),
-                          onPressed: () => Navigator.pop(context))
+                      TextButton(
+                        child: Text("Close", style: TextStyles.lightText),
+                        onPressed: () => Navigator.pop(context),
+                      )
                     ],
                   ),
                 );

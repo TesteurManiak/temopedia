@@ -25,29 +25,37 @@ class LocationCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: List<Widget>.generate(
-                  temtem.locations.length,
-                  (index) => Container(
-                    margin: EdgeInsets.only(top: 6),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        color: MyColors.lightBackground),
-                    child: ListTile(
-                      onTap: () => Navigator.pushNamed(
-                          context, MapPageArgs.routeName,
-                          arguments: MapArgs(
-                              location: temtem.locations[index],
-                              temtem: temtem)),
-                      title: Text(temtem.locations[index].location,
+                  temtem.locations?.length ?? 0,
+                  (index) {
+                    final location = temtem.locations![index];
+                    return Container(
+                      margin: EdgeInsets.only(top: 6),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: MyColors.lightBackground),
+                      child: ListTile(
+                        onTap: () => Navigator.pushNamed(
+                            context, MapPageArgs.routeName,
+                            arguments:
+                                MapArgs(location: location, temtem: temtem)),
+                        title: Text(
+                          location.location,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyles.lightText),
-                      subtitle: Text(temtem.locations[index].island,
+                          style: TextStyles.lightText,
+                        ),
+                        subtitle: Text(
+                          location.island,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyles.lightText),
-                      trailing: Text(temtem.locations[index].frequency,
+                          style: TextStyles.lightText,
+                        ),
+                        trailing: Text(
+                          location.frequency,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyles.lightText),
-                    ),
-                  ),
+                          style: TextStyles.lightText,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),

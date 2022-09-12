@@ -16,14 +16,14 @@ class StatsTab extends StatelessWidget {
   final int spdef;
 
   StatsTab({
-    this.total,
-    this.hp,
-    this.sta,
-    this.spd,
-    this.atk,
-    this.def,
-    this.spatk,
-    this.spdef,
+    required this.total,
+    required this.hp,
+    required this.sta,
+    required this.spd,
+    required this.atk,
+    required this.def,
+    required this.spatk,
+    required this.spdef,
   });
 
   Widget _totalStat() {
@@ -42,43 +42,43 @@ class StatsTab extends StatelessWidget {
       label: "Hp",
       progress: hp.toDouble(),
       value: hp.toString(),
-      maxValue: globals.maxStats['hp'],
+      maxValue: globals.maxStats['hp']!,
     ));
     _stats.add(StatWidget(
       label: "Sta",
       progress: sta.toDouble(),
       value: sta.toString(),
-      maxValue: globals.maxStats['sta'],
+      maxValue: globals.maxStats['sta']!,
     ));
     _stats.add(StatWidget(
       label: "Spd",
       progress: spd.toDouble(),
       value: spd.toString(),
-      maxValue: globals.maxStats['spd'],
+      maxValue: globals.maxStats['spd']!,
     ));
     _stats.add(StatWidget(
       label: "Atk",
       progress: atk.toDouble(),
       value: atk.toString(),
-      maxValue: globals.maxStats['atk'],
+      maxValue: globals.maxStats['atk']!,
     ));
     _stats.add(StatWidget(
       label: "Def",
       progress: def.toDouble(),
       value: def.toString(),
-      maxValue: globals.maxStats['def'],
+      maxValue: globals.maxStats['def']!,
     ));
     _stats.add(StatWidget(
       label: "SpAtk",
       progress: spatk.toDouble(),
       value: spatk.toString(),
-      maxValue: globals.maxStats['spatk'],
+      maxValue: globals.maxStats['spatk']!,
     ));
     _stats.add(StatWidget(
       label: "SpDef",
       progress: spdef.toDouble(),
       value: spdef.toString(),
-      maxValue: globals.maxStats['spdef'],
+      maxValue: globals.maxStats['spdef']!,
     ));
     _stats.add(_totalStat());
     return _stats;
@@ -112,10 +112,10 @@ class StatWidget extends StatelessWidget {
   final int maxValue;
 
   StatWidget({
-    @required this.label,
-    @required double progress,
-    @required this.value,
-    @required this.maxValue,
+    required this.label,
+    required double progress,
+    required this.value,
+    required this.maxValue,
   }) : this.progress = progress / maxValue;
 
   @override
@@ -131,7 +131,9 @@ class StatWidget extends StatelessWidget {
             progress: progress,
             color: progress < 0.5
                 ? Colors.red
-                : progress < 0.75 ? Colors.orange : Colors.green,
+                : progress < 0.75
+                    ? Colors.orange
+                    : Colors.green,
           ),
         )
       ],

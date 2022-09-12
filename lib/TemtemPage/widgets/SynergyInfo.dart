@@ -11,7 +11,7 @@ class SynergyInfo extends StatelessWidget {
 
   SynergyInfo(this.synergy, this.synergyEffects);
 
-  TemTemApiType _getType() {
+  TemTemApiType? _getType() {
     for (var elem in globals.types)
       if (elem.name.toLowerCase() == synergy.toLowerCase()) return elem;
     return null;
@@ -39,8 +39,8 @@ class SynergyInfo extends StatelessWidget {
             ],
           ),
           ...synergyEffects
-              .map((synergy) => Text(synergy.effect ?? "Error Synergy Effect",
-                  style: TextStyles.lightText))
+              .map((synergy) =>
+                  Text(synergy.effect, style: TextStyles.lightText))
               .toList(),
         ],
       ),

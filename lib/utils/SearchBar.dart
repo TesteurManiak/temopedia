@@ -14,7 +14,7 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  SearchBloc _searchBloc;
+  late final SearchBloc _searchBloc;
 
   @override
   void initState() {

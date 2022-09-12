@@ -9,8 +9,8 @@ class GameDescriptionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return gameDescription == null || gameDescription.isEmpty
-        ? Container()
+    return gameDescription.isEmpty
+        ? SizedBox.shrink()
         : Padding(
             padding: EdgeInsets.only(bottom: 12),
             child: Container(

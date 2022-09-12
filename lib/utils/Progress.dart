@@ -5,7 +5,7 @@ class ProgressBar extends StatelessWidget {
   final Color color;
 
   ProgressBar({
-    @required this.progress,
+    required this.progress,
     this.color = Colors.red,
   });
 
