@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../TemtemPage/temtem_args.dart';
-import '../../TemtemPage/temtem_page_args.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
+import '../../temtem/temtem_args.dart';
+import '../../temtem/temtem_page_args.dart';
 import 'tile_type.dart';
 
 class TemTile extends StatefulWidget {

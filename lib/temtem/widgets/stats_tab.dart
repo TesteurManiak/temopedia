@@ -4,7 +4,7 @@ import '../../extensions/extensions.dart' show WidgetModifier;
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
-import '../../utils/progress.dart';
+import '../../utils/progress_bar.dart';
 
 class StatsTab extends StatelessWidget {
   final int total;

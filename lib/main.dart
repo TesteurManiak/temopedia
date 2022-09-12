@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'TemtemPage/temtem_page_args.dart';
 import 'bloc/bloc.dart';
 import 'bloc/bloc_provider.dart';
 import 'bloc/search_bloc.dart';
 import 'map/map_page_args.dart';
 import 'root/root_page.dart';
+import 'temtem/temtem_page_args.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
