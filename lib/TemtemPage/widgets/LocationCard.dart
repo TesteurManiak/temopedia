@@ -12,8 +12,8 @@ class LocationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return temtem.locations.isEmpty
-        ? Container()
+    return temtem.locations?.isEmpty ?? true
+        ? SizedBox.shrink()
         : Padding(
             padding: EdgeInsets.only(bottom: 12),
             child: Container(

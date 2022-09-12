@@ -73,16 +73,22 @@ class EvolutionChain extends StatelessWidget {
   }
 
   Widget _buildEvolution() {
+    final description = temtem.evolution.description;
+    final evolutionTreeLength = temtem.evolution.evolutionTree?.length ?? 0;
     if (!temtem.evolution.evolves) return _buildRow(temtem.number);
-    if (temtem.evolution.type == "special" &&
-        temtem.evolution.description != null)
-      return Text(temtem.evolution.description, style: TextStyles.lightText);
+    if (temtem.evolution.type == "special" && description != null) {
+      return Text(description, style: TextStyles.lightText);
+    }
     List<Widget> _chain = [];
-    for (int i = 1; i < temtem.evolution.evolutionTree.length; i++) {
-      var previousNode = temtem.evolution.evolutionTree[i - 1];
-      _chain.add(_buildRow(previousNode.number,
-          next: temtem.evolution.evolutionTree[i].number,
-          level: int.tryParse(previousNode.levels.toString() ?? 0)));
+    for (int i = 1; i < evolutionTreeLength; i++) {
+      var previousNode = temtem.evolution.evolutionTree![i - 1];
+      _chain.add(
+        _buildRow(
+          previousNode.number,
+          next: temtem.evolution.evolutionTree![i].number,
+          level: previousNode.levels?.toInt(),
+        ),
+      );
     }
     return Column(children: _chain);
   }
