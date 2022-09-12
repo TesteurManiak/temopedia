@@ -4,9 +4,10 @@ import 'package:temopedia/TemtemPage/widgets/TypeChip.dart';
 import 'package:temopedia/styles/TextStyles.dart';
 import 'package:temopedia/styles/Theme.dart';
 import 'package:temopedia/utils/Globals.dart' as globals;
+import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class EffectivenessCard extends StatefulWidget {
-  final List<String> types;
+  final List<Type> types;
 
   EffectivenessCard(this.types);
 
@@ -17,7 +18,8 @@ class EffectivenessCard extends StatefulWidget {
 class _EffectivenessCardState extends State<EffectivenessCard> {
   List<Weakness> _weaknesses = [];
 
-  _buildWeakness(String label, double value) {
+  _buildWeakness(String label, double? value) {
+    final modifier = value ?? 0.0;
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -26,9 +28,11 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
           flex: 2,
           child: Text(
             "x $value",
-            style: value > 1
+            style: modifier > 1
                 ? TextStyles.weak
-                : value < 1 ? TextStyles.resist : TextStyles.normal,
+                : modifier < 1
+                    ? TextStyles.resist
+                    : TextStyles.normal,
           ),
         ),
       ],
@@ -64,9 +68,9 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
                       globals.weaknesses[index].name,
                       widget.types
                           .map((type) =>
-                              globals.weaknesses[index].weaknesses[type])
+                              globals.weaknesses[index].weaknesses[type.name])
                           .toList()
-                          .reduce((a, b) => a * b))),
+                          .reduce((a, b) => (a ?? 0.0) * (b ?? 0.0)))),
             ),
           );
   }

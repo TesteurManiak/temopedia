@@ -7,7 +7,7 @@ class MapPageArgs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MapArgs args = ModalRoute.of(context).settings.arguments;
+    final args = ModalRoute.of(context)!.settings.arguments as MapArgs;
     return MapPage(args.location, args.temtem);
   }
 }

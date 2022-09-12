@@ -11,7 +11,7 @@ class TemtemAreaList extends StatelessWidget {
 
   TemtemAreaList(this.temtems, this.location);
 
-  TemTemApiTem _getTemtem(String name) {
+  TemTemApiTem? _getTemtem(String name) {
     for (var temtem in globals.temtems) {
       if (name.toLowerCase() == temtem.name.toLowerCase()) return temtem;
     }
@@ -21,7 +21,7 @@ class TemtemAreaList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return temtems.isEmpty
-        ? Container()
+        ? SizedBox.shrink()
         : Container(
             padding: EdgeInsets.symmetric(vertical: 8),
             decoration: BoxDecoration(
@@ -31,8 +31,8 @@ class TemtemAreaList extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 ...temtems.map((temtem) {
-                  TemTemApiTem _temtem = _getTemtem(temtem);
-                  if (_temtem == null) return Container();
+                  final _temtem = _getTemtem(temtem);
+                  if (_temtem == null) return SizedBox.shrink();
                   return ListTile(
                     title: Text(_temtem.name, style: TextStyles.lightText),
                     leading: CircleAvatar(

@@ -30,15 +30,9 @@ class TemtemPage extends StatefulWidget {
 }
 
 class _TemtemPageState extends State<TemtemPage> {
-  final double circleHeight = 180;
+  final circleHeight = 180.0;
 
-  BehaviorSubject<bool> _isFavoriteController;
-
-  Widget _buildType() {
-    List<Widget> _types = List();
-    widget.temtem.types.forEach((type) => _types.add(TypeChip(type)));
-    return Wrap(children: _types, spacing: 4);
-  }
+  late final BehaviorSubject<bool> _isFavoriteController;
 
   @override
   void initState() {
@@ -54,6 +48,7 @@ class _TemtemPageState extends State<TemtemPage> {
 
   @override
   Widget build(BuildContext context) {
+    final techniques = widget.temtem.techniques;
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: AppBar(
@@ -63,12 +58,12 @@ class _TemtemPageState extends State<TemtemPage> {
           StreamBuilder<bool>(
               stream: _isFavoriteController.stream,
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return Container();
+                final data = snapshot.data;
+                if (!snapshot.hasData || data == null) return SizedBox.shrink();
                 return IconButton(
-                  icon: Icon(
-                      snapshot.data ? Icons.favorite : Icons.favorite_border),
+                  icon: Icon(data ? Icons.favorite : Icons.favorite_border),
                   onPressed: () {
-                    if (snapshot.data) {
+                    if (data) {
                       globals.favorites.remove(widget.temtem);
                       _isFavoriteController.sink.add(false);
                     } else {
@@ -98,7 +93,12 @@ class _TemtemPageState extends State<TemtemPage> {
                     child: Column(
                       children: <Widget>[
                         TemtemName(widget.temtem),
-                        _buildType(),
+                        Wrap(
+                          children: widget.temtem.types
+                              .map((e) => TypeChip(e.name))
+                              .toList(),
+                          spacing: 4,
+                        ),
                         GameDescriptionCard(widget.temtem.gameDescription),
                         DetailsCard(widget.temtem.details.heightCm,
                             widget.temtem.details.weightKg),
@@ -114,7 +114,7 @@ class _TemtemPageState extends State<TemtemPage> {
                           spdef: widget.temtem.stats.spdef,
                         ),
                         TraitsCard(widget.temtem.traits),
-                        TechniqueList(widget.temtem.techniques),
+                        if (techniques != null) TechniqueList(techniques),
                         GenderRatioCard(widget.temtem.genderRatio.male,
                             widget.temtem.genderRatio.female),
                         CatchRateCard(widget.temtem.catchRate),

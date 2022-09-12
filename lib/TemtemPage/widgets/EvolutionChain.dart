@@ -12,7 +12,7 @@ class TemtemNode extends StatelessWidget {
 
   TemtemNode(this.number);
 
-  TemTemApiTem _getTemtem() {
+  TemTemApiTem? _getTemtem() {
     for (final elem in globals.temtems) if (elem.number == number) return elem;
     return null;
   }
@@ -54,7 +54,7 @@ class EvolutionChain extends StatelessWidget {
 
   EvolutionChain(this.temtem);
 
-  Widget _buildRow(int current, {int next, int level}) {
+  Widget _buildRow(int current, {int? next, int? level}) {
     return Row(children: <Widget>[
       Expanded(child: TemtemNode(current)),
       level != null

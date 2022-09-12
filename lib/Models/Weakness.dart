@@ -1,8 +1,8 @@
 class Weakness {
   final String name;
-  Map<String, double> weaknesses;
+  final Map<String, double> weaknesses;
 
-  Weakness({this.name, this.weaknesses});
+  Weakness({required this.name, required this.weaknesses});
 
   factory Weakness.fromJson(Map<String, dynamic> json, name) {
     Map<String, double> _weaknesses = Map();

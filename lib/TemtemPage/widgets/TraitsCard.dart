@@ -5,13 +5,13 @@ import 'package:temopedia/utils/Globals.dart' as globals;
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 class TraitsCard extends StatelessWidget {
-  final List<String> traits;
+  final List<Trait> traits;
 
   TraitsCard(this.traits);
 
-  TemTemApiTraits _getTrait(String trait) {
+  TemTemApiTraits? _getTrait(Trait trait) {
     for (final elem in globals.traits)
-      if (trait.toLowerCase() == elem.name.toLowerCase()) return elem;
+      if (trait.name.toLowerCase() == elem.name.toLowerCase()) return elem;
     return null;
   }
 
@@ -38,14 +38,14 @@ class TraitsCard extends StatelessWidget {
                     content:
                         Text(_trait.description, style: TextStyles.lightText),
                     actions: <Widget>[
-                      FlatButton(
+                      TextButton(
                           child: Text("Close", style: TextStyles.lightText),
                           onPressed: () => Navigator.pop(context))
                     ],
                   ),
                 );
               },
-              title: Text(item, style: TextStyles.lightText),
+              title: Text(item.name, style: TextStyles.lightText),
               trailing:
                   Icon(Icons.arrow_forward_ios, color: MyColors.lightFont),
             ),
