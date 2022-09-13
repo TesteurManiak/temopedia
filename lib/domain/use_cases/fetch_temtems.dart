@@ -8,7 +8,7 @@ class FetchTemtemsUseCase {
 
   final TemtemsRepository _repository;
 
-  Future<Either<List<TemTemApiTem>, Exception>> call() {
+  Future<Either<List<TemTemApiTem>, Object>> call() {
     return _repository.fetchTemtems();
   }
 }
