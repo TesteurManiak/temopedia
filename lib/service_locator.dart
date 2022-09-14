@@ -1,6 +1,8 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import 'core/network_info.dart';
 import 'data/datasources/remote/remote_datasource.dart';
 import 'data/repositories/temtems_repository.dart';
 import 'domain/repository/temtems_repository.dart';
@@ -16,9 +18,17 @@ Future<void> setupLocator() async {
 
   // Repositories
   sl.registerLazySingleton<TemtemsRepository>(
-    () => TemtemsRepositoryImpl(remoteDataSource: sl()),
+    () => TemtemsRepositoryImpl(
+      remoteDataSource: sl(),
+      networkInfo: sl(),
+    ),
   );
 
   // Use cases
   sl.registerLazySingleton(() => FetchTemtemsUseCase(sl()));
+
+  // External
+  sl.registerLazySingleton<NetworkInfo>(
+    () => ConnectivityInfo(connectivity: Connectivity()),
+  );
 }
