@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
-import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../bloc/temtems/temtems_cubit.dart';
 import '../theme/theme.dart';
 import 'widgets/search_bar_modal.dart';
 import 'widgets/select_type_modal.dart';
-import 'widgets/tem_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -76,24 +76,41 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: _appLogo,
       ),
-      body: StreamBuilder<List<TemTemApiTem>>(
-        builder: (context, snapshot) {
-          final data = snapshot.data;
-          if (!snapshot.hasData || data == null) {
-            return const Center(child: CircularProgressIndicator());
+      body: BlocBuilder<TemtemsCubit, TemtemsState>(
+        builder: (context, state) {
+          switch (state.type) {
+            case TemtemsStateType.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case TemtemsStateType.loaded:
+              return const Center(
+                child: Text("Loaded"),
+              );
+            case TemtemsStateType.error:
+              final errorState = state as TemtemsError;
+              return ErrorWidget(errorState.message);
           }
-          return GridView.count(
-            crossAxisCount: 2,
-            padding: const EdgeInsets.all(8),
-            childAspectRatio: 1.4,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
-            children: <Widget>[
-              ...data.map<Widget>((e) => TemTile(e)).toList(),
-            ],
-          );
         },
       ),
+      // StreamBuilder<List<TemTemApiTem>>(
+      //   builder: (context, snapshot) {
+      //     final data = snapshot.data;
+      //     if (!snapshot.hasData || data == null) {
+      //       return const Center(child: CircularProgressIndicator());
+      //     }
+      //     return GridView.count(
+      //       crossAxisCount: 2,
+      //       padding: const EdgeInsets.all(8),
+      //       childAspectRatio: 1.4,
+      //       crossAxisSpacing: 10,
+      //       mainAxisSpacing: 10,
+      //       children: <Widget>[
+      //         ...data.map<Widget>((e) => TemTile(e)).toList(),
+      //       ],
+      //     );
+      //   },
+      // ),
     );
   }
 }

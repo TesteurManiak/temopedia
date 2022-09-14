@@ -10,7 +10,9 @@ class TemtemsCubit extends Cubit<TemtemsState> {
   TemtemsCubit({
     required FetchTemtemsUseCase fetchTemtemsUseCase,
   })  : _fetchTemtemsUseCase = fetchTemtemsUseCase,
-        super(const TemtemsLoading());
+        super(const TemtemsLoading()) {
+    fetchTemtems();
+  }
 
   final FetchTemtemsUseCase _fetchTemtemsUseCase;
 

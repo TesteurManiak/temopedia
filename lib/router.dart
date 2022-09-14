@@ -6,6 +6,7 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 import 'bloc/temtems/temtems_cubit.dart';
 import 'home/home_page.dart';
 import 'map/map_page.dart';
+import 'service_locator.dart';
 import 'temtem/temtem_page.dart';
 
 GoRouter createRouter() {
@@ -15,7 +16,10 @@ GoRouter createRouter() {
       GoRoute(
         path: '/',
         name: 'root',
-        builder: (_, __) => const HomePage(),
+        builder: (_, __) => BlocProvider<TemtemsCubit>(
+          create: (_) => TemtemsCubit(fetchTemtemsUseCase: sl()),
+          child: const HomePage(),
+        ),
         routes: [
           GoRoute(
             path: 'temtem/:id',
