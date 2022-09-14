@@ -4,8 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import 'bloc/temtems/temtems_cubit.dart';
-import 'home/home_page.dart';
 import 'map/map_page.dart';
+
+import 'presentation/views/home/home_page.dart';
 import 'service_locator.dart';
 import 'temtem/temtem_page.dart';
 

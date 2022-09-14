@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
-import '../bloc/temtems/temtems_cubit.dart';
-import '../theme/theme.dart';
+import '../../../bloc/temtems/temtems_cubit.dart';
+import '../../../theme/theme.dart';
+import '../../common/logo.dart';
 import 'widgets/search_bar_modal.dart';
 import 'widgets/select_type_modal.dart';
 import 'widgets/tem_tile.dart';
@@ -76,13 +77,7 @@ class _HomePageState extends State<HomePage> {
               final loadedState = state as TemtemsLoaded;
               return CustomScrollView(
                 slivers: [
-                  const SliverAppBar(
-                    title: Image(
-                      image: ExactAssetImage("assets/logo.png"),
-                      height: 42.0,
-                      alignment: FractionalOffset.center,
-                    ),
-                  ),
+                  const SliverAppBar(title: AppLogo()),
                   SliverPadding(
                     padding: const EdgeInsets.all(8),
                     sliver: SliverGrid(

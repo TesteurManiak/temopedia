@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../extensions/extensions.dart';
-import '../../styles/text_styles.dart';
+import '../../../../extensions/extensions.dart';
+import '../../../../styles/text_styles.dart';
 
 class TileType extends StatelessWidget {
   final Type type;

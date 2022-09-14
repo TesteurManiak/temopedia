@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import '../../styles/text_styles.dart';
-import '../../styles/theme.dart';
+import '../../../../styles/text_styles.dart';
+import '../../../../styles/theme.dart';
 import 'tile_type.dart';
 
 class TemTile extends StatefulWidget {
