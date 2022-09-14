@@ -33,9 +33,7 @@ class TemtemNode extends StatelessWidget {
             onTap: () {
               context.pushNamed(
                 'temtem',
-                params: {
-                  'id': temtem.number.toString(),
-                },
+                extra: temtem,
               );
             },
             child: Column(
