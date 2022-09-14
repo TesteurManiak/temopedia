@@ -81,8 +81,8 @@ class _TemTileState extends State<TemTile> {
   List<Widget> _buildDecorations(double itemHeight) {
     return [
       Positioned(
-        bottom: 8,
-        right: 12,
+        bottom: 0,
+        right: 0,
         child: Hero(
           tag: widget.temtem.wikiPortraitUrlLarge,
           child: _TemtemImage(
