@@ -22,7 +22,7 @@ dependencies:
   temtem_api_wrapper:
     git:
       url: https://github.com/TesteurManiak/temtem_api_wrapper.git
-      ref: master
+      ref: 0.2.0
 
 dev_dependencies:
   build_runner: ^2.2.0

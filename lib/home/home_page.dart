@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
               );
             case TemtemsStateType.error:
               final errorState = state as TemtemsError;
-              return ErrorWidget(errorState.message);
+              return Center(child: Text(errorState.message));
           }
         },
       ),
