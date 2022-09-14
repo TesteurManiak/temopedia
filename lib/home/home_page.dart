@@ -50,25 +50,21 @@ class _HomePageState extends State<HomePage> {
         children: <SpeedDialChild>[
           SpeedDialChild(
             label: "Search name",
-            backgroundColor: appColors.speedDialBackground,
-            child: Icon(Icons.search, color: appColors.speedDialIcon),
+            child: const Icon(Icons.search),
             onTap: _showSearchModal,
           ),
           SpeedDialChild(
             label: "Type",
-            backgroundColor: appColors.speedDialBackground,
-            child: Icon(Icons.sort, color: appColors.speedDialIcon),
+            child: const Icon(Icons.sort),
             onTap: _showTypeModal,
           ),
           SpeedDialChild(
             label: "Favorite",
-            backgroundColor: appColors.speedDialBackground,
             child: const Icon(Icons.favorite),
             onTap: () {},
           ),
           SpeedDialChild(
             label: "Clear Filter",
-            backgroundColor: appColors.speedDialBackground,
             child: const Icon(Icons.clear),
             onTap: () {},
           ),

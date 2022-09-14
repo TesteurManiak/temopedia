@@ -32,6 +32,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
           borderRadius: appTheme.borderRadius.topBig,
         ),
       ),
+      extensions: [appTheme],
     );
   }
 
