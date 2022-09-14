@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/logging.dart';
 import 'button.dart';
 
 class AppError extends StatelessWidget {
@@ -10,6 +11,7 @@ class AppError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (error != null) Log.e(error!);
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -23,11 +25,6 @@ class AppError extends StatelessWidget {
             'Uh oh, an error was encountered',
             textAlign: TextAlign.center,
           ),
-          if (error != null)
-            Text(
-              error!,
-              textAlign: TextAlign.center,
-            ),
           if (onRetry != null) ...[
             const SizedBox(height: 8),
             AppButton.icon(

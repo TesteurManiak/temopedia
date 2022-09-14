@@ -17,6 +17,7 @@ dependencies:
   fpdart: ^0.2.0
   get_it: ^7.2.0
   go_router: ^4.4.1
+  logger: ^1.1.0
   path_provider: ^2.0.11
   rxdart: ^0.27.5
   temtem_api_wrapper:
