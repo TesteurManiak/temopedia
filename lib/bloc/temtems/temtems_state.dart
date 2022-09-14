@@ -6,6 +6,8 @@ abstract class TemtemsState extends Equatable {
   final TemtemsStateType type;
 
   bool get hasError => type == TemtemsStateType.error;
+  bool get isLoading => type == TemtemsStateType.loading;
+  bool get isLoaded => type == TemtemsStateType.loaded;
 
   @override
   List<Object?> get props => [type];

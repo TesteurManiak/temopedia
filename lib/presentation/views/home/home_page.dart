@@ -6,6 +6,7 @@ import '../../../bloc/temtems/temtems_cubit.dart';
 import '../../common/error.dart';
 import '../../common/logo.dart';
 import 'widgets/filter_dial_button.dart';
+import 'widgets/shimmer_grid.dart';
 import 'widgets/tem_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,12 +23,12 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           floatingActionButton:
-              state.hasError ? null : const FilterDialButton(),
+              !state.isLoaded ? null : const FilterDialButton(),
           body: Builder(
             builder: (context) {
               switch (state.type) {
                 case TemtemsStateType.loading:
-                  return const Center(child: CircularProgressIndicator());
+                  return const ShimmerGrid();
                 case TemtemsStateType.loaded:
                   final loadedState = state as TemtemsLoaded;
                   return _TemtemsScrollView(temtems: loadedState.temtems);

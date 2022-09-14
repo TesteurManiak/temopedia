@@ -18,3 +18,4 @@ linter:
     - prefer_relative_imports
     - directives_ordering
     - always_declare_return_types
+    - sort_child_properties_last
