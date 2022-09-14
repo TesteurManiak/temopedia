@@ -6,6 +6,7 @@ import '../bloc/temtems/temtems_cubit.dart';
 import '../theme/theme.dart';
 import 'widgets/search_bar_modal.dart';
 import 'widgets/select_type_modal.dart';
+import 'widgets/tem_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,12 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _appLogo = const Image(
-    image: ExactAssetImage("assets/logo.png"),
-    height: 42.0,
-    alignment: FractionalOffset.center,
-  );
-
   void _showSearchModal() {
     showModalBottomSheet(
       context: context,
@@ -70,12 +65,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: _appLogo,
-      ),
       body: BlocBuilder<TemtemsCubit, TemtemsState>(
         builder: (context, state) {
           switch (state.type) {
@@ -84,8 +73,36 @@ class _HomePageState extends State<HomePage> {
                 child: CircularProgressIndicator(),
               );
             case TemtemsStateType.loaded:
-              return const Center(
-                child: Text("Loaded"),
+              final loadedState = state as TemtemsLoaded;
+              return CustomScrollView(
+                slivers: [
+                  const SliverAppBar(
+                    title: Image(
+                      image: ExactAssetImage("assets/logo.png"),
+                      height: 42.0,
+                      alignment: FractionalOffset.center,
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.all(8),
+                    sliver: SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final temtem = loadedState.temtems[index];
+                          return TemTile(temtem);
+                        },
+                        childCount: loadedState.temtems.length,
+                      ),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 1.4,
+                        crossAxisSpacing: 10,
+                        mainAxisSpacing: 10,
+                      ),
+                    ),
+                  ),
+                ],
               );
             case TemtemsStateType.error:
               final errorState = state as TemtemsError;
@@ -93,24 +110,6 @@ class _HomePageState extends State<HomePage> {
           }
         },
       ),
-      // StreamBuilder<List<TemTemApiTem>>(
-      //   builder: (context, snapshot) {
-      //     final data = snapshot.data;
-      //     if (!snapshot.hasData || data == null) {
-      //       return const Center(child: CircularProgressIndicator());
-      //     }
-      //     return GridView.count(
-      //       crossAxisCount: 2,
-      //       padding: const EdgeInsets.all(8),
-      //       childAspectRatio: 1.4,
-      //       crossAxisSpacing: 10,
-      //       mainAxisSpacing: 10,
-      //       children: <Widget>[
-      //         ...data.map<Widget>((e) => TemTile(e)).toList(),
-      //       ],
-      //     );
-      //   },
-      // ),
     );
   }
 }

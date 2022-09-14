@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../styles/theme.dart';
 import 'colors.dart';
 import 'radius.dart';
 
@@ -25,7 +24,12 @@ class AppTheme extends ThemeExtension<AppTheme> {
     final baseDark = ThemeData.dark();
     return baseDark.copyWith(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: MyColors.background,
+      scaffoldBackgroundColor: appTheme.colors.scaffold,
+      appBarTheme: AppBarTheme(
+        color: appTheme.colors.appBar,
+        elevation: 0,
+        centerTitle: true,
+      ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: appTheme.colors.bottomSheet,
         shape: RoundedRectangleBorder(
