@@ -1,17 +1,10 @@
-import 'dart:developer' as developer;
-
 import 'package:logger/logger.dart';
 
 final _logger = Logger(
-  output: _ConsoleOutput(),
+  printer: PrettyPrinter(
+    printTime: true,
+  ),
 );
-
-class _ConsoleOutput extends LogOutput {
-  @override
-  void output(OutputEvent event) {
-    event.lines.forEach(developer.log);
-  }
-}
 
 class Log {
   const Log._();

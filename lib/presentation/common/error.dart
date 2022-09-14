@@ -11,7 +11,9 @@ class AppError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (error != null) Log.e(error!);
+    if (error != null) {
+      Log.e(error!);
+    }
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
