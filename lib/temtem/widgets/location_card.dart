@@ -35,7 +35,7 @@ class LocationCard extends StatelessWidget {
                         color: MyColors.lightBackground,
                       ),
                       child: ListTile(
-                        onTap: () => context.goNamed('map', extra: location),
+                        onTap: () => context.pushNamed('map', extra: location),
                         title: Text(
                           location.location,
                           overflow: TextOverflow.ellipsis,

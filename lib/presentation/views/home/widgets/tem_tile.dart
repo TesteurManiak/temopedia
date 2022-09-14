@@ -30,7 +30,7 @@ class _TemTileState extends State<TemTile> {
             child: Material(
               color: MyColors.lightBackground,
               child: InkWell(
-                onTap: () => context.goNamed(
+                onTap: () => context.pushNamed(
                   'temtem',
                   params: {'id': widget.temtem.number.toString()},
                 ),

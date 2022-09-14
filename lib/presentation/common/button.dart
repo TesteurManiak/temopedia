@@ -28,16 +28,24 @@ class AppButton extends StatelessWidget {
   final Widget child;
   final VoidCallback? onPressed;
 
+  bool get enabled => onPressed != null;
+
   @override
   Widget build(BuildContext context) {
     final appTheme = AppTheme.of(context);
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: appTheme.borderRadius.big,
-        ),
+    final color =
+        enabled ? appTheme.colors.activeButton : appTheme.colors.disabledButton;
+
+    return RawMaterialButton(
+      elevation: 0,
+      focusElevation: 0,
+      hoverElevation: 0,
+      disabledElevation: 0,
+      highlightElevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: appTheme.borderRadius.big,
       ),
+      fillColor: color,
       onPressed: onPressed,
       child: child,
     );

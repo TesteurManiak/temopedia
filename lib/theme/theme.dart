@@ -30,6 +30,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
         elevation: 0,
         centerTitle: true,
       ),
+      dialogBackgroundColor: appTheme.colors.dialog,
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: appTheme.colors.bottomSheet,
         shape: RoundedRectangleBorder(
