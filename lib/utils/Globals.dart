@@ -2,7 +2,6 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../Models/weakness.dart';
 
-List<TemTemApiType> types = [];
 List<TemTemApiTraits> traits = [];
 List<TemTemApiTechnique> techiques = [];
 List<TemTemApiLocation> locations = [];

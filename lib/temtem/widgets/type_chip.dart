@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../bloc/temtem_types/temtem_types_cubit.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
-import '../../utils/globals.dart' as globals;
 
 class TypeChip extends StatelessWidget {
   final String type;
@@ -52,7 +53,8 @@ class TypeChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    for (var item in globals.types) {
+    final types = context.read<TemtemTypesCubit>().temtemTypes;
+    for (var item in types) {
       if (item.name.toLowerCase() == type.toLowerCase()) {
         return _typeWidget(item);
       }

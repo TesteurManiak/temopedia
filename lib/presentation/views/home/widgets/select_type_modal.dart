@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../../../bloc/temtem_types/temtem_types_cubit.dart';
 import '../../../../styles/text_styles.dart';
 import '../../../../styles/theme.dart';
-import '../../../../utils/globals.dart' as globals;
+import '../../../common/error.dart';
 
 class TypeFilter {
   final TemTemApiType type;
@@ -53,25 +55,34 @@ class SelectTypeModal extends StatelessWidget {
         children: <Widget>[
           Text("Choose types you want to filter", style: TextStyles.lightText),
           const SizedBox(height: 8),
-          StreamBuilder<List<String>>(
-            builder: (context, snapshot) {
-              final data = snapshot.data;
-              if (!snapshot.hasData || data == null) {
-                return const SizedBox.shrink();
-              }
-              return Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 8,
-                children: List<Widget>.generate(
-                  globals.types.length,
-                  (int index) => TypeFilterWidget(
-                    filter: TypeFilter(
-                      globals.types[index],
-                      isSelected: data.contains(globals.types[index].name),
+          BlocBuilder<TemtemTypesCubit, TemtemTypesState>(
+            builder: (context, state) {
+              switch (state.type) {
+                case TemtemTypesStateType.loading:
+                  return const CircularProgressIndicator();
+                case TemtemTypesStateType.loaded:
+                  final loadedState = state as TemtemTypesLoaded;
+                  final types = loadedState.temtemTypes;
+                  return Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 8,
+                    children: List<Widget>.generate(
+                      types.length,
+                      (int index) => TypeFilterWidget(
+                        filter: TypeFilter(
+                          types[index],
+                          // TODO: isSelected: data.contains(types[index].name),
+                          isSelected: false,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              );
+                  );
+                case TemtemTypesStateType.error:
+                  return AppError(
+                    onRetry: () =>
+                        context.read<TemtemTypesCubit>().fetchTemtemTypes(),
+                  );
+              }
             },
           ),
         ],

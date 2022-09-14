@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../bloc/temtem_types/temtem_types_cubit.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
-import '../../utils/globals.dart' as globals;
 import 'type_chip.dart';
 
 class SynergyInfo extends StatelessWidget {
@@ -12,8 +13,9 @@ class SynergyInfo extends StatelessWidget {
 
   const SynergyInfo(this.synergy, this.synergyEffects, {super.key});
 
-  TemTemApiType? _getType() {
-    for (var elem in globals.types) {
+  TemTemApiType? _getType(BuildContext context) {
+    final types = context.read<TemtemTypesCubit>().temtemTypes;
+    for (var elem in types) {
       if (elem.name.toLowerCase() == synergy.toLowerCase()) return elem;
     }
     return null;
@@ -21,7 +23,7 @@ class SynergyInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final synergyType = _getType();
+    final synergyType = _getType(context);
 
     if (synergyType == null) return Container();
 
