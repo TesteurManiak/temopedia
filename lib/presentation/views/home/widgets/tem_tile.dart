@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../../../core/logging.dart';
 import '../../../../styles/text_styles.dart';
 import '../../../../styles/theme.dart';
 import 'tile_type.dart';
@@ -19,29 +20,30 @@ class TemTile extends StatefulWidget {
 class _TemTileState extends State<TemTile> {
   @override
   Widget build(BuildContext context) {
+    final borderRadius = BorderRadius.circular(15);
     return LayoutBuilder(
       builder: (context, constrains) {
         final itemHeight = constrains.maxHeight;
         return Container(
-          padding: const EdgeInsets.all(0),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Material(
-              color: MyColors.lightBackground,
-              child: InkWell(
-                onTap: () => context.pushNamed(
-                  'temtem',
-                  params: {'id': widget.temtem.number.toString()},
-                ),
-                splashColor: Colors.white10,
-                highlightColor: Colors.white10,
-                child: Stack(
-                  children: <Widget>[
-                    _buildCardContent(),
-                    ..._buildDecorations(itemHeight),
-                  ],
-                ),
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+          ),
+          child: ColoredBox(
+            color: MyColors.lightBackground,
+            child: InkWell(
+              borderRadius: borderRadius,
+              onTap: () => context.pushNamed(
+                'temtem',
+                params: {'id': widget.temtem.number.toString()},
+              ),
+              splashColor: Colors.white10,
+              highlightColor: Colors.white10,
+              child: Stack(
+                children: <Widget>[
+                  _buildCardContent(),
+                  ..._buildDecorations(itemHeight),
+                ],
               ),
             ),
           ),
@@ -83,7 +85,10 @@ class _TemTileState extends State<TemTile> {
         right: 12,
         child: Hero(
           tag: widget.temtem.wikiPortraitUrlLarge,
-          child: _buildImage(itemHeight),
+          child: _TemtemImage(
+            itemHeight: itemHeight,
+            imageUrl: widget.temtem.wikiPortraitUrlLarge,
+          ),
         ),
       ),
       Positioned(
@@ -99,21 +104,30 @@ class _TemTileState extends State<TemTile> {
 
   List<Widget> _buildTypes() {
     final widgetTypes = widget.temtem.types
-        .map(
-          (type) => Hero(
-            tag: widget.temtem.name + type.name,
-            child: TileType(type),
-          ),
-        )
+        .map((type) => TileType(type))
         .expand((item) => [item, const SizedBox(height: 6)]);
     return widgetTypes.toList();
   }
+}
 
-  Widget _buildImage(double itemHeight) {
+class _TemtemImage extends StatelessWidget {
+  final double itemHeight;
+  final String imageUrl;
+
+  const _TemtemImage({
+    required this.itemHeight,
+    required this.imageUrl,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: widget.temtem.wikiPortraitUrlLarge,
-      placeholder: (context, url) => Image.asset("assets/temtem_unknown.png"),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
+      imageUrl: imageUrl,
+      placeholder: (_, __) => Image.asset("assets/temtem_unknown.png"),
+      errorWidget: (_, url, error) {
+        Log.e('Failed to load image: $url - $error');
+        return const Icon(Icons.error);
+      },
       fit: BoxFit.contain,
       width: itemHeight * 0.6,
       height: itemHeight * 0.6,
