@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'button.dart';
+
 class AppError extends StatelessWidget {
   final String? error;
   final VoidCallback? onRetry;
@@ -12,6 +14,11 @@ class AppError extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          Image.asset(
+            'assets/error.png',
+            width: 100,
+          ),
+          const SizedBox(height: 8),
           const Text(
             'Uh oh, an error was encountered',
             textAlign: TextAlign.center,
@@ -21,11 +28,14 @@ class AppError extends StatelessWidget {
               error!,
               textAlign: TextAlign.center,
             ),
-          if (onRetry != null)
-            ElevatedButton(
+          if (onRetry != null) ...[
+            const SizedBox(height: 8),
+            AppButton.icon(
               onPressed: onRetry,
-              child: const Text('Retry'),
+              label: const Text('Retry'),
+              icon: const Icon(Icons.refresh),
             ),
+          ],
         ],
       ),
     );

@@ -36,6 +36,7 @@ class AppBorderRadius extends ThemeExtension<AppBorderRadius> {
 
   final AppRadius _radius;
 
+  BorderRadius get big => BorderRadius.all(_radius.big);
   BorderRadius get topBig => BorderRadius.vertical(top: _radius.big);
 
   @override
