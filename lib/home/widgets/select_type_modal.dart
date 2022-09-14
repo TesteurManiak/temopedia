@@ -46,15 +46,8 @@ class SelectTypeModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.all(12),
-      decoration: const BoxDecoration(
-        color: MyColors.background,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
