@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../styles/theme.dart';
 import '../../utils/search_bar.dart';
 
 class SearchBarModal extends StatelessWidget {
@@ -8,15 +7,8 @@ class SearchBarModal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 26),
-      decoration: const BoxDecoration(
-        color: MyColors.background,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

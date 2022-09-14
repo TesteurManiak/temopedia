@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
-import '../../temtem/temtem_args.dart';
-import '../../temtem/temtem_page_args.dart';
 import 'tile_type.dart';
 
 class TemTile extends StatefulWidget {
@@ -31,10 +30,9 @@ class _TemTileState extends State<TemTile> {
             child: Material(
               color: MyColors.lightBackground,
               child: InkWell(
-                onTap: () => Navigator.pushNamed(
-                  context,
-                  TemtemPageArgs.routeName,
-                  arguments: TemtemArgs(temtem: widget.temtem),
+                onTap: () => context.goNamed(
+                  'temtem',
+                  params: {'id': widget.temtem.number.toString()},
                 ),
                 splashColor: Colors.white10,
                 highlightColor: Colors.white10,

@@ -14,11 +14,17 @@ class TemtemsCubit extends Cubit<TemtemsState> {
 
   final FetchTemtemsUseCase _fetchTemtemsUseCase;
 
+  List<TemTemApiTem> _temtems = [];
+  List<TemTemApiTem> get temtems => _temtems;
+
   Future<void> fetchTemtems() async {
     emit(const TemtemsLoading());
     final result = await _fetchTemtemsUseCase.call();
     result.fold(
-      (success) => emit(TemtemsLoaded(temtems: success)),
+      (success) {
+        _temtems = success;
+        emit(TemtemsLoaded(temtems: success));
+      },
       (error) => emit(TemtemsError(message: error.toString())),
     );
   }

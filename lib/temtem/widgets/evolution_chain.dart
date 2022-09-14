@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 import '../../utils/globals.dart' as globals;
-import '../temtem_args.dart';
-import '../temtem_page_args.dart';
 
 class TemtemNode extends StatelessWidget {
   final int number;
@@ -27,13 +26,16 @@ class TemtemNode extends StatelessWidget {
     final temtem = _getTemtem();
 
     return temtem == null
-        ? Container()
+        ? const SizedBox.shrink()
         : GestureDetector(
-            onTap: () => Navigator.pushReplacementNamed(
-              context,
-              TemtemPageArgs.routeName,
-              arguments: TemtemArgs(temtem: temtem),
-            ),
+            onTap: () {
+              context.pushNamed(
+                'temtem',
+                params: {
+                  'id': temtem.number.toString(),
+                },
+              );
+            },
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(

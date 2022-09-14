@@ -8,9 +8,7 @@ import 'widgets/select_type_modal.dart';
 import 'widgets/tem_tile.dart';
 
 class HomePage extends StatefulWidget {
-  final List<TemTemApiTem> temtems;
-
-  const HomePage(this.temtems, {super.key});
+  const HomePage({super.key});
 
   @override
   State<StatefulWidget> createState() => _HomePageState();
@@ -26,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   void _showSearchModal() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => const SearchBarModal(),
+      builder: (_) => const SearchBarModal(),
       backgroundColor: Colors.transparent,
     );
   }

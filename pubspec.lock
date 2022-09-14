@@ -7,14 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "38.0.0"
+    version: "47.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.4.1"
+    version: "4.7.0"
   archive:
     dependency: transitive
     description:
@@ -204,13 +204,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.3"
-  dartx:
-    dependency: transitive
-    description:
-      name: dartx
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   equatable:
     dependency: "direct main"
     description:
@@ -298,6 +291,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   fpdart:
     dependency: "direct main"
     description:
@@ -326,6 +324,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.4.1"
   graphs:
     dependency: transitive
     description:
@@ -368,27 +373,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  isar:
-    dependency: "direct main"
-    description:
-      name: isar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.5.0"
-  isar_flutter_libs:
-    dependency: "direct main"
-    description:
-      name: isar_flutter_libs
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.5.0"
-  isar_generator:
-    dependency: "direct dev"
-    description:
-      name: isar_generator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.5.0"
   js:
     dependency: transitive
     description:
@@ -611,13 +595,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  source_gen:
-    dependency: transitive
-    description:
-      name: source_gen
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.2.2"
   source_span:
     dependency: transitive
     description:
@@ -697,13 +674,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
-  time:
-    dependency: transitive
-    description:
-      name: time
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.2"
   timing:
     dependency: transitive
     description:
