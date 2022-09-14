@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../styles/theme.dart';
-import '../utils/globals.dart' as globals;
 import 'widgets/catch_rate_card.dart';
 import 'widgets/details_card.dart';
 import 'widgets/effectiveness_card.dart';
@@ -28,21 +26,7 @@ class TemtemPage extends StatefulWidget {
 }
 
 class _TemtemPageState extends State<TemtemPage> {
-  final circleHeight = 180.0;
-
-  late final BehaviorSubject<bool> _isFavoriteController;
-
-  @override
-  void initState() {
-    super.initState();
-    _isFavoriteController = BehaviorSubject<bool>.seeded(false);
-  }
-
-  @override
-  void dispose() {
-    _isFavoriteController.close();
-    super.dispose();
-  }
+  static const circleHeight = 180.0;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +38,6 @@ class _TemtemPageState extends State<TemtemPage> {
         elevation: 0,
         actions: <Widget>[
           StreamBuilder<bool>(
-            stream: _isFavoriteController.stream,
             builder: (context, snapshot) {
               final data = snapshot.data;
               if (!snapshot.hasData || data == null) {
@@ -62,15 +45,7 @@ class _TemtemPageState extends State<TemtemPage> {
               }
               return IconButton(
                 icon: Icon(data ? Icons.favorite : Icons.favorite_border),
-                onPressed: () {
-                  if (data) {
-                    globals.favorites.remove(widget.temtem);
-                    _isFavoriteController.sink.add(false);
-                  } else {
-                    globals.favorites.add(widget.temtem);
-                    _isFavoriteController.sink.add(true);
-                  }
-                },
+                onPressed: () {},
               );
             },
           )
@@ -83,7 +58,7 @@ class _TemtemPageState extends State<TemtemPage> {
             children: <Widget>[
               Column(
                 children: <Widget>[
-                  SizedBox(height: circleHeight - circleHeight / 6),
+                  const SizedBox(height: circleHeight - circleHeight / 6),
                   Container(
                     padding: const EdgeInsets.only(
                       top: 32,

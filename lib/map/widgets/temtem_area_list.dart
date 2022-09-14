@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../bloc/temtems/temtems_cubit.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
-import '../../utils/globals.dart' as globals;
 
 class TemtemAreaList extends StatelessWidget {
   final List<String> temtems;
@@ -12,8 +13,9 @@ class TemtemAreaList extends StatelessWidget {
 
   const TemtemAreaList(this.temtems, this.location, {super.key});
 
-  TemTemApiTem? _getTemtem(String name) {
-    for (var temtem in globals.temtems) {
+  TemTemApiTem? _getTemtem(String name, BuildContext context) {
+    final temtems = context.read<TemtemsCubit>().temtems;
+    for (var temtem in temtems) {
       if (name.toLowerCase() == temtem.name.toLowerCase()) return temtem;
     }
     return null;
@@ -32,7 +34,7 @@ class TemtemAreaList extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 ...temtems.map((e) {
-                  final temtem = _getTemtem(e);
+                  final temtem = _getTemtem(e, context);
                   if (temtem == null) return const SizedBox.shrink();
                   return ListTile(
                     title: Text(temtem.name, style: TextStyles.lightText),

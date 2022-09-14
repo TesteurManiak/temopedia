@@ -2,8 +2,6 @@ import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../Models/weakness.dart';
 
-List<TemTemApiTem> temtems = [];
-List<TemTemApiTem> favorites = [];
 List<TemTemApiType> types = [];
 List<TemTemApiTraits> traits = [];
 List<TemTemApiTechnique> techiques = [];
