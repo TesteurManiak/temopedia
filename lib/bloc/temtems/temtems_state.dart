@@ -6,7 +6,7 @@ abstract class TemtemsState extends Equatable {
   final TemtemsStateType type;
 
   @override
-  List<Object> get props => [type];
+  List<Object?> get props => [type];
 }
 
 class TemtemsLoading extends TemtemsState {
@@ -20,17 +20,16 @@ class TemtemsLoaded extends TemtemsState {
   final List<TemTemApiTem> temtems;
 
   @override
-  List<Object> get props => [type, temtems];
+  List<Object?> get props => [type, temtems];
 }
 
 class TemtemsError extends TemtemsState {
-  const TemtemsError({required this.message})
-      : super(type: TemtemsStateType.error);
+  const TemtemsError({this.message}) : super(type: TemtemsStateType.error);
 
-  final String message;
+  final String? message;
 
   @override
-  List<Object> get props => [type, message];
+  List<Object?> get props => [type, message];
 }
 
 enum TemtemsStateType {

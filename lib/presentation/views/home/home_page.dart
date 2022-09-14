@@ -4,6 +4,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../../../bloc/temtems/temtems_cubit.dart';
 import '../../../theme/theme.dart';
+import '../../common/error.dart';
 import '../../common/logo.dart';
 import 'widgets/search_bar_modal.dart';
 import 'widgets/select_type_modal.dart';
@@ -101,7 +102,10 @@ class _HomePageState extends State<HomePage> {
               );
             case TemtemsStateType.error:
               final errorState = state as TemtemsError;
-              return Center(child: Text(errorState.message));
+              return AppError(
+                error: errorState.message,
+                onRetry: () => context.read<TemtemsCubit>().fetchTemtems(),
+              );
           }
         },
       ),
