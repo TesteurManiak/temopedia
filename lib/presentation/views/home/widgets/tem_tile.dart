@@ -4,20 +4,16 @@ import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
 import '../../../../core/logging.dart';
+import '../../../../router.dart';
 import '../../../../styles/text_styles.dart';
 import '../../../../styles/theme.dart';
 import 'tile_type.dart';
 
-class TemTile extends StatefulWidget {
+class TemTile extends StatelessWidget {
   final TemTemApiTem temtem;
 
   const TemTile(this.temtem, {super.key});
 
-  @override
-  State<StatefulWidget> createState() => _TemTileState();
-}
-
-class _TemTileState extends State<TemTile> {
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(15);
@@ -34,8 +30,8 @@ class _TemTileState extends State<TemTile> {
             child: InkWell(
               borderRadius: borderRadius,
               onTap: () => context.pushNamed(
-                'temtem',
-                params: {'id': widget.temtem.number.toString()},
+                AppRoute.temtem.name,
+                extra: temtem,
               ),
               splashColor: Colors.white10,
               highlightColor: Colors.white10,
@@ -61,11 +57,11 @@ class _TemTileState extends State<TemTile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Hero(
-              tag: widget.temtem.name,
+              tag: temtem.name,
               child: Material(
                 color: Colors.transparent,
                 child: Text(
-                  widget.temtem.name,
+                  temtem.name,
                   style: TextStyles.temtemName,
                 ),
               ),
@@ -84,10 +80,10 @@ class _TemTileState extends State<TemTile> {
         bottom: 0,
         right: 0,
         child: Hero(
-          tag: widget.temtem.wikiPortraitUrlLarge,
+          tag: temtem.wikiPortraitUrlLarge,
           child: _TemtemImage(
             itemHeight: itemHeight,
-            imageUrl: widget.temtem.wikiPortraitUrlLarge,
+            imageUrl: temtem.wikiPortraitUrlLarge,
           ),
         ),
       ),
@@ -95,7 +91,7 @@ class _TemTileState extends State<TemTile> {
         top: 10,
         right: 14,
         child: Text(
-          "#${widget.temtem.number}",
+          "#${temtem.number}",
           style: TextStyles.temtemNumber,
         ),
       ),
@@ -103,7 +99,7 @@ class _TemTileState extends State<TemTile> {
   }
 
   List<Widget> _buildTypes() {
-    final widgetTypes = widget.temtem.types
+    final widgetTypes = temtem.types
         .map((type) => TileType(type))
         .expand((item) => [item, const SizedBox(height: 6)]);
     return widgetTypes.toList();

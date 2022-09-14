@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../router.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
 
@@ -35,7 +36,10 @@ class LocationCard extends StatelessWidget {
                         color: MyColors.lightBackground,
                       ),
                       child: ListTile(
-                        onTap: () => context.pushNamed('map', extra: location),
+                        onTap: () => context.pushNamed(
+                          AppRoute.map.name,
+                          extra: [temtem, location],
+                        ),
                         title: Text(
                           location.location,
                           overflow: TextOverflow.ellipsis,

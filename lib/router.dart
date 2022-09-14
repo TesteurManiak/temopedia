@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
-import 'bloc/temtems/temtems_cubit.dart';
 import 'map/map_page.dart';
 
 import 'presentation/views/home/home_page.dart';
@@ -14,39 +12,37 @@ GoRouter createRouter() {
     debugLogDiagnostics: kDebugMode,
     routes: [
       GoRoute(
-        path: '/',
-        name: 'root',
+        path: AppRoute.home.path,
+        name: AppRoute.home.name,
         builder: (_, __) => const HomePage(),
-        routes: [
-          GoRoute(
-            path: 'temtem/:id',
-            name: 'temtem',
-            builder: (context, state) {
-              final id = int.parse(state.params['id']!);
-              final temtem = context
-                  .read<TemtemsCubit>()
-                  .temtems
-                  .firstWhere((temtem) => temtem.number == id);
-              return TemtemPage(temtem);
-            },
-            routes: [
-              GoRoute(
-                path: 'map',
-                name: 'map',
-                builder: (context, state) {
-                  final location = state.extra as TemLocation;
-                  final id = int.parse(state.params['id']!);
-                  final temtem = context
-                      .read<TemtemsCubit>()
-                      .temtems
-                      .firstWhere((temtem) => temtem.number == id);
-                  return MapPage(location, temtem);
-                },
-              ),
-            ],
-          ),
-        ],
+      ),
+      GoRoute(
+        path: AppRoute.temtem.path,
+        name: AppRoute.temtem.name,
+        builder: (context, state) {
+          final temtem = state.extra as TemTemApiTem;
+          return TemtemPage(temtem);
+        },
+      ),
+      GoRoute(
+        path: AppRoute.map.path,
+        name: AppRoute.map.name,
+        builder: (context, state) {
+          final args = state.extra as Iterable;
+          final temtem = args.first as TemTemApiTem;
+          final location = args.last as TemLocation;
+          return MapPage(location, temtem);
+        },
       ),
     ],
   );
+}
+
+enum AppRoute {
+  home('/'),
+  temtem('/temtem'),
+  map('/map');
+
+  final String path;
+  const AppRoute(this.path);
 }
