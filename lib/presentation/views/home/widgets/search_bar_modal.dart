@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../../utils/search_bar.dart';
 
 class SearchBarModal extends StatelessWidget {
-  const SearchBarModal({super.key});
+  final String initialText;
+
+  const SearchBarModal({super.key, required this.initialText});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class SearchBarModal extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
-          const SearchBar(margin: EdgeInsets.all(0)),
+          SearchBar(margin: EdgeInsets.zero, initialText: initialText),
           SizedBox(height: MediaQuery.of(context).viewInsets.bottom + 18)
         ],
       ),

@@ -5,10 +5,12 @@ import '../styles/theme.dart';
 
 class SearchBar extends StatefulWidget {
   final EdgeInsets margin;
+  final String initialText;
 
   const SearchBar({
     super.key,
     this.margin = const EdgeInsets.symmetric(horizontal: 28),
+    this.initialText = '',
   });
 
   @override
@@ -16,7 +18,13 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
-  final _controller = TextEditingController();
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialText);
+  }
 
   @override
   void dispose() {
@@ -52,7 +60,7 @@ class _SearchBarState extends State<SearchBar> {
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear),
-                  onPressed: () => _controller.clear(),
+                  onPressed: _controller.clear,
                 ),
               ),
             ),

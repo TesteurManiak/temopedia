@@ -15,17 +15,20 @@ class FilterDialButton extends StatefulWidget {
 }
 
 class _FilterDialButtonState extends State<FilterDialButton> {
-  Future<void> _showSearchModal(BuildContext context) async {
+  late final _searchCubit = context.read<SearchCubit>();
+
+  Future<void> _showSearchModal() async {
     final searchText = await showModalBottomSheet<String>(
       context: context,
-      builder: (_) => const SearchBarModal(),
+      builder: (_) =>
+          SearchBarModal(initialText: _searchCubit.state.searchText),
     );
     if (mounted && searchText != null) {
       context.read<SearchCubit>().setSearchText(searchText);
     }
   }
 
-  void _showTypeModal(BuildContext context) {
+  void _showTypeModal() {
     showModalBottomSheet(
       context: context,
       builder: (_) => const SelectTypeModal(),
@@ -45,12 +48,12 @@ class _FilterDialButtonState extends State<FilterDialButton> {
         SpeedDialChild(
           label: "Search name",
           child: const Icon(Icons.search),
-          onTap: () => _showSearchModal(context),
+          onTap: _showSearchModal,
         ),
         SpeedDialChild(
           label: "Type",
           child: const Icon(Icons.sort),
-          onTap: () => _showTypeModal(context),
+          onTap: _showTypeModal,
         ),
         SpeedDialChild(
           label: "Favorite",

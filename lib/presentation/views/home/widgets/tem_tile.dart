@@ -100,7 +100,7 @@ class TemTile extends StatelessWidget {
 
   List<Widget> _buildTypes() {
     final widgetTypes = temtem.types
-        .map((type) => TileType(type))
+        .map(TileType.new)
         .expand((item) => [item, const SizedBox(height: 6)]);
     return widgetTypes.toList();
   }

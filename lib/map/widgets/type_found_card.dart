@@ -25,7 +25,7 @@ class TypeFoundCard extends StatelessWidget {
           const SizedBox(width: 8),
           Wrap(
             spacing: 5,
-            children: <Widget>[...types.map((type) => TypeChip(type)).toList()],
+            children: <Widget>[...types.map(TypeChip.new).toList()],
           )
         ],
       ),

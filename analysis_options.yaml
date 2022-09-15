@@ -19,3 +19,4 @@ linter:
     - directives_ordering
     - always_declare_return_types
     - sort_child_properties_last
+    - unnecessary_lambdas
