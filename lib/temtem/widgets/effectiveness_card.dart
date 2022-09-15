@@ -19,7 +19,7 @@ class EffectivenessCard extends StatefulWidget {
 class _EffectivenessCardState extends State<EffectivenessCard> {
   final List<Weakness> _weaknesses = [];
 
-  _buildWeakness(String label, double? value) {
+  Widget _buildWeakness(String label, double? value) {
     final modifier = value ?? 0.0;
     return Row(
       mainAxisSize: MainAxisSize.max,
@@ -40,7 +40,7 @@ class _EffectivenessCardState extends State<EffectivenessCard> {
     );
   }
 
-  _getWeaknesses() {
+  void _getWeaknesses() {
     for (var weakness in globals.weaknesses) {
       if (widget.types.map((e) => e.name).contains(weakness.name)) {
         _weaknesses.add(weakness);

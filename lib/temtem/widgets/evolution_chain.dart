@@ -1,20 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:temtem_api_wrapper/temtem_api_wrapper.dart';
 
+import '../../bloc/temtems/temtems_cubit.dart';
 import '../../styles/text_styles.dart';
 import '../../styles/theme.dart';
-import '../../utils/globals.dart' as globals;
-import '../temtem_args.dart';
-import '../temtem_page_args.dart';
 
 class TemtemNode extends StatelessWidget {
   final int number;
 
   const TemtemNode(this.number, {super.key});
 
-  TemTemApiTem? _getTemtem() {
-    for (final elem in globals.temtems) {
+  TemTemApiTem? _getTemtem(BuildContext context) {
+    final temtems = context.read<TemtemsCubit>().temtems;
+    for (final elem in temtems) {
       if (elem.number == number) return elem;
     }
     return null;
@@ -24,16 +25,17 @@ class TemtemNode extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final calcSize = screenHeight * 0.1;
-    final temtem = _getTemtem();
+    final temtem = _getTemtem(context);
 
     return temtem == null
-        ? Container()
+        ? const SizedBox.shrink()
         : GestureDetector(
-            onTap: () => Navigator.pushReplacementNamed(
-              context,
-              TemtemPageArgs.routeName,
-              arguments: TemtemArgs(temtem: temtem),
-            ),
+            onTap: () {
+              context.pushNamed(
+                'temtem',
+                extra: temtem,
+              );
+            },
             child: Column(
               children: <Widget>[
                 CachedNetworkImage(
