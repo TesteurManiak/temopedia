@@ -15,7 +15,7 @@ class HomePageProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SearchCubit(temtemsCubit: context.read()),
+      create: (_) => SearchCubit(),
       child: const HomePage(),
     );
   }
@@ -31,7 +31,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TemtemsCubit, TemtemsState>(
+    return BlocConsumer<TemtemsCubit, TemtemsState>(
+      listener: (context, state) {
+        if (state is TemtemsLoaded) {
+          context.read<SearchCubit>().updateFullFilterList(state.temtems);
+        }
+      },
       builder: (context, state) {
         return Scaffold(
           floatingActionButton:
