@@ -4,11 +4,11 @@
 
 # <img src="assets/icon.png" height="60"> Temopedia
 
-[![pipeline status](https://img.shields.io/gitlab/pipeline/G_Roux/temopedia)](https://gitlab.com/G_Roux/temopedia/commits/master)
-
-**WIP:** Mobile app companion for the game [Temtem](https://crema.gg/games/temtem/) to get an easy access to creature's information using [Mael's API](#credits).
+Mobile app companion for the game [Temtem](https://crema.gg/games/temtem/) to get an easy access to creature's information using [Mael's API](#credits).
 
 I am not affiliated with Temtem's company. This is a personal project I'm doing on my free time.
+
+**This project is under refactoring. Everything might not work as expected.**
 
 ## Screenshots
 
@@ -44,11 +44,8 @@ flutter install
 * [ ] MoveDex
 * [ ] UI/UX
 
-## Author
-
-* [Guillaume Roux](https://gitlab.com/G_Roux) - Junior Developer
-
 ## Credits
 
+* [Guillaume Roux](https://github.com/TesteurManiak) - Flutter Developer
 * [Mael](https://github.com/maael) - The talented developer who made the [API](https://github.com/maael/temtem-api)
 
