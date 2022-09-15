@@ -1,43 +1,37 @@
 part of 'search_cubit.dart';
 
-abstract class SearchState extends Equatable {
-  final SearchStateType type;
-  final String? searchText;
+class SearchState extends Equatable {
+  final String searchText;
+  final Set<TemTemApiType> types;
+  final bool filterByFavorite;
+  final List<TemTemApiTem> filteredTemtems;
 
-  bool get isLoading => type == SearchStateType.loading;
-  bool get hasError => type == SearchStateType.error;
+  const SearchState({
+    this.searchText = '',
+    this.types = const {},
+    this.filterByFavorite = false,
+    this.filteredTemtems = const [],
+  });
 
-  const SearchState({required this.type, this.searchText});
-
-  @override
-  List<Object?> get props => [type, searchText];
-}
-
-class SearchInitial extends SearchState {
-  const SearchInitial() : super(type: SearchStateType.initial);
-}
-
-class SearchLoading extends SearchState {
-  const SearchLoading() : super(type: SearchStateType.loading);
-}
-
-class SearchLoaded extends SearchState {
-  const SearchLoaded() : super(type: SearchStateType.loaded);
-}
-
-class SearchError extends SearchState {
-  const SearchError({required this.message})
-      : super(type: SearchStateType.error);
-
-  final String message;
+  bool get hasSearchText => searchText.isNotEmpty;
+  bool get hasTypes => types.isNotEmpty;
+  bool get hasSearchFilters => hasSearchText || hasTypes || filterByFavorite;
 
   @override
-  List<Object?> get props => [type, searchText, message];
-}
+  List<Object?> get props =>
+      [searchText, types, filterByFavorite, filteredTemtems];
 
-enum SearchStateType {
-  initial,
-  loading,
-  loaded,
-  error,
+  SearchState copyWith({
+    String? searchText,
+    Set<TemTemApiType>? types,
+    bool? filterByFavorite,
+    List<TemTemApiTem>? filteredTemtems,
+  }) {
+    return SearchState(
+      searchText: searchText ?? this.searchText,
+      types: types ?? this.types,
+      filterByFavorite: filterByFavorite ?? this.filterByFavorite,
+      filteredTemtems: filteredTemtems ?? this.filteredTemtems,
+    );
+  }
 }

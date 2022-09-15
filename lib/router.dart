@@ -14,7 +14,7 @@ GoRouter createRouter() {
       GoRoute(
         path: AppRoute.home.path,
         name: AppRoute.home.name,
-        builder: (_, __) => const HomePage(),
+        builder: (_, __) => const HomePageProvider(),
       ),
       GoRoute(
         path: AppRoute.temtem.path,

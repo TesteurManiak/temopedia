@@ -16,6 +16,14 @@ class SearchBar extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBar> {
+  final _controller = TextEditingController();
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,9 +41,10 @@ class _SearchBarState extends State<SearchBar> {
           const SizedBox(width: 13),
           Expanded(
             child: TextField(
+              controller: _controller,
               autofocus: true,
               autocorrect: false,
-              onSubmitted: (_) => Navigator.pop(context),
+              onSubmitted: (value) => Navigator.pop(context, value),
               style: TextStyles.background,
               decoration: InputDecoration(
                 hintText: "Search Temtems",
@@ -43,7 +52,7 @@ class _SearchBarState extends State<SearchBar> {
                 border: InputBorder.none,
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.clear),
-                  onPressed: () {},
+                  onPressed: () => _controller.clear(),
                 ),
               ),
             ),

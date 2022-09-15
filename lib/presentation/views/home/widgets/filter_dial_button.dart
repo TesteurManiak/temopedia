@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
+import '../../../../bloc/search/search_cubit.dart';
 import '../../../../theme/theme.dart';
 import 'search_bar_modal.dart';
 import 'select_type_modal.dart';
 
-class FilterDialButton extends StatelessWidget {
+class FilterDialButton extends StatefulWidget {
   const FilterDialButton({super.key});
 
-  void _showSearchModal(BuildContext context) {
-    showModalBottomSheet(
+  @override
+  State<FilterDialButton> createState() => _FilterDialButtonState();
+}
+
+class _FilterDialButtonState extends State<FilterDialButton> {
+  Future<void> _showSearchModal(BuildContext context) async {
+    final searchText = await showModalBottomSheet<String>(
       context: context,
       builder: (_) => const SearchBarModal(),
     );
+    if (mounted && searchText != null) {
+      context.read<SearchCubit>().setSearchText(searchText);
+    }
   }
 
   void _showTypeModal(BuildContext context) {
