@@ -10,6 +10,17 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 **This project is under refactoring. Everything might not work as expected.**
 
+## Refacto
+
+- [ ] Temtems page
+  - [x] Temtems list
+  - [x] Filter by name
+  - [ ] Filter by type
+  - [ ] Filter by favorite
+  - [x] Reset filters
+- [ ] Temtem details page
+- [ ] Temtem map page
+
 ## Screenshots
 
 <div align="center">
@@ -48,13 +59,6 @@ flutter pub run flutter_launcher_icons:main
 ``` bash
 flutter pub run flutter_native_splash:create
 ```
-
-## Todo
-
-* [ ] TemtemPage - Display location map **(Not enough data)**
-* [x] TemtemPage - Add type effectiveness
-* [ ] MoveDex
-* [ ] UI/UX
 
 ## Credits
 
