@@ -63,7 +63,7 @@ class _FilterDialButtonState extends State<FilterDialButton> {
         SpeedDialChild(
           label: "Clear Filter",
           child: const Icon(Icons.clear),
-          onTap: () {},
+          onTap: _searchCubit.resetFilters,
         ),
       ],
     );

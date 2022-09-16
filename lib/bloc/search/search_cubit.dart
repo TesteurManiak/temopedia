@@ -19,7 +19,13 @@ class SearchCubit extends Cubit<SearchState> {
   void setSearchText(String searchText) =>
       _filter(state.copyWith(searchText: searchText));
 
-  void resetFilters() => _filter(const SearchState());
+  void resetFilters() => _filter(
+        state.copyWith(
+          searchText: '',
+          types: null,
+          filterByFavorite: false,
+        ),
+      );
 
   void updateFullFilterList(List<TemTemApiTem> temtems) =>
       _filter(state.copyWith(fullList: temtems));
