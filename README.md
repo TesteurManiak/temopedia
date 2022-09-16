@@ -20,6 +20,7 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
   - [x] Reset filters
 - [ ] Temtem details page
 - [ ] Temtem map page
+- [ ] Offline mode
 
 ## Screenshots
 
