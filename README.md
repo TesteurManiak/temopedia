@@ -37,6 +37,18 @@ flutter build ios
 flutter install
 ```
 
+## Generate the app icon
+
+``` bash
+flutter pub run flutter_launcher_icons:main
+```
+
+## Generate splash screen
+
+``` bash
+flutter pub run flutter_native_splash:create
+```
+
 ## Todo
 
 * [ ] TemtemPage - Display location map **(Not enough data)**
