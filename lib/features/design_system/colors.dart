@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../styles/theme.dart';
 import 'palette.dart';
 
 @immutable

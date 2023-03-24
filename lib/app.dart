@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'router.dart';
-import 'theme/theme.dart';
+import 'features/design_system/theme.dart';
+import 'features/router/router.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
