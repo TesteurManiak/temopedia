@@ -2,6 +2,29 @@ import 'package:flutter/material.dart';
 
 import 'palette.dart';
 
+@immutable
+class AppTextTheme extends ThemeExtension<AppTextTheme> {
+  const AppTextTheme();
+
+  const AppTextTheme.regular();
+
+  @override
+  AppTextTheme copyWith() {
+    // TODO: implement copyWith
+    return this;
+  }
+
+  @override
+  AppTextTheme lerp(ThemeExtension<AppTextTheme>? other, double t) {
+    if (other is! AppTextTheme) {
+      return this;
+    }
+
+    // TODO: implement lerp
+    return this;
+  }
+}
+
 class TextStyles {
   const TextStyles._();
 

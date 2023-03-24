@@ -11,16 +11,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final _router = createRouter();
+  final router = createRouter();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Temopedia',
-      theme: AppTheme.dark,
-      routeInformationParser: _router.routeInformationParser,
-      routerDelegate: _router.routerDelegate,
-      routeInformationProvider: _router.routeInformationProvider,
+      theme: AppTheme.dark(),
+      routerConfig: router,
     );
   }
 }

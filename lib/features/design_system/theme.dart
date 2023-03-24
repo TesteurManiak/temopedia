@@ -1,27 +1,24 @@
-
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
-import 'radius.dart';
+import 'text_styles.dart';
 
 @immutable
 class AppTheme extends ThemeExtension<AppTheme> {
   const AppTheme({
     required this.colors,
-    required this.radius,
-    required this.borderRadius,
+    required this.textTheme,
   });
 
   final AppColors colors;
-  final AppRadius radius;
-  final AppBorderRadius borderRadius;
+  final AppTextTheme textTheme;
 
-  static ThemeData get dark {
+  static ThemeData dark() {
     const appTheme = AppTheme(
       colors: AppColors.dark(),
-      radius: AppRadius.regular(),
-      borderRadius: AppBorderRadius(AppRadius.regular()),
+      textTheme: AppTextTheme.regular(),
     );
+
     final baseDark = ThemeData.dark();
     return baseDark.copyWith(
       brightness: Brightness.dark,
@@ -34,8 +31,10 @@ class AppTheme extends ThemeExtension<AppTheme> {
       dialogBackgroundColor: appTheme.colors.dialog,
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: appTheme.colors.bottomSheet,
-        shape: RoundedRectangleBorder(
-          borderRadius: appTheme.borderRadius.topBig,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(30),
+          ),
         ),
       ),
       extensions: [appTheme],
@@ -43,19 +42,21 @@ class AppTheme extends ThemeExtension<AppTheme> {
   }
 
   static AppTheme of(BuildContext context) {
-    return Theme.of(context).extension<AppTheme>()!;
+    return maybeOf(context)!;
+  }
+
+  static AppTheme? maybeOf(BuildContext context) {
+    return Theme.of(context).extension<AppTheme>();
   }
 
   @override
   AppTheme copyWith({
     AppColors? colors,
-    AppRadius? radius,
-    AppBorderRadius? borderRadius,
+    AppTextTheme? textTheme,
   }) {
     return AppTheme(
       colors: colors ?? this.colors,
-      radius: radius ?? this.radius,
-      borderRadius: borderRadius ?? this.borderRadius,
+      textTheme: textTheme ?? this.textTheme,
     );
   }
 
@@ -66,8 +67,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
     }
     return AppTheme(
       colors: colors.lerp(other.colors, t),
-      radius: radius.lerp(other.radius, t),
-      borderRadius: borderRadius.lerp(other.borderRadius, t),
+      textTheme: textTheme.lerp(other.textTheme, t),
     );
   }
 }
