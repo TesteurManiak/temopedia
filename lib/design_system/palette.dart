@@ -12,10 +12,6 @@ class Palette {
   static const darkOrange = Color(0xFF2e2f29);
 }
 
-class MyImages {
-  static const String logo = "assets/logo.png";
-}
-
 class MyColors {
   static const Color darkOrange = Color.fromRGBO(255, 201, 108, 1);
   static const Color background = Color.fromRGBO(31, 24, 58, 1);
