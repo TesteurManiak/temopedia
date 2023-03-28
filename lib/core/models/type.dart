@@ -29,15 +29,15 @@ enum Type {
   unknown;
 }
 
-class TypeListConverter implements JsonConverter<List<Type>, List<String>> {
+class TypeListConverter implements JsonConverter<List<Type>, List> {
   const TypeListConverter();
 
   @override
-  List<Type> fromJson(List<String> json) {
+  List<Type> fromJson(List json) {
     return json
         .map(
           (e) => Type.values.firstWhere(
-            (elem) => elem.name == e.toLowerCase(),
+            (elem) => elem.name == e.toString().toLowerCase(),
             orElse: () => Type.unknown,
           ),
         )

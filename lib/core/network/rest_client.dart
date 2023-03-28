@@ -105,8 +105,15 @@ class RestClient {
         );
       }
 
-      return const Result.failure(
-        AppError(type: AppErrorType.other),
+      return Result.failure(
+        AppError(type: AppErrorType.other, error: e.toString()),
+      );
+    } catch (e) {
+      return Result.failure(
+        AppError(
+          type: AppErrorType.other,
+          error: e.toString(),
+        ),
       );
     }
   }

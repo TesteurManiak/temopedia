@@ -29,7 +29,7 @@ class Temtem with _$Temtem {
     String? lumaIcon,
     @Default(GenderRatio()) GenderRatio genderRatio,
     @Default(0) int catchRate,
-    @Default(0) int hatchMins,
+    @Default(0) double hatchMins,
     @Default(Stats()) Stats tvYields,
     String? gameDescription,
     String? wikiRenderStaticUrl,

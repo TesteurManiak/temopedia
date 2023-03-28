@@ -37,7 +37,7 @@ mixin _$Temtem {
   String? get lumaIcon => throw _privateConstructorUsedError;
   GenderRatio get genderRatio => throw _privateConstructorUsedError;
   int get catchRate => throw _privateConstructorUsedError;
-  int get hatchMins => throw _privateConstructorUsedError;
+  double get hatchMins => throw _privateConstructorUsedError;
   Stats get tvYields => throw _privateConstructorUsedError;
   String? get gameDescription => throw _privateConstructorUsedError;
   String? get wikiRenderStaticUrl => throw _privateConstructorUsedError;
@@ -76,7 +76,7 @@ abstract class $TemtemCopyWith<$Res> {
       String? lumaIcon,
       GenderRatio genderRatio,
       int catchRate,
-      int hatchMins,
+      double hatchMins,
       Stats tvYields,
       String? gameDescription,
       String? wikiRenderStaticUrl,
@@ -204,7 +204,7 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
       hatchMins: null == hatchMins
           ? _value.hatchMins
           : hatchMins // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       tvYields: null == tvYields
           ? _value.tvYields
           : tvYields // ignore: cast_nullable_to_non_nullable
@@ -316,7 +316,7 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
       String? lumaIcon,
       GenderRatio genderRatio,
       int catchRate,
-      int hatchMins,
+      double hatchMins,
       Stats tvYields,
       String? gameDescription,
       String? wikiRenderStaticUrl,
@@ -446,7 +446,7 @@ class __$$_TemtemCopyWithImpl<$Res>
       hatchMins: null == hatchMins
           ? _value.hatchMins
           : hatchMins // ignore: cast_nullable_to_non_nullable
-              as int,
+              as double,
       tvYields: null == tvYields
           ? _value.tvYields
           : tvYields // ignore: cast_nullable_to_non_nullable
@@ -597,7 +597,7 @@ class _$_Temtem implements _Temtem {
   final int catchRate;
   @override
   @JsonKey()
-  final int hatchMins;
+  final double hatchMins;
   @override
   @JsonKey()
   final Stats tvYields;
@@ -745,7 +745,7 @@ abstract class _Temtem implements Temtem {
       final String? lumaIcon,
       final GenderRatio genderRatio,
       final int catchRate,
-      final int hatchMins,
+      final double hatchMins,
       final Stats tvYields,
       final String? gameDescription,
       final String? wikiRenderStaticUrl,
@@ -793,7 +793,7 @@ abstract class _Temtem implements Temtem {
   @override
   int get catchRate;
   @override
-  int get hatchMins;
+  double get hatchMins;
   @override
   Stats get tvYields;
   @override

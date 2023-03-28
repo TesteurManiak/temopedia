@@ -60,14 +60,14 @@ class ApiClient {
   }
 }
 
-final httpClientProvider = Provider<AppHttpClient>((_) {
+final httpClientProvider = Provider.autoDispose<AppHttpClient>((_) {
   return AppHttpClient();
 });
 
-final apiClientProvider = Provider<ApiClient>((ref) {
+final apiClientProvider = Provider.autoDispose<ApiClient>((ref) {
   return ApiClient(
     restClient: RestClient(
-      baseUri: Uri.parse('https://temtem-api.mael.tech/api/'),
+      baseUri: Uri.parse('https://temtem-api.mael.tech'),
       httpClient: ref.watch(httpClientProvider),
     ),
   );

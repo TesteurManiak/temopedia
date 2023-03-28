@@ -11,7 +11,7 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
       name: json['name'] as String?,
       types: json['types'] == null
           ? const <Type>[]
-          : const TypeListConverter().fromJson(json['types'] as List<String>),
+          : const TypeListConverter().fromJson(json['types'] as List),
       portraitWikiUrl: json['portraitWikiUrl'] as String?,
       wikiUrl: json['wikiUrl'] as String?,
       stats: json['stats'] == null
@@ -42,7 +42,7 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
           ? const GenderRatio()
           : GenderRatio.fromJson(json['genderRatio'] as Map<String, dynamic>),
       catchRate: json['catchRate'] as int? ?? 0,
-      hatchMins: json['hatchMins'] as int? ?? 0,
+      hatchMins: (json['hatchMins'] as num?)?.toDouble() ?? 0,
       tvYields: json['tvYields'] == null
           ? const Stats()
           : Stats.fromJson(json['tvYields'] as Map<String, dynamic>),
