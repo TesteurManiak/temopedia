@@ -21,16 +21,12 @@ Stats _$StatsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Stats {
   int get hp => throw _privateConstructorUsedError;
-  int get st => throw _privateConstructorUsedError;
-  int get dx => throw _privateConstructorUsedError;
-  int get iq => throw _privateConstructorUsedError;
-  int get sp => throw _privateConstructorUsedError;
-  int get at => throw _privateConstructorUsedError;
-  int get df => throw _privateConstructorUsedError;
-  int get sa => throw _privateConstructorUsedError;
-  int get sd => throw _privateConstructorUsedError;
-  int get ev => throw _privateConstructorUsedError;
-  int get ac => throw _privateConstructorUsedError;
+  int get sta => throw _privateConstructorUsedError;
+  int get spd => throw _privateConstructorUsedError;
+  int get atk => throw _privateConstructorUsedError;
+  int get def => throw _privateConstructorUsedError;
+  int get spatk => throw _privateConstructorUsedError;
+  int get spdef => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,18 +38,7 @@ abstract class $StatsCopyWith<$Res> {
   factory $StatsCopyWith(Stats value, $Res Function(Stats) then) =
       _$StatsCopyWithImpl<$Res, Stats>;
   @useResult
-  $Res call(
-      {int hp,
-      int st,
-      int dx,
-      int iq,
-      int sp,
-      int at,
-      int df,
-      int sa,
-      int sd,
-      int ev,
-      int ac});
+  $Res call({int hp, int sta, int spd, int atk, int def, int spatk, int spdef});
 }
 
 /// @nodoc
@@ -70,61 +55,41 @@ class _$StatsCopyWithImpl<$Res, $Val extends Stats>
   @override
   $Res call({
     Object? hp = null,
-    Object? st = null,
-    Object? dx = null,
-    Object? iq = null,
-    Object? sp = null,
-    Object? at = null,
-    Object? df = null,
-    Object? sa = null,
-    Object? sd = null,
-    Object? ev = null,
-    Object? ac = null,
+    Object? sta = null,
+    Object? spd = null,
+    Object? atk = null,
+    Object? def = null,
+    Object? spatk = null,
+    Object? spdef = null,
   }) {
     return _then(_value.copyWith(
       hp: null == hp
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as int,
-      st: null == st
-          ? _value.st
-          : st // ignore: cast_nullable_to_non_nullable
+      sta: null == sta
+          ? _value.sta
+          : sta // ignore: cast_nullable_to_non_nullable
               as int,
-      dx: null == dx
-          ? _value.dx
-          : dx // ignore: cast_nullable_to_non_nullable
+      spd: null == spd
+          ? _value.spd
+          : spd // ignore: cast_nullable_to_non_nullable
               as int,
-      iq: null == iq
-          ? _value.iq
-          : iq // ignore: cast_nullable_to_non_nullable
+      atk: null == atk
+          ? _value.atk
+          : atk // ignore: cast_nullable_to_non_nullable
               as int,
-      sp: null == sp
-          ? _value.sp
-          : sp // ignore: cast_nullable_to_non_nullable
+      def: null == def
+          ? _value.def
+          : def // ignore: cast_nullable_to_non_nullable
               as int,
-      at: null == at
-          ? _value.at
-          : at // ignore: cast_nullable_to_non_nullable
+      spatk: null == spatk
+          ? _value.spatk
+          : spatk // ignore: cast_nullable_to_non_nullable
               as int,
-      df: null == df
-          ? _value.df
-          : df // ignore: cast_nullable_to_non_nullable
-              as int,
-      sa: null == sa
-          ? _value.sa
-          : sa // ignore: cast_nullable_to_non_nullable
-              as int,
-      sd: null == sd
-          ? _value.sd
-          : sd // ignore: cast_nullable_to_non_nullable
-              as int,
-      ev: null == ev
-          ? _value.ev
-          : ev // ignore: cast_nullable_to_non_nullable
-              as int,
-      ac: null == ac
-          ? _value.ac
-          : ac // ignore: cast_nullable_to_non_nullable
+      spdef: null == spdef
+          ? _value.spdef
+          : spdef // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -136,18 +101,7 @@ abstract class _$$_StatsCopyWith<$Res> implements $StatsCopyWith<$Res> {
       __$$_StatsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int hp,
-      int st,
-      int dx,
-      int iq,
-      int sp,
-      int at,
-      int df,
-      int sa,
-      int sd,
-      int ev,
-      int ac});
+  $Res call({int hp, int sta, int spd, int atk, int def, int spatk, int spdef});
 }
 
 /// @nodoc
@@ -160,61 +114,41 @@ class __$$_StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res, _$_Stats>
   @override
   $Res call({
     Object? hp = null,
-    Object? st = null,
-    Object? dx = null,
-    Object? iq = null,
-    Object? sp = null,
-    Object? at = null,
-    Object? df = null,
-    Object? sa = null,
-    Object? sd = null,
-    Object? ev = null,
-    Object? ac = null,
+    Object? sta = null,
+    Object? spd = null,
+    Object? atk = null,
+    Object? def = null,
+    Object? spatk = null,
+    Object? spdef = null,
   }) {
     return _then(_$_Stats(
       hp: null == hp
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as int,
-      st: null == st
-          ? _value.st
-          : st // ignore: cast_nullable_to_non_nullable
+      sta: null == sta
+          ? _value.sta
+          : sta // ignore: cast_nullable_to_non_nullable
               as int,
-      dx: null == dx
-          ? _value.dx
-          : dx // ignore: cast_nullable_to_non_nullable
+      spd: null == spd
+          ? _value.spd
+          : spd // ignore: cast_nullable_to_non_nullable
               as int,
-      iq: null == iq
-          ? _value.iq
-          : iq // ignore: cast_nullable_to_non_nullable
+      atk: null == atk
+          ? _value.atk
+          : atk // ignore: cast_nullable_to_non_nullable
               as int,
-      sp: null == sp
-          ? _value.sp
-          : sp // ignore: cast_nullable_to_non_nullable
+      def: null == def
+          ? _value.def
+          : def // ignore: cast_nullable_to_non_nullable
               as int,
-      at: null == at
-          ? _value.at
-          : at // ignore: cast_nullable_to_non_nullable
+      spatk: null == spatk
+          ? _value.spatk
+          : spatk // ignore: cast_nullable_to_non_nullable
               as int,
-      df: null == df
-          ? _value.df
-          : df // ignore: cast_nullable_to_non_nullable
-              as int,
-      sa: null == sa
-          ? _value.sa
-          : sa // ignore: cast_nullable_to_non_nullable
-              as int,
-      sd: null == sd
-          ? _value.sd
-          : sd // ignore: cast_nullable_to_non_nullable
-              as int,
-      ev: null == ev
-          ? _value.ev
-          : ev // ignore: cast_nullable_to_non_nullable
-              as int,
-      ac: null == ac
-          ? _value.ac
-          : ac // ignore: cast_nullable_to_non_nullable
+      spdef: null == spdef
+          ? _value.spdef
+          : spdef // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -225,16 +159,12 @@ class __$$_StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res, _$_Stats>
 class _$_Stats extends _Stats {
   const _$_Stats(
       {this.hp = 0,
-      this.st = 0,
-      this.dx = 0,
-      this.iq = 0,
-      this.sp = 0,
-      this.at = 0,
-      this.df = 0,
-      this.sa = 0,
-      this.sd = 0,
-      this.ev = 0,
-      this.ac = 0})
+      this.sta = 0,
+      this.spd = 0,
+      this.atk = 0,
+      this.def = 0,
+      this.spatk = 0,
+      this.spdef = 0})
       : super._();
 
   factory _$_Stats.fromJson(Map<String, dynamic> json) =>
@@ -245,38 +175,26 @@ class _$_Stats extends _Stats {
   final int hp;
   @override
   @JsonKey()
-  final int st;
+  final int sta;
   @override
   @JsonKey()
-  final int dx;
+  final int spd;
   @override
   @JsonKey()
-  final int iq;
+  final int atk;
   @override
   @JsonKey()
-  final int sp;
+  final int def;
   @override
   @JsonKey()
-  final int at;
+  final int spatk;
   @override
   @JsonKey()
-  final int df;
-  @override
-  @JsonKey()
-  final int sa;
-  @override
-  @JsonKey()
-  final int sd;
-  @override
-  @JsonKey()
-  final int ev;
-  @override
-  @JsonKey()
-  final int ac;
+  final int spdef;
 
   @override
   String toString() {
-    return 'Stats(hp: $hp, st: $st, dx: $dx, iq: $iq, sp: $sp, at: $at, df: $df, sa: $sa, sd: $sd, ev: $ev, ac: $ac)';
+    return 'Stats(hp: $hp, sta: $sta, spd: $spd, atk: $atk, def: $def, spatk: $spatk, spdef: $spdef)';
   }
 
   @override
@@ -285,22 +203,18 @@ class _$_Stats extends _Stats {
         (other.runtimeType == runtimeType &&
             other is _$_Stats &&
             (identical(other.hp, hp) || other.hp == hp) &&
-            (identical(other.st, st) || other.st == st) &&
-            (identical(other.dx, dx) || other.dx == dx) &&
-            (identical(other.iq, iq) || other.iq == iq) &&
-            (identical(other.sp, sp) || other.sp == sp) &&
-            (identical(other.at, at) || other.at == at) &&
-            (identical(other.df, df) || other.df == df) &&
-            (identical(other.sa, sa) || other.sa == sa) &&
-            (identical(other.sd, sd) || other.sd == sd) &&
-            (identical(other.ev, ev) || other.ev == ev) &&
-            (identical(other.ac, ac) || other.ac == ac));
+            (identical(other.sta, sta) || other.sta == sta) &&
+            (identical(other.spd, spd) || other.spd == spd) &&
+            (identical(other.atk, atk) || other.atk == atk) &&
+            (identical(other.def, def) || other.def == def) &&
+            (identical(other.spatk, spatk) || other.spatk == spatk) &&
+            (identical(other.spdef, spdef) || other.spdef == spdef));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, hp, st, dx, iq, sp, at, df, sa, sd, ev, ac);
+      Object.hash(runtimeType, hp, sta, spd, atk, def, spatk, spdef);
 
   @JsonKey(ignore: true)
   @override
@@ -319,16 +233,12 @@ class _$_Stats extends _Stats {
 abstract class _Stats extends Stats {
   const factory _Stats(
       {final int hp,
-      final int st,
-      final int dx,
-      final int iq,
-      final int sp,
-      final int at,
-      final int df,
-      final int sa,
-      final int sd,
-      final int ev,
-      final int ac}) = _$_Stats;
+      final int sta,
+      final int spd,
+      final int atk,
+      final int def,
+      final int spatk,
+      final int spdef}) = _$_Stats;
   const _Stats._() : super._();
 
   factory _Stats.fromJson(Map<String, dynamic> json) = _$_Stats.fromJson;
@@ -336,25 +246,17 @@ abstract class _Stats extends Stats {
   @override
   int get hp;
   @override
-  int get st;
+  int get sta;
   @override
-  int get dx;
+  int get spd;
   @override
-  int get iq;
+  int get atk;
   @override
-  int get sp;
+  int get def;
   @override
-  int get at;
+  int get spatk;
   @override
-  int get df;
-  @override
-  int get sa;
-  @override
-  int get sd;
-  @override
-  int get ev;
-  @override
-  int get ac;
+  int get spdef;
   @override
   @JsonKey(ignore: true)
   _$$_StatsCopyWith<_$_Stats> get copyWith =>
