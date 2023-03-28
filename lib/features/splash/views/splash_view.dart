@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/rounded_progress_bar.dart';
+
 class SplashView extends StatelessWidget {
   const SplashView({super.key});
 
@@ -12,7 +14,10 @@ class SplashView extends StatelessWidget {
           children: [
             Image.asset('assets/splash/splash.png'),
             // TODO: replace with a progress bar
-            const Text('Splash'),
+            const SizedBox(
+              width: 180,
+              child: RoundedProgressBar(minHeight: 20),
+            ),
           ],
         ),
       ),

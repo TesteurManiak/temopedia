@@ -44,44 +44,71 @@ class _RoundedProgressBarState extends State<RoundedProgressBar>
 
   @override
   Widget build(BuildContext context) {
-    final textDirection = Directionality.of(context);
-
-    return AnimatedBuilder(
-      animation: controller.view,
-      builder: (context, _) {
-        final minHeight = widget.minHeight ?? 4.0;
-
-        return Container(
-          constraints: BoxConstraints(
-            minWidth: double.infinity,
-            minHeight: minHeight,
-          ),
-          child: CustomPaint(
-            painter: _RoundedProgressPainter(
-              animationValue: controller.value,
-              textDirection: textDirection,
-            ),
-          ),
-        );
-      },
+    return Container(
+      constraints: BoxConstraints(
+        minWidth: double.infinity,
+        minHeight: widget.minHeight ?? 4.0,
+      ),
+      child: CustomPaint(
+        painter: _RoundedProgressPainter(
+          animation: controller,
+          backgroundColor: Colors.grey.shade300,
+          foregroundColor: Colors.blue,
+        ),
+      ),
     );
   }
 }
 
 class _RoundedProgressPainter extends CustomPainter {
   _RoundedProgressPainter({
-    required this.animationValue,
-    required this.textDirection,
-  });
+    required this.animation,
+    required this.backgroundColor,
+    required this.foregroundColor,
+  }) : super(
+          repaint: animation,
+        );
 
-  final double animationValue;
-  final TextDirection textDirection;
+  final Animation<double> animation;
+  final Color backgroundColor;
+  final Color foregroundColor;
 
   @override
   void paint(Canvas canvas, Size size) {
-    // TODO: implement paint
+    // paint the rounded background bar first
+    final backgroundPaint = Paint()
+      ..color = backgroundColor
+      ..style = PaintingStyle.fill;
+
+    final backgroundPath = Path()
+      ..addRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(0, 0, size.width, size.height),
+          Radius.circular(size.height / 2),
+        ),
+      );
+
+    canvas.drawPath(backgroundPath, backgroundPaint);
+
+    // paint the rounded foreground bar
+    final foregroundPaint = Paint()
+      ..color = foregroundColor
+      ..style = PaintingStyle.fill;
+
+    final foregroundPath = Path()
+      ..addRRect(
+        RRect.fromRectAndRadius(
+          Rect.fromLTWH(0, 0, size.width * animation.value, size.height),
+          Radius.circular(size.height / 2),
+        ),
+      );
+
+    canvas.drawPath(foregroundPath, foregroundPaint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(_RoundedProgressPainter oldDelegate) {
+    return oldDelegate.backgroundColor != backgroundColor ||
+        oldDelegate.foregroundColor != foregroundColor;
+  }
 }
