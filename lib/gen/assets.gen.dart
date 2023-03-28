@@ -12,88 +12,104 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/female.png
-  AssetGenImage get female => const AssetGenImage('assets/icons/female.png');
+  /// File path: assets/icons/icn_female.png
+  AssetGenImage get icnFemale =>
+      const AssetGenImage('assets/icons/icn_female.png');
 
-  /// File path: assets/icons/high.png
-  AssetGenImage get high => const AssetGenImage('assets/icons/high.png');
+  /// File path: assets/icons/icn_high.png
+  AssetGenImage get icnHigh => const AssetGenImage('assets/icons/icn_high.png');
 
-  /// File path: assets/icons/low.png
-  AssetGenImage get low => const AssetGenImage('assets/icons/low.png');
+  /// File path: assets/icons/icn_low.png
+  AssetGenImage get icnLow => const AssetGenImage('assets/icons/icn_low.png');
 
-  /// File path: assets/icons/male.png
-  AssetGenImage get male => const AssetGenImage('assets/icons/male.png');
+  /// File path: assets/icons/icn_male.png
+  AssetGenImage get icnMale => const AssetGenImage('assets/icons/icn_male.png');
 
-  /// File path: assets/icons/normal.png
-  AssetGenImage get normal => const AssetGenImage('assets/icons/normal.png');
+  /// File path: assets/icons/icn_normal.png
+  AssetGenImage get icnNormal =>
+      const AssetGenImage('assets/icons/icn_normal.png');
 
-  /// File path: assets/icons/physical.png
-  AssetGenImage get physical =>
-      const AssetGenImage('assets/icons/physical.png');
+  /// File path: assets/icons/icn_physical.png
+  AssetGenImage get icnPhysical =>
+      const AssetGenImage('assets/icons/icn_physical.png');
 
-  /// File path: assets/icons/special.png
-  AssetGenImage get special => const AssetGenImage('assets/icons/special.png');
+  /// File path: assets/icons/icn_special.png
+  AssetGenImage get icnSpecial =>
+      const AssetGenImage('assets/icons/icn_special.png');
 
-  /// File path: assets/icons/status.png
-  AssetGenImage get status => const AssetGenImage('assets/icons/status.png');
+  /// File path: assets/icons/icn_status.png
+  AssetGenImage get icnStatus =>
+      const AssetGenImage('assets/icons/icn_status.png');
 
-  /// File path: assets/icons/temtem_unknown.png
-  AssetGenImage get temtemUnknown =>
-      const AssetGenImage('assets/icons/temtem_unknown.png');
+  /// File path: assets/icons/icn_ultra.png
+  AssetGenImage get icnUltra =>
+      const AssetGenImage('assets/icons/icn_ultra.png');
 
-  /// File path: assets/icons/ultra.png
-  AssetGenImage get ultra => const AssetGenImage('assets/icons/ultra.png');
+  /// File path: assets/icons/icn_unknown.png
+  AssetGenImage get icnUnknown =>
+      const AssetGenImage('assets/icons/icn_unknown.png');
 
-  /// File path: assets/icons/unknown.png
-  AssetGenImage get unknown => const AssetGenImage('assets/icons/unknown.png');
+  /// File path: assets/icons/icn_very_high.png
+  AssetGenImage get icnVeryHigh =>
+      const AssetGenImage('assets/icons/icn_very_high.png');
 
-  /// File path: assets/icons/veryhigh.png
-  AssetGenImage get veryhigh =>
-      const AssetGenImage('assets/icons/veryhigh.png');
-
-  /// File path: assets/icons/verylow.png
-  AssetGenImage get verylow => const AssetGenImage('assets/icons/verylow.png');
+  /// File path: assets/icons/icn_very_low.png
+  AssetGenImage get icnVeryLow =>
+      const AssetGenImage('assets/icons/icn_very_low.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
-        female,
-        high,
-        low,
-        male,
-        normal,
-        physical,
-        special,
-        status,
-        temtemUnknown,
-        ultra,
-        unknown,
-        veryhigh,
-        verylow
+        icnFemale,
+        icnHigh,
+        icnLow,
+        icnMale,
+        icnNormal,
+        icnPhysical,
+        icnSpecial,
+        icnStatus,
+        icnUltra,
+        icnUnknown,
+        icnVeryHigh,
+        icnVeryLow
       ];
+}
+
+class $AssetsIllustrationsGen {
+  const $AssetsIllustrationsGen();
+
+  /// File path: assets/illustrations/ill_error.png
+  AssetGenImage get illError =>
+      const AssetGenImage('assets/illustrations/ill_error.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [illError];
 }
 
 class $AssetsLogosGen {
   const $AssetsLogosGen();
 
-  /// File path: assets/logos/icon.png
-  AssetGenImage get icon => const AssetGenImage('assets/logos/icon.png');
+  /// File path: assets/logos/logo_big.png
+  AssetGenImage get logoBig => const AssetGenImage('assets/logos/logo_big.png');
 
-  /// File path: assets/logos/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/logos/logo.png');
+  /// File path: assets/logos/logo_small.png
+  AssetGenImage get logoSmall =>
+      const AssetGenImage('assets/logos/logo_small.png');
+
+  /// File path: assets/logos/logo_unknown.png
+  AssetGenImage get logoUnknown =>
+      const AssetGenImage('assets/logos/logo_unknown.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [icon, logo];
+  List<AssetGenImage> get values => [logoBig, logoSmall, logoUnknown];
 }
 
 class Assets {
   Assets._();
 
-  static const AssetGenImage error = AssetGenImage('assets/error.png');
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const $AssetsIllustrationsGen illustrations =
+      $AssetsIllustrationsGen();
   static const $AssetsLogosGen logos = $AssetsLogosGen();
-
-  /// List of all assets
-  List<AssetGenImage> get values => [error];
 }
 
 class AssetGenImage {
