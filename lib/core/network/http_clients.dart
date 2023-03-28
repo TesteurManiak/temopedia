@@ -72,3 +72,16 @@ final apiClientProvider = Provider.autoDispose<ApiClient>((ref) {
     ),
   );
 });
+
+final imageUrlProvider = Provider.family.autoDispose<String, String?>(
+  (ref, path) {
+    final startsWithSlash = path?.startsWith('/') ?? false;
+
+    return ref
+        .watch(apiClientProvider)
+        .restClient
+        .baseUri
+        .replace(path: '${startsWithSlash ? '' : '/'}$path')
+        .toString();
+  },
+);

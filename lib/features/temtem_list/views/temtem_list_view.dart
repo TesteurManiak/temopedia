@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/temtem.dart';
+import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
+import '../../../core/widgets/sliver_space.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
 import '../controllers/temtem_list.dart';
@@ -49,25 +51,36 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-            (_, index) => _TemtemTile(temtem: temtems[index]),
-            childCount: temtems.length,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Image.asset(
+              Assets.logos.logoBig.path,
+              height: kToolbarHeight,
+            ),
+            centerTitle: true,
           ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
+          const SliverSpace(16),
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (_, index) => _TemtemTile(temtem: temtems[index]),
+              childCount: temtems.length,
+            ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 8,
+              mainAxisSpacing: 8,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
 
-class _TemtemTile extends StatelessWidget {
+class _TemtemTile extends ConsumerWidget {
   const _TemtemTile({
     required this.temtem,
   });
@@ -75,7 +88,9 @@ class _TemtemTile extends StatelessWidget {
   final Temtem temtem;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final iconUrl = ref.watch(imageUrlProvider(temtem.icon));
+
     return Container(
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
@@ -83,17 +98,33 @@ class _TemtemTile extends StatelessWidget {
         color: MyColors.lightBackground,
       ),
       child: Stack(
+        fit: StackFit.expand,
         children: [
           Align(
             alignment: Alignment.centerRight,
             child: AppNetworkImage(
-              url: temtem.wikiPortraitUrlLarge,
+              url: iconUrl,
               fallbackUrl: temtem.portraitWikiUrl,
               errorWidget: (_, __, ___) {
                 return Image.asset(Assets.icons.icnUnknown.path);
               },
             ),
           ),
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.9),
+                  ],
+                  stops: const [0.4, 1.0],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
