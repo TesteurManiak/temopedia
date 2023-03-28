@@ -49,6 +49,12 @@ flutter build ios
 flutter install
 ```
 
+## Generate translations
+
+``` bash
+flutter gen-l10n
+```
+
 ## Generate the app icon
 
 ``` bash
