@@ -4,7 +4,7 @@ analyzer:
   exclude:
     - lib/**.g.dart
     - test/**.mocks.dart
-    - lib/l10n/generated/**.dart
+    - lib/gen/**.dart
     - lib/generated_plugin_registrant.dart
   errors:
     iterable_contains_unrelated_type: error

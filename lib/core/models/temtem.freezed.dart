@@ -25,6 +25,7 @@ mixin _$Temtem {
   @TypeListConverter()
   List<Type> get types => throw _privateConstructorUsedError;
   String? get portraitWikiUrl => throw _privateConstructorUsedError;
+  String? get lumaPortraitWikiUrl => throw _privateConstructorUsedError;
   String? get wikiUrl => throw _privateConstructorUsedError;
   Stats get stats => throw _privateConstructorUsedError;
   List<String> get traits => throw _privateConstructorUsedError;
@@ -33,6 +34,7 @@ mixin _$Temtem {
   List<String> get trivia => throw _privateConstructorUsedError;
   Evolution? get evolution => throw _privateConstructorUsedError;
   String? get wikiPortraitUrlLarge => throw _privateConstructorUsedError;
+  String? get lumaWikiPortraitUrlLarge => throw _privateConstructorUsedError;
   String? get icon => throw _privateConstructorUsedError;
   String? get lumaIcon => throw _privateConstructorUsedError;
   GenderRatio get genderRatio => throw _privateConstructorUsedError;
@@ -64,6 +66,7 @@ abstract class $TemtemCopyWith<$Res> {
       String? name,
       @TypeListConverter() List<Type> types,
       String? portraitWikiUrl,
+      String? lumaPortraitWikiUrl,
       String? wikiUrl,
       Stats stats,
       List<String> traits,
@@ -72,6 +75,7 @@ abstract class $TemtemCopyWith<$Res> {
       List<String> trivia,
       Evolution? evolution,
       String? wikiPortraitUrlLarge,
+      String? lumaWikiPortraitUrlLarge,
       String? icon,
       String? lumaIcon,
       GenderRatio genderRatio,
@@ -112,6 +116,7 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
     Object? name = freezed,
     Object? types = null,
     Object? portraitWikiUrl = freezed,
+    Object? lumaPortraitWikiUrl = freezed,
     Object? wikiUrl = freezed,
     Object? stats = null,
     Object? traits = null,
@@ -120,6 +125,7 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
     Object? trivia = null,
     Object? evolution = freezed,
     Object? wikiPortraitUrlLarge = freezed,
+    Object? lumaWikiPortraitUrlLarge = freezed,
     Object? icon = freezed,
     Object? lumaIcon = freezed,
     Object? genderRatio = null,
@@ -153,6 +159,10 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
           ? _value.portraitWikiUrl
           : portraitWikiUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      lumaPortraitWikiUrl: freezed == lumaPortraitWikiUrl
+          ? _value.lumaPortraitWikiUrl
+          : lumaPortraitWikiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       wikiUrl: freezed == wikiUrl
           ? _value.wikiUrl
           : wikiUrl // ignore: cast_nullable_to_non_nullable
@@ -184,6 +194,10 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
       wikiPortraitUrlLarge: freezed == wikiPortraitUrlLarge
           ? _value.wikiPortraitUrlLarge
           : wikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lumaWikiPortraitUrlLarge: freezed == lumaWikiPortraitUrlLarge
+          ? _value.lumaWikiPortraitUrlLarge
+          : lumaWikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
               as String?,
       icon: freezed == icon
           ? _value.icon
@@ -304,6 +318,7 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
       String? name,
       @TypeListConverter() List<Type> types,
       String? portraitWikiUrl,
+      String? lumaPortraitWikiUrl,
       String? wikiUrl,
       Stats stats,
       List<String> traits,
@@ -312,6 +327,7 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
       List<String> trivia,
       Evolution? evolution,
       String? wikiPortraitUrlLarge,
+      String? lumaWikiPortraitUrlLarge,
       String? icon,
       String? lumaIcon,
       GenderRatio genderRatio,
@@ -354,6 +370,7 @@ class __$$_TemtemCopyWithImpl<$Res>
     Object? name = freezed,
     Object? types = null,
     Object? portraitWikiUrl = freezed,
+    Object? lumaPortraitWikiUrl = freezed,
     Object? wikiUrl = freezed,
     Object? stats = null,
     Object? traits = null,
@@ -362,6 +379,7 @@ class __$$_TemtemCopyWithImpl<$Res>
     Object? trivia = null,
     Object? evolution = freezed,
     Object? wikiPortraitUrlLarge = freezed,
+    Object? lumaWikiPortraitUrlLarge = freezed,
     Object? icon = freezed,
     Object? lumaIcon = freezed,
     Object? genderRatio = null,
@@ -395,6 +413,10 @@ class __$$_TemtemCopyWithImpl<$Res>
           ? _value.portraitWikiUrl
           : portraitWikiUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      lumaPortraitWikiUrl: freezed == lumaPortraitWikiUrl
+          ? _value.lumaPortraitWikiUrl
+          : lumaPortraitWikiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       wikiUrl: freezed == wikiUrl
           ? _value.wikiUrl
           : wikiUrl // ignore: cast_nullable_to_non_nullable
@@ -426,6 +448,10 @@ class __$$_TemtemCopyWithImpl<$Res>
       wikiPortraitUrlLarge: freezed == wikiPortraitUrlLarge
           ? _value.wikiPortraitUrlLarge
           : wikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lumaWikiPortraitUrlLarge: freezed == lumaWikiPortraitUrlLarge
+          ? _value.lumaWikiPortraitUrlLarge
+          : lumaWikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
               as String?,
       icon: freezed == icon
           ? _value.icon
@@ -499,6 +525,7 @@ class _$_Temtem implements _Temtem {
       this.name,
       @TypeListConverter() final List<Type> types = const <Type>[],
       this.portraitWikiUrl,
+      this.lumaPortraitWikiUrl,
       this.wikiUrl,
       this.stats = const Stats(),
       final List<String> traits = const <String>[],
@@ -507,6 +534,7 @@ class _$_Temtem implements _Temtem {
       final List<String> trivia = const <String>[],
       this.evolution,
       this.wikiPortraitUrlLarge,
+      this.lumaWikiPortraitUrlLarge,
       this.icon,
       this.lumaIcon,
       this.genderRatio = const GenderRatio(),
@@ -547,6 +575,8 @@ class _$_Temtem implements _Temtem {
   @override
   final String? portraitWikiUrl;
   @override
+  final String? lumaPortraitWikiUrl;
+  @override
   final String? wikiUrl;
   @override
   @JsonKey()
@@ -586,6 +616,8 @@ class _$_Temtem implements _Temtem {
   @override
   final String? wikiPortraitUrlLarge;
   @override
+  final String? lumaWikiPortraitUrlLarge;
+  @override
   final String? icon;
   @override
   final String? lumaIcon;
@@ -622,7 +654,7 @@ class _$_Temtem implements _Temtem {
 
   @override
   String toString() {
-    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, wikiUrl: $wikiUrl, stats: $stats, traits: $traits, details: $details, techniques: $techniques, trivia: $trivia, evolution: $evolution, wikiPortraitUrlLarge: $wikiPortraitUrlLarge, icon: $icon, lumaIcon: $lumaIcon, genderRatio: $genderRatio, catchRate: $catchRate, hatchMins: $hatchMins, tvYields: $tvYields, gameDescription: $gameDescription, wikiRenderStaticUrl: $wikiRenderStaticUrl, wikiRenderAnimatedUrl: $wikiRenderAnimatedUrl, wikiRenderStaticLumaUrl: $wikiRenderStaticLumaUrl, wikiRenderAnimatedLumaUrl: $wikiRenderAnimatedLumaUrl, renderStaticImage: $renderStaticImage, renderStaticLumaImage: $renderStaticLumaImage, renderAnimatedImage: $renderAnimatedImage, renderAnimatedLumaImage: $renderAnimatedLumaImage)';
+    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, lumaPortraitWikiUrl: $lumaPortraitWikiUrl, wikiUrl: $wikiUrl, stats: $stats, traits: $traits, details: $details, techniques: $techniques, trivia: $trivia, evolution: $evolution, wikiPortraitUrlLarge: $wikiPortraitUrlLarge, lumaWikiPortraitUrlLarge: $lumaWikiPortraitUrlLarge, icon: $icon, lumaIcon: $lumaIcon, genderRatio: $genderRatio, catchRate: $catchRate, hatchMins: $hatchMins, tvYields: $tvYields, gameDescription: $gameDescription, wikiRenderStaticUrl: $wikiRenderStaticUrl, wikiRenderAnimatedUrl: $wikiRenderAnimatedUrl, wikiRenderStaticLumaUrl: $wikiRenderStaticLumaUrl, wikiRenderAnimatedLumaUrl: $wikiRenderAnimatedLumaUrl, renderStaticImage: $renderStaticImage, renderStaticLumaImage: $renderStaticLumaImage, renderAnimatedImage: $renderAnimatedImage, renderAnimatedLumaImage: $renderAnimatedLumaImage)';
   }
 
   @override
@@ -635,6 +667,8 @@ class _$_Temtem implements _Temtem {
             const DeepCollectionEquality().equals(other._types, _types) &&
             (identical(other.portraitWikiUrl, portraitWikiUrl) ||
                 other.portraitWikiUrl == portraitWikiUrl) &&
+            (identical(other.lumaPortraitWikiUrl, lumaPortraitWikiUrl) ||
+                other.lumaPortraitWikiUrl == lumaPortraitWikiUrl) &&
             (identical(other.wikiUrl, wikiUrl) || other.wikiUrl == wikiUrl) &&
             (identical(other.stats, stats) || other.stats == stats) &&
             const DeepCollectionEquality().equals(other._traits, _traits) &&
@@ -646,6 +680,9 @@ class _$_Temtem implements _Temtem {
                 other.evolution == evolution) &&
             (identical(other.wikiPortraitUrlLarge, wikiPortraitUrlLarge) ||
                 other.wikiPortraitUrlLarge == wikiPortraitUrlLarge) &&
+            (identical(
+                    other.lumaWikiPortraitUrlLarge, lumaWikiPortraitUrlLarge) ||
+                other.lumaWikiPortraitUrlLarge == lumaWikiPortraitUrlLarge) &&
             (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.lumaIcon, lumaIcon) ||
                 other.lumaIcon == lumaIcon) &&
@@ -688,6 +725,7 @@ class _$_Temtem implements _Temtem {
         name,
         const DeepCollectionEquality().hash(_types),
         portraitWikiUrl,
+        lumaPortraitWikiUrl,
         wikiUrl,
         stats,
         const DeepCollectionEquality().hash(_traits),
@@ -696,6 +734,7 @@ class _$_Temtem implements _Temtem {
         const DeepCollectionEquality().hash(_trivia),
         evolution,
         wikiPortraitUrlLarge,
+        lumaWikiPortraitUrlLarge,
         icon,
         lumaIcon,
         genderRatio,
@@ -733,6 +772,7 @@ abstract class _Temtem implements Temtem {
       final String? name,
       @TypeListConverter() final List<Type> types,
       final String? portraitWikiUrl,
+      final String? lumaPortraitWikiUrl,
       final String? wikiUrl,
       final Stats stats,
       final List<String> traits,
@@ -741,6 +781,7 @@ abstract class _Temtem implements Temtem {
       final List<String> trivia,
       final Evolution? evolution,
       final String? wikiPortraitUrlLarge,
+      final String? lumaWikiPortraitUrlLarge,
       final String? icon,
       final String? lumaIcon,
       final GenderRatio genderRatio,
@@ -769,6 +810,8 @@ abstract class _Temtem implements Temtem {
   @override
   String? get portraitWikiUrl;
   @override
+  String? get lumaPortraitWikiUrl;
+  @override
   String? get wikiUrl;
   @override
   Stats get stats;
@@ -784,6 +827,8 @@ abstract class _Temtem implements Temtem {
   Evolution? get evolution;
   @override
   String? get wikiPortraitUrlLarge;
+  @override
+  String? get lumaWikiPortraitUrlLarge;
   @override
   String? get icon;
   @override

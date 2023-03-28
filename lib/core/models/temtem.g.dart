@@ -13,6 +13,7 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
           ? const <Type>[]
           : const TypeListConverter().fromJson(json['types'] as List),
       portraitWikiUrl: json['portraitWikiUrl'] as String?,
+      lumaPortraitWikiUrl: json['lumaPortraitWikiUrl'] as String?,
       wikiUrl: json['wikiUrl'] as String?,
       stats: json['stats'] == null
           ? const Stats()
@@ -36,6 +37,7 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
           ? null
           : Evolution.fromJson(json['evolution'] as Map<String, dynamic>),
       wikiPortraitUrlLarge: json['wikiPortraitUrlLarge'] as String?,
+      lumaWikiPortraitUrlLarge: json['lumaWikiPortraitUrlLarge'] as String?,
       icon: json['icon'] as String?,
       lumaIcon: json['lumaIcon'] as String?,
       genderRatio: json['genderRatio'] == null
@@ -62,6 +64,7 @@ Map<String, dynamic> _$$_TemtemToJson(_$_Temtem instance) => <String, dynamic>{
       'name': instance.name,
       'types': const TypeListConverter().toJson(instance.types),
       'portraitWikiUrl': instance.portraitWikiUrl,
+      'lumaPortraitWikiUrl': instance.lumaPortraitWikiUrl,
       'wikiUrl': instance.wikiUrl,
       'stats': instance.stats,
       'traits': instance.traits,
@@ -70,6 +73,7 @@ Map<String, dynamic> _$$_TemtemToJson(_$_Temtem instance) => <String, dynamic>{
       'trivia': instance.trivia,
       'evolution': instance.evolution,
       'wikiPortraitUrlLarge': instance.wikiPortraitUrlLarge,
+      'lumaWikiPortraitUrlLarge': instance.lumaWikiPortraitUrlLarge,
       'icon': instance.icon,
       'lumaIcon': instance.lumaIcon,
       'genderRatio': instance.genderRatio,

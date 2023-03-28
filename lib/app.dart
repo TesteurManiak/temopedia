@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'design_system/theme.dart';
+import 'gen/app_localizations.dart';
 import 'router/router.dart';
 
 class MyApp extends StatefulWidget {
@@ -22,11 +23,9 @@ class _MyAppState extends State<MyApp> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+        AppLocalizations.delegate,
       ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('fr'),
-      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: AppTheme.dark(),
       routerConfig: router,
     );

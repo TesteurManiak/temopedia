@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/models/temtem.dart';
+import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
+import '../../../design_system/palette.dart';
+import '../../../gen/assets.gen.dart';
 import '../controllers/temtem_list.dart';
 
 class TemtemListView extends ConsumerStatefulWidget {
@@ -55,6 +58,8 @@ class _Body extends StatelessWidget {
           ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
         ),
       ],
@@ -72,11 +77,25 @@ class _TemtemTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.purple,
+        color: MyColors.lightBackground,
       ),
-      child: Text(temtem.name ?? ''),
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.centerRight,
+            child: AppNetworkImage(
+              url: temtem.wikiPortraitUrlLarge,
+              fallbackUrl: temtem.portraitWikiUrl,
+              errorWidget: (_, __, ___) {
+                return Image.asset(Assets.icons.icnUnknown.path);
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

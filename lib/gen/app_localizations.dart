@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_fr.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
@@ -88,14 +89,87 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
-    Locale('en')
+    Locale('en'),
+    Locale('fr')
   ];
 
-  /// The conventional newborn programmer greeting
+  /// No description provided for @type_neutral.
   ///
   /// In en, this message translates to:
-  /// **'Hello World!'**
-  String get helloWorld;
+  /// **'Neutral'**
+  String get type_neutral;
+
+  /// No description provided for @type_fire.
+  ///
+  /// In en, this message translates to:
+  /// **'Fire'**
+  String get type_fire;
+
+  /// No description provided for @type_water.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get type_water;
+
+  /// No description provided for @type_nature.
+  ///
+  /// In en, this message translates to:
+  /// **'Nature'**
+  String get type_nature;
+
+  /// No description provided for @type_electric.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric'**
+  String get type_electric;
+
+  /// No description provided for @type_earth.
+  ///
+  /// In en, this message translates to:
+  /// **'Earth'**
+  String get type_earth;
+
+  /// No description provided for @type_mental.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental'**
+  String get type_mental;
+
+  /// No description provided for @type_wind.
+  ///
+  /// In en, this message translates to:
+  /// **'Wind'**
+  String get type_wind;
+
+  /// No description provided for @type_digital.
+  ///
+  /// In en, this message translates to:
+  /// **'Digital'**
+  String get type_digital;
+
+  /// No description provided for @type_melee.
+  ///
+  /// In en, this message translates to:
+  /// **'Melee'**
+  String get type_melee;
+
+  /// No description provided for @type_crystal.
+  ///
+  /// In en, this message translates to:
+  /// **'Crystal'**
+  String get type_crystal;
+
+  /// No description provided for @type_toxic.
+  ///
+  /// In en, this message translates to:
+  /// **'Toxic'**
+  String get type_toxic;
+
+  /// No description provided for @type_unknown.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get type_unknown;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -107,7 +181,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'fr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -119,6 +193,7 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
+    case 'fr': return AppLocalizationsFr();
   }
 
   throw FlutterError(

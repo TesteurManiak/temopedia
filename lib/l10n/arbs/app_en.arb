@@ -1,6 +1,15 @@
 {
-    "helloWorld": "Hello World!",
-    "@helloWorld": {
-        "description": "The conventional newborn programmer greeting"
-    }
+    "type_neutral": "Neutral",
+    "type_fire": "Fire",
+    "type_water": "Water",
+    "type_nature": "Nature",
+    "type_electric": "Electric",
+    "type_earth": "Earth",
+    "type_mental": "Mental",
+    "type_wind": "Wind",
+    "type_digital": "Digital",
+    "type_melee": "Melee",
+    "type_crystal": "Crystal",
+    "type_toxic": "Toxic",
+    "type_unknown": "Unknown"
 }

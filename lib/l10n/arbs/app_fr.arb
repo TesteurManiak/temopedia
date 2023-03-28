@@ -1,0 +1,15 @@
+{
+    "type_neutral": "Neutre",
+    "type_fire": "Feu",
+    "type_water": "Eau",
+    "type_nature": "Nature",
+    "type_electric": "Électrique",
+    "type_earth": "Terre",
+    "type_mental": "Mental",
+    "type_wind": "Vent",
+    "type_digital": "Digital",
+    "type_melee": "Combat",
+    "type_crystal": "Crystal",
+    "type_toxic": "Toxique",
+    "type_unknown": "Inconnu"
+}
