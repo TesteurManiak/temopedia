@@ -26,6 +26,10 @@ mixin _$Temtem {
   List<Type> get types => throw _privateConstructorUsedError;
   String? get portraitWikiUrl => throw _privateConstructorUsedError;
   String? get wikiUrl => throw _privateConstructorUsedError;
+  Stats get stats => throw _privateConstructorUsedError;
+  List<String> get traits => throw _privateConstructorUsedError;
+  Details get details => throw _privateConstructorUsedError;
+  List<Technique> get techniques => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +46,14 @@ abstract class $TemtemCopyWith<$Res> {
       String? name,
       @TypeListConverter() List<Type> types,
       String? portraitWikiUrl,
-      String? wikiUrl});
+      String? wikiUrl,
+      Stats stats,
+      List<String> traits,
+      Details details,
+      List<Technique> techniques});
+
+  $StatsCopyWith<$Res> get stats;
+  $DetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -63,6 +74,10 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
     Object? types = null,
     Object? portraitWikiUrl = freezed,
     Object? wikiUrl = freezed,
+    Object? stats = null,
+    Object? traits = null,
+    Object? details = null,
+    Object? techniques = null,
   }) {
     return _then(_value.copyWith(
       number: freezed == number
@@ -85,7 +100,39 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
           ? _value.wikiUrl
           : wikiUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stats: null == stats
+          ? _value.stats
+          : stats // ignore: cast_nullable_to_non_nullable
+              as Stats,
+      traits: null == traits
+          ? _value.traits
+          : traits // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as Details,
+      techniques: null == techniques
+          ? _value.techniques
+          : techniques // ignore: cast_nullable_to_non_nullable
+              as List<Technique>,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StatsCopyWith<$Res> get stats {
+    return $StatsCopyWith<$Res>(_value.stats, (value) {
+      return _then(_value.copyWith(stats: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DetailsCopyWith<$Res> get details {
+    return $DetailsCopyWith<$Res>(_value.details, (value) {
+      return _then(_value.copyWith(details: value) as $Val);
+    });
   }
 }
 
@@ -100,7 +147,16 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
       String? name,
       @TypeListConverter() List<Type> types,
       String? portraitWikiUrl,
-      String? wikiUrl});
+      String? wikiUrl,
+      Stats stats,
+      List<String> traits,
+      Details details,
+      List<Technique> techniques});
+
+  @override
+  $StatsCopyWith<$Res> get stats;
+  @override
+  $DetailsCopyWith<$Res> get details;
 }
 
 /// @nodoc
@@ -118,6 +174,10 @@ class __$$_TemtemCopyWithImpl<$Res>
     Object? types = null,
     Object? portraitWikiUrl = freezed,
     Object? wikiUrl = freezed,
+    Object? stats = null,
+    Object? traits = null,
+    Object? details = null,
+    Object? techniques = null,
   }) {
     return _then(_$_Temtem(
       number: freezed == number
@@ -140,6 +200,22 @@ class __$$_TemtemCopyWithImpl<$Res>
           ? _value.wikiUrl
           : wikiUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      stats: null == stats
+          ? _value.stats
+          : stats // ignore: cast_nullable_to_non_nullable
+              as Stats,
+      traits: null == traits
+          ? _value._traits
+          : traits // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      details: null == details
+          ? _value.details
+          : details // ignore: cast_nullable_to_non_nullable
+              as Details,
+      techniques: null == techniques
+          ? _value._techniques
+          : techniques // ignore: cast_nullable_to_non_nullable
+              as List<Technique>,
     ));
   }
 }
@@ -152,8 +228,14 @@ class _$_Temtem implements _Temtem {
       this.name,
       @TypeListConverter() final List<Type> types = const <Type>[],
       this.portraitWikiUrl,
-      this.wikiUrl})
-      : _types = types;
+      this.wikiUrl,
+      this.stats = const Stats(),
+      final List<String> traits = const <String>[],
+      this.details = const Details(),
+      final List<Technique> techniques = const <Technique>[]})
+      : _types = types,
+        _traits = traits,
+        _techniques = techniques;
 
   factory _$_Temtem.fromJson(Map<String, dynamic> json) =>
       _$$_TemtemFromJson(json);
@@ -176,10 +258,33 @@ class _$_Temtem implements _Temtem {
   final String? portraitWikiUrl;
   @override
   final String? wikiUrl;
+  @override
+  @JsonKey()
+  final Stats stats;
+  final List<String> _traits;
+  @override
+  @JsonKey()
+  List<String> get traits {
+    if (_traits is EqualUnmodifiableListView) return _traits;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_traits);
+  }
+
+  @override
+  @JsonKey()
+  final Details details;
+  final List<Technique> _techniques;
+  @override
+  @JsonKey()
+  List<Technique> get techniques {
+    if (_techniques is EqualUnmodifiableListView) return _techniques;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_techniques);
+  }
 
   @override
   String toString() {
-    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, wikiUrl: $wikiUrl)';
+    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, wikiUrl: $wikiUrl, stats: $stats, traits: $traits, details: $details, techniques: $techniques)';
   }
 
   @override
@@ -192,13 +297,27 @@ class _$_Temtem implements _Temtem {
             const DeepCollectionEquality().equals(other._types, _types) &&
             (identical(other.portraitWikiUrl, portraitWikiUrl) ||
                 other.portraitWikiUrl == portraitWikiUrl) &&
-            (identical(other.wikiUrl, wikiUrl) || other.wikiUrl == wikiUrl));
+            (identical(other.wikiUrl, wikiUrl) || other.wikiUrl == wikiUrl) &&
+            (identical(other.stats, stats) || other.stats == stats) &&
+            const DeepCollectionEquality().equals(other._traits, _traits) &&
+            (identical(other.details, details) || other.details == details) &&
+            const DeepCollectionEquality()
+                .equals(other._techniques, _techniques));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, number, name,
-      const DeepCollectionEquality().hash(_types), portraitWikiUrl, wikiUrl);
+  int get hashCode => Object.hash(
+      runtimeType,
+      number,
+      name,
+      const DeepCollectionEquality().hash(_types),
+      portraitWikiUrl,
+      wikiUrl,
+      stats,
+      const DeepCollectionEquality().hash(_traits),
+      details,
+      const DeepCollectionEquality().hash(_techniques));
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +339,11 @@ abstract class _Temtem implements Temtem {
       final String? name,
       @TypeListConverter() final List<Type> types,
       final String? portraitWikiUrl,
-      final String? wikiUrl}) = _$_Temtem;
+      final String? wikiUrl,
+      final Stats stats,
+      final List<String> traits,
+      final Details details,
+      final List<Technique> techniques}) = _$_Temtem;
 
   factory _Temtem.fromJson(Map<String, dynamic> json) = _$_Temtem.fromJson;
 
@@ -235,6 +358,14 @@ abstract class _Temtem implements Temtem {
   String? get portraitWikiUrl;
   @override
   String? get wikiUrl;
+  @override
+  Stats get stats;
+  @override
+  List<String> get traits;
+  @override
+  Details get details;
+  @override
+  List<Technique> get techniques;
   @override
   @JsonKey(ignore: true)
   _$$_TemtemCopyWith<_$_Temtem> get copyWith =>

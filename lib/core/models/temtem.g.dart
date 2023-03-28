@@ -14,6 +14,20 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
           : const TypeListConverter().fromJson(json['types'] as List<String>),
       portraitWikiUrl: json['portraitWikiUrl'] as String?,
       wikiUrl: json['wikiUrl'] as String?,
+      stats: json['stats'] == null
+          ? const Stats()
+          : Stats.fromJson(json['stats'] as Map<String, dynamic>),
+      traits: (json['traits'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const <String>[],
+      details: json['details'] == null
+          ? const Details()
+          : Details.fromJson(json['details'] as Map<String, dynamic>),
+      techniques: (json['techniques'] as List<dynamic>?)
+              ?.map((e) => Technique.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Technique>[],
     );
 
 Map<String, dynamic> _$$_TemtemToJson(_$_Temtem instance) => <String, dynamic>{
@@ -22,4 +36,8 @@ Map<String, dynamic> _$$_TemtemToJson(_$_Temtem instance) => <String, dynamic>{
       'types': const TypeListConverter().toJson(instance.types),
       'portraitWikiUrl': instance.portraitWikiUrl,
       'wikiUrl': instance.wikiUrl,
+      'stats': instance.stats,
+      'traits': instance.traits,
+      'details': instance.details,
+      'techniques': instance.techniques,
     };
