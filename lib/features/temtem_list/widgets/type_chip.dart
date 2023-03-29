@@ -24,11 +24,14 @@ class TypeChip extends StatelessWidget {
         shape: StadiumBorder(
           side: BorderSide(color: type.color(context)),
         ),
-        color: Colors.white.withOpacity(0.2),
+        color: Colors.white38,
       ),
       child: Text(
         type.translation(localizations),
-        style: const TextStyle(fontSize: 12, fontFamily: FontFamily.rubik),
+        style: const TextStyle(
+          fontSize: 12,
+          fontFamily: FontFamily.rubik,
+        ),
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),

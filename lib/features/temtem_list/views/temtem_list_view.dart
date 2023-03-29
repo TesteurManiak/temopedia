@@ -9,6 +9,7 @@ import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../gen/fonts.gen.dart';
 import '../controllers/temtem_list.dart';
 import '../widgets/type_chip.dart';
 
@@ -139,16 +140,55 @@ class _TemtemTile extends ConsumerWidget {
                 separator: const SizedBox(height: 4),
                 children: [
                   for (final type in types) TypeChip(type: type),
-                  if (name != null) Text(name),
                 ],
               ),
             ),
           ),
-          Positioned(
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Text('#${temtem.number}'),
+          Align(
+            alignment: Alignment.topLeft,
+            child: _NameAndNumber(name: name, number: temtem.number),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _NameAndNumber extends StatelessWidget {
+  const _NameAndNumber({
+    required this.name,
+    required this.number,
+  });
+
+  final String? name;
+  final int number;
+
+  @override
+  Widget build(BuildContext context) {
+    final localName = name;
+
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          if (localName != null)
+            Expanded(
+              child: Text(
+                localName,
+                style: const TextStyle(
+                  fontFamily: FontFamily.rubik,
+                ),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          Text(
+            '#$number',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+              fontFamily: FontFamily.rubik,
             ),
           ),
         ],
