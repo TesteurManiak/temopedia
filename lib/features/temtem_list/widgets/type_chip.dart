@@ -18,7 +18,7 @@ class TypeChip extends StatelessWidget {
 
     return Container(
       alignment: Alignment.center,
-      width: 76,
+      width: 84,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: ShapeDecoration(
         shape: StadiumBorder(
@@ -30,7 +30,7 @@ class TypeChip extends StatelessWidget {
         type.translation(localizations),
         style: const TextStyle(fontSize: 12, fontFamily: FontFamily.rubik),
         maxLines: 1,
-        overflow: TextOverflow.clip,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
