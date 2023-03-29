@@ -13,7 +13,7 @@ class AppTheme extends ThemeExtension<AppTheme> {
   final AppColors colors;
   final AppTextTheme textTheme;
 
-  static ThemeData dark() {
+  static ThemeData get dark {
     const appTheme = AppTheme(
       colors: AppColors.dark(),
       textTheme: AppTextTheme.regular(),

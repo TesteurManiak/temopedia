@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
         AppLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: AppTheme.dark(),
+      theme: AppTheme.dark,
       routerConfig: router,
     );
   }

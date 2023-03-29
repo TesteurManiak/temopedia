@@ -23,7 +23,7 @@ mixin _$Temtem {
   int get number => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   @TypeListConverter()
-  List<Type> get types => throw _privateConstructorUsedError;
+  List<TemType> get types => throw _privateConstructorUsedError;
   String? get portraitWikiUrl => throw _privateConstructorUsedError;
   String? get lumaPortraitWikiUrl => throw _privateConstructorUsedError;
   String? get wikiUrl => throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $TemtemCopyWith<$Res> {
   $Res call(
       {int number,
       String? name,
-      @TypeListConverter() List<Type> types,
+      @TypeListConverter() List<TemType> types,
       String? portraitWikiUrl,
       String? lumaPortraitWikiUrl,
       String? wikiUrl,
@@ -154,7 +154,7 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
       types: null == types
           ? _value.types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<Type>,
+              as List<TemType>,
       portraitWikiUrl: freezed == portraitWikiUrl
           ? _value.portraitWikiUrl
           : portraitWikiUrl // ignore: cast_nullable_to_non_nullable
@@ -316,7 +316,7 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
   $Res call(
       {int number,
       String? name,
-      @TypeListConverter() List<Type> types,
+      @TypeListConverter() List<TemType> types,
       String? portraitWikiUrl,
       String? lumaPortraitWikiUrl,
       String? wikiUrl,
@@ -408,7 +408,7 @@ class __$$_TemtemCopyWithImpl<$Res>
       types: null == types
           ? _value._types
           : types // ignore: cast_nullable_to_non_nullable
-              as List<Type>,
+              as List<TemType>,
       portraitWikiUrl: freezed == portraitWikiUrl
           ? _value.portraitWikiUrl
           : portraitWikiUrl // ignore: cast_nullable_to_non_nullable
@@ -523,7 +523,7 @@ class _$_Temtem implements _Temtem {
   const _$_Temtem(
       {required this.number,
       this.name,
-      @TypeListConverter() final List<Type> types = const <Type>[],
+      @TypeListConverter() final List<TemType> types = const <TemType>[],
       this.portraitWikiUrl,
       this.lumaPortraitWikiUrl,
       this.wikiUrl,
@@ -562,11 +562,11 @@ class _$_Temtem implements _Temtem {
   final int number;
   @override
   final String? name;
-  final List<Type> _types;
+  final List<TemType> _types;
   @override
   @JsonKey()
   @TypeListConverter()
-  List<Type> get types {
+  List<TemType> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_types);
@@ -770,7 +770,7 @@ abstract class _Temtem implements Temtem {
   const factory _Temtem(
       {required final int number,
       final String? name,
-      @TypeListConverter() final List<Type> types,
+      @TypeListConverter() final List<TemType> types,
       final String? portraitWikiUrl,
       final String? lumaPortraitWikiUrl,
       final String? wikiUrl,
@@ -806,7 +806,7 @@ abstract class _Temtem implements Temtem {
   String? get name;
   @override
   @TypeListConverter()
-  List<Type> get types;
+  List<TemType> get types;
   @override
   String? get portraitWikiUrl;
   @override

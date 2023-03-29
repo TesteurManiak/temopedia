@@ -15,7 +15,7 @@ class Temtem with _$Temtem {
   const factory Temtem({
     required int number,
     String? name,
-    @TypeListConverter() @Default(<Type>[]) List<Type> types,
+    @TypeListConverter() @Default(<TemType>[]) List<TemType> types,
     String? portraitWikiUrl,
     String? lumaPortraitWikiUrl,
     String? wikiUrl,

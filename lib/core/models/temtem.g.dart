@@ -10,7 +10,7 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
       number: json['number'] as int,
       name: json['name'] as String?,
       types: json['types'] == null
-          ? const <Type>[]
+          ? const <TemType>[]
           : const TypeListConverter().fromJson(json['types'] as List),
       portraitWikiUrl: json['portraitWikiUrl'] as String?,
       lumaPortraitWikiUrl: json['lumaPortraitWikiUrl'] as String?,

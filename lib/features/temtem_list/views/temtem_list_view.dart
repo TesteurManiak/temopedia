@@ -5,10 +5,12 @@ import '../../../core/models/temtem.dart';
 import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/error_widget.dart';
+import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
 import '../controllers/temtem_list.dart';
+import '../widgets/type_chip.dart';
 
 class TemtemListView extends ConsumerStatefulWidget {
   const TemtemListView({super.key});
@@ -90,6 +92,8 @@ class _TemtemTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final iconUrl = ref.watch(imageUrlProvider(temtem.icon));
+    final name = temtem.name;
+    final types = temtem.types;
 
     return Container(
       clipBehavior: Clip.antiAlias,
@@ -124,7 +128,29 @@ class _TemtemTile extends ConsumerWidget {
                 ),
               ),
             ),
-          )
+          ),
+          Positioned(
+            bottom: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: SeparatedColumn(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                separator: const SizedBox(height: 4),
+                children: [
+                  for (final type in types) TypeChip(type: type),
+                  if (name != null) Text(name),
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Text('#${temtem.number}'),
+            ),
+          ),
         ],
       ),
     );

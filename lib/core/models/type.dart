@@ -3,85 +3,115 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../gen/app_localizations.dart';
 
-enum Type {
+typedef TranslationFetcher = String Function(AppLocalizations localizations);
+typedef TypeColorFetcher = Color Function(BuildContext context);
+
+enum TemType {
   @JsonValue('Neutral')
-  neutral,
+  neutral(translation: _neutralTranslation, color: _neutralColor),
   @JsonValue('Fire')
-  fire,
+  fire(translation: _fireTranslation, color: _fireColor),
   @JsonValue('Water')
-  water,
+  water(translation: _waterTranslation, color: _waterColor),
   @JsonValue('Nature')
-  nature,
+  nature(translation: _natureTranslation, color: _natureColor),
   @JsonValue('Electric')
-  electric,
+  electric(translation: _electricTranslation, color: _electricColor),
   @JsonValue('Earth')
-  earth,
+  earth(translation: _earthTranslation, color: _earthColor),
   @JsonValue('Mental')
-  mental,
+  mental(translation: _mentalTranslation, color: _mentalColor),
   @JsonValue('Wind')
-  wind,
+  wind(translation: _windTranslation, color: _windColor),
   @JsonValue('Digital')
-  digital,
+  digital(translation: _digitalTranslation, color: _digitalColor),
   @JsonValue('Melee')
-  melee,
+  melee(translation: _meleeTranslation, color: _meleeColor),
   @JsonValue('Crystal')
-  crystal,
+  crystal(translation: _crystalTranslation, color: _crystalColor),
   @JsonValue('Toxic')
-  toxic,
+  toxic(translation: _toxicTranslation, color: _toxicColor),
   @JsonValue('Unknown')
-  unknown;
+  unknown(translation: _unknownTranslation, color: _unknownColor);
 
-  String translate(BuildContext context) {
-    final localization = AppLocalizations.of(context);
+  const TemType({
+    required this.translation,
+    required this.color,
+  });
 
-    switch (this) {
-      case Type.neutral:
-        return localization.type_neutral;
-      case Type.fire:
-        return localization.type_fire;
-      case Type.water:
-        return localization.type_water;
-      case Type.nature:
-        return localization.type_nature;
-      case Type.electric:
-        return localization.type_electric;
-      case Type.earth:
-        return localization.type_earth;
-      case Type.mental:
-        return localization.type_mental;
-      case Type.wind:
-        return localization.type_wind;
-      case Type.digital:
-        return localization.type_digital;
-      case Type.melee:
-        return localization.type_melee;
-      case Type.crystal:
-        return localization.type_crystal;
-      case Type.toxic:
-        return localization.type_toxic;
-      case Type.unknown:
-        return localization.type_unknown;
-    }
-  }
+  final TranslationFetcher translation;
+  final TypeColorFetcher color;
 }
 
-class TypeListConverter implements JsonConverter<List<Type>, List> {
+String _neutralTranslation(AppLocalizations localizations) =>
+    localizations.type_neutral;
+Color _neutralColor(BuildContext context) => Colors.grey;
+
+String _fireTranslation(AppLocalizations localizations) =>
+    localizations.type_fire;
+Color _fireColor(BuildContext context) => Colors.red;
+
+String _waterTranslation(AppLocalizations localizations) =>
+    localizations.type_water;
+Color _waterColor(BuildContext context) => Colors.blue;
+
+String _natureTranslation(AppLocalizations localizations) =>
+    localizations.type_nature;
+Color _natureColor(BuildContext context) => Colors.green;
+
+String _electricTranslation(AppLocalizations localizations) =>
+    localizations.type_electric;
+Color _electricColor(BuildContext context) => Colors.yellow;
+
+String _earthTranslation(AppLocalizations localizations) =>
+    localizations.type_earth;
+Color _earthColor(BuildContext context) => Colors.brown;
+
+String _mentalTranslation(AppLocalizations localizations) =>
+    localizations.type_mental;
+Color _mentalColor(BuildContext context) => Colors.purple;
+
+String _windTranslation(AppLocalizations localizations) =>
+    localizations.type_wind;
+Color _windColor(BuildContext context) => Colors.lightBlue;
+
+String _digitalTranslation(AppLocalizations localizations) =>
+    localizations.type_digital;
+Color _digitalColor(BuildContext context) => Colors.pink;
+
+String _meleeTranslation(AppLocalizations localizations) =>
+    localizations.type_melee;
+Color _meleeColor(BuildContext context) => Colors.orange;
+
+String _crystalTranslation(AppLocalizations localizations) =>
+    localizations.type_crystal;
+Color _crystalColor(BuildContext context) => Colors.cyan;
+
+String _toxicTranslation(AppLocalizations localizations) =>
+    localizations.type_toxic;
+Color _toxicColor(BuildContext context) => Colors.teal;
+
+String _unknownTranslation(AppLocalizations localizations) =>
+    localizations.type_unknown;
+Color _unknownColor(BuildContext context) => Colors.grey;
+
+class TypeListConverter implements JsonConverter<List<TemType>, List> {
   const TypeListConverter();
 
   @override
-  List<Type> fromJson(List json) {
+  List<TemType> fromJson(List json) {
     return json
         .map(
-          (e) => Type.values.firstWhere(
+          (e) => TemType.values.firstWhere(
             (elem) => elem.name == e.toString().toLowerCase(),
-            orElse: () => Type.unknown,
+            orElse: () => TemType.unknown,
           ),
         )
         .toList();
   }
 
   @override
-  List<String> toJson(List<Type> _) {
+  List<String> toJson(List<TemType> _) {
     throw UnimplementedError();
   }
 }
