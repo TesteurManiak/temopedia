@@ -39,9 +39,7 @@ class HiveDatabase implements LocalStorage {
     // Open boxes
     _temtemBox = await Hive.openBox(temtemTable);
 
-    print('HIVE DATABASE INITIALIZED');
     _initialized = true;
-    print('Initialized state after: $_initialized');
   }
 
   @override

@@ -1,17 +1,49 @@
 import 'package:flutter/material.dart';
 
+import '../gen/fonts.gen.dart';
 import 'palette.dart';
+import 'theme.dart';
 
 @immutable
 class AppTextTheme extends ThemeExtension<AppTextTheme> {
-  const AppTextTheme();
+  const AppTextTheme({
+    required this.generic,
+    required this.genericBold,
+  });
 
-  const AppTextTheme.regular();
+  const AppTextTheme.regular()
+      : this(
+          generic: const TextStyle(
+            fontSize: 14,
+            fontFamily: FontFamily.rubik,
+          ),
+          genericBold: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+            fontFamily: FontFamily.rubik,
+          ),
+        );
+
+  final TextStyle generic;
+  final TextStyle genericBold;
+
+  static AppTextTheme of(BuildContext context) {
+    return maybeOf(context)!;
+  }
+
+  static AppTextTheme? maybeOf(BuildContext context) {
+    return AppTheme.maybeOf(context)?.textTheme;
+  }
 
   @override
-  AppTextTheme copyWith() {
-    // TODO: implement copyWith
-    return this;
+  AppTextTheme copyWith({
+    TextStyle? generic,
+    TextStyle? genericBold,
+  }) {
+    return AppTextTheme(
+      generic: generic ?? this.generic,
+      genericBold: genericBold ?? this.genericBold,
+    );
   }
 
   @override
@@ -20,11 +52,14 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
       return this;
     }
 
-    // TODO: implement lerp
-    return this;
+    return AppTextTheme(
+      generic: TextStyle.lerp(generic, other.generic, t)!,
+      genericBold: TextStyle.lerp(genericBold, other.genericBold, t)!,
+    );
   }
 }
 
+@Deprecated('Use AppTextTheme instead')
 class TextStyles {
   const TextStyles._();
 

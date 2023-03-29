@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/models/temtem.dart';
 import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
@@ -172,36 +173,55 @@ class _NameAndNumber extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (localName != null)
-            Expanded(
-              child: Text(
-                localName,
-                style: const TextStyle(
-                  fontFamily: FontFamily.rubik,
-                  shadows: [
-                    Shadow(
-                      color: Colors.black,
-                      blurRadius: 2,
-                    ),
-                  ],
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          Text(
-            '#$number',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-              fontFamily: FontFamily.rubik,
-              shadows: [
-                Shadow(
-                  color: Colors.black,
-                  blurRadius: 2,
-                ),
-              ],
-            ),
+          if (localName != null) Expanded(child: _Name(localName)),
+          _Number(number),
+        ],
+      ),
+    );
+  }
+}
+
+class _Name extends StatelessWidget {
+  const _Name(this.name);
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppText(
+      name,
+      type: AppTextType.generic,
+      style: const TextStyle(
+        shadows: [
+          Shadow(
+            color: Colors.black,
+            blurRadius: 2,
+          ),
+        ],
+      ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+}
+
+class _Number extends StatelessWidget {
+  const _Number(this.number);
+
+  final int number;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '#$number',
+      style: const TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 14,
+        fontFamily: FontFamily.rubik,
+        shadows: [
+          Shadow(
+            color: Colors.black,
+            blurRadius: 2,
           ),
         ],
       ),

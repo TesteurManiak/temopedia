@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'palette.dart';
+import 'theme.dart';
 
 @immutable
 class AppColors extends ThemeExtension<AppColors> {
@@ -15,15 +16,6 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.dialog,
   });
 
-  final Color bottomSheet;
-  final Color speedDialBackground;
-  final Color speedDialIcon;
-  final Color appBar;
-  final Color scaffold;
-  final Color activeButton;
-  final Color disabledButton;
-  final Color dialog;
-
   const AppColors.dark()
       : this(
           bottomSheet: Palette.black,
@@ -35,6 +27,23 @@ class AppColors extends ThemeExtension<AppColors> {
           disabledButton: Palette.grey,
           dialog: Palette.black,
         );
+
+  final Color bottomSheet;
+  final Color speedDialBackground;
+  final Color speedDialIcon;
+  final Color appBar;
+  final Color scaffold;
+  final Color activeButton;
+  final Color disabledButton;
+  final Color dialog;
+
+  static AppColors of(BuildContext context) {
+    return maybeOf(context)!;
+  }
+
+  static AppColors? maybeOf(BuildContext context) {
+    return AppTheme.maybeOf(context)?.colors;
+  }
 
   @override
   AppColors copyWith({
