@@ -35,6 +35,7 @@ mixin _$Temtem {
   Evolution? get evolution => throw _privateConstructorUsedError;
   String? get wikiPortraitUrlLarge => throw _privateConstructorUsedError;
   String? get lumaWikiPortraitUrlLarge => throw _privateConstructorUsedError;
+  List<Location> get locations => throw _privateConstructorUsedError;
   String? get icon => throw _privateConstructorUsedError;
   String? get lumaIcon => throw _privateConstructorUsedError;
   GenderRatio get genderRatio => throw _privateConstructorUsedError;
@@ -76,6 +77,7 @@ abstract class $TemtemCopyWith<$Res> {
       Evolution? evolution,
       String? wikiPortraitUrlLarge,
       String? lumaWikiPortraitUrlLarge,
+      List<Location> locations,
       String? icon,
       String? lumaIcon,
       GenderRatio genderRatio,
@@ -126,6 +128,7 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
     Object? evolution = freezed,
     Object? wikiPortraitUrlLarge = freezed,
     Object? lumaWikiPortraitUrlLarge = freezed,
+    Object? locations = null,
     Object? icon = freezed,
     Object? lumaIcon = freezed,
     Object? genderRatio = null,
@@ -199,6 +202,10 @@ class _$TemtemCopyWithImpl<$Res, $Val extends Temtem>
           ? _value.lumaWikiPortraitUrlLarge
           : lumaWikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
               as String?,
+      locations: null == locations
+          ? _value.locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location>,
       icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
@@ -328,6 +335,7 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
       Evolution? evolution,
       String? wikiPortraitUrlLarge,
       String? lumaWikiPortraitUrlLarge,
+      List<Location> locations,
       String? icon,
       String? lumaIcon,
       GenderRatio genderRatio,
@@ -380,6 +388,7 @@ class __$$_TemtemCopyWithImpl<$Res>
     Object? evolution = freezed,
     Object? wikiPortraitUrlLarge = freezed,
     Object? lumaWikiPortraitUrlLarge = freezed,
+    Object? locations = null,
     Object? icon = freezed,
     Object? lumaIcon = freezed,
     Object? genderRatio = null,
@@ -453,6 +462,10 @@ class __$$_TemtemCopyWithImpl<$Res>
           ? _value.lumaWikiPortraitUrlLarge
           : lumaWikiPortraitUrlLarge // ignore: cast_nullable_to_non_nullable
               as String?,
+      locations: null == locations
+          ? _value._locations
+          : locations // ignore: cast_nullable_to_non_nullable
+              as List<Location>,
       icon: freezed == icon
           ? _value.icon
           : icon // ignore: cast_nullable_to_non_nullable
@@ -535,6 +548,7 @@ class _$_Temtem implements _Temtem {
       this.evolution,
       this.wikiPortraitUrlLarge,
       this.lumaWikiPortraitUrlLarge,
+      final List<Location> locations = const <Location>[],
       this.icon,
       this.lumaIcon,
       this.genderRatio = const GenderRatio(),
@@ -553,7 +567,8 @@ class _$_Temtem implements _Temtem {
       : _types = types,
         _traits = traits,
         _techniques = techniques,
-        _trivia = trivia;
+        _trivia = trivia,
+        _locations = locations;
 
   factory _$_Temtem.fromJson(Map<String, dynamic> json) =>
       _$$_TemtemFromJson(json);
@@ -617,6 +632,15 @@ class _$_Temtem implements _Temtem {
   final String? wikiPortraitUrlLarge;
   @override
   final String? lumaWikiPortraitUrlLarge;
+  final List<Location> _locations;
+  @override
+  @JsonKey()
+  List<Location> get locations {
+    if (_locations is EqualUnmodifiableListView) return _locations;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_locations);
+  }
+
   @override
   final String? icon;
   @override
@@ -654,7 +678,7 @@ class _$_Temtem implements _Temtem {
 
   @override
   String toString() {
-    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, lumaPortraitWikiUrl: $lumaPortraitWikiUrl, wikiUrl: $wikiUrl, stats: $stats, traits: $traits, details: $details, techniques: $techniques, trivia: $trivia, evolution: $evolution, wikiPortraitUrlLarge: $wikiPortraitUrlLarge, lumaWikiPortraitUrlLarge: $lumaWikiPortraitUrlLarge, icon: $icon, lumaIcon: $lumaIcon, genderRatio: $genderRatio, catchRate: $catchRate, hatchMins: $hatchMins, tvYields: $tvYields, gameDescription: $gameDescription, wikiRenderStaticUrl: $wikiRenderStaticUrl, wikiRenderAnimatedUrl: $wikiRenderAnimatedUrl, wikiRenderStaticLumaUrl: $wikiRenderStaticLumaUrl, wikiRenderAnimatedLumaUrl: $wikiRenderAnimatedLumaUrl, renderStaticImage: $renderStaticImage, renderStaticLumaImage: $renderStaticLumaImage, renderAnimatedImage: $renderAnimatedImage, renderAnimatedLumaImage: $renderAnimatedLumaImage)';
+    return 'Temtem(number: $number, name: $name, types: $types, portraitWikiUrl: $portraitWikiUrl, lumaPortraitWikiUrl: $lumaPortraitWikiUrl, wikiUrl: $wikiUrl, stats: $stats, traits: $traits, details: $details, techniques: $techniques, trivia: $trivia, evolution: $evolution, wikiPortraitUrlLarge: $wikiPortraitUrlLarge, lumaWikiPortraitUrlLarge: $lumaWikiPortraitUrlLarge, locations: $locations, icon: $icon, lumaIcon: $lumaIcon, genderRatio: $genderRatio, catchRate: $catchRate, hatchMins: $hatchMins, tvYields: $tvYields, gameDescription: $gameDescription, wikiRenderStaticUrl: $wikiRenderStaticUrl, wikiRenderAnimatedUrl: $wikiRenderAnimatedUrl, wikiRenderStaticLumaUrl: $wikiRenderStaticLumaUrl, wikiRenderAnimatedLumaUrl: $wikiRenderAnimatedLumaUrl, renderStaticImage: $renderStaticImage, renderStaticLumaImage: $renderStaticLumaImage, renderAnimatedImage: $renderAnimatedImage, renderAnimatedLumaImage: $renderAnimatedLumaImage)';
   }
 
   @override
@@ -683,6 +707,8 @@ class _$_Temtem implements _Temtem {
             (identical(
                     other.lumaWikiPortraitUrlLarge, lumaWikiPortraitUrlLarge) ||
                 other.lumaWikiPortraitUrlLarge == lumaWikiPortraitUrlLarge) &&
+            const DeepCollectionEquality()
+                .equals(other._locations, _locations) &&
             (identical(other.icon, icon) || other.icon == icon) &&
             (identical(other.lumaIcon, lumaIcon) ||
                 other.lumaIcon == lumaIcon) &&
@@ -735,6 +761,7 @@ class _$_Temtem implements _Temtem {
         evolution,
         wikiPortraitUrlLarge,
         lumaWikiPortraitUrlLarge,
+        const DeepCollectionEquality().hash(_locations),
         icon,
         lumaIcon,
         genderRatio,
@@ -782,6 +809,7 @@ abstract class _Temtem implements Temtem {
       final Evolution? evolution,
       final String? wikiPortraitUrlLarge,
       final String? lumaWikiPortraitUrlLarge,
+      final List<Location> locations,
       final String? icon,
       final String? lumaIcon,
       final GenderRatio genderRatio,
@@ -829,6 +857,8 @@ abstract class _Temtem implements Temtem {
   String? get wikiPortraitUrlLarge;
   @override
   String? get lumaWikiPortraitUrlLarge;
+  @override
+  List<Location> get locations;
   @override
   String? get icon;
   @override

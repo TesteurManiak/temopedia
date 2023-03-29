@@ -38,6 +38,10 @@ _$_Temtem _$$_TemtemFromJson(Map<String, dynamic> json) => _$_Temtem(
           : Evolution.fromJson(json['evolution'] as Map<String, dynamic>),
       wikiPortraitUrlLarge: json['wikiPortraitUrlLarge'] as String?,
       lumaWikiPortraitUrlLarge: json['lumaWikiPortraitUrlLarge'] as String?,
+      locations: (json['locations'] as List<dynamic>?)
+              ?.map((e) => Location.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const <Location>[],
       icon: json['icon'] as String?,
       lumaIcon: json['lumaIcon'] as String?,
       genderRatio: json['genderRatio'] == null
@@ -74,6 +78,7 @@ Map<String, dynamic> _$$_TemtemToJson(_$_Temtem instance) => <String, dynamic>{
       'evolution': instance.evolution,
       'wikiPortraitUrlLarge': instance.wikiPortraitUrlLarge,
       'lumaWikiPortraitUrlLarge': instance.lumaWikiPortraitUrlLarge,
+      'locations': instance.locations,
       'icon': instance.icon,
       'lumaIcon': instance.lumaIcon,
       'genderRatio': instance.genderRatio,

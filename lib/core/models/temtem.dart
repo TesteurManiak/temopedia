@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'details.dart';
 import 'evolution.dart';
 import 'gender_ratio.dart';
+import 'location.dart';
 import 'stats.dart';
 import 'technique.dart';
 import 'type.dart';
@@ -27,6 +28,7 @@ class Temtem with _$Temtem {
     Evolution? evolution,
     String? wikiPortraitUrlLarge,
     String? lumaWikiPortraitUrlLarge,
+    @Default(<Location>[]) List<Location> locations,
     String? icon,
     String? lumaIcon,
     @Default(GenderRatio()) GenderRatio genderRatio,
