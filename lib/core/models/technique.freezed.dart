@@ -20,8 +20,11 @@ Technique _$TechniqueFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Technique {
+  @HiveField(0)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get source => throw _privateConstructorUsedError;
+  @HiveField(2)
   int? get levels => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +38,10 @@ abstract class $TechniqueCopyWith<$Res> {
   factory $TechniqueCopyWith(Technique value, $Res Function(Technique) then) =
       _$TechniqueCopyWithImpl<$Res, Technique>;
   @useResult
-  $Res call({String? name, String? source, int? levels});
+  $Res call(
+      {@HiveField(0) String? name,
+      @HiveField(1) String? source,
+      @HiveField(2) int? levels});
 }
 
 /// @nodoc
@@ -79,7 +85,10 @@ abstract class _$$_TechniqueCopyWith<$Res> implements $TechniqueCopyWith<$Res> {
       __$$_TechniqueCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? name, String? source, int? levels});
+  $Res call(
+      {@HiveField(0) String? name,
+      @HiveField(1) String? source,
+      @HiveField(2) int? levels});
 }
 
 /// @nodoc
@@ -116,17 +125,25 @@ class __$$_TechniqueCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Technique implements _Technique {
-  const _$_Technique({this.name, this.source, this.levels});
+@HiveType(typeId: 7, adapterName: 'TechniqueAdapter')
+class _$_Technique extends _Technique {
+  const _$_Technique(
+      {@HiveField(0) this.name,
+      @HiveField(1) this.source,
+      @HiveField(2) this.levels})
+      : super._();
 
   factory _$_Technique.fromJson(Map<String, dynamic> json) =>
       _$$_TechniqueFromJson(json);
 
   @override
+  @HiveField(0)
   final String? name;
   @override
+  @HiveField(1)
   final String? source;
   @override
+  @HiveField(2)
   final int? levels;
 
   @override
@@ -162,20 +179,24 @@ class _$_Technique implements _Technique {
   }
 }
 
-abstract class _Technique implements Technique {
+abstract class _Technique extends Technique {
   const factory _Technique(
-      {final String? name,
-      final String? source,
-      final int? levels}) = _$_Technique;
+      {@HiveField(0) final String? name,
+      @HiveField(1) final String? source,
+      @HiveField(2) final int? levels}) = _$_Technique;
+  const _Technique._() : super._();
 
   factory _Technique.fromJson(Map<String, dynamic> json) =
       _$_Technique.fromJson;
 
   @override
+  @HiveField(0)
   String? get name;
   @override
+  @HiveField(1)
   String? get source;
   @override
+  @HiveField(2)
   int? get levels;
   @override
   @JsonKey(ignore: true)

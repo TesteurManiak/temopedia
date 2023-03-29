@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import 'details.dart';
 import 'evolution.dart';
@@ -13,38 +14,44 @@ part 'temtem.g.dart';
 
 @freezed
 class Temtem with _$Temtem {
-  const factory Temtem({
-    required int number,
-    String? name,
-    @TypeListConverter() @Default(<TemType>[]) List<TemType> types,
-    String? portraitWikiUrl,
-    String? lumaPortraitWikiUrl,
-    String? wikiUrl,
-    @Default(Stats()) Stats stats,
-    @Default(<String>[]) List<String> traits,
-    @Default(Details()) Details details,
-    @Default(<Technique>[]) List<Technique> techniques,
-    @Default(<String>[]) List<String> trivia,
-    Evolution? evolution,
-    String? wikiPortraitUrlLarge,
-    String? lumaWikiPortraitUrlLarge,
-    @Default(<Location>[]) List<Location> locations,
-    String? icon,
-    String? lumaIcon,
-    @Default(GenderRatio()) GenderRatio genderRatio,
-    @Default(0) int catchRate,
-    @Default(0) double hatchMins,
-    @Default(Stats()) Stats tvYields,
-    String? gameDescription,
-    String? wikiRenderStaticUrl,
-    String? wikiRenderAnimatedUrl,
-    String? wikiRenderStaticLumaUrl,
-    String? wikiRenderAnimatedLumaUrl,
-    String? renderStaticImage,
-    String? renderStaticLumaImage,
-    String? renderAnimatedImage,
-    String? renderAnimatedLumaImage,
+  @HiveType(typeId: 1, adapterName: 'TemtemAdapter')
+  factory Temtem({
+    @HiveField(0) required int number,
+    @HiveField(1) String? name,
+    @TypeListConverter()
+    @Default(<TemType>[])
+    @HiveField(2)
+        List<TemType> types,
+    @HiveField(3) String? portraitWikiUrl,
+    @HiveField(4) String? lumaPortraitWikiUrl,
+    @HiveField(5) String? wikiUrl,
+    @Default(Stats()) @HiveField(6) Stats stats,
+    @Default(<String>[]) @HiveField(7) List<String> traits,
+    @Default(Details()) @HiveField(8) Details details,
+    @Default(<Technique>[]) @HiveField(9) List<Technique> techniques,
+    @Default(<String>[]) @HiveField(10) List<String> trivia,
+    @HiveField(11) Evolution? evolution,
+    @HiveField(12) String? wikiPortraitUrlLarge,
+    @HiveField(13) String? lumaWikiPortraitUrlLarge,
+    @Default(<Location>[]) @HiveField(14) List<Location> locations,
+    @HiveField(15) String? icon,
+    @HiveField(16) String? lumaIcon,
+    @Default(GenderRatio()) @HiveField(17) GenderRatio genderRatio,
+    @Default(0) @HiveField(18) int catchRate,
+    @Default(0) @HiveField(19) double hatchMins,
+    @Default(Stats()) @HiveField(20) Stats tvYields,
+    @HiveField(21) String? gameDescription,
+    @HiveField(22) String? wikiRenderStaticUrl,
+    @HiveField(23) String? wikiRenderAnimatedUrl,
+    @HiveField(24) String? wikiRenderStaticLumaUrl,
+    @HiveField(25) String? wikiRenderAnimatedLumaUrl,
+    @HiveField(26) String? renderStaticImage,
+    @HiveField(27) String? renderStaticLumaImage,
+    @HiveField(28) String? renderAnimatedImage,
+    @HiveField(29) String? renderAnimatedLumaImage,
   }) = _Temtem;
+
+  Temtem._();
 
   factory Temtem.fromJson(Map<String, dynamic> json) => _$TemtemFromJson(json);
 }

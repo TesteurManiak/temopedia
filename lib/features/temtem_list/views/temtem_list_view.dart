@@ -178,6 +178,12 @@ class _NameAndNumber extends StatelessWidget {
                 localName,
                 style: const TextStyle(
                   fontFamily: FontFamily.rubik,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      blurRadius: 2,
+                    ),
+                  ],
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -189,6 +195,12 @@ class _NameAndNumber extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 14,
               fontFamily: FontFamily.rubik,
+              shadows: [
+                Shadow(
+                  color: Colors.black,
+                  blurRadius: 2,
+                ),
+              ],
             ),
           ),
         ],

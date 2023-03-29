@@ -20,9 +20,13 @@ Evolution _$EvolutionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Evolution {
+  @HiveField(0)
   int get stage => throw _privateConstructorUsedError;
+  @HiveField(1)
   List<EvolutionNode> get evolutionTree => throw _privateConstructorUsedError;
+  @HiveField(2)
   bool get evolves => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,10 +41,10 @@ abstract class $EvolutionCopyWith<$Res> {
       _$EvolutionCopyWithImpl<$Res, Evolution>;
   @useResult
   $Res call(
-      {int stage,
-      List<EvolutionNode> evolutionTree,
-      bool evolves,
-      String? type});
+      {@HiveField(0) int stage,
+      @HiveField(1) List<EvolutionNode> evolutionTree,
+      @HiveField(2) bool evolves,
+      @HiveField(3) String? type});
 }
 
 /// @nodoc
@@ -90,10 +94,10 @@ abstract class _$$_EvolutionCopyWith<$Res> implements $EvolutionCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int stage,
-      List<EvolutionNode> evolutionTree,
-      bool evolves,
-      String? type});
+      {@HiveField(0) int stage,
+      @HiveField(1) List<EvolutionNode> evolutionTree,
+      @HiveField(2) bool evolves,
+      @HiveField(3) String? type});
 }
 
 /// @nodoc
@@ -135,23 +139,31 @@ class __$$_EvolutionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Evolution implements _Evolution {
+@HiveType(typeId: 8, adapterName: 'EvolutionAdapter')
+class _$_Evolution extends _Evolution {
   const _$_Evolution(
-      {this.stage = 0,
-      final List<EvolutionNode> evolutionTree = const <EvolutionNode>[],
-      this.evolves = false,
-      this.type})
-      : _evolutionTree = evolutionTree;
+      {@HiveField(0)
+          this.stage = 0,
+      @HiveField(1)
+          final List<EvolutionNode> evolutionTree = const <EvolutionNode>[],
+      @HiveField(2)
+          this.evolves = false,
+      @HiveField(3)
+          this.type})
+      : _evolutionTree = evolutionTree,
+        super._();
 
   factory _$_Evolution.fromJson(Map<String, dynamic> json) =>
       _$$_EvolutionFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int stage;
   final List<EvolutionNode> _evolutionTree;
   @override
   @JsonKey()
+  @HiveField(1)
   List<EvolutionNode> get evolutionTree {
     if (_evolutionTree is EqualUnmodifiableListView) return _evolutionTree;
     // ignore: implicit_dynamic_type
@@ -160,8 +172,10 @@ class _$_Evolution implements _Evolution {
 
   @override
   @JsonKey()
+  @HiveField(2)
   final bool evolves;
   @override
+  @HiveField(3)
   final String? type;
 
   @override
@@ -200,23 +214,28 @@ class _$_Evolution implements _Evolution {
   }
 }
 
-abstract class _Evolution implements Evolution {
+abstract class _Evolution extends Evolution {
   const factory _Evolution(
-      {final int stage,
-      final List<EvolutionNode> evolutionTree,
-      final bool evolves,
-      final String? type}) = _$_Evolution;
+      {@HiveField(0) final int stage,
+      @HiveField(1) final List<EvolutionNode> evolutionTree,
+      @HiveField(2) final bool evolves,
+      @HiveField(3) final String? type}) = _$_Evolution;
+  const _Evolution._() : super._();
 
   factory _Evolution.fromJson(Map<String, dynamic> json) =
       _$_Evolution.fromJson;
 
   @override
+  @HiveField(0)
   int get stage;
   @override
+  @HiveField(1)
   List<EvolutionNode> get evolutionTree;
   @override
+  @HiveField(2)
   bool get evolves;
   @override
+  @HiveField(3)
   String? get type;
   @override
   @JsonKey(ignore: true)
@@ -230,11 +249,17 @@ EvolutionNode _$EvolutionNodeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EvolutionNode {
+  @HiveField(0)
   int get number => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get name => throw _privateConstructorUsedError;
+  @HiveField(2)
   int get stage => throw _privateConstructorUsedError;
+  @HiveField(3)
   int get levels => throw _privateConstructorUsedError;
+  @HiveField(4)
   bool get trading => throw _privateConstructorUsedError;
+  @HiveField(5)
   Map<String, String> get traitMapping => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -250,12 +275,12 @@ abstract class $EvolutionNodeCopyWith<$Res> {
       _$EvolutionNodeCopyWithImpl<$Res, EvolutionNode>;
   @useResult
   $Res call(
-      {int number,
-      String? name,
-      int stage,
-      int levels,
-      bool trading,
-      Map<String, String> traitMapping});
+      {@HiveField(0) int number,
+      @HiveField(1) String? name,
+      @HiveField(2) int stage,
+      @HiveField(3) int levels,
+      @HiveField(4) bool trading,
+      @HiveField(5) Map<String, String> traitMapping});
 }
 
 /// @nodoc
@@ -316,12 +341,12 @@ abstract class _$$_EvolutionNodeCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int number,
-      String? name,
-      int stage,
-      int levels,
-      bool trading,
-      Map<String, String> traitMapping});
+      {@HiveField(0) int number,
+      @HiveField(1) String? name,
+      @HiveField(2) int stage,
+      @HiveField(3) int levels,
+      @HiveField(4) bool trading,
+      @HiveField(5) Map<String, String> traitMapping});
 }
 
 /// @nodoc
@@ -373,35 +398,49 @@ class __$$_EvolutionNodeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_EvolutionNode implements _EvolutionNode {
+@HiveType(typeId: 9, adapterName: 'EvolutionNodeAdapter')
+class _$_EvolutionNode extends _EvolutionNode {
   const _$_EvolutionNode(
-      {required this.number,
-      this.name,
-      this.stage = 0,
-      this.levels = 0,
-      this.trading = false,
-      final Map<String, String> traitMapping = const <String, String>{}})
-      : _traitMapping = traitMapping;
+      {@HiveField(0)
+          required this.number,
+      @HiveField(1)
+          this.name,
+      @HiveField(2)
+          this.stage = 0,
+      @HiveField(3)
+          this.levels = 0,
+      @HiveField(4)
+          this.trading = false,
+      @HiveField(5)
+          final Map<String, String> traitMapping = const <String, String>{}})
+      : _traitMapping = traitMapping,
+        super._();
 
   factory _$_EvolutionNode.fromJson(Map<String, dynamic> json) =>
       _$$_EvolutionNodeFromJson(json);
 
   @override
+  @HiveField(0)
   final int number;
   @override
+  @HiveField(1)
   final String? name;
   @override
   @JsonKey()
+  @HiveField(2)
   final int stage;
   @override
   @JsonKey()
+  @HiveField(3)
   final int levels;
   @override
   @JsonKey()
+  @HiveField(4)
   final bool trading;
   final Map<String, String> _traitMapping;
   @override
   @JsonKey()
+  @HiveField(5)
   Map<String, String> get traitMapping {
     if (_traitMapping is EqualUnmodifiableMapView) return _traitMapping;
     // ignore: implicit_dynamic_type
@@ -446,29 +485,36 @@ class _$_EvolutionNode implements _EvolutionNode {
   }
 }
 
-abstract class _EvolutionNode implements EvolutionNode {
+abstract class _EvolutionNode extends EvolutionNode {
   const factory _EvolutionNode(
-      {required final int number,
-      final String? name,
-      final int stage,
-      final int levels,
-      final bool trading,
-      final Map<String, String> traitMapping}) = _$_EvolutionNode;
+      {@HiveField(0) required final int number,
+      @HiveField(1) final String? name,
+      @HiveField(2) final int stage,
+      @HiveField(3) final int levels,
+      @HiveField(4) final bool trading,
+      @HiveField(5) final Map<String, String> traitMapping}) = _$_EvolutionNode;
+  const _EvolutionNode._() : super._();
 
   factory _EvolutionNode.fromJson(Map<String, dynamic> json) =
       _$_EvolutionNode.fromJson;
 
   @override
+  @HiveField(0)
   int get number;
   @override
+  @HiveField(1)
   String? get name;
   @override
+  @HiveField(2)
   int get stage;
   @override
+  @HiveField(3)
   int get levels;
   @override
+  @HiveField(4)
   bool get trading;
   @override
+  @HiveField(5)
   Map<String, String> get traitMapping;
   @override
   @JsonKey(ignore: true)

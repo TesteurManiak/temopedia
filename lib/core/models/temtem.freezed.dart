@@ -20,36 +20,66 @@ Temtem _$TemtemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Temtem {
+  @HiveField(0)
   int get number => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get name => throw _privateConstructorUsedError;
   @TypeListConverter()
+  @HiveField(2)
   List<TemType> get types => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get portraitWikiUrl => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get lumaPortraitWikiUrl => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get wikiUrl => throw _privateConstructorUsedError;
+  @HiveField(6)
   Stats get stats => throw _privateConstructorUsedError;
+  @HiveField(7)
   List<String> get traits => throw _privateConstructorUsedError;
+  @HiveField(8)
   Details get details => throw _privateConstructorUsedError;
+  @HiveField(9)
   List<Technique> get techniques => throw _privateConstructorUsedError;
+  @HiveField(10)
   List<String> get trivia => throw _privateConstructorUsedError;
+  @HiveField(11)
   Evolution? get evolution => throw _privateConstructorUsedError;
+  @HiveField(12)
   String? get wikiPortraitUrlLarge => throw _privateConstructorUsedError;
+  @HiveField(13)
   String? get lumaWikiPortraitUrlLarge => throw _privateConstructorUsedError;
+  @HiveField(14)
   List<Location> get locations => throw _privateConstructorUsedError;
+  @HiveField(15)
   String? get icon => throw _privateConstructorUsedError;
+  @HiveField(16)
   String? get lumaIcon => throw _privateConstructorUsedError;
+  @HiveField(17)
   GenderRatio get genderRatio => throw _privateConstructorUsedError;
+  @HiveField(18)
   int get catchRate => throw _privateConstructorUsedError;
+  @HiveField(19)
   double get hatchMins => throw _privateConstructorUsedError;
+  @HiveField(20)
   Stats get tvYields => throw _privateConstructorUsedError;
+  @HiveField(21)
   String? get gameDescription => throw _privateConstructorUsedError;
+  @HiveField(22)
   String? get wikiRenderStaticUrl => throw _privateConstructorUsedError;
+  @HiveField(23)
   String? get wikiRenderAnimatedUrl => throw _privateConstructorUsedError;
+  @HiveField(24)
   String? get wikiRenderStaticLumaUrl => throw _privateConstructorUsedError;
+  @HiveField(25)
   String? get wikiRenderAnimatedLumaUrl => throw _privateConstructorUsedError;
+  @HiveField(26)
   String? get renderStaticImage => throw _privateConstructorUsedError;
+  @HiveField(27)
   String? get renderStaticLumaImage => throw _privateConstructorUsedError;
+  @HiveField(28)
   String? get renderAnimatedImage => throw _privateConstructorUsedError;
+  @HiveField(29)
   String? get renderAnimatedLumaImage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -63,36 +93,36 @@ abstract class $TemtemCopyWith<$Res> {
       _$TemtemCopyWithImpl<$Res, Temtem>;
   @useResult
   $Res call(
-      {int number,
-      String? name,
-      @TypeListConverter() List<TemType> types,
-      String? portraitWikiUrl,
-      String? lumaPortraitWikiUrl,
-      String? wikiUrl,
-      Stats stats,
-      List<String> traits,
-      Details details,
-      List<Technique> techniques,
-      List<String> trivia,
-      Evolution? evolution,
-      String? wikiPortraitUrlLarge,
-      String? lumaWikiPortraitUrlLarge,
-      List<Location> locations,
-      String? icon,
-      String? lumaIcon,
-      GenderRatio genderRatio,
-      int catchRate,
-      double hatchMins,
-      Stats tvYields,
-      String? gameDescription,
-      String? wikiRenderStaticUrl,
-      String? wikiRenderAnimatedUrl,
-      String? wikiRenderStaticLumaUrl,
-      String? wikiRenderAnimatedLumaUrl,
-      String? renderStaticImage,
-      String? renderStaticLumaImage,
-      String? renderAnimatedImage,
-      String? renderAnimatedLumaImage});
+      {@HiveField(0) int number,
+      @HiveField(1) String? name,
+      @TypeListConverter() @HiveField(2) List<TemType> types,
+      @HiveField(3) String? portraitWikiUrl,
+      @HiveField(4) String? lumaPortraitWikiUrl,
+      @HiveField(5) String? wikiUrl,
+      @HiveField(6) Stats stats,
+      @HiveField(7) List<String> traits,
+      @HiveField(8) Details details,
+      @HiveField(9) List<Technique> techniques,
+      @HiveField(10) List<String> trivia,
+      @HiveField(11) Evolution? evolution,
+      @HiveField(12) String? wikiPortraitUrlLarge,
+      @HiveField(13) String? lumaWikiPortraitUrlLarge,
+      @HiveField(14) List<Location> locations,
+      @HiveField(15) String? icon,
+      @HiveField(16) String? lumaIcon,
+      @HiveField(17) GenderRatio genderRatio,
+      @HiveField(18) int catchRate,
+      @HiveField(19) double hatchMins,
+      @HiveField(20) Stats tvYields,
+      @HiveField(21) String? gameDescription,
+      @HiveField(22) String? wikiRenderStaticUrl,
+      @HiveField(23) String? wikiRenderAnimatedUrl,
+      @HiveField(24) String? wikiRenderStaticLumaUrl,
+      @HiveField(25) String? wikiRenderAnimatedLumaUrl,
+      @HiveField(26) String? renderStaticImage,
+      @HiveField(27) String? renderStaticLumaImage,
+      @HiveField(28) String? renderAnimatedImage,
+      @HiveField(29) String? renderAnimatedLumaImage});
 
   $StatsCopyWith<$Res> get stats;
   $DetailsCopyWith<$Res> get details;
@@ -321,36 +351,36 @@ abstract class _$$_TemtemCopyWith<$Res> implements $TemtemCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int number,
-      String? name,
-      @TypeListConverter() List<TemType> types,
-      String? portraitWikiUrl,
-      String? lumaPortraitWikiUrl,
-      String? wikiUrl,
-      Stats stats,
-      List<String> traits,
-      Details details,
-      List<Technique> techniques,
-      List<String> trivia,
-      Evolution? evolution,
-      String? wikiPortraitUrlLarge,
-      String? lumaWikiPortraitUrlLarge,
-      List<Location> locations,
-      String? icon,
-      String? lumaIcon,
-      GenderRatio genderRatio,
-      int catchRate,
-      double hatchMins,
-      Stats tvYields,
-      String? gameDescription,
-      String? wikiRenderStaticUrl,
-      String? wikiRenderAnimatedUrl,
-      String? wikiRenderStaticLumaUrl,
-      String? wikiRenderAnimatedLumaUrl,
-      String? renderStaticImage,
-      String? renderStaticLumaImage,
-      String? renderAnimatedImage,
-      String? renderAnimatedLumaImage});
+      {@HiveField(0) int number,
+      @HiveField(1) String? name,
+      @TypeListConverter() @HiveField(2) List<TemType> types,
+      @HiveField(3) String? portraitWikiUrl,
+      @HiveField(4) String? lumaPortraitWikiUrl,
+      @HiveField(5) String? wikiUrl,
+      @HiveField(6) Stats stats,
+      @HiveField(7) List<String> traits,
+      @HiveField(8) Details details,
+      @HiveField(9) List<Technique> techniques,
+      @HiveField(10) List<String> trivia,
+      @HiveField(11) Evolution? evolution,
+      @HiveField(12) String? wikiPortraitUrlLarge,
+      @HiveField(13) String? lumaWikiPortraitUrlLarge,
+      @HiveField(14) List<Location> locations,
+      @HiveField(15) String? icon,
+      @HiveField(16) String? lumaIcon,
+      @HiveField(17) GenderRatio genderRatio,
+      @HiveField(18) int catchRate,
+      @HiveField(19) double hatchMins,
+      @HiveField(20) Stats tvYields,
+      @HiveField(21) String? gameDescription,
+      @HiveField(22) String? wikiRenderStaticUrl,
+      @HiveField(23) String? wikiRenderAnimatedUrl,
+      @HiveField(24) String? wikiRenderStaticLumaUrl,
+      @HiveField(25) String? wikiRenderAnimatedLumaUrl,
+      @HiveField(26) String? renderStaticImage,
+      @HiveField(27) String? renderStaticLumaImage,
+      @HiveField(28) String? renderAnimatedImage,
+      @HiveField(29) String? renderAnimatedLumaImage});
 
   @override
   $StatsCopyWith<$Res> get stats;
@@ -532,55 +562,91 @@ class __$$_TemtemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Temtem implements _Temtem {
-  const _$_Temtem(
-      {required this.number,
-      this.name,
-      @TypeListConverter() final List<TemType> types = const <TemType>[],
-      this.portraitWikiUrl,
-      this.lumaPortraitWikiUrl,
-      this.wikiUrl,
-      this.stats = const Stats(),
-      final List<String> traits = const <String>[],
-      this.details = const Details(),
-      final List<Technique> techniques = const <Technique>[],
-      final List<String> trivia = const <String>[],
-      this.evolution,
-      this.wikiPortraitUrlLarge,
-      this.lumaWikiPortraitUrlLarge,
-      final List<Location> locations = const <Location>[],
-      this.icon,
-      this.lumaIcon,
-      this.genderRatio = const GenderRatio(),
-      this.catchRate = 0,
-      this.hatchMins = 0,
-      this.tvYields = const Stats(),
-      this.gameDescription,
-      this.wikiRenderStaticUrl,
-      this.wikiRenderAnimatedUrl,
-      this.wikiRenderStaticLumaUrl,
-      this.wikiRenderAnimatedLumaUrl,
-      this.renderStaticImage,
-      this.renderStaticLumaImage,
-      this.renderAnimatedImage,
-      this.renderAnimatedLumaImage})
+@HiveType(typeId: 1, adapterName: 'TemtemAdapter')
+class _$_Temtem extends _Temtem {
+  _$_Temtem(
+      {@HiveField(0)
+          required this.number,
+      @HiveField(1)
+          this.name,
+      @TypeListConverter()
+      @HiveField(2)
+          final List<TemType> types = const <TemType>[],
+      @HiveField(3)
+          this.portraitWikiUrl,
+      @HiveField(4)
+          this.lumaPortraitWikiUrl,
+      @HiveField(5)
+          this.wikiUrl,
+      @HiveField(6)
+          this.stats = const Stats(),
+      @HiveField(7)
+          final List<String> traits = const <String>[],
+      @HiveField(8)
+          this.details = const Details(),
+      @HiveField(9)
+          final List<Technique> techniques = const <Technique>[],
+      @HiveField(10)
+          final List<String> trivia = const <String>[],
+      @HiveField(11)
+          this.evolution,
+      @HiveField(12)
+          this.wikiPortraitUrlLarge,
+      @HiveField(13)
+          this.lumaWikiPortraitUrlLarge,
+      @HiveField(14)
+          final List<Location> locations = const <Location>[],
+      @HiveField(15)
+          this.icon,
+      @HiveField(16)
+          this.lumaIcon,
+      @HiveField(17)
+          this.genderRatio = const GenderRatio(),
+      @HiveField(18)
+          this.catchRate = 0,
+      @HiveField(19)
+          this.hatchMins = 0,
+      @HiveField(20)
+          this.tvYields = const Stats(),
+      @HiveField(21)
+          this.gameDescription,
+      @HiveField(22)
+          this.wikiRenderStaticUrl,
+      @HiveField(23)
+          this.wikiRenderAnimatedUrl,
+      @HiveField(24)
+          this.wikiRenderStaticLumaUrl,
+      @HiveField(25)
+          this.wikiRenderAnimatedLumaUrl,
+      @HiveField(26)
+          this.renderStaticImage,
+      @HiveField(27)
+          this.renderStaticLumaImage,
+      @HiveField(28)
+          this.renderAnimatedImage,
+      @HiveField(29)
+          this.renderAnimatedLumaImage})
       : _types = types,
         _traits = traits,
         _techniques = techniques,
         _trivia = trivia,
-        _locations = locations;
+        _locations = locations,
+        super._();
 
   factory _$_Temtem.fromJson(Map<String, dynamic> json) =>
       _$$_TemtemFromJson(json);
 
   @override
+  @HiveField(0)
   final int number;
   @override
+  @HiveField(1)
   final String? name;
   final List<TemType> _types;
   @override
   @JsonKey()
   @TypeListConverter()
+  @HiveField(2)
   List<TemType> get types {
     if (_types is EqualUnmodifiableListView) return _types;
     // ignore: implicit_dynamic_type
@@ -588,17 +654,22 @@ class _$_Temtem implements _Temtem {
   }
 
   @override
+  @HiveField(3)
   final String? portraitWikiUrl;
   @override
+  @HiveField(4)
   final String? lumaPortraitWikiUrl;
   @override
+  @HiveField(5)
   final String? wikiUrl;
   @override
   @JsonKey()
+  @HiveField(6)
   final Stats stats;
   final List<String> _traits;
   @override
   @JsonKey()
+  @HiveField(7)
   List<String> get traits {
     if (_traits is EqualUnmodifiableListView) return _traits;
     // ignore: implicit_dynamic_type
@@ -607,10 +678,12 @@ class _$_Temtem implements _Temtem {
 
   @override
   @JsonKey()
+  @HiveField(8)
   final Details details;
   final List<Technique> _techniques;
   @override
   @JsonKey()
+  @HiveField(9)
   List<Technique> get techniques {
     if (_techniques is EqualUnmodifiableListView) return _techniques;
     // ignore: implicit_dynamic_type
@@ -620,6 +693,7 @@ class _$_Temtem implements _Temtem {
   final List<String> _trivia;
   @override
   @JsonKey()
+  @HiveField(10)
   List<String> get trivia {
     if (_trivia is EqualUnmodifiableListView) return _trivia;
     // ignore: implicit_dynamic_type
@@ -627,14 +701,18 @@ class _$_Temtem implements _Temtem {
   }
 
   @override
+  @HiveField(11)
   final Evolution? evolution;
   @override
+  @HiveField(12)
   final String? wikiPortraitUrlLarge;
   @override
+  @HiveField(13)
   final String? lumaWikiPortraitUrlLarge;
   final List<Location> _locations;
   @override
   @JsonKey()
+  @HiveField(14)
   List<Location> get locations {
     if (_locations is EqualUnmodifiableListView) return _locations;
     // ignore: implicit_dynamic_type
@@ -642,38 +720,53 @@ class _$_Temtem implements _Temtem {
   }
 
   @override
+  @HiveField(15)
   final String? icon;
   @override
+  @HiveField(16)
   final String? lumaIcon;
   @override
   @JsonKey()
+  @HiveField(17)
   final GenderRatio genderRatio;
   @override
   @JsonKey()
+  @HiveField(18)
   final int catchRate;
   @override
   @JsonKey()
+  @HiveField(19)
   final double hatchMins;
   @override
   @JsonKey()
+  @HiveField(20)
   final Stats tvYields;
   @override
+  @HiveField(21)
   final String? gameDescription;
   @override
+  @HiveField(22)
   final String? wikiRenderStaticUrl;
   @override
+  @HiveField(23)
   final String? wikiRenderAnimatedUrl;
   @override
+  @HiveField(24)
   final String? wikiRenderStaticLumaUrl;
   @override
+  @HiveField(25)
   final String? wikiRenderAnimatedLumaUrl;
   @override
+  @HiveField(26)
   final String? renderStaticImage;
   @override
+  @HiveField(27)
   final String? renderStaticLumaImage;
   @override
+  @HiveField(28)
   final String? renderAnimatedImage;
   @override
+  @HiveField(29)
   final String? renderAnimatedLumaImage;
 
   @override
@@ -793,101 +886,132 @@ class _$_Temtem implements _Temtem {
   }
 }
 
-abstract class _Temtem implements Temtem {
-  const factory _Temtem(
-      {required final int number,
-      final String? name,
-      @TypeListConverter() final List<TemType> types,
-      final String? portraitWikiUrl,
-      final String? lumaPortraitWikiUrl,
-      final String? wikiUrl,
-      final Stats stats,
-      final List<String> traits,
-      final Details details,
-      final List<Technique> techniques,
-      final List<String> trivia,
-      final Evolution? evolution,
-      final String? wikiPortraitUrlLarge,
-      final String? lumaWikiPortraitUrlLarge,
-      final List<Location> locations,
-      final String? icon,
-      final String? lumaIcon,
-      final GenderRatio genderRatio,
-      final int catchRate,
-      final double hatchMins,
-      final Stats tvYields,
-      final String? gameDescription,
-      final String? wikiRenderStaticUrl,
-      final String? wikiRenderAnimatedUrl,
-      final String? wikiRenderStaticLumaUrl,
-      final String? wikiRenderAnimatedLumaUrl,
-      final String? renderStaticImage,
-      final String? renderStaticLumaImage,
-      final String? renderAnimatedImage,
-      final String? renderAnimatedLumaImage}) = _$_Temtem;
+abstract class _Temtem extends Temtem {
+  factory _Temtem(
+      {@HiveField(0) required final int number,
+      @HiveField(1) final String? name,
+      @TypeListConverter() @HiveField(2) final List<TemType> types,
+      @HiveField(3) final String? portraitWikiUrl,
+      @HiveField(4) final String? lumaPortraitWikiUrl,
+      @HiveField(5) final String? wikiUrl,
+      @HiveField(6) final Stats stats,
+      @HiveField(7) final List<String> traits,
+      @HiveField(8) final Details details,
+      @HiveField(9) final List<Technique> techniques,
+      @HiveField(10) final List<String> trivia,
+      @HiveField(11) final Evolution? evolution,
+      @HiveField(12) final String? wikiPortraitUrlLarge,
+      @HiveField(13) final String? lumaWikiPortraitUrlLarge,
+      @HiveField(14) final List<Location> locations,
+      @HiveField(15) final String? icon,
+      @HiveField(16) final String? lumaIcon,
+      @HiveField(17) final GenderRatio genderRatio,
+      @HiveField(18) final int catchRate,
+      @HiveField(19) final double hatchMins,
+      @HiveField(20) final Stats tvYields,
+      @HiveField(21) final String? gameDescription,
+      @HiveField(22) final String? wikiRenderStaticUrl,
+      @HiveField(23) final String? wikiRenderAnimatedUrl,
+      @HiveField(24) final String? wikiRenderStaticLumaUrl,
+      @HiveField(25) final String? wikiRenderAnimatedLumaUrl,
+      @HiveField(26) final String? renderStaticImage,
+      @HiveField(27) final String? renderStaticLumaImage,
+      @HiveField(28) final String? renderAnimatedImage,
+      @HiveField(29) final String? renderAnimatedLumaImage}) = _$_Temtem;
+  _Temtem._() : super._();
 
   factory _Temtem.fromJson(Map<String, dynamic> json) = _$_Temtem.fromJson;
 
   @override
+  @HiveField(0)
   int get number;
   @override
+  @HiveField(1)
   String? get name;
   @override
   @TypeListConverter()
+  @HiveField(2)
   List<TemType> get types;
   @override
+  @HiveField(3)
   String? get portraitWikiUrl;
   @override
+  @HiveField(4)
   String? get lumaPortraitWikiUrl;
   @override
+  @HiveField(5)
   String? get wikiUrl;
   @override
+  @HiveField(6)
   Stats get stats;
   @override
+  @HiveField(7)
   List<String> get traits;
   @override
+  @HiveField(8)
   Details get details;
   @override
+  @HiveField(9)
   List<Technique> get techniques;
   @override
+  @HiveField(10)
   List<String> get trivia;
   @override
+  @HiveField(11)
   Evolution? get evolution;
   @override
+  @HiveField(12)
   String? get wikiPortraitUrlLarge;
   @override
+  @HiveField(13)
   String? get lumaWikiPortraitUrlLarge;
   @override
+  @HiveField(14)
   List<Location> get locations;
   @override
+  @HiveField(15)
   String? get icon;
   @override
+  @HiveField(16)
   String? get lumaIcon;
   @override
+  @HiveField(17)
   GenderRatio get genderRatio;
   @override
+  @HiveField(18)
   int get catchRate;
   @override
+  @HiveField(19)
   double get hatchMins;
   @override
+  @HiveField(20)
   Stats get tvYields;
   @override
+  @HiveField(21)
   String? get gameDescription;
   @override
+  @HiveField(22)
   String? get wikiRenderStaticUrl;
   @override
+  @HiveField(23)
   String? get wikiRenderAnimatedUrl;
   @override
+  @HiveField(24)
   String? get wikiRenderStaticLumaUrl;
   @override
+  @HiveField(25)
   String? get wikiRenderAnimatedLumaUrl;
   @override
+  @HiveField(26)
   String? get renderStaticImage;
   @override
+  @HiveField(27)
   String? get renderStaticLumaImage;
   @override
+  @HiveField(28)
   String? get renderAnimatedImage;
   @override
+  @HiveField(29)
   String? get renderAnimatedLumaImage;
   @override
   @JsonKey(ignore: true)

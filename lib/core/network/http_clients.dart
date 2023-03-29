@@ -60,11 +60,11 @@ class ApiClient {
   }
 }
 
-final httpClientProvider = Provider.autoDispose<AppHttpClient>((_) {
+final httpClientProvider = Provider<AppHttpClient>((_) {
   return AppHttpClient();
 });
 
-final apiClientProvider = Provider.autoDispose<ApiClient>((ref) {
+final apiClientProvider = Provider<ApiClient>((ref) {
   return ApiClient(
     restClient: RestClient(
       baseUri: Uri.parse('https://temtem-api.mael.tech'),
@@ -73,7 +73,7 @@ final apiClientProvider = Provider.autoDispose<ApiClient>((ref) {
   );
 });
 
-final imageUrlProvider = Provider.family.autoDispose<String, String?>(
+final imageUrlProvider = Provider.family<String, String?>(
   (ref, path) {
     final startsWithSlash = path?.startsWith('/') ?? false;
 

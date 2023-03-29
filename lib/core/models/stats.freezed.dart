@@ -20,12 +20,19 @@ Stats _$StatsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Stats {
+  @HiveField(0)
   int get hp => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get sta => throw _privateConstructorUsedError;
+  @HiveField(2)
   int get spd => throw _privateConstructorUsedError;
+  @HiveField(3)
   int get atk => throw _privateConstructorUsedError;
+  @HiveField(4)
   int get def => throw _privateConstructorUsedError;
+  @HiveField(5)
   int get spatk => throw _privateConstructorUsedError;
+  @HiveField(6)
   int get spdef => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +45,14 @@ abstract class $StatsCopyWith<$Res> {
   factory $StatsCopyWith(Stats value, $Res Function(Stats) then) =
       _$StatsCopyWithImpl<$Res, Stats>;
   @useResult
-  $Res call({int hp, int sta, int spd, int atk, int def, int spatk, int spdef});
+  $Res call(
+      {@HiveField(0) int hp,
+      @HiveField(1) int sta,
+      @HiveField(2) int spd,
+      @HiveField(3) int atk,
+      @HiveField(4) int def,
+      @HiveField(5) int spatk,
+      @HiveField(6) int spdef});
 }
 
 /// @nodoc
@@ -101,7 +115,14 @@ abstract class _$$_StatsCopyWith<$Res> implements $StatsCopyWith<$Res> {
       __$$_StatsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int hp, int sta, int spd, int atk, int def, int spatk, int spdef});
+  $Res call(
+      {@HiveField(0) int hp,
+      @HiveField(1) int sta,
+      @HiveField(2) int spd,
+      @HiveField(3) int atk,
+      @HiveField(4) int def,
+      @HiveField(5) int spatk,
+      @HiveField(6) int spdef});
 }
 
 /// @nodoc
@@ -156,15 +177,16 @@ class __$$_StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res, _$_Stats>
 
 /// @nodoc
 @JsonSerializable()
+@HiveType(typeId: 3, adapterName: 'StatsAdapter')
 class _$_Stats extends _Stats {
   const _$_Stats(
-      {this.hp = 0,
-      this.sta = 0,
-      this.spd = 0,
-      this.atk = 0,
-      this.def = 0,
-      this.spatk = 0,
-      this.spdef = 0})
+      {@HiveField(0) this.hp = 0,
+      @HiveField(1) this.sta = 0,
+      @HiveField(2) this.spd = 0,
+      @HiveField(3) this.atk = 0,
+      @HiveField(4) this.def = 0,
+      @HiveField(5) this.spatk = 0,
+      @HiveField(6) this.spdef = 0})
       : super._();
 
   factory _$_Stats.fromJson(Map<String, dynamic> json) =>
@@ -172,24 +194,31 @@ class _$_Stats extends _Stats {
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int hp;
   @override
   @JsonKey()
+  @HiveField(1)
   final int sta;
   @override
   @JsonKey()
+  @HiveField(2)
   final int spd;
   @override
   @JsonKey()
+  @HiveField(3)
   final int atk;
   @override
   @JsonKey()
+  @HiveField(4)
   final int def;
   @override
   @JsonKey()
+  @HiveField(5)
   final int spatk;
   @override
   @JsonKey()
+  @HiveField(6)
   final int spdef;
 
   @override
@@ -232,30 +261,37 @@ class _$_Stats extends _Stats {
 
 abstract class _Stats extends Stats {
   const factory _Stats(
-      {final int hp,
-      final int sta,
-      final int spd,
-      final int atk,
-      final int def,
-      final int spatk,
-      final int spdef}) = _$_Stats;
+      {@HiveField(0) final int hp,
+      @HiveField(1) final int sta,
+      @HiveField(2) final int spd,
+      @HiveField(3) final int atk,
+      @HiveField(4) final int def,
+      @HiveField(5) final int spatk,
+      @HiveField(6) final int spdef}) = _$_Stats;
   const _Stats._() : super._();
 
   factory _Stats.fromJson(Map<String, dynamic> json) = _$_Stats.fromJson;
 
   @override
+  @HiveField(0)
   int get hp;
   @override
+  @HiveField(1)
   int get sta;
   @override
+  @HiveField(2)
   int get spd;
   @override
+  @HiveField(3)
   int get atk;
   @override
+  @HiveField(4)
   int get def;
   @override
+  @HiveField(5)
   int get spatk;
   @override
+  @HiveField(6)
   int get spdef;
   @override
   @JsonKey(ignore: true)

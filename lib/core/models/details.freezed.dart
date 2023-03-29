@@ -20,7 +20,9 @@ Details _$DetailsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Details {
+  @HiveField(0)
   Height get height => throw _privateConstructorUsedError;
+  @HiveField(1)
   Weight get weight => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -33,7 +35,7 @@ abstract class $DetailsCopyWith<$Res> {
   factory $DetailsCopyWith(Details value, $Res Function(Details) then) =
       _$DetailsCopyWithImpl<$Res, Details>;
   @useResult
-  $Res call({Height height, Weight weight});
+  $Res call({@HiveField(0) Height height, @HiveField(1) Weight weight});
 
   $HeightCopyWith<$Res> get height;
   $WeightCopyWith<$Res> get weight;
@@ -91,7 +93,7 @@ abstract class _$$_DetailsCopyWith<$Res> implements $DetailsCopyWith<$Res> {
       __$$_DetailsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Height height, Weight weight});
+  $Res call({@HiveField(0) Height height, @HiveField(1) Weight weight});
 
   @override
   $HeightCopyWith<$Res> get height;
@@ -127,18 +129,23 @@ class __$$_DetailsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Details implements _Details {
+@HiveType(typeId: 4, adapterName: 'DetailsAdapter')
+class _$_Details extends _Details {
   const _$_Details(
-      {this.height = const Height(), this.weight = const Weight()});
+      {@HiveField(0) this.height = const Height(),
+      @HiveField(1) this.weight = const Weight()})
+      : super._();
 
   factory _$_Details.fromJson(Map<String, dynamic> json) =>
       _$$_DetailsFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final Height height;
   @override
   @JsonKey()
+  @HiveField(1)
   final Weight weight;
 
   @override
@@ -173,15 +180,19 @@ class _$_Details implements _Details {
   }
 }
 
-abstract class _Details implements Details {
-  const factory _Details({final Height height, final Weight weight}) =
-      _$_Details;
+abstract class _Details extends Details {
+  const factory _Details(
+      {@HiveField(0) final Height height,
+      @HiveField(1) final Weight weight}) = _$_Details;
+  const _Details._() : super._();
 
   factory _Details.fromJson(Map<String, dynamic> json) = _$_Details.fromJson;
 
   @override
+  @HiveField(0)
   Height get height;
   @override
+  @HiveField(1)
   Weight get weight;
   @override
   @JsonKey(ignore: true)
@@ -195,7 +206,9 @@ Height _$HeightFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Height {
+  @HiveField(0)
   int get cm => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get inches => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -208,7 +221,7 @@ abstract class $HeightCopyWith<$Res> {
   factory $HeightCopyWith(Height value, $Res Function(Height) then) =
       _$HeightCopyWithImpl<$Res, Height>;
   @useResult
-  $Res call({int cm, int inches});
+  $Res call({@HiveField(0) int cm, @HiveField(1) int inches});
 }
 
 /// @nodoc
@@ -246,7 +259,7 @@ abstract class _$$_HeightCopyWith<$Res> implements $HeightCopyWith<$Res> {
       __$$_HeightCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int cm, int inches});
+  $Res call({@HiveField(0) int cm, @HiveField(1) int inches});
 }
 
 /// @nodoc
@@ -277,17 +290,21 @@ class __$$_HeightCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Height implements _Height {
-  const _$_Height({this.cm = 0, this.inches = 0});
+@HiveType(typeId: 5, adapterName: 'HeightAdapter')
+class _$_Height extends _Height {
+  const _$_Height({@HiveField(0) this.cm = 0, @HiveField(1) this.inches = 0})
+      : super._();
 
   factory _$_Height.fromJson(Map<String, dynamic> json) =>
       _$$_HeightFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int cm;
   @override
   @JsonKey()
+  @HiveField(1)
   final int inches;
 
   @override
@@ -322,14 +339,18 @@ class _$_Height implements _Height {
   }
 }
 
-abstract class _Height implements Height {
-  const factory _Height({final int cm, final int inches}) = _$_Height;
+abstract class _Height extends Height {
+  const factory _Height(
+      {@HiveField(0) final int cm, @HiveField(1) final int inches}) = _$_Height;
+  const _Height._() : super._();
 
   factory _Height.fromJson(Map<String, dynamic> json) = _$_Height.fromJson;
 
   @override
+  @HiveField(0)
   int get cm;
   @override
+  @HiveField(1)
   int get inches;
   @override
   @JsonKey(ignore: true)
@@ -343,7 +364,9 @@ Weight _$WeightFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Weight {
+  @HiveField(0)
   int get kg => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get lbs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -356,7 +379,7 @@ abstract class $WeightCopyWith<$Res> {
   factory $WeightCopyWith(Weight value, $Res Function(Weight) then) =
       _$WeightCopyWithImpl<$Res, Weight>;
   @useResult
-  $Res call({int kg, int lbs});
+  $Res call({@HiveField(0) int kg, @HiveField(1) int lbs});
 }
 
 /// @nodoc
@@ -394,7 +417,7 @@ abstract class _$$_WeightCopyWith<$Res> implements $WeightCopyWith<$Res> {
       __$$_WeightCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int kg, int lbs});
+  $Res call({@HiveField(0) int kg, @HiveField(1) int lbs});
 }
 
 /// @nodoc
@@ -425,17 +448,21 @@ class __$$_WeightCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Weight implements _Weight {
-  const _$_Weight({this.kg = 0, this.lbs = 0});
+@HiveType(typeId: 6, adapterName: 'WeightAdapter')
+class _$_Weight extends _Weight {
+  const _$_Weight({@HiveField(0) this.kg = 0, @HiveField(1) this.lbs = 0})
+      : super._();
 
   factory _$_Weight.fromJson(Map<String, dynamic> json) =>
       _$$_WeightFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int kg;
   @override
   @JsonKey()
+  @HiveField(1)
   final int lbs;
 
   @override
@@ -470,14 +497,18 @@ class _$_Weight implements _Weight {
   }
 }
 
-abstract class _Weight implements Weight {
-  const factory _Weight({final int kg, final int lbs}) = _$_Weight;
+abstract class _Weight extends Weight {
+  const factory _Weight(
+      {@HiveField(0) final int kg, @HiveField(1) final int lbs}) = _$_Weight;
+  const _Weight._() : super._();
 
   factory _Weight.fromJson(Map<String, dynamic> json) = _$_Weight.fromJson;
 
   @override
+  @HiveField(0)
   int get kg;
   @override
+  @HiveField(1)
   int get lbs;
   @override
   @JsonKey(ignore: true)

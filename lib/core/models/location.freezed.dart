@@ -20,12 +20,19 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Location {
+  @HiveField(0)
   String? get location => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get place => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get note => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get island => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get frequency => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get level => throw _privateConstructorUsedError;
+  @HiveField(6)
   Freetem? get freetem => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,13 +47,13 @@ abstract class $LocationCopyWith<$Res> {
       _$LocationCopyWithImpl<$Res, Location>;
   @useResult
   $Res call(
-      {String? location,
-      String? place,
-      String? note,
-      String? island,
-      String? frequency,
-      String? level,
-      Freetem? freetem});
+      {@HiveField(0) String? location,
+      @HiveField(1) String? place,
+      @HiveField(2) String? note,
+      @HiveField(3) String? island,
+      @HiveField(4) String? frequency,
+      @HiveField(5) String? level,
+      @HiveField(6) Freetem? freetem});
 
   $FreetemCopyWith<$Res>? get freetem;
 }
@@ -125,13 +132,13 @@ abstract class _$$_LocationCopyWith<$Res> implements $LocationCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? location,
-      String? place,
-      String? note,
-      String? island,
-      String? frequency,
-      String? level,
-      Freetem? freetem});
+      {@HiveField(0) String? location,
+      @HiveField(1) String? place,
+      @HiveField(2) String? note,
+      @HiveField(3) String? island,
+      @HiveField(4) String? frequency,
+      @HiveField(5) String? level,
+      @HiveField(6) Freetem? freetem});
 
   @override
   $FreetemCopyWith<$Res>? get freetem;
@@ -191,32 +198,41 @@ class __$$_LocationCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Location implements _Location {
+@HiveType(typeId: 10, adapterName: 'LocationAdapter')
+class _$_Location extends _Location {
   const _$_Location(
-      {this.location,
-      this.place,
-      this.note,
-      this.island,
-      this.frequency,
-      this.level,
-      this.freetem});
+      {@HiveField(0) this.location,
+      @HiveField(1) this.place,
+      @HiveField(2) this.note,
+      @HiveField(3) this.island,
+      @HiveField(4) this.frequency,
+      @HiveField(5) this.level,
+      @HiveField(6) this.freetem})
+      : super._();
 
   factory _$_Location.fromJson(Map<String, dynamic> json) =>
       _$$_LocationFromJson(json);
 
   @override
+  @HiveField(0)
   final String? location;
   @override
+  @HiveField(1)
   final String? place;
   @override
+  @HiveField(2)
   final String? note;
   @override
+  @HiveField(3)
   final String? island;
   @override
+  @HiveField(4)
   final String? frequency;
   @override
+  @HiveField(5)
   final String? level;
   @override
+  @HiveField(6)
   final Freetem? freetem;
 
   @override
@@ -259,31 +275,39 @@ class _$_Location implements _Location {
   }
 }
 
-abstract class _Location implements Location {
+abstract class _Location extends Location {
   const factory _Location(
-      {final String? location,
-      final String? place,
-      final String? note,
-      final String? island,
-      final String? frequency,
-      final String? level,
-      final Freetem? freetem}) = _$_Location;
+      {@HiveField(0) final String? location,
+      @HiveField(1) final String? place,
+      @HiveField(2) final String? note,
+      @HiveField(3) final String? island,
+      @HiveField(4) final String? frequency,
+      @HiveField(5) final String? level,
+      @HiveField(6) final Freetem? freetem}) = _$_Location;
+  const _Location._() : super._();
 
   factory _Location.fromJson(Map<String, dynamic> json) = _$_Location.fromJson;
 
   @override
+  @HiveField(0)
   String? get location;
   @override
+  @HiveField(1)
   String? get place;
   @override
+  @HiveField(2)
   String? get note;
   @override
+  @HiveField(3)
   String? get island;
   @override
+  @HiveField(4)
   String? get frequency;
   @override
+  @HiveField(5)
   String? get level;
   @override
+  @HiveField(6)
   Freetem? get freetem;
   @override
   @JsonKey(ignore: true)
@@ -297,9 +321,13 @@ Freetem _$FreetemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Freetem {
+  @HiveField(0)
   int get minLevel => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get maxLevel => throw _privateConstructorUsedError;
+  @HiveField(2)
   int get minPansuns => throw _privateConstructorUsedError;
+  @HiveField(3)
   int get maxPansuns => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -312,7 +340,11 @@ abstract class $FreetemCopyWith<$Res> {
   factory $FreetemCopyWith(Freetem value, $Res Function(Freetem) then) =
       _$FreetemCopyWithImpl<$Res, Freetem>;
   @useResult
-  $Res call({int minLevel, int maxLevel, int minPansuns, int maxPansuns});
+  $Res call(
+      {@HiveField(0) int minLevel,
+      @HiveField(1) int maxLevel,
+      @HiveField(2) int minPansuns,
+      @HiveField(3) int maxPansuns});
 }
 
 /// @nodoc
@@ -361,7 +393,11 @@ abstract class _$$_FreetemCopyWith<$Res> implements $FreetemCopyWith<$Res> {
       __$$_FreetemCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int minLevel, int maxLevel, int minPansuns, int maxPansuns});
+  $Res call(
+      {@HiveField(0) int minLevel,
+      @HiveField(1) int maxLevel,
+      @HiveField(2) int minPansuns,
+      @HiveField(3) int maxPansuns});
 }
 
 /// @nodoc
@@ -402,27 +438,33 @@ class __$$_FreetemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Freetem implements _Freetem {
+@HiveType(typeId: 11, adapterName: 'FreetemAdapter')
+class _$_Freetem extends _Freetem {
   const _$_Freetem(
-      {this.minLevel = 0,
-      this.maxLevel = 0,
-      this.minPansuns = 0,
-      this.maxPansuns = 0});
+      {@HiveField(0) this.minLevel = 0,
+      @HiveField(1) this.maxLevel = 0,
+      @HiveField(2) this.minPansuns = 0,
+      @HiveField(3) this.maxPansuns = 0})
+      : super._();
 
   factory _$_Freetem.fromJson(Map<String, dynamic> json) =>
       _$$_FreetemFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int minLevel;
   @override
   @JsonKey()
+  @HiveField(1)
   final int maxLevel;
   @override
   @JsonKey()
+  @HiveField(2)
   final int minPansuns;
   @override
   @JsonKey()
+  @HiveField(3)
   final int maxPansuns;
 
   @override
@@ -464,22 +506,27 @@ class _$_Freetem implements _Freetem {
   }
 }
 
-abstract class _Freetem implements Freetem {
+abstract class _Freetem extends Freetem {
   const factory _Freetem(
-      {final int minLevel,
-      final int maxLevel,
-      final int minPansuns,
-      final int maxPansuns}) = _$_Freetem;
+      {@HiveField(0) final int minLevel,
+      @HiveField(1) final int maxLevel,
+      @HiveField(2) final int minPansuns,
+      @HiveField(3) final int maxPansuns}) = _$_Freetem;
+  const _Freetem._() : super._();
 
   factory _Freetem.fromJson(Map<String, dynamic> json) = _$_Freetem.fromJson;
 
   @override
+  @HiveField(0)
   int get minLevel;
   @override
+  @HiveField(1)
   int get maxLevel;
   @override
+  @HiveField(2)
   int get minPansuns;
   @override
+  @HiveField(3)
   int get maxPansuns;
   @override
   @JsonKey(ignore: true)

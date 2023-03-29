@@ -20,7 +20,9 @@ GenderRatio _$GenderRatioFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GenderRatio {
+  @HiveField(0)
   int get male => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get female => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +37,7 @@ abstract class $GenderRatioCopyWith<$Res> {
           GenderRatio value, $Res Function(GenderRatio) then) =
       _$GenderRatioCopyWithImpl<$Res, GenderRatio>;
   @useResult
-  $Res call({int male, int female});
+  $Res call({@HiveField(0) int male, @HiveField(1) int female});
 }
 
 /// @nodoc
@@ -75,7 +77,7 @@ abstract class _$$_GenderRatioCopyWith<$Res>
       __$$_GenderRatioCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int male, int female});
+  $Res call({@HiveField(0) int male, @HiveField(1) int female});
 }
 
 /// @nodoc
@@ -107,17 +109,22 @@ class __$$_GenderRatioCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GenderRatio implements _GenderRatio {
-  const _$_GenderRatio({this.male = 0, this.female = 0});
+@HiveType(typeId: 12, adapterName: 'GenderRatioAdapter')
+class _$_GenderRatio extends _GenderRatio {
+  const _$_GenderRatio(
+      {@HiveField(0) this.male = 0, @HiveField(1) this.female = 0})
+      : super._();
 
   factory _$_GenderRatio.fromJson(Map<String, dynamic> json) =>
       _$$_GenderRatioFromJson(json);
 
   @override
   @JsonKey()
+  @HiveField(0)
   final int male;
   @override
   @JsonKey()
+  @HiveField(1)
   final int female;
 
   @override
@@ -152,16 +159,20 @@ class _$_GenderRatio implements _GenderRatio {
   }
 }
 
-abstract class _GenderRatio implements GenderRatio {
-  const factory _GenderRatio({final int male, final int female}) =
-      _$_GenderRatio;
+abstract class _GenderRatio extends GenderRatio {
+  const factory _GenderRatio(
+      {@HiveField(0) final int male,
+      @HiveField(1) final int female}) = _$_GenderRatio;
+  const _GenderRatio._() : super._();
 
   factory _GenderRatio.fromJson(Map<String, dynamic> json) =
       _$_GenderRatio.fromJson;
 
   @override
+  @HiveField(0)
   int get male;
   @override
+  @HiveField(1)
   int get female;
   @override
   @JsonKey(ignore: true)

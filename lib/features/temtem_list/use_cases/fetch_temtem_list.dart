@@ -15,6 +15,6 @@ class FetchTemtemListUseCase {
   }
 }
 
-final fetchTemtemListUseCaseProvider = Provider.autoDispose(
+final fetchTemtemListUseCaseProvider = Provider(
   (ref) => FetchTemtemListUseCase(ref.watch(apiClientProvider)),
 );

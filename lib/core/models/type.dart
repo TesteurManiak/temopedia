@@ -1,36 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/adapters.dart';
 
 import '../../gen/app_localizations.dart';
+
+part 'type.g.dart';
 
 typedef TranslationFetcher = String Function(AppLocalizations localizations);
 typedef TypeColorFetcher = Color Function(BuildContext context);
 
+@HiveType(typeId: 2)
 enum TemType {
+  @HiveField(0)
   @JsonValue('Neutral')
   neutral(translation: _neutralTranslation, color: _neutralColor),
+
+  @HiveField(1)
   @JsonValue('Fire')
   fire(translation: _fireTranslation, color: _fireColor),
+
+  @HiveField(2)
   @JsonValue('Water')
   water(translation: _waterTranslation, color: _waterColor),
+
+  @HiveField(3)
   @JsonValue('Nature')
   nature(translation: _natureTranslation, color: _natureColor),
+
+  @HiveField(4)
   @JsonValue('Electric')
   electric(translation: _electricTranslation, color: _electricColor),
+
+  @HiveField(5)
   @JsonValue('Earth')
   earth(translation: _earthTranslation, color: _earthColor),
+
+  @HiveField(6)
   @JsonValue('Mental')
   mental(translation: _mentalTranslation, color: _mentalColor),
+
+  @HiveField(7)
   @JsonValue('Wind')
   wind(translation: _windTranslation, color: _windColor),
+
+  @HiveField(8)
   @JsonValue('Digital')
   digital(translation: _digitalTranslation, color: _digitalColor),
+
+  @HiveField(9)
   @JsonValue('Melee')
   melee(translation: _meleeTranslation, color: _meleeColor),
+
+  @HiveField(10)
   @JsonValue('Crystal')
   crystal(translation: _crystalTranslation, color: _crystalColor),
+
+  @HiveField(11)
   @JsonValue('Toxic')
   toxic(translation: _toxicTranslation, color: _toxicColor),
+
+  @HiveField(12)
   @JsonValue('Unknown')
   unknown(translation: _unknownTranslation, color: _unknownColor);
 
