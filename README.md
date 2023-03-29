@@ -8,7 +8,7 @@ Mobile app companion for the game [Temtem](https://crema.gg/games/temtem/) to ge
 
 I am not affiliated with Temtem's company. This is a personal project I'm doing on my free time.
 
-**This project is under refactoring. Everything might not work as expected.**
+**This project is under heavy refactoring. Everything might not work as expected.**
 
 ## Refacto
 
