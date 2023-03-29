@@ -10,18 +10,6 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 **This project is under heavy refactoring. Everything might not work as expected.**
 
-## Refacto
-
-- [ ] Temtems page
-  - [x] Temtems list
-  - [x] Filter by name
-  - [ ] Filter by type
-  - [ ] Filter by favorite
-  - [x] Reset filters
-- [ ] Temtem details page
-- [ ] Temtem map page
-- [ ] Offline mode
-
 ## Screenshots
 
 <div align="center">
@@ -49,22 +37,30 @@ flutter build ios
 flutter install
 ```
 
-## Generate translations
+## How to build
+
+### Generate translations
 
 ``` bash
 flutter gen-l10n
 ```
 
-## Generate the app icon
+### Generate the app icon
 
 ``` bash
 flutter pub run flutter_launcher_icons:main
 ```
 
-## Generate splash screen
+### Generate splash screen
 
 ``` bash
 flutter pub run flutter_native_splash:create
+```
+
+### Generate golden tests
+
+``` bash
+flutter test --update-goldens
 ```
 
 ## Credits
