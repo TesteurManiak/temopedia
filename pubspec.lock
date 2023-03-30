@@ -413,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.0"
+  go_router_builder:
+    dependency: "direct dev"
+    description:
+      name: go_router_builder
+      sha256: "762430023b0ab64316441adda870d6d252c7c2f9564ed776c8c0b1f4172d2e91"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.7"
   graphs:
     dependency: transitive
     description:
@@ -645,6 +653,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
+  path_to_regexp:
+    dependency: transitive
+    description:
+      name: path_to_regexp
+      sha256: "169d78fbd55e61ea8873bcca545979f559d22238f66facdd7ef30870c7f53327"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.0"
   pedantic:
     dependency: transitive
     description:

@@ -1,18 +1,22 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../views/details_view.dart';
 
-class DetailsRoute extends GoRoute {
-  DetailsRoute()
-      : super(
-          path: route(':$_idParam'),
-          builder: (_, state) {
-            final id = int.parse(state.params[_idParam] ?? '');
-            return DetailsView(id: id);
-          },
-        );
+part 'route.g.dart';
 
-  static String route(String id) => '/details/$id';
+@TypedGoRoute<DetailsRoute>(path: DetailsRoute.route)
+class DetailsRoute extends GoRouteData {
+  DetailsRoute({
+    required this.id,
+  });
 
-  static const _idParam = 'id';
+  final int id;
+
+  static const route = '/details/:id';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return DetailsView(id: id);
+  }
 }

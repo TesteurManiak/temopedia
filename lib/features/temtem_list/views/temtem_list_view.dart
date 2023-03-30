@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/extensions/build_context.dart';
 import '../../../core/models/temtem.dart';
 import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
@@ -14,6 +13,7 @@ import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
 import '../../details/navigation/route.dart';
 import '../controllers/temtem_list.dart';
+import '../navigation/route.dart';
 import '../widgets/type_chip.dart';
 
 class TemtemListView extends ConsumerWidget {
@@ -26,6 +26,10 @@ class TemtemListView extends ConsumerWidget {
     return StateNotifierLoader(
       provider: temtemListControllerProvider,
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => FiltersRoute().push(context),
+          child: const Icon(Icons.filter_list),
+        ),
         body: state.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (temtems) => _Body(temtems: temtems),
@@ -88,9 +92,7 @@ class _TemtemTile extends ConsumerWidget {
     final types = temtem.types;
 
     return GestureDetector(
-      onTap: () {
-        context.router.push(DetailsRoute.route(temtem.number.toString()));
-      },
+      onTap: () => DetailsRoute(id: temtem.number).push(context),
       child: Container(
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
