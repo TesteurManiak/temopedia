@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/mixins/app_bar_size.dart';
+import '../../../core/network/http_clients.dart';
 import '../controllers/details_controller.dart';
+import '../widgets/temtem_avatar.dart';
 
 class DetailsView extends ConsumerStatefulWidget {
   const DetailsView({
@@ -28,6 +30,7 @@ class _DetailsViewState extends ConsumerState<DetailsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _AppBar(id: widget.id),
+      body: _Body(id: widget.id),
     );
   }
 }
@@ -41,12 +44,37 @@ class _AppBar extends ConsumerWidget with AppBarSize {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final name = ref.watch(
-      detailsControllerProvider(id).select((s) => s.temtemOrNull?.name),
+    final temtem = ref.watch(
+      detailsControllerProvider(id).select((s) => s.temtemOrNull),
     );
 
     return AppBar(
-      title: Text(name ?? ''),
+      title: temtem != null ? Text('${temtem.name} #${temtem.number}') : null,
+      centerTitle: true,
+    );
+  }
+}
+
+class _Body extends ConsumerWidget {
+  const _Body({required this.id});
+
+  final int id;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final temtem = ref.watch(
+      detailsControllerProvider(id).select((s) => s.temtemOrNull),
+    );
+    final icon = temtem?.icon;
+    final iconUrl = icon != null ? ref.watch(imageUrlProvider(icon)) : null;
+
+    return CustomScrollView(
+      slivers: [
+        if (iconUrl != null)
+          SliverToBoxAdapter(
+            child: TemtemAvatar(url: iconUrl),
+          ),
+      ],
     );
   }
 }
