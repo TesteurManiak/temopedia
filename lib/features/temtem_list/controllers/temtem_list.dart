@@ -3,11 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/models/error.dart';
 import '../../../core/models/temtem.dart';
+import '../../../core/providers/loadable_state_notifier.dart';
 import '../use_cases/fetch_temtem_list.dart';
 
 part 'temtem_list.freezed.dart';
 
-class TemtemListController extends StateNotifier<TemtemListState> {
+class TemtemListController extends LoadableStateNotifier<TemtemListState> {
   TemtemListController({
     required FetchTemtemListUseCase fetchTemtemListUseCase,
   })  : _fetchTemtemListUseCase = fetchTemtemListUseCase,
@@ -15,7 +16,8 @@ class TemtemListController extends StateNotifier<TemtemListState> {
 
   final FetchTemtemListUseCase _fetchTemtemListUseCase;
 
-  Future<void> fetchTemtemList() async {
+  @override
+  Future<void> load() async {
     state = const TemtemListState.loading();
 
     final result = await _fetchTemtemListUseCase();

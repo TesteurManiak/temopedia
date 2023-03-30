@@ -9,39 +9,28 @@ import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/error_widget.dart';
 import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
+import '../../../core/widgets/state_notifier_loader.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
 import '../../details/navigation/route.dart';
 import '../controllers/temtem_list.dart';
 import '../widgets/type_chip.dart';
 
-class TemtemListView extends ConsumerStatefulWidget {
+class TemtemListView extends ConsumerWidget {
   const TemtemListView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TemtemListViewState();
-}
-
-class _TemtemListViewState extends ConsumerState<TemtemListView> {
-  late final TemtemListController controller;
-
-  @override
-  void initState() {
-    super.initState();
-
-    controller = ref.read(temtemListControllerProvider.notifier);
-    controller.fetchTemtemList();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(temtemListControllerProvider);
 
-    return Scaffold(
-      body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        loaded: (temtems) => _Body(temtems: temtems),
-        error: (e) => const Center(child: AppErrorWidget()),
+    return StateNotifierLoader(
+      provider: temtemListControllerProvider,
+      child: Scaffold(
+        body: state.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          loaded: (temtems) => _Body(temtems: temtems),
+          error: (e) => const Center(child: AppErrorWidget()),
+        ),
       ),
     );
   }

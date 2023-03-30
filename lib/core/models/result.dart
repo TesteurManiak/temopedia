@@ -28,7 +28,15 @@ class Result<S, F> with _$Result<S, F> {
 
 extension ResultDecoder<F> on Result<Object?, F> {
   Result<S, F> decode<S>(S Function(Map<String, dynamic>) decoder) {
-    return whenSuccess<S>((s) => decoder(s as Map<String, dynamic>));
+    return whenSuccess<S>((s) {
+      final Map<String, dynamic> json;
+      if (s is String) {
+        json = jsonDecode(s) as Map<String, dynamic>;
+      } else {
+        json = s as Map<String, dynamic>;
+      }
+      return decoder(json);
+    });
   }
 
   Result<List<S>, F> decodeList<S>(S Function(Map<String, dynamic>) decoder) {
