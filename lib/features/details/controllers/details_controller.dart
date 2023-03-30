@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/models/error.dart';
 import '../../../core/models/temtem.dart';
+import '../use_cases/fetch_temtem_details.dart';
 import '../use_cases/get_local_temtem.dart';
 
 part 'details_controller.freezed.dart';
@@ -11,11 +12,14 @@ class DetailsController extends StateNotifier<DetailsState> {
   DetailsController({
     required this.temtemId,
     required GetLocalTemtemUseCase getLocalTemtemUseCase,
+    required FetchTemtemDetailsUseCase fetchTemtemDetailsUseCase,
   })  : _getLocalTemtemUseCase = getLocalTemtemUseCase,
+        _fetchTemtemDetailsUseCase = fetchTemtemDetailsUseCase,
         super(const DetailsState.loading());
 
   final int temtemId;
   final GetLocalTemtemUseCase _getLocalTemtemUseCase;
+  final FetchTemtemDetailsUseCase _fetchTemtemDetailsUseCase;
 
   Future<void> getDetails() async {
     if (state.temtemOrNull == null) {
@@ -24,6 +28,13 @@ class DetailsController extends StateNotifier<DetailsState> {
         state = DetailsState.loading(temtem: localTemtem);
       }
     }
+
+    final result = await _fetchTemtemDetailsUseCase(temtemId);
+
+    state = result.when(
+      success: (temtem) => DetailsState.loaded(temtem: temtem),
+      failure: (error) => DetailsState.error(error: error),
+    );
   }
 }
 
@@ -33,6 +44,7 @@ final detailsControllerProvider = StateNotifierProvider.autoDispose
     return DetailsController(
       temtemId: id,
       getLocalTemtemUseCase: ref.watch(getLocalTemtemUseCaseProvider),
+      fetchTemtemDetailsUseCase: ref.watch(fetchTemtemDetailsUseCaseProvider),
     );
   },
 );
