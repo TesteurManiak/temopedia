@@ -44,12 +44,16 @@ class _AppBar extends ConsumerWidget with AppBarSize {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final temtem = ref.watch(
-      detailsControllerProvider(id).select((s) => s.temtemOrNull),
+    final number = ref.watch(
+      detailsControllerProvider(id).select((s) => s.temtemOrNull?.number),
     );
+    final name = ref.watch(
+      detailsControllerProvider(id).select((s) => s.temtemOrNull?.name),
+    );
+    final showTitle = number != null && name != null;
 
     return AppBar(
-      title: temtem != null ? Text('${temtem.name} #${temtem.number}') : null,
+      title: showTitle ? Text('$name #$number') : null,
       centerTitle: true,
     );
   }
