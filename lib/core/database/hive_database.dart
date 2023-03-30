@@ -52,39 +52,39 @@ class HiveDatabase implements LocalStorage {
   }
 
   @override
-  Future<void> createTemtems(List<Temtem> temtems) async {
+  Future<void> createTemtems(Iterable<Temtem> temtems) async {
     if (!_initialized) {
       await _init();
     }
 
-    await _temtemBox.putAll({for (var e in temtems) e.number: e});
+    await _temtemBox.putAll({for (final e in temtems) e.number: e});
   }
 
   @override
-  Future<void> deleteTemtem(Temtem temtem) async {
+  Future<void> deleteTemtem(int id) async {
     if (!_initialized) {
       await _init();
     }
 
-    await _temtemBox.delete(temtem.number);
+    await _temtemBox.delete(id);
   }
 
   @override
-  Future<void> deleteTemtems(List<Temtem> temtems) async {
+  Future<void> deleteTemtems(Iterable<int> ids) async {
     if (!_initialized) {
       await _init();
     }
 
-    await _temtemBox.deleteAll(temtems.map((e) => e.number));
+    await _temtemBox.deleteAll(ids);
   }
 
   @override
-  Future<Temtem?> readTemtem(String number) async {
+  Future<Temtem?> readTemtem(int id) async {
     if (!_initialized) {
       await _init();
     }
 
-    return _temtemBox.get(number);
+    return _temtemBox.get(id);
   }
 
   @override
@@ -100,5 +100,7 @@ class HiveDatabase implements LocalStorage {
   Future<void> updateTemtem(Temtem temtem) => createTemtem(temtem);
 
   @override
-  Future<void> updateTemtems(List<Temtem> temtems) => createTemtems(temtems);
+  Future<void> updateTemtems(Iterable<Temtem> temtems) {
+    return createTemtems(temtems);
+  }
 }

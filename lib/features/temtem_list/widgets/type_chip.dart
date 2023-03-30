@@ -21,10 +21,8 @@ class TypeChip extends StatelessWidget {
       width: 84,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       decoration: ShapeDecoration(
-        shape: StadiumBorder(
-          side: BorderSide(color: type.color(context)),
-        ),
-        color: Colors.white38,
+        shape: const StadiumBorder(),
+        color: type.color(context).withOpacity(0.4),
       ),
       child: Text(
         type.translation(localizations),

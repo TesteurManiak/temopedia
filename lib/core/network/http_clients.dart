@@ -81,7 +81,7 @@ final apiClientProvider = Provider<ApiClient>((ref) {
   );
 });
 
-final imageUrlProvider = Provider.family<String, String?>(
+final imageUrlProvider = Provider.autoDispose.family<String, String?>(
   (ref, path) {
     final startsWithSlash = path?.startsWith('/') ?? false;
 

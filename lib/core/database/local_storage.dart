@@ -4,14 +4,14 @@ import '../models/temtem.dart';
 import 'hive_database.dart';
 
 abstract class LocalStorage {
-  Future<void> createTemtems(List<Temtem> temtems);
+  Future<void> createTemtems(Iterable<Temtem> temtems);
   Future<void> createTemtem(Temtem temtem);
   Future<List<Temtem>> readTemtems();
-  Future<Temtem?> readTemtem(String number);
-  Future<void> updateTemtems(List<Temtem> temtems);
+  Future<Temtem?> readTemtem(int id);
+  Future<void> updateTemtems(Iterable<Temtem> temtems);
   Future<void> updateTemtem(Temtem temtem);
-  Future<void> deleteTemtems(List<Temtem> temtems);
-  Future<void> deleteTemtem(Temtem temtem);
+  Future<void> deleteTemtems(Iterable<int> ids);
+  Future<void> deleteTemtem(int id);
 }
 
 final localStorageProvider = Provider<LocalStorage>((ref) {

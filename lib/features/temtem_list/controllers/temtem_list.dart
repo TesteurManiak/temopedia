@@ -28,7 +28,7 @@ class TemtemListController extends StateNotifier<TemtemListState> {
 }
 
 final temtemListControllerProvider =
-    StateNotifierProvider<TemtemListController, TemtemListState>(
+    StateNotifierProvider.autoDispose<TemtemListController, TemtemListState>(
   (ref) {
     return TemtemListController(
       fetchTemtemListUseCase: ref.watch(fetchTemtemListUseCaseProvider),

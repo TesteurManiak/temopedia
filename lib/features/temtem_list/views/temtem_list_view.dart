@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/extensions/build_context.dart';
 import '../../../core/models/temtem.dart';
 import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
@@ -10,6 +11,7 @@ import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
+import '../../details/navigation/route.dart';
 import '../controllers/temtem_list.dart';
 import '../widgets/type_chip.dart';
 
@@ -96,59 +98,64 @@ class _TemtemTile extends ConsumerWidget {
     final name = temtem.name;
     final types = temtem.types;
 
-    return Container(
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: MyColors.lightBackground,
-      ),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Align(
-            alignment: Alignment.centerRight,
-            child: AppNetworkImage(
-              url: iconUrl,
-              fallbackUrl: temtem.portraitWikiUrl,
-              errorWidget: (_, __, ___) {
-                return Image.asset(Assets.icons.icnUnknown.path);
-              },
+    return GestureDetector(
+      onTap: () {
+        context.router.push(DetailsRoute.route(temtem.number.toString()));
+      },
+      child: Container(
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: MyColors.lightBackground,
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: AppNetworkImage(
+                url: iconUrl,
+                fallbackUrl: temtem.portraitWikiUrl,
+                errorWidget: (_, __, ___) {
+                  return Image.asset(Assets.icons.icnUnknown.path);
+                },
+              ),
             ),
-          ),
-          Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withOpacity(0.9),
-                  ],
-                  stops: const [0.4, 1.0],
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withOpacity(0.9),
+                    ],
+                    stops: const [0.4, 1.0],
+                  ),
                 ),
               ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: SeparatedColumn(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                separator: const SizedBox(height: 4),
-                children: [
-                  for (final type in types) TypeChip(type: type),
-                ],
+            Positioned(
+              bottom: 0,
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: SeparatedColumn(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  separator: const SizedBox(height: 4),
+                  children: [
+                    for (final type in types) TypeChip(type: type),
+                  ],
+                ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.topLeft,
-            child: _NameAndNumber(name: name, number: temtem.number),
-          ),
-        ],
+            Align(
+              alignment: Alignment.topLeft,
+              child: _NameAndNumber(name: name, number: temtem.number),
+            ),
+          ],
+        ),
       ),
     );
   }
