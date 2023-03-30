@@ -6,8 +6,10 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http/retry.dart';
 
+import '../cache/network_query_cache_service.dart';
 import '../models/error.dart';
 import '../models/result.dart';
+import 'cache_client.dart';
 import 'rest_client.dart';
 
 class AppRetryClient extends RetryClient {
@@ -23,10 +25,14 @@ class AppHttpClient extends BaseClient {
   AppHttpClient({
     this.connectTimeout = const Duration(seconds: 30),
     this.receiveTimeout = const Duration(seconds: 30),
-  }) : _client = AppRetryClient(
-          client: kIsWeb
-              ? Client()
-              : IOClient(HttpClient()..connectionTimeout = connectTimeout),
+    required NetworkQueryCacheService cacheService,
+  }) : _client = CacheClient(
+          httpClient: AppRetryClient(
+            client: kIsWeb
+                ? Client()
+                : IOClient(HttpClient()..connectionTimeout = connectTimeout),
+          ),
+          cacheService: cacheService,
         );
 
   final Duration connectTimeout;
@@ -60,8 +66,10 @@ class ApiClient {
   }
 }
 
-final httpClientProvider = Provider<AppHttpClient>((_) {
-  return AppHttpClient();
+final httpClientProvider = Provider<AppHttpClient>((ref) {
+  return AppHttpClient(
+    cacheService: ref.watch(networkCacheServiceProvider),
+  );
 });
 
 final apiClientProvider = Provider<ApiClient>((ref) {

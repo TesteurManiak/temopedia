@@ -10,7 +10,6 @@ import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
 import '../../../design_system/palette.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../gen/fonts.gen.dart';
 import '../controllers/temtem_list.dart';
 import '../widgets/type_chip.dart';
 
@@ -212,12 +211,10 @@ class _Number extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return AppText(
       '#$number',
+      type: AppTextType.genericBold,
       style: const TextStyle(
-        fontWeight: FontWeight.bold,
-        fontSize: 14,
-        fontFamily: FontFamily.rubik,
         shadows: [
           Shadow(
             color: Colors.black,

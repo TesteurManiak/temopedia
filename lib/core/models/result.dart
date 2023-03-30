@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result.freezed.dart';
@@ -31,10 +33,19 @@ extension ResultDecoder<F> on Result<Object?, F> {
 
   Result<List<S>, F> decodeList<S>(S Function(Map<String, dynamic>) decoder) {
     return whenSuccess(
-      (s) => (s as List<dynamic>)
-          .cast<Map<String, dynamic>>()
-          .map((json) => decoder(json))
-          .toList(),
+      (s) {
+        final List json;
+        if (s is String) {
+          json = jsonDecode(s) as List;
+        } else {
+          json = s as List;
+        }
+
+        return json
+            .cast<Map<String, dynamic>>()
+            .map((json) => decoder(json))
+            .toList();
+      },
     );
   }
 }
