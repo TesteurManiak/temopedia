@@ -22,11 +22,11 @@ class TemtemAvatar extends StatefulWidget {
 }
 
 class _TemtemAvatarState extends State<TemtemAvatar> {
-  late final urlNotifier = ValueNotifier<String>(widget.url);
+  late final showLumaNotifier = ValueNotifier<bool>(false);
 
   @override
   void dispose() {
-    urlNotifier.dispose();
+    showLumaNotifier.dispose();
     super.dispose();
   }
 
@@ -49,14 +49,15 @@ class _TemtemAvatarState extends State<TemtemAvatar> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(size / 2),
             child: ValueListenableBuilder(
-              valueListenable: urlNotifier,
-              builder: (context, url, _) {
-                return AppNetworkImage(
-                  url: url,
-                  placeholder: (_, __) => const CircularProgressIndicator(),
-                  errorWidget: (_, __, ___) {
-                    return Image.asset(Assets.icons.icnUnknown.path);
-                  },
+              valueListenable: showLumaNotifier,
+              builder: (_, showLuma, __) {
+                return AnimatedCrossFade(
+                  firstChild: _AvatarImage(widget.url),
+                  secondChild: _AvatarImage(widget.lumaUrl),
+                  crossFadeState: showLuma
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                  duration: const Duration(milliseconds: 300),
                 );
               },
             ),
@@ -64,24 +65,38 @@ class _TemtemAvatarState extends State<TemtemAvatar> {
         ),
         if (lumaUrl != null)
           Positioned(
-            top: 8,
-            left: 8,
+            top: 4,
+            left: 0,
             child: GestureDetector(
-              onTap: () {
-                urlNotifier.value =
-                    urlNotifier.value == widget.url ? lumaUrl : widget.url;
-              },
+              onTap: () => showLumaNotifier.value = !showLumaNotifier.value,
               child: ValueListenableBuilder(
-                valueListenable: urlNotifier,
-                builder: (_, url, __) {
+                valueListenable: showLumaNotifier,
+                builder: (_, showLuma, __) {
                   return _AnimatedSwitchIcon(
-                    turns: url == widget.url ? 0 : 1,
+                    turns: showLuma ? 0 : 1,
                   );
                 },
               ),
             ),
           ),
       ],
+    );
+  }
+}
+
+class _AvatarImage extends StatelessWidget {
+  const _AvatarImage(this.url);
+
+  final String? url;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppNetworkImage(
+      url: url,
+      placeholder: (_, __) => const CircularProgressIndicator(),
+      errorWidget: (_, __, ___) {
+        return Image.asset(Assets.icons.icnUnknown.path);
+      },
     );
   }
 }
@@ -98,7 +113,10 @@ class _AnimatedSwitchIcon extends StatelessWidget {
     return AnimatedRotation(
       turns: turns,
       duration: const Duration(milliseconds: 300),
-      child: const Icon(Icons.change_circle),
+      child: const Icon(
+        Icons.change_circle,
+        size: 36,
+      ),
     );
   }
 }
