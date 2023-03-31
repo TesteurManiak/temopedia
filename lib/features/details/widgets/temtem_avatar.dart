@@ -24,8 +24,8 @@ class TemtemAvatar extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: MyColors.portraitBack,
-        border: Border.all(width: 5, color: MyColors.border),
+        color: Palette.darkPurple,
+        border: Border.all(width: 5, color: Palette.darkPurple2),
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(localSize / 2),

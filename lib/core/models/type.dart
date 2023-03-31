@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import '../../gen/app_localizations.dart';
+import '../../gen/assets.gen.dart';
 
 part 'type.g.dart';
 
@@ -70,6 +71,37 @@ enum TemType {
 
   final TranslationFetcher translation;
   final TypeColorFetcher color;
+
+  String get assetPath {
+    switch (this) {
+      case TemType.neutral:
+        return Assets.icons.icnNeutral.path;
+      case TemType.fire:
+        return Assets.icons.icnFire.path;
+      case TemType.water:
+        return Assets.icons.icnWater.path;
+      case TemType.nature:
+        return Assets.icons.icnNature.path;
+      case TemType.electric:
+        return Assets.icons.icnElectric.path;
+      case TemType.earth:
+        return Assets.icons.icnEarth.path;
+      case TemType.mental:
+        return Assets.icons.icnMental.path;
+      case TemType.wind:
+        return Assets.icons.icnWind.path;
+      case TemType.digital:
+        return Assets.icons.icnDigital.path;
+      case TemType.melee:
+        return Assets.icons.icnMelee.path;
+      case TemType.crystal:
+        return Assets.icons.icnCrystal.path;
+      case TemType.toxic:
+        return Assets.icons.icnToxic.path;
+      case TemType.unknown:
+        return Assets.icons.icnUnknown.path;
+    }
+  }
 }
 
 String _neutralTranslation(AppLocalizations localizations) =>

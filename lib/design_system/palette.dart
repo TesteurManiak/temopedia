@@ -10,8 +10,13 @@ class Palette {
   static const grey = Color(0xFF656565);
   static const orange = Color(0xFFf8c367);
   static const darkOrange = Color(0xFF2e2f29);
+  static const whiteFont = Color(0xFFe6eaf3);
+  static const greyFont = Color(0xFF6e86a2);
+  static const darkPurple = Color(0xFF2e2550);
+  static const darkPurple2 = Color(0xFF201942);
 }
 
+@Deprecated('Use Palette instead')
 class MyColors {
   static const Color darkOrange = Color.fromRGBO(255, 201, 108, 1);
   static const Color background = Color.fromRGBO(31, 24, 58, 1);

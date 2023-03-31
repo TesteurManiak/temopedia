@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/extensions/build_context.dart';
 import '../../../core/models/type.dart';
-import '../../../gen/app_localizations.dart';
 import '../../../gen/fonts.gen.dart';
 
 class TypeChip extends StatelessWidget {
@@ -14,8 +14,6 @@ class TypeChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = AppLocalizations.of(context);
-
     return Container(
       alignment: Alignment.center,
       width: 84,
@@ -25,7 +23,7 @@ class TypeChip extends StatelessWidget {
         color: type.color(context).withOpacity(0.4),
       ),
       child: Text(
-        type.translation(localizations),
+        type.translation(context.strings),
         style: const TextStyle(
           fontSize: 12,
           fontFamily: FontFamily.rubik,

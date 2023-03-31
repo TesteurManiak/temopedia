@@ -12,9 +12,28 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/icn_crystal.png
+  AssetGenImage get icnCrystal =>
+      const AssetGenImage('assets/icons/icn_crystal.png');
+
+  /// File path: assets/icons/icn_digital.png
+  AssetGenImage get icnDigital =>
+      const AssetGenImage('assets/icons/icn_digital.png');
+
+  /// File path: assets/icons/icn_earth.png
+  AssetGenImage get icnEarth =>
+      const AssetGenImage('assets/icons/icn_earth.png');
+
+  /// File path: assets/icons/icn_electric.png
+  AssetGenImage get icnElectric =>
+      const AssetGenImage('assets/icons/icn_electric.png');
+
   /// File path: assets/icons/icn_female.png
   AssetGenImage get icnFemale =>
       const AssetGenImage('assets/icons/icn_female.png');
+
+  /// File path: assets/icons/icn_fire.png
+  AssetGenImage get icnFire => const AssetGenImage('assets/icons/icn_fire.png');
 
   /// File path: assets/icons/icn_high.png
   AssetGenImage get icnHigh => const AssetGenImage('assets/icons/icn_high.png');
@@ -24,6 +43,22 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/icn_male.png
   AssetGenImage get icnMale => const AssetGenImage('assets/icons/icn_male.png');
+
+  /// File path: assets/icons/icn_melee.png
+  AssetGenImage get icnMelee =>
+      const AssetGenImage('assets/icons/icn_melee.png');
+
+  /// File path: assets/icons/icn_mental.png
+  AssetGenImage get icnMental =>
+      const AssetGenImage('assets/icons/icn_mental.png');
+
+  /// File path: assets/icons/icn_nature.png
+  AssetGenImage get icnNature =>
+      const AssetGenImage('assets/icons/icn_nature.png');
+
+  /// File path: assets/icons/icn_neutral.png
+  AssetGenImage get icnNeutral =>
+      const AssetGenImage('assets/icons/icn_neutral.png');
 
   /// File path: assets/icons/icn_normal.png
   AssetGenImage get icnNormal =>
@@ -41,6 +76,10 @@ class $AssetsIconsGen {
   AssetGenImage get icnStatus =>
       const AssetGenImage('assets/icons/icn_status.png');
 
+  /// File path: assets/icons/icn_toxic.png
+  AssetGenImage get icnToxic =>
+      const AssetGenImage('assets/icons/icn_toxic.png');
+
   /// File path: assets/icons/icn_ultra.png
   AssetGenImage get icnUltra =>
       const AssetGenImage('assets/icons/icn_ultra.png');
@@ -57,20 +96,39 @@ class $AssetsIconsGen {
   AssetGenImage get icnVeryLow =>
       const AssetGenImage('assets/icons/icn_very_low.png');
 
+  /// File path: assets/icons/icn_water.png
+  AssetGenImage get icnWater =>
+      const AssetGenImage('assets/icons/icn_water.png');
+
+  /// File path: assets/icons/icn_wind.png
+  AssetGenImage get icnWind => const AssetGenImage('assets/icons/icn_wind.png');
+
   /// List of all assets
   List<AssetGenImage> get values => [
+        icnCrystal,
+        icnDigital,
+        icnEarth,
+        icnElectric,
         icnFemale,
+        icnFire,
         icnHigh,
         icnLow,
         icnMale,
+        icnMelee,
+        icnMental,
+        icnNature,
+        icnNeutral,
         icnNormal,
         icnPhysical,
         icnSpecial,
         icnStatus,
+        icnToxic,
         icnUltra,
         icnUnknown,
         icnVeryHigh,
-        icnVeryLow
+        icnVeryLow,
+        icnWater,
+        icnWind
       ];
 }
 
