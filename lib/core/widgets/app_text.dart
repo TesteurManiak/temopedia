@@ -12,6 +12,7 @@ class AppText extends StatelessWidget {
     this.style,
     this.maxLines,
     this.overflow,
+    this.textAlign,
   });
 
   final String text;
@@ -26,8 +27,8 @@ class AppText extends StatelessWidget {
   final TextStyle? style;
 
   final int? maxLines;
-
   final TextOverflow? overflow;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,7 @@ class AppText extends StatelessWidget {
       style: effectiveStyle,
       maxLines: maxLines,
       overflow: overflow,
+      textAlign: textAlign,
     );
   }
 }

@@ -6,7 +6,6 @@ import '../../../core/network/http_clients.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/error_widget.dart';
-import '../../../core/widgets/separated_column.dart';
 import '../../../core/widgets/sliver_space.dart';
 import '../../../core/widgets/state_notifier_loader.dart';
 import '../../../design_system/palette.dart';
@@ -14,7 +13,6 @@ import '../../../gen/assets.gen.dart';
 import '../../details/navigation/route.dart';
 import '../controllers/temtem_list.dart';
 import '../navigation/route.dart';
-import '../widgets/type_chip.dart';
 
 class TemtemListView extends ConsumerWidget {
   const TemtemListView({super.key});
@@ -119,10 +117,10 @@ class _TemtemTile extends ConsumerWidget {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Colors.transparent,
                       Colors.black.withOpacity(0.9),
+                      Colors.transparent,
                     ],
-                    stops: const [0.4, 1.0],
+                    stops: const [0.0, 0.3],
                   ),
                 ),
               ),
@@ -131,12 +129,15 @@ class _TemtemTile extends ConsumerWidget {
               bottom: 0,
               child: Padding(
                 padding: const EdgeInsets.all(8),
-                child: SeparatedColumn(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  separator: const SizedBox(height: 4),
+                child: Wrap(
+                  spacing: 4,
+                  runSpacing: 4,
                   children: [
-                    for (final type in types) TypeChip(type: type),
+                    for (final type in types)
+                      Image.asset(
+                        type.assetPath,
+                        height: 32,
+                      ),
                   ],
                 ),
               ),
@@ -188,14 +189,6 @@ class _Name extends StatelessWidget {
     return AppText(
       name,
       type: AppTextType.generic,
-      style: const TextStyle(
-        shadows: [
-          Shadow(
-            color: Colors.black,
-            blurRadius: 2,
-          ),
-        ],
-      ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
     );
@@ -212,14 +205,6 @@ class _Number extends StatelessWidget {
     return AppText(
       '#$number',
       type: AppTextType.genericBold,
-      style: const TextStyle(
-        shadows: [
-          Shadow(
-            color: Colors.black,
-            blurRadius: 2,
-          ),
-        ],
-      ),
     );
   }
 }

@@ -8,12 +8,16 @@ class Palette {
   static const black = Color(0xFF292929);
   static const white = Color(0xFFfcfcfc);
   static const grey = Color(0xFF656565);
+  static const grey2 = Color(0xFF7a85a3);
   static const orange = Color(0xFFf8c367);
+  static const orange2 = Color(0xFFf8ae65);
   static const darkOrange = Color(0xFF2e2f29);
   static const whiteFont = Color(0xFFe6eaf3);
   static const greyFont = Color(0xFF6e86a2);
   static const darkPurple = Color(0xFF2e2550);
   static const darkPurple2 = Color(0xFF201942);
+  static const darkPurple3 = Color(0xFF414173);
+  static const darkPurple4 = Color(0xFF1f183a);
 }
 
 @Deprecated('Use Palette instead')
