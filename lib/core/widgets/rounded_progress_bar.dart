@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 import '../../design_system/palette.dart';
 
-const _kDefaultMinHeight = 4.0;
+const _kDefaultMinHeight = 8.0;
 const _kDefaultRadius = 12.0;
 const _kDefaultBarColor = Palette.orange2;
 const _kDefaultBackgroundColor = Palette.darkPurple4;
-const int _kIndeterminateLinearDuration = 1800;
+const _kIndeterminateLinearDuration = 1800;
 
 class RoundedProgressBar extends ProgressIndicator {
   const RoundedProgressBar({
@@ -20,7 +20,7 @@ class RoundedProgressBar extends ProgressIndicator {
           backgroundColor: _kDefaultBackgroundColor,
         );
 
-  /// Defaults to 4.0.
+  /// Defaults to 8.0.
   final double? minHeight;
 
   /// Defaults to 12.0.

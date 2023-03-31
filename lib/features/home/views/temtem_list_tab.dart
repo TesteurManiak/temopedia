@@ -14,8 +14,8 @@ import '../../details/navigation/route.dart';
 import '../controllers/temtem_list.dart';
 import '../navigation/route.dart';
 
-class TemtemListView extends ConsumerWidget {
-  const TemtemListView({super.key});
+class TemtemListTab extends ConsumerWidget {
+  const TemtemListTab({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

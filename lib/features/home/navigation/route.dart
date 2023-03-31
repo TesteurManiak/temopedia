@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../views/filters_view.dart';
-import '../views/temtem_list_view.dart';
+import '../views/temtem_list_tab.dart';
 
 part 'route.g.dart';
 
@@ -21,7 +21,7 @@ class TemtemListRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const TemtemListView();
+    return const TemtemListTab();
   }
 }
 
