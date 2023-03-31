@@ -42,14 +42,14 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        _SliverAppBar(id: id),
+        _SliverHeader(id: id),
       ],
     );
   }
 }
 
-class _SliverAppBar extends ConsumerWidget with AppBarSize {
-  const _SliverAppBar({
+class _SliverHeader extends ConsumerWidget with AppBarSize {
+  const _SliverHeader({
     required this.id,
   });
 
@@ -62,30 +62,32 @@ class _SliverAppBar extends ConsumerWidget with AppBarSize {
     );
     final icon = temtem?.icon;
     final iconUrl = icon != null ? ref.watch(imageUrlProvider(icon)) : null;
+    final lumaIcon = temtem?.lumaIcon;
+    final lumaIconUrl =
+        lumaIcon != null ? ref.watch(imageUrlProvider(lumaIcon)) : null;
 
-    return SliverAppBar(
-      title: SeparatedRow(
-        separator: const SizedBox(width: 12),
-        children: [
-          if (iconUrl != null)
-            TemtemAvatar(
-              url: iconUrl,
-              size: 120,
-            ),
-          _HeaderData(id: id),
-        ],
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: SeparatedRow(
+          separator: const SizedBox(width: 12),
+          children: [
+            if (iconUrl != null)
+              TemtemAvatar(
+                url: iconUrl,
+                lumaUrl: lumaIconUrl,
+                size: 120,
+              ),
+            Expanded(child: _HeaderContent(id: id)),
+          ],
+        ),
       ),
-      toolbarHeight: 120,
-      automaticallyImplyLeading: false,
-      centerTitle: false,
-      pinned: true,
-      floating: true,
     );
   }
 }
 
-class _HeaderData extends ConsumerWidget {
-  const _HeaderData({
+class _HeaderContent extends ConsumerWidget {
+  const _HeaderContent({
     required this.id,
   });
 
@@ -131,15 +133,18 @@ class _NameAndNumber extends StatelessWidget {
     return SeparatedRow(
       separator: const SizedBox(width: 8),
       children: [
-        AppText(
-          localName,
-          type: AppTextType.generic,
-          color: Palette.whiteFont,
+        Flexible(
+          child: AppText(
+            localName,
+            color: Palette.whiteFont,
+            style: const TextStyle(fontSize: 24),
+            maxLines: 2,
+          ),
         ),
         AppText(
           '#$number',
-          type: AppTextType.generic,
           color: Palette.greyFont,
+          style: const TextStyle(fontSize: 20),
         ),
       ],
     );
@@ -172,11 +177,14 @@ class _TypeCell extends StatelessWidget {
     return SeparatedRow(
       separator: const SizedBox(width: 4),
       children: [
-        Image.asset(type.assetPath, height: 24),
+        Image.asset(
+          type.assetPath,
+          height: 34,
+        ),
         AppText(
           type.translation(context.strings),
-          type: AppTextType.generic,
           color: Palette.whiteFont,
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );
