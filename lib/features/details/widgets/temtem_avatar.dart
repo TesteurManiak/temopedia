@@ -53,6 +53,7 @@ class _TemtemAvatarState extends State<TemtemAvatar> {
               builder: (context, url, _) {
                 return AppNetworkImage(
                   url: url,
+                  placeholder: (_, __) => const CircularProgressIndicator(),
                   errorWidget: (_, __, ___) {
                     return Image.asset(Assets.icons.icnUnknown.path);
                   },

@@ -179,7 +179,7 @@ class _TypeCell extends StatelessWidget {
       children: [
         Image.asset(
           type.assetPath,
-          height: 34,
+          height: 32,
         ),
         AppText(
           type.translation(context.strings),

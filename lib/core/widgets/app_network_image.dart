@@ -6,6 +6,7 @@ class AppNetworkImage extends StatelessWidget {
     super.key,
     required this.url,
     this.fallbackUrl,
+    this.placeholder,
     this.errorWidget,
   });
 
@@ -14,6 +15,7 @@ class AppNetworkImage extends StatelessWidget {
   /// Url to use if the [url] fails to load.
   final String? fallbackUrl;
 
+  final PlaceholderWidgetBuilder? placeholder;
   final LoadingErrorWidgetBuilder? errorWidget;
 
   @override
@@ -22,10 +24,12 @@ class AppNetworkImage extends StatelessWidget {
 
     return CachedNetworkImage(
       imageUrl: url ?? '',
+      placeholder: placeholder,
       errorWidget: localFallbackUrl != null
           ? (_, __, ___) {
               return CachedNetworkImage(
                 imageUrl: localFallbackUrl,
+                placeholder: placeholder,
                 errorWidget: errorWidget,
               );
             }
