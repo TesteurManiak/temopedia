@@ -1,25 +1,37 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/app_text.dart';
+import '../../../core/widgets/separated_column.dart';
 import '../../../design_system/palette.dart';
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({
     super.key,
+    required this.title,
     required this.child,
   });
 
+  final String title;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      padding: const EdgeInsets.all(16),
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
         color: Palette.darkPurple3,
       ),
-      child: child,
+      child: SeparatedColumn(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        separator: const SizedBox(height: 12),
+        children: [
+          AppText(title.toUpperCase()),
+          child,
+        ],
+      ),
     );
   }
 }
