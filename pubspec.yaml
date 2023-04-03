@@ -26,6 +26,7 @@ dependencies:
 dev_dependencies:
   alchemist: ^0.6.0
   build_runner: ^2.3.3
+  custom_lint: ^0.3.2
   flutter_gen_runner: ^5.2.0
   flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.1
@@ -36,6 +37,7 @@ dev_dependencies:
   go_router_builder: ^1.1.7
   hive_generator: ^2.0.0
   json_serializable: ^6.6.1
+  riverpod_lint: ^1.1.6
 
 flutter_icons:
   android: "launcher_icon"
