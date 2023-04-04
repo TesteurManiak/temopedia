@@ -17,38 +17,21 @@ class StatsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const separator = SizedBox(height: 8);
-
     return DetailsContainer(
       title: 'Stats',
-      child: SeparatedRow(
-        separator: const SizedBox(width: 16),
+      child: SeparatedColumn(
+        separator: const SizedBox(height: 8),
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: SeparatedColumn(
-              separator: separator,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                _StatLine(label: 'hp', value: stats.hp),
-                _StatLine(label: 'spd', value: stats.spd),
-                _StatLine(label: 'def', value: stats.def),
-                _StatLine(label: 'spdef', value: stats.spdef),
-              ],
-            ),
-          ),
-          Expanded(
-            child: SeparatedColumn(
-              separator: separator,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                _StatLine(label: 'sta', value: stats.sta),
-                _StatLine(label: 'atk', value: stats.atk),
-                _StatLine(label: 'spatk', value: stats.spatk),
-                _TotalLine(total: stats.total),
-              ],
-            ),
-          )
+          _StatLine(label: 'hp', value: stats.hp),
+          _StatLine(label: 'sta', value: stats.sta),
+          _StatLine(label: 'spd', value: stats.spd),
+          _StatLine(label: 'atk', value: stats.atk),
+          _StatLine(label: 'def', value: stats.def),
+          _StatLine(label: 'spatk', value: stats.spatk),
+          _StatLine(label: 'spdef', value: stats.spdef),
+          _TotalLine(stats.total),
         ],
       ),
     );
@@ -86,17 +69,18 @@ class _StatLine extends StatelessWidget {
 }
 
 class _TotalLine extends StatelessWidget {
-  const _TotalLine({
-    required this.total,
-  });
+  const _TotalLine(this.total);
 
   final int total;
 
   @override
   Widget build(BuildContext context) {
-    return AppText(
-      'Total $total',
-      textAlign: TextAlign.end,
+    return SeparatedRow(
+      separator: const Spacer(),
+      children: [
+        AppText('Total'.toUpperCase()),
+        AppText('$total'),
+      ],
     );
   }
 }
