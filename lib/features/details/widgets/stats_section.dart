@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/extensions/build_context.dart';
 import '../../../core/models/stats.dart';
 import '../../../core/widgets/app_text.dart';
 import '../../../core/widgets/rounded_progress_bar.dart';
@@ -49,6 +50,8 @@ class _StatLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.strings;
+
     return SeparatedRow(
       separator: const SizedBox(width: 8),
       children: [

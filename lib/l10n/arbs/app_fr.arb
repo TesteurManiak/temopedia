@@ -11,5 +11,6 @@
     "type_melee": "Combat",
     "type_crystal": "Crystal",
     "type_toxic": "Toxique",
-    "type_unknown": "Inconnu"
+    "type_unknown": "Inconnu",
+    "total": "Total"
 }

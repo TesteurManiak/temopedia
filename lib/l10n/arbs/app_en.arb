@@ -11,5 +11,6 @@
     "type_melee": "Melee",
     "type_crystal": "Crystal",
     "type_toxic": "Toxic",
-    "type_unknown": "Unknown"
+    "type_unknown": "Unknown",
+    "total": "Total"
 }

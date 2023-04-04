@@ -42,4 +42,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get type_unknown => 'Inconnu';
+
+  @override
+  String get total => 'Total';
 }
