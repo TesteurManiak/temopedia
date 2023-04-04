@@ -171,6 +171,48 @@ abstract class AppLocalizations {
   /// **'Unknown'**
   String get type_unknown;
 
+  /// No description provided for @hp_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'HP'**
+  String get hp_stat;
+
+  /// No description provided for @atk_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'ATK'**
+  String get atk_stat;
+
+  /// No description provided for @def_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'DEF'**
+  String get def_stat;
+
+  /// No description provided for @spd_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'SPD'**
+  String get spd_stat;
+
+  /// No description provided for @sta_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'STA'**
+  String get sta_stat;
+
+  /// No description provided for @spatk_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'SPATK'**
+  String get spatk_stat;
+
+  /// No description provided for @spdef_stat.
+  ///
+  /// In en, this message translates to:
+  /// **'SPDEF'**
+  String get spdef_stat;
+
   /// No description provided for @total.
   ///
   /// In en, this message translates to:

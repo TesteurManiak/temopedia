@@ -44,5 +44,26 @@ class AppLocalizationsFr extends AppLocalizations {
   String get type_unknown => 'Inconnu';
 
   @override
+  String get hp_stat => 'PV';
+
+  @override
+  String get atk_stat => 'ATK';
+
+  @override
+  String get def_stat => 'DEF';
+
+  @override
+  String get spd_stat => 'VIT';
+
+  @override
+  String get sta_stat => 'END';
+
+  @override
+  String get spatk_stat => 'SPATK';
+
+  @override
+  String get spdef_stat => 'SPDEF';
+
+  @override
   String get total => 'Total';
 }

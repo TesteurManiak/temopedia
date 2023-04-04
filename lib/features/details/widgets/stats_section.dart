@@ -18,6 +18,8 @@ class StatsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.strings;
+
     return DetailsContainer(
       title: 'Stats',
       child: SeparatedColumn(
@@ -25,13 +27,13 @@ class StatsSection extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _StatLine(label: 'hp', value: stats.hp),
-          _StatLine(label: 'sta', value: stats.sta),
-          _StatLine(label: 'spd', value: stats.spd),
-          _StatLine(label: 'atk', value: stats.atk),
-          _StatLine(label: 'def', value: stats.def),
-          _StatLine(label: 'spatk', value: stats.spatk),
-          _StatLine(label: 'spdef', value: stats.spdef),
+          _StatLine(label: strings.hp_stat, value: stats.hp),
+          _StatLine(label: strings.sta_stat, value: stats.sta),
+          _StatLine(label: strings.spd_stat, value: stats.spd),
+          _StatLine(label: strings.atk_stat, value: stats.atk),
+          _StatLine(label: strings.def_stat, value: stats.def),
+          _StatLine(label: strings.spatk_stat, value: stats.spatk),
+          _StatLine(label: strings.spdef_stat, value: stats.spdef),
           _TotalLine(stats.total),
         ],
       ),

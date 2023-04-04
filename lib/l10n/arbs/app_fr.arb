@@ -12,5 +12,12 @@
     "type_crystal": "Crystal",
     "type_toxic": "Toxique",
     "type_unknown": "Inconnu",
+    "hp_stat": "PV",
+    "atk_stat": "ATK",
+    "def_stat": "DEF",
+    "spd_stat": "VIT",
+    "sta_stat": "END",
+    "spatk_stat": "SPATK",
+    "spdef_stat": "SPDEF",
     "total": "Total"
 }
