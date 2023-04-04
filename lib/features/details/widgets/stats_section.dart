@@ -50,8 +50,6 @@ class _StatLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final strings = context.strings;
-
     return SeparatedRow(
       separator: const SizedBox(width: 8),
       children: [
@@ -59,9 +57,7 @@ class _StatLine extends StatelessWidget {
           width: 44,
           child: AppText(label.toUpperCase()),
         ),
-        Flexible(
-          child: RoundedProgressBar(value: value / 100),
-        ),
+        Flexible(child: RoundedProgressBar(value: value / 100)),
         SizedBox(
           width: 24,
           child: AppText('$value', textAlign: TextAlign.end),
@@ -78,10 +74,12 @@ class _TotalLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final strings = context.strings;
+
     return SeparatedRow(
       separator: const Spacer(),
       children: [
-        AppText('Total'.toUpperCase()),
+        AppText(strings.total.toUpperCase()),
         AppText('$total'),
       ],
     );
