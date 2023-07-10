@@ -1,5 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/mixins/loadable.dart';
 import '../../../core/models/error.dart';
@@ -8,30 +8,28 @@ import '../use_cases/fetch_temtem_details.dart';
 import '../use_cases/get_local_temtem.dart';
 
 part 'details_controller.freezed.dart';
+part 'details_controller.g.dart';
 
-class DetailsController extends StateNotifier<DetailsState> with Loadable {
-  DetailsController({
-    required this.temtemId,
-    required GetLocalTemtemUseCase getLocalTemtemUseCase,
-    required FetchTemtemDetailsUseCase fetchTemtemDetailsUseCase,
-  })  : _getLocalTemtemUseCase = getLocalTemtemUseCase,
-        _fetchTemtemDetailsUseCase = fetchTemtemDetailsUseCase,
-        super(const DetailsState.loading());
+@riverpod
+class DetailsController extends _$DetailsController with Loadable {
+  DetailsController();
 
-  final int temtemId;
-  final GetLocalTemtemUseCase _getLocalTemtemUseCase;
-  final FetchTemtemDetailsUseCase _fetchTemtemDetailsUseCase;
+  @override
+  DetailsState build(int temtemId) {
+    return const DetailsState.loading();
+  }
 
   @override
   Future<void> load() async {
     if (state.temtemOrNull == null) {
-      final localTemtem = await _getLocalTemtemUseCase(temtemId);
+      final localTemtem =
+          await ref.read(getLocalTemtemProvider(temtemId).future);
       if (localTemtem != null) {
         state = DetailsState.loading(temtem: localTemtem);
       }
     }
 
-    final result = await _fetchTemtemDetailsUseCase(temtemId);
+    final result = await ref.read(fetchTemtemDetailsProvider(temtemId).future);
 
     state = result.when(
       success: (temtem) => DetailsState.loaded(temtem: temtem),
@@ -40,23 +38,10 @@ class DetailsController extends StateNotifier<DetailsState> with Loadable {
   }
 }
 
-final detailsControllerProvider = StateNotifierProvider.autoDispose
-    .family<DetailsController, DetailsState, int>(
-  (ref, id) {
-    return DetailsController(
-      temtemId: id,
-      getLocalTemtemUseCase: ref.watch(getLocalTemtemUseCaseProvider),
-      fetchTemtemDetailsUseCase: ref.watch(fetchTemtemDetailsUseCaseProvider),
-    );
-  },
-);
-
 @freezed
 class DetailsState with _$DetailsState {
   const factory DetailsState.loading({Temtem? temtem}) = _Loading;
-  const factory DetailsState.loaded({
-    required Temtem temtem,
-  }) = _Loaded;
+  const factory DetailsState.loaded({required Temtem temtem}) = _Loaded;
   const factory DetailsState.error({AppError? error}) = _Error;
 
   const DetailsState._();

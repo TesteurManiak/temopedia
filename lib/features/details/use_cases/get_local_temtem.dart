@@ -1,16 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../core/database/local_storage.dart';
 import '../../../core/models/temtem.dart';
 
-class GetLocalTemtemUseCase {
-  const GetLocalTemtemUseCase(this.localStorage);
+part 'get_local_temtem.g.dart';
 
-  final LocalStorage localStorage;
-
-  Future<Temtem?> call(int id) => localStorage.readTemtem(id);
+@riverpod
+Future<Temtem?> getLocalTemtem(GetLocalTemtemRef ref, int id) {
+  return ref.watch(localStorageProvider).readTemtem(id);
 }
-
-final getLocalTemtemUseCaseProvider = Provider.autoDispose(
-  (ref) => GetLocalTemtemUseCase(ref.watch(localStorageProvider)),
-);
