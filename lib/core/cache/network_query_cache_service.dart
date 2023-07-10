@@ -1,8 +1,10 @@
 import 'package:clock/clock.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'hive_cache_service.dart';
 import 'models/cache_entry.dart';
+
+part 'network_query_cache_service.g.dart';
 
 const kCacheDefaultDuration = Duration(minutes: 10);
 
@@ -34,6 +36,9 @@ class NetworkQueryCacheService extends HiveCacheService<String> {
   }
 }
 
-final networkCacheServiceProvider = Provider<NetworkQueryCacheService>((_) {
+@riverpod
+NetworkQueryCacheService networkQueryCacheService(
+  NetworkQueryCacheServiceRef ref,
+) {
   return NetworkQueryCacheService();
-});
+}

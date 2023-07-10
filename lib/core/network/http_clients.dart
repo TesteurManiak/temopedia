@@ -76,18 +76,19 @@ class ApiClient {
   }
 }
 
-final httpClientProvider = Provider<AppHttpClient>((ref) {
+@riverpod
+AppHttpClient appHttpClient(AppHttpClientRef ref) {
   return AppHttpClient(
-    cacheService: ref.watch(networkCacheServiceProvider),
+    cacheService: ref.watch(networkQueryCacheServiceProvider),
   );
-});
+}
 
 @riverpod
 ApiClient apiClient(ApiClientRef ref) {
   return ApiClient(
     restClient: RestClient(
       baseUri: Uri.parse('https://temtem-api.mael.tech'),
-      httpClient: ref.watch(httpClientProvider),
+      httpClient: ref.watch(appHttpClientProvider),
     ),
   );
 }

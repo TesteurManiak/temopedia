@@ -6,7 +6,22 @@ part of 'http_clients.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$apiClientHash() => r'd1db42ff6100ab3524500320d3cf1046669c7ebf';
+String _$appHttpClientHash() => r'2c2e48964dad1e7f7c1768972397dad080a4a9f8';
+
+/// See also [appHttpClient].
+@ProviderFor(appHttpClient)
+final appHttpClientProvider = AutoDisposeProvider<AppHttpClient>.internal(
+  appHttpClient,
+  name: r'appHttpClientProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$appHttpClientHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef AppHttpClientRef = AutoDisposeProviderRef<AppHttpClient>;
+String _$apiClientHash() => r'9971bd492da90e944b8e8ef30f2c3f74e729bd22';
 
 /// See also [apiClient].
 @ProviderFor(apiClient)
@@ -20,7 +35,7 @@ final apiClientProvider = AutoDisposeProvider<ApiClient>.internal(
 );
 
 typedef ApiClientRef = AutoDisposeProviderRef<ApiClient>;
-String _$imageUrlHash() => r'5a234371196e0e5114a8f28809d3e5003088ffa3';
+String _$imageUrlHash() => r'3ebb534668ea519ca8e79833a86eb6e16528cd08';
 
 /// Copied from Dart SDK
 class _SystemHash {

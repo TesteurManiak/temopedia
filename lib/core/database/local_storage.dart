@@ -1,7 +1,9 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/temtem.dart';
 import 'hive_database.dart';
+
+part 'local_storage.g.dart';
 
 abstract class LocalStorage {
   Future<void> createTemtems(Iterable<Temtem> temtems);
@@ -14,6 +16,7 @@ abstract class LocalStorage {
   Future<void> deleteTemtem(int id);
 }
 
-final localStorageProvider = Provider<LocalStorage>((ref) {
+@riverpod
+LocalStorage localStorage(LocalStorageRef ref) {
   return HiveDatabase();
-});
+}
