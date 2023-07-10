@@ -6,11 +6,11 @@ part of 'route.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<GoRoute> get $appRoutes => [
+List<RouteBase> get $appRoutes => [
       $temtemListRoute,
     ];
 
-GoRoute get $temtemListRoute => GoRouteData.$route(
+RouteBase get $temtemListRoute => GoRouteData.$route(
       path: '/',
       factory: $TemtemListRouteExtension._fromState,
       routes: [
@@ -30,10 +30,12 @@ extension $TemtemListRouteExtension on TemtemListRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }
 
 extension $FiltersRouteExtension on FiltersRoute {
@@ -45,8 +47,10 @@ extension $FiltersRouteExtension on FiltersRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }

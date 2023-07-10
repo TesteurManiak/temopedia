@@ -6,18 +6,18 @@ part of 'route.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<GoRoute> get $appRoutes => [
+List<RouteBase> get $appRoutes => [
       $detailsRoute,
     ];
 
-GoRoute get $detailsRoute => GoRouteData.$route(
+RouteBase get $detailsRoute => GoRouteData.$route(
       path: '/details/:id',
       factory: $DetailsRouteExtension._fromState,
     );
 
 extension $DetailsRouteExtension on DetailsRoute {
   static DetailsRoute _fromState(GoRouterState state) => DetailsRoute(
-        id: int.parse(state.params['id']!),
+        id: int.parse(state.pathParameters['id']!),
       );
 
   String get location => GoRouteData.$location(
@@ -26,8 +26,10 @@ extension $DetailsRouteExtension on DetailsRoute {
 
   void go(BuildContext context) => context.go(location);
 
-  void push(BuildContext context) => context.push(location);
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
 }

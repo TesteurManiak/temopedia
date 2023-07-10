@@ -12,13 +12,20 @@ import '../models/result.dart';
 import 'cache_client.dart';
 import 'rest_client.dart';
 
-class AppRetryClient extends RetryClient {
+class AppRetryClient extends BaseClient {
   AppRetryClient({
     required Client client,
-  }) : super(
+  }) : _retryClient = RetryClient(
           client,
           retries: 3,
         );
+
+  final RetryClient _retryClient;
+
+  @override
+  Future<StreamedResponse> send(BaseRequest request) {
+    return _retryClient.send(request);
+  }
 }
 
 class AppHttpClient extends BaseClient {
