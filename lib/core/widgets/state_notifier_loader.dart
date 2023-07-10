@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../mixins/loadable_state_notifier.dart';
+import '../mixins/loadable.dart';
 
-class StateNotifierLoader<NotifierT extends LoadableStateNotifierMixin<T>, T>
-    extends ConsumerStatefulWidget {
+class StateNotifierLoader extends ConsumerStatefulWidget {
   const StateNotifierLoader({
     super.key,
     required this.provider,
     required this.child,
   });
 
-  final AutoDisposeStateNotifierProvider<NotifierT, T> provider;
+  final Loadable provider;
   final Widget child;
 
   @override
@@ -23,7 +22,10 @@ class _StateNotifierLoaderState extends ConsumerState<StateNotifierLoader> {
   @override
   void initState() {
     super.initState();
-    ref.read(widget.provider.notifier).load();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.provider.load();
+    });
   }
 
   @override

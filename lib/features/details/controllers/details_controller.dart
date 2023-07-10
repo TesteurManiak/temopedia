@@ -1,15 +1,15 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../core/mixins/loadable.dart';
 import '../../../core/models/error.dart';
 import '../../../core/models/temtem.dart';
-import '../../../core/providers/loadable_state_notifier.dart';
 import '../use_cases/fetch_temtem_details.dart';
 import '../use_cases/get_local_temtem.dart';
 
 part 'details_controller.freezed.dart';
 
-class DetailsController extends LoadableStateNotifier<DetailsState> {
+class DetailsController extends StateNotifier<DetailsState> with Loadable {
   DetailsController({
     required this.temtemId,
     required GetLocalTemtemUseCase getLocalTemtemUseCase,

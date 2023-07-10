@@ -12,7 +12,7 @@ import '../widgets/header_content.dart';
 import '../widgets/stats_section.dart';
 import '../widgets/traits_section.dart';
 
-class DetailsView extends StatelessWidget {
+class DetailsView extends ConsumerWidget {
   const DetailsView({
     super.key,
     required this.id,
@@ -21,9 +21,9 @@ class DetailsView extends StatelessWidget {
   final int id;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return StateNotifierLoader(
-      provider: detailsControllerProvider(id),
+      provider: ref.watch(detailsControllerProvider(id).notifier),
       child: Scaffold(
         appBar: AppBar(),
         body: _Body(id: id),

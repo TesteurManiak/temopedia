@@ -22,7 +22,7 @@ class TemtemListTab extends ConsumerWidget {
     final state = ref.watch(temtemListControllerProvider);
 
     return StateNotifierLoader(
-      provider: temtemListControllerProvider,
+      provider: ref.watch(temtemListControllerProvider.notifier),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () => FiltersRoute().push(context),
