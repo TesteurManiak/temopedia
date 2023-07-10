@@ -1,16 +1,19 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http/retry.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../cache/network_query_cache_service.dart';
+import '../extensions/string.dart';
 import '../models/error.dart';
 import '../models/result.dart';
 import 'cache_client.dart';
 import 'rest_client.dart';
+
+part 'http_clients.g.dart';
 
 class AppRetryClient extends BaseClient {
   AppRetryClient({
@@ -79,24 +82,22 @@ final httpClientProvider = Provider<AppHttpClient>((ref) {
   );
 });
 
-final apiClientProvider = Provider<ApiClient>((ref) {
+@riverpod
+ApiClient apiClient(ApiClientRef ref) {
   return ApiClient(
     restClient: RestClient(
       baseUri: Uri.parse('https://temtem-api.mael.tech'),
       httpClient: ref.watch(httpClientProvider),
     ),
   );
-});
+}
 
-final imageUrlProvider = Provider.autoDispose.family<String, String?>(
-  (ref, path) {
-    final startsWithSlash = path?.startsWith('/') ?? false;
-
-    return ref
-        .watch(apiClientProvider)
-        .restClient
-        .baseUri
-        .replace(path: '${startsWithSlash ? '' : '/'}$path')
-        .toString();
-  },
-);
+@riverpod
+String imageUrl(ImageUrlRef ref, String? path) {
+  return ref
+      .watch(apiClientProvider)
+      .restClient
+      .baseUri
+      .replace(path: path?.rootPath)
+      .toString();
+}
