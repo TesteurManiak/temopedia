@@ -45,10 +45,11 @@ dev_dependencies:
   riverpod_lint: ^1.3.2
   theme_tailor: ^2.0.0
 
-flutter_icons:
+flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/launcher_icon/icon.png"
+  image_path_ios: "assets/launcher_icon/icon_ios.png"
 
 flutter_native_splash:
   color: "#1f183a"

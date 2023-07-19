@@ -48,13 +48,13 @@ flutter gen-l10n
 ### Generate the app icon
 
 ``` bash
-flutter pub run flutter_launcher_icons:main
+dart run flutter_launcher_icons:main
 ```
 
 ### Generate splash screen
 
 ``` bash
-flutter pub run flutter_native_splash:create
+dart run flutter_native_splash:create
 ```
 
 ### Generate golden tests
