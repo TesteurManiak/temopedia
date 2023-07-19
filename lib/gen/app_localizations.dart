@@ -218,6 +218,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total'**
   String get total;
+
+  /// No description provided for @generic_error.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get generic_error;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

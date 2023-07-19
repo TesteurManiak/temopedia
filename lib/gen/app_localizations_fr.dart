@@ -66,4 +66,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get total => 'Total';
+
+  @override
+  String get generic_error => 'Une erreur est survenue';
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/core/extensions/string.dart';
+import 'package:temopedia/core/extensions/build_context.dart';
 import 'package:temopedia/gen/assets.gen.dart';
 
 class AppErrorWidget extends StatelessWidget {
@@ -16,7 +16,7 @@ class AppErrorWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(Assets.illustrations.illError.path),
-        Text('Une erreur est survenue'.hardcoded),
+        Text(context.strings.generic_error),
       ],
     );
   }

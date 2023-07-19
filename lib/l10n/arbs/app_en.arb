@@ -1,4 +1,5 @@
 {
+    "@@locale": "en",
     "type_neutral": "Neutral",
     "type_fire": "Fire",
     "type_water": "Water",
@@ -19,5 +20,6 @@
     "sta_stat": "STA",
     "spatk_stat": "SPATK",
     "spdef_stat": "SPDEF",
-    "total": "Total"
+    "total": "Total",
+    "generic_error": "An error occurred"
 }
