@@ -5,8 +5,8 @@ import 'package:temopedia/core/network/http_clients.dart';
 import 'package:temopedia/core/widgets/app_network_image.dart';
 import 'package:temopedia/core/widgets/app_text.dart';
 import 'package:temopedia/core/widgets/error_widget.dart';
+import 'package:temopedia/core/widgets/object_loader.dart';
 import 'package:temopedia/core/widgets/sliver_space.dart';
-import 'package:temopedia/core/widgets/state_notifier_loader.dart';
 import 'package:temopedia/design_system/palette.dart';
 import 'package:temopedia/features/details/navigation/route.dart';
 import 'package:temopedia/features/home/controllers/temtem_list.dart';
@@ -20,8 +20,8 @@ class TemtemListTab extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(temtemListControllerProvider);
 
-    return StateNotifierLoader(
-      provider: ref.watch(temtemListControllerProvider.notifier),
+    return ObjectLoader(
+      loadable: ref.watch(temtemListControllerProvider.notifier),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () => FiltersRoute().push<void>(context),

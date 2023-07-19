@@ -4,8 +4,8 @@ import 'package:temopedia/core/mixins/app_bar_size.dart';
 import 'package:temopedia/core/models/stats.dart';
 import 'package:temopedia/core/network/http_clients.dart';
 import 'package:temopedia/core/widgets/bottom_sliver_space.dart';
+import 'package:temopedia/core/widgets/object_loader.dart';
 import 'package:temopedia/core/widgets/sliver_space.dart';
-import 'package:temopedia/core/widgets/state_notifier_loader.dart';
 import 'package:temopedia/features/details/controllers/details_controller.dart';
 import 'package:temopedia/features/details/widgets/header_content.dart';
 import 'package:temopedia/features/details/widgets/stats_section.dart';
@@ -21,8 +21,8 @@ class DetailsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return StateNotifierLoader(
-      provider: ref.watch(detailsControllerProvider(id).notifier),
+    return ObjectLoader(
+      loadable: ref.watch(detailsControllerProvider(id).notifier),
       child: Scaffold(
         appBar: AppBar(),
         body: _Body(id: id),

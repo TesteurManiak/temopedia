@@ -2,28 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:temopedia/core/mixins/loadable.dart';
 
-class StateNotifierLoader extends ConsumerStatefulWidget {
-  const StateNotifierLoader({
+class ObjectLoader extends ConsumerStatefulWidget {
+  const ObjectLoader({
     super.key,
-    required this.provider,
+    required this.loadable,
     required this.child,
   });
 
-  final Loadable provider;
+  final Loadable loadable;
   final Widget child;
 
   @override
-  ConsumerState<StateNotifierLoader> createState() =>
-      _StateNotifierLoaderState();
+  ConsumerState<ObjectLoader> createState() => _StateNotifierLoaderState();
 }
 
-class _StateNotifierLoaderState extends ConsumerState<StateNotifierLoader> {
+class _StateNotifierLoaderState extends ConsumerState<ObjectLoader> {
   @override
   void initState() {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      widget.provider.load();
+      widget.loadable.load();
     });
   }
 
