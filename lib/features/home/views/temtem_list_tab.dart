@@ -30,7 +30,7 @@ class TemtemListTab extends ConsumerWidget {
         body: state.when(
           loading: () => const Center(child: CircularProgressIndicator()),
           loaded: (temtems) => _Body(temtems: temtems),
-          error: (e) => const Center(child: AppErrorWidget()),
+          error: (e) => Center(child: AppErrorWidget(message: e.toString())),
         ),
       ),
     );
