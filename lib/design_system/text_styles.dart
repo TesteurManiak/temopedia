@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../gen/fonts.gen.dart';
-import 'palette.dart';
-import 'theme.dart';
+import 'package:temopedia/design_system/palette.dart';
+import 'package:temopedia/design_system/theme.dart';
+import 'package:temopedia/gen/fonts.gen.dart';
 
 @immutable
 class AppTextTheme extends ThemeExtension<AppTextTheme> {
@@ -61,6 +60,7 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
 
 @Deprecated('Use AppTextTheme instead')
 class TextStyles {
+  @Deprecated('Use AppTextTheme instead')
   const TextStyles._();
 
   static const lightText = TextStyle(color: MyColors.lightFont);

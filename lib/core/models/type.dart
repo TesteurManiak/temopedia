@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import '../../gen/app_localizations.dart';
-import '../../gen/assets.gen.dart';
+import 'package:temopedia/gen/app_localizations.dart';
+import 'package:temopedia/gen/assets.gen.dart';
 
 part 'type.g.dart';
 
@@ -156,11 +155,11 @@ String _unknownTranslation(AppLocalizations localizations) =>
     localizations.type_unknown;
 Color _unknownColor(BuildContext context) => Colors.grey;
 
-class TypeListConverter implements JsonConverter<List<TemType>, List> {
+class TypeListConverter implements JsonConverter<List<TemType>, List<Object?>> {
   const TypeListConverter();
 
   @override
-  List<TemType> fromJson(List json) {
+  List<TemType> fromJson(List<Object?> json) {
     return json
         .map(
           (e) => TemType.values.firstWhere(
@@ -172,7 +171,5 @@ class TypeListConverter implements JsonConverter<List<TemType>, List> {
   }
 
   @override
-  List<String> toJson(List<TemType> _) {
-    throw UnimplementedError();
-  }
+  List<String> toJson(List<TemType> _) => throw UnimplementedError();
 }

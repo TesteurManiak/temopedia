@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/database/local_storage.dart';
-import '../../../core/models/error.dart';
-import '../../../core/models/result.dart';
-import '../../../core/models/temtem.dart';
-import '../../../core/network/http_clients.dart';
+import 'package:temopedia/core/database/local_storage.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/result.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/core/network/http_clients.dart';
 
 class FetchTemtemListUseCase {
   FetchTemtemListUseCase({

@@ -31,9 +31,16 @@ extension ResultDecoder<F> on Result<Object?, F> {
     return whenSuccess<S>((s) {
       final Map<String, dynamic> json;
       if (s is String) {
-        json = jsonDecode(s) as Map<String, dynamic>;
+        final decodedJson = jsonDecode(s);
+        if (decodedJson is! Map<String, dynamic>) {
+          throw InvalidJSONException(decodedJson);
+        }
+        json = decodedJson;
       } else {
-        json = s as Map<String, dynamic>;
+        if (s is! Map<String, dynamic>) {
+          throw InvalidJSONException(s);
+        }
+        json = s;
       }
       return decoder(json);
     });
@@ -42,11 +49,18 @@ extension ResultDecoder<F> on Result<Object?, F> {
   Result<List<S>, F> decodeList<S>(S Function(Map<String, dynamic>) decoder) {
     return whenSuccess(
       (s) {
-        final List json;
+        final List<Object?> json;
         if (s is String) {
-          json = jsonDecode(s) as List;
+          final decodedJson = jsonDecode(s);
+          if (decodedJson is! List) {
+            throw InvalidJSONException(decodedJson);
+          }
+          json = decodedJson;
         } else {
-          json = s as List;
+          if (s is! List) {
+            throw InvalidJSONException(s);
+          }
+          json = s;
         }
 
         return json
@@ -70,4 +84,8 @@ extension FutureResultDecoder<F> on Future<Result<Object?, F>> {
   ) async {
     return (await this).decodeList(decoder);
   }
+}
+
+class InvalidJSONException extends FormatException {
+  const InvalidJSONException([Object? source]) : super('Invalid JSON', source);
 }

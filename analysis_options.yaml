@@ -1,25 +1,7 @@
-include: package:flutter_lints/flutter.yaml
+include: package:fd_lints/flutter.yaml
 
 analyzer:
   plugins:
     - custom_lint
   exclude:
-    - lib/**.g.dart
-    - test/**.mocks.dart
-    - lib/gen/**.dart
-    - lib/generated_plugin_registrant.dart
-  errors:
-    iterable_contains_unrelated_type: error
-    always_declare_return_types: warning
-
-linter:
-  rules:
-    - use_super_parameters
-    - use_decorated_box
-    - use_colored_box
-    - require_trailing_commas
-    - prefer_relative_imports
-    - directives_ordering
-    - always_declare_return_types
-    - sort_child_properties_last
-    - unnecessary_lambdas
+    - lib/gen/

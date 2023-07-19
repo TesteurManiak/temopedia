@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'colors.dart';
-import 'text_styles.dart';
+import 'package:temopedia/design_system/colors.dart';
+import 'package:temopedia/design_system/text_styles.dart';
 
 @immutable
 class AppTheme extends ThemeExtension<AppTheme> {
