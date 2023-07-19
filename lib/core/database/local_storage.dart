@@ -15,7 +15,7 @@ abstract class LocalStorage {
   Future<void> deleteTemtem(int id);
 }
 
-@riverpod
+@Riverpod(keepAlive: true)
 LocalStorage localStorage(LocalStorageRef ref) {
   return HiveDatabase();
 }
