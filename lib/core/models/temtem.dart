@@ -1,13 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hive_flutter/adapters.dart';
-
-import 'details.dart';
-import 'evolution.dart';
-import 'gender_ratio.dart';
-import 'location.dart';
-import 'stats.dart';
-import 'technique.dart';
-import 'type.dart';
+import 'package:temopedia/core/models/details.dart';
+import 'package:temopedia/core/models/evolution.dart';
+import 'package:temopedia/core/models/gender_ratio.dart';
+import 'package:temopedia/core/models/location.dart';
+import 'package:temopedia/core/models/stats.dart';
+import 'package:temopedia/core/models/technique.dart';
+import 'package:temopedia/core/models/type.dart';
 
 part 'temtem.freezed.dart';
 part 'temtem.g.dart';
@@ -21,7 +20,7 @@ class Temtem with _$Temtem {
     @TypeListConverter()
     @Default(<TemType>[])
     @HiveField(2)
-        List<TemType> types,
+    List<TemType> types,
     @HiveField(3) String? portraitWikiUrl,
     @HiveField(4) String? lumaPortraitWikiUrl,
     @HiveField(5) String? wikiUrl,

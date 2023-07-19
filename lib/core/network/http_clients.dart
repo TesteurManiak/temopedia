@@ -5,13 +5,12 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:http/retry.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../cache/network_query_cache_service.dart';
-import '../extensions/string.dart';
-import '../models/error.dart';
-import '../models/result.dart';
-import 'cache_client.dart';
-import 'rest_client.dart';
+import 'package:temopedia/core/cache/network_query_cache_service.dart';
+import 'package:temopedia/core/extensions/string.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/result.dart';
+import 'package:temopedia/core/network/cache_client.dart';
+import 'package:temopedia/core/network/rest_client.dart';
 
 part 'http_clients.g.dart';
 
@@ -20,7 +19,6 @@ class AppRetryClient extends BaseClient {
     required Client client,
   }) : _retryClient = RetryClient(
           client,
-          retries: 3,
         );
 
   final RetryClient _retryClient;

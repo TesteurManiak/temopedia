@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../gen/assets.gen.dart';
+import 'package:temopedia/gen/assets.gen.dart';
 
 class AppErrorWidget extends StatelessWidget {
   const AppErrorWidget({super.key});

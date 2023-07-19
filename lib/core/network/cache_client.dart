@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:http/http.dart';
-
-import '../cache/network_query_cache_service.dart';
+import 'package:temopedia/core/cache/network_query_cache_service.dart';
 
 class CacheClient extends BaseClient {
   CacheClient({

@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../models/temtem.dart';
-import 'hive_database.dart';
+import 'package:temopedia/core/database/hive_database.dart';
+import 'package:temopedia/core/models/temtem.dart';
 
 part 'local_storage.g.dart';
 

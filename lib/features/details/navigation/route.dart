@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../views/details_view.dart';
+import 'package:temopedia/features/details/views/details_view.dart';
 
 part 'route.g.dart';
 

@@ -1,6 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'models/cache_entry.dart';
+import 'package:temopedia/core/cache/models/cache_entry.dart';
 
 abstract class HiveCacheService<T> {
   static const _valueTable = 'hive-value-cache';

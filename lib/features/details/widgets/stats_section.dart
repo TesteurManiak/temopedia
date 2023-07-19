@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/extensions/build_context.dart';
-import '../../../core/models/stats.dart';
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/rounded_progress_bar.dart';
-import '../../../core/widgets/separated_column.dart';
-import '../../../core/widgets/separated_row.dart';
-import 'details_container.dart';
+import 'package:temopedia/core/extensions/build_context.dart';
+import 'package:temopedia/core/models/stats.dart';
+import 'package:temopedia/core/widgets/app_text.dart';
+import 'package:temopedia/core/widgets/rounded_progress_bar.dart';
+import 'package:temopedia/core/widgets/separated_column.dart';
+import 'package:temopedia/core/widgets/separated_row.dart';
+import 'package:temopedia/features/details/widgets/details_container.dart';
 
 class StatsSection extends StatelessWidget {
   const StatsSection({

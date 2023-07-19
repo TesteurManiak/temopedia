@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/separated_column.dart';
-import '../../../design_system/palette.dart';
+import 'package:temopedia/core/widgets/app_text.dart';
+import 'package:temopedia/core/widgets/separated_column.dart';
+import 'package:temopedia/design_system/palette.dart';
 
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({

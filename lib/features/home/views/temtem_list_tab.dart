@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../core/models/temtem.dart';
-import '../../../core/network/http_clients.dart';
-import '../../../core/widgets/app_network_image.dart';
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/error_widget.dart';
-import '../../../core/widgets/sliver_space.dart';
-import '../../../core/widgets/state_notifier_loader.dart';
-import '../../../design_system/palette.dart';
-import '../../../gen/assets.gen.dart';
-import '../../details/navigation/route.dart';
-import '../controllers/temtem_list.dart';
-import '../navigation/route.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/core/network/http_clients.dart';
+import 'package:temopedia/core/widgets/app_network_image.dart';
+import 'package:temopedia/core/widgets/app_text.dart';
+import 'package:temopedia/core/widgets/error_widget.dart';
+import 'package:temopedia/core/widgets/sliver_space.dart';
+import 'package:temopedia/core/widgets/state_notifier_loader.dart';
+import 'package:temopedia/design_system/palette.dart';
+import 'package:temopedia/features/details/navigation/route.dart';
+import 'package:temopedia/features/home/controllers/temtem_list.dart';
+import 'package:temopedia/features/home/navigation/route.dart';
+import 'package:temopedia/gen/assets.gen.dart';
 
 class TemtemListTab extends ConsumerWidget {
   const TemtemListTab({super.key});
@@ -25,7 +24,7 @@ class TemtemListTab extends ConsumerWidget {
       provider: ref.watch(temtemListControllerProvider.notifier),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
-          onPressed: () => FiltersRoute().push(context),
+          onPressed: () => FiltersRoute().push<void>(context),
           child: const Icon(Icons.filter_list),
         ),
         body: state.when(
@@ -90,7 +89,7 @@ class _TemtemTile extends ConsumerWidget {
     final types = temtem.types;
 
     return GestureDetector(
-      onTap: () => DetailsRoute(id: temtem.number).push(context),
+      onTap: () => DetailsRoute(id: temtem.number).push<void>(context),
       child: Container(
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'details_container.dart';
+import 'package:temopedia/features/details/widgets/details_container.dart';
 
 class TraitsSection extends StatelessWidget {
   const TraitsSection({

@@ -4,4 +4,4 @@ analyzer:
   plugins:
     - custom_lint
   exclude:
-    - lib/gen/
+    - lib/gen/*.dart

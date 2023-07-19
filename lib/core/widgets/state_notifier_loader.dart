@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../mixins/loadable.dart';
+import 'package:temopedia/core/mixins/loadable.dart';
 
 class StateNotifierLoader extends ConsumerStatefulWidget {
   const StateNotifierLoader({

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../design_system/extensions/build_context.dart';
-import '../../design_system/text_styles.dart';
+import 'package:temopedia/design_system/extensions/build_context.dart';
+import 'package:temopedia/design_system/text_styles.dart';
 
 class AppText extends StatelessWidget {
   const AppText(

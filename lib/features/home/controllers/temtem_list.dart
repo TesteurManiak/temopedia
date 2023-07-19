@@ -1,10 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../core/mixins/loadable.dart';
-import '../../../core/models/error.dart';
-import '../../../core/models/temtem.dart';
-import '../use_cases/fetch_temtem_list.dart';
+import 'package:temopedia/core/mixins/loadable.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/features/home/use_cases/fetch_temtem_list.dart';
 
 part 'temtem_list.freezed.dart';
 
