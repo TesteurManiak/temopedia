@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:temopedia/core/mixins/loadable.dart';
 
-class ObjectLoader extends ConsumerStatefulWidget {
+class ObjectLoader extends StatefulWidget {
   const ObjectLoader({
     super.key,
     required this.loadable,
@@ -13,10 +12,10 @@ class ObjectLoader extends ConsumerStatefulWidget {
   final Widget child;
 
   @override
-  ConsumerState<ObjectLoader> createState() => _StateNotifierLoaderState();
+  State<ObjectLoader> createState() => _StateNotifierLoaderState();
 }
 
-class _StateNotifierLoaderState extends ConsumerState<ObjectLoader> {
+class _StateNotifierLoaderState extends State<ObjectLoader> {
   @override
   void initState() {
     super.initState();
