@@ -1,14 +1,13 @@
 import 'package:hive_flutter/adapters.dart';
-
-import '../models/details.dart';
-import '../models/evolution.dart';
-import '../models/gender_ratio.dart';
-import '../models/location.dart';
-import '../models/stats.dart';
-import '../models/technique.dart';
-import '../models/temtem.dart';
-import '../models/type.dart';
-import 'local_storage.dart';
+import 'package:temopedia/core/database/local_storage.dart';
+import 'package:temopedia/core/models/details.dart';
+import 'package:temopedia/core/models/evolution.dart';
+import 'package:temopedia/core/models/gender_ratio.dart';
+import 'package:temopedia/core/models/location.dart';
+import 'package:temopedia/core/models/stats.dart';
+import 'package:temopedia/core/models/technique.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/core/models/type.dart';
 
 class HiveDatabase implements LocalStorage {
   static const temtemTable = 'temtem';
@@ -23,18 +22,19 @@ class HiveDatabase implements LocalStorage {
     await Hive.initFlutter();
 
     // Register adapters
-    Hive.registerAdapter(TemTypeAdapter());
-    Hive.registerAdapter(StatsAdapter());
-    Hive.registerAdapter(WeightAdapter());
-    Hive.registerAdapter(HeightAdapter());
-    Hive.registerAdapter(DetailsAdapter());
-    Hive.registerAdapter(TechniqueAdapter());
-    Hive.registerAdapter(EvolutionNodeAdapter());
-    Hive.registerAdapter(EvolutionAdapter());
-    Hive.registerAdapter(FreetemAdapter());
-    Hive.registerAdapter(LocationAdapter());
-    Hive.registerAdapter(GenderRatioAdapter());
-    Hive.registerAdapter(TemtemAdapter());
+    Hive
+      ..registerAdapter(TemTypeAdapter())
+      ..registerAdapter(StatsAdapter())
+      ..registerAdapter(WeightAdapter())
+      ..registerAdapter(HeightAdapter())
+      ..registerAdapter(DetailsAdapter())
+      ..registerAdapter(TechniqueAdapter())
+      ..registerAdapter(EvolutionNodeAdapter())
+      ..registerAdapter(EvolutionAdapter())
+      ..registerAdapter(FreetemAdapter())
+      ..registerAdapter(LocationAdapter())
+      ..registerAdapter(GenderRatioAdapter())
+      ..registerAdapter(TemtemAdapter());
 
     // Open boxes
     _temtemBox = await Hive.openBox(temtemTable);

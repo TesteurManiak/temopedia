@@ -1,10 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'palette.dart';
-import 'theme.dart';
+import 'package:temopedia/design_system/palette.dart';
+import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
-@immutable
-class AppColors extends ThemeExtension<AppColors> {
+part 'colors.tailor.dart';
+
+@TailorMixin()
+class AppColors extends ThemeExtension<AppColors>
+    with DiagnosticableTreeMixin, _$AppColorsTailorMixin {
   const AppColors({
     required this.bottomSheet,
     required this.appBar,
@@ -24,52 +28,21 @@ class AppColors extends ThemeExtension<AppColors> {
           dialog: Palette.black,
         );
 
+  @override
   final Color bottomSheet;
+
+  @override
   final Color appBar;
+
+  @override
   final Color scaffold;
+
+  @override
   final Color activeButton;
+
+  @override
   final Color disabledButton;
+
+  @override
   final Color dialog;
-
-  static AppColors of(BuildContext context) {
-    return maybeOf(context)!;
-  }
-
-  static AppColors? maybeOf(BuildContext context) {
-    return AppTheme.maybeOf(context)?.colors;
-  }
-
-  @override
-  AppColors copyWith({
-    Color? bottomSheet,
-    Color? appBar,
-    Color? scaffold,
-    Color? activeButton,
-    Color? disabledButton,
-    Color? dialog,
-  }) {
-    return AppColors(
-      bottomSheet: bottomSheet ?? this.bottomSheet,
-      appBar: appBar ?? this.appBar,
-      scaffold: scaffold ?? this.scaffold,
-      activeButton: activeButton ?? this.activeButton,
-      disabledButton: disabledButton ?? this.disabledButton,
-      dialog: dialog ?? this.dialog,
-    );
-  }
-
-  @override
-  AppColors lerp(ThemeExtension<AppColors>? other, double t) {
-    if (other is! AppColors) {
-      return this;
-    }
-    return AppColors(
-      bottomSheet: Color.lerp(bottomSheet, other.bottomSheet, t)!,
-      appBar: Color.lerp(appBar, other.appBar, t)!,
-      scaffold: Color.lerp(scaffold, other.scaffold, t)!,
-      activeButton: Color.lerp(activeButton, other.activeButton, t)!,
-      disabledButton: Color.lerp(disabledButton, other.disabledButton, t)!,
-      dialog: Color.lerp(dialog, other.dialog, t)!,
-    );
-  }
 }

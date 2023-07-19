@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../design_system/palette.dart';
+import 'package:temopedia/design_system/palette.dart';
 
 const _kDefaultMinHeight = 6.0;
 const _kDefaultRadius = 12.0;
@@ -120,7 +120,7 @@ class _RoundedProgressBarPainter extends CustomPainter {
 
       canvas.drawRRect(
         RRect.fromRectAndRadius(
-          Offset(x, 0.0) & Size(width, size.height),
+          Offset(x, 0) & Size(width, size.height),
           Radius.circular(radius),
         ),
         paint,
@@ -158,23 +158,23 @@ class _RoundedProgressBarPainter extends CustomPainter {
   }
 
   static const Curve line1Head = Interval(
-    0.0,
+    0,
     750.0 / _kIndeterminateLinearDuration,
-    curve: Cubic(0.2, 0.0, 0.8, 1.0),
+    curve: Cubic(0.2, 0, 0.8, 1),
   );
   static const Curve line1Tail = Interval(
     333.0 / _kIndeterminateLinearDuration,
     (333.0 + 750.0) / _kIndeterminateLinearDuration,
-    curve: Cubic(0.4, 0.0, 1.0, 1.0),
+    curve: Cubic(0.4, 0, 1, 1),
   );
   static const Curve line2Head = Interval(
     1000.0 / _kIndeterminateLinearDuration,
     (1000.0 + 567.0) / _kIndeterminateLinearDuration,
-    curve: Cubic(0.0, 0.0, 0.65, 1.0),
+    curve: Cubic(0, 0, 0.65, 1),
   );
   static const Curve line2Tail = Interval(
     1267.0 / _kIndeterminateLinearDuration,
     (1267.0 + 533.0) / _kIndeterminateLinearDuration,
-    curve: Cubic(0.10, 0.0, 0.45, 1.0),
+    curve: Cubic(0.10, 0, 0.45, 1),
   );
 }

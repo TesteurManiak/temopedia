@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/extensions/build_context.dart';
-import '../../../core/models/type.dart';
-import '../../../core/widgets/app_text.dart';
-import '../../../core/widgets/separated_column.dart';
-import '../../../core/widgets/separated_row.dart';
-import '../../../design_system/palette.dart';
-import 'temtem_avatar.dart';
+import 'package:temopedia/core/extensions/build_context.dart';
+import 'package:temopedia/core/models/type.dart';
+import 'package:temopedia/core/widgets/app_text.dart';
+import 'package:temopedia/core/widgets/separated_column.dart';
+import 'package:temopedia/core/widgets/separated_row.dart';
+import 'package:temopedia/design_system/palette.dart';
+import 'package:temopedia/features/details/widgets/temtem_avatar.dart';
 
 class HeaderContent extends StatelessWidget {
   const HeaderContent({

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../../core/widgets/app_network_image.dart';
-import '../../../design_system/palette.dart';
-import '../../../gen/assets.gen.dart';
+import 'package:temopedia/core/widgets/app_network_image.dart';
+import 'package:temopedia/design_system/palette.dart';
+import 'package:temopedia/gen/assets.gen.dart';
 
 class TemtemAvatar extends StatefulWidget {
   const TemtemAvatar({

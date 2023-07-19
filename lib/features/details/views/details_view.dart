@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../../core/mixins/app_bar_size.dart';
-import '../../../core/models/stats.dart';
-import '../../../core/network/http_clients.dart';
-import '../../../core/widgets/bottom_sliver_space.dart';
-import '../../../core/widgets/sliver_space.dart';
-import '../../../core/widgets/state_notifier_loader.dart';
-import '../controllers/details_controller.dart';
-import '../widgets/header_content.dart';
-import '../widgets/stats_section.dart';
-import '../widgets/traits_section.dart';
+import 'package:temopedia/core/mixins/app_bar_size.dart';
+import 'package:temopedia/core/models/stats.dart';
+import 'package:temopedia/core/network/http_clients.dart';
+import 'package:temopedia/core/widgets/bottom_sliver_space.dart';
+import 'package:temopedia/core/widgets/object_loader.dart';
+import 'package:temopedia/core/widgets/sliver_space.dart';
+import 'package:temopedia/features/details/controllers/details_controller.dart';
+import 'package:temopedia/features/details/widgets/header_content.dart';
+import 'package:temopedia/features/details/widgets/stats_section.dart';
+import 'package:temopedia/features/details/widgets/traits_section.dart';
 
 class DetailsView extends ConsumerWidget {
   const DetailsView({
@@ -22,8 +21,8 @@ class DetailsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return StateNotifierLoader(
-      provider: ref.watch(detailsControllerProvider(id).notifier),
+    return ObjectLoader(
+      loadable: ref.watch(detailsControllerProvider(id).notifier),
       child: Scaffold(
         appBar: AppBar(),
         body: _Body(id: id),

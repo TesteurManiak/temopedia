@@ -11,6 +11,12 @@
             "part '${TM_FILENAME_BASE}.g.dart';",
         ]
     },
+    "Generate tailor part directive": {
+        "prefix": "tpart",
+        "body": [
+            "part '${TM_FILENAME_BASE}.tailor.dart';",
+        ]
+    },
     "Get semanticColorTheme": {
         "prefix": "colorTheme",
         "description": "Retrieve colorTheme from context in a variable",

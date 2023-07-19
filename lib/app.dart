@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'design_system/theme.dart';
-import 'gen/app_localizations.dart';
-import 'router/router.dart';
+import 'package:temopedia/design_system/theme.dart';
+import 'package:temopedia/gen/app_localizations.dart';
+import 'package:temopedia/router/router.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -20,7 +19,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Temopedia',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: AppTheme.dark,
+      theme: AppTheme.dark(),
       routerConfig: router,
     );
   }

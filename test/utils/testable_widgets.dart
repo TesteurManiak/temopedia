@@ -14,7 +14,7 @@ class TestableWidget extends _TestableWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: theme ?? AppTheme.dark,
+      data: theme ?? AppTheme.dark(),
       child: Localizations.override(
         context: context,
         locale: locale,
@@ -36,7 +36,7 @@ class TestableApp extends _TestableWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: theme ?? AppTheme.dark,
+      theme: theme ?? AppTheme.dark(),
       locale: locale,
       localizationsDelegates: [MockLocalizationsDelegate(locale: locale)],
       home: child,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../views/filters_view.dart';
-import '../views/temtem_list_tab.dart';
+import 'package:temopedia/features/home/views/filters_view.dart';
+import 'package:temopedia/features/home/views/temtem_list_tab.dart';
 
 part 'route.g.dart';
 

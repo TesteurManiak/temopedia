@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'sliver_space.dart';
+import 'package:temopedia/core/widgets/sliver_space.dart';
 
 class BottomSliverSpace extends StatelessWidget {
   const BottomSliverSpace({super.key});

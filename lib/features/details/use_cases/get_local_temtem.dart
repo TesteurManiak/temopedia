@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../core/database/local_storage.dart';
-import '../../../core/models/temtem.dart';
+import 'package:temopedia/core/database/local_storage.dart';
+import 'package:temopedia/core/models/temtem.dart';
 
 part 'get_local_temtem.g.dart';
 

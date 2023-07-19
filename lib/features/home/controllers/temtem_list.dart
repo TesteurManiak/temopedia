@@ -1,27 +1,25 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../core/mixins/loadable.dart';
-import '../../../core/models/error.dart';
-import '../../../core/models/temtem.dart';
-import '../use_cases/fetch_temtem_list.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:temopedia/core/mixins/loadable.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/features/home/use_cases/fetch_temtem_list.dart';
 
 part 'temtem_list.freezed.dart';
+part 'temtem_list.g.dart';
 
-class TemtemListController extends StateNotifier<TemtemListState>
-    with Loadable {
-  TemtemListController({
-    required FetchTemtemListUseCase fetchTemtemListUseCase,
-  })  : _fetchTemtemListUseCase = fetchTemtemListUseCase,
-        super(const TemtemListState.loading());
-
-  final FetchTemtemListUseCase _fetchTemtemListUseCase;
+@riverpod
+class TemtemListController extends _$TemtemListController with Loadable {
+  @override
+  TemtemListState build() {
+    return const TemtemListState.loading();
+  }
 
   @override
   Future<void> load() async {
     state = const TemtemListState.loading();
 
-    final result = await _fetchTemtemListUseCase();
+    final result = await ref.read(fetchTemtemListUseCaseProvider.future);
 
     state = result.when(
       success: (s) => TemtemListState.loaded(temtems: s),
@@ -29,15 +27,6 @@ class TemtemListController extends StateNotifier<TemtemListState>
     );
   }
 }
-
-final temtemListControllerProvider =
-    StateNotifierProvider.autoDispose<TemtemListController, TemtemListState>(
-  (ref) {
-    return TemtemListController(
-      fetchTemtemListUseCase: ref.watch(fetchTemtemListUseCaseProvider),
-    );
-  },
-);
 
 @freezed
 class TemtemListState with _$TemtemListState {

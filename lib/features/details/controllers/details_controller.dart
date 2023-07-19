@@ -1,11 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../core/mixins/loadable.dart';
-import '../../../core/models/error.dart';
-import '../../../core/models/temtem.dart';
-import '../use_cases/fetch_temtem_details.dart';
-import '../use_cases/get_local_temtem.dart';
+import 'package:temopedia/core/mixins/loadable.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/features/details/use_cases/fetch_temtem_details.dart';
+import 'package:temopedia/features/details/use_cases/get_local_temtem.dart';
 
 part 'details_controller.freezed.dart';
 part 'details_controller.g.dart';

@@ -1,8 +1,7 @@
 import 'package:clock/clock.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import 'hive_cache_service.dart';
-import 'models/cache_entry.dart';
+import 'package:temopedia/core/cache/hive_cache_service.dart';
+import 'package:temopedia/core/cache/models/cache_entry.dart';
 
 part 'network_query_cache_service.g.dart';
 

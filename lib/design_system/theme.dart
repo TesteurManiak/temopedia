@@ -1,73 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/design_system/colors.dart';
+import 'package:temopedia/design_system/text_styles.dart';
 
-import 'colors.dart';
-import 'text_styles.dart';
+class AppTheme {
+  const AppTheme._();
 
-@immutable
-class AppTheme extends ThemeExtension<AppTheme> {
-  const AppTheme({
-    required this.colors,
-    required this.textTheme,
-  });
-
-  final AppColors colors;
-  final AppTextTheme textTheme;
-
-  static ThemeData get dark {
-    const appTheme = AppTheme(
-      colors: AppColors.dark(),
-      textTheme: AppTextTheme.regular(),
-    );
+  static ThemeData dark() {
+    const colors = AppColors.dark();
+    const textTheme = AppTextTheme.regular();
 
     final baseDark = ThemeData.dark();
     return baseDark.copyWith(
       brightness: Brightness.dark,
-      scaffoldBackgroundColor: appTheme.colors.scaffold,
+      scaffoldBackgroundColor: colors.scaffold,
       appBarTheme: AppBarTheme(
-        color: appTheme.colors.appBar,
+        color: colors.appBar,
         elevation: 0,
         centerTitle: true,
       ),
-      dialogBackgroundColor: appTheme.colors.dialog,
+      dialogBackgroundColor: colors.dialog,
       bottomSheetTheme: BottomSheetThemeData(
-        backgroundColor: appTheme.colors.bottomSheet,
+        backgroundColor: colors.bottomSheet,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             top: Radius.circular(30),
           ),
         ),
       ),
-      extensions: [appTheme],
-    );
-  }
-
-  static AppTheme of(BuildContext context) {
-    return maybeOf(context)!;
-  }
-
-  static AppTheme? maybeOf(BuildContext context) {
-    return Theme.of(context).extension<AppTheme>();
-  }
-
-  @override
-  AppTheme copyWith({
-    AppColors? colors,
-    AppTextTheme? textTheme,
-  }) {
-    return AppTheme(
-      colors: colors ?? this.colors,
-      textTheme: textTheme ?? this.textTheme,
-    );
-  }
-
-  @override
-  AppTheme lerp(ThemeExtension<AppTheme>? other, double t) {
-    if (other is! AppTheme) {
-      return this;
-    }
-    return AppTheme(
-      colors: colors.lerp(other.colors, t),
-      textTheme: textTheme.lerp(other.textTheme, t),
+      extensions: [
+        colors,
+        textTheme,
+      ],
     );
   }
 }

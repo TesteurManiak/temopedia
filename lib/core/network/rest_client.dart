@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 
-import '../models/error.dart';
-import '../models/result.dart';
+import 'package:temopedia/core/models/error.dart';
+import 'package:temopedia/core/models/result.dart';
 
 enum HttpMethod {
   get('GET'),
@@ -63,7 +63,13 @@ class RestClient {
         final body = await response.stream.bytesToString();
 
         try {
-          final json = jsonDecode(body) as Map<String, dynamic>;
+          final decodedJson = jsonDecode(body);
+          if (decodedJson is! Map<String, dynamic>) {
+            return const Result.failure(
+              AppError(type: AppErrorType.other, error: 'Invalid error JSON'),
+            );
+          }
+          final json = decodedJson;
           return Result.failure(AppError.fromJson(json));
         } catch (e) {
           final error =
@@ -84,7 +90,13 @@ class RestClient {
       if (contentTypeHeader != null) {
         final mimeType = ContentType.parse(contentTypeHeader).mimeType;
         if (mimeType == ContentType.json.mimeType) {
-          final json = jsonDecode(body) as Object;
+          final decodedJson = jsonDecode(body);
+          if (decodedJson is! Object) {
+            return const Result.failure(
+              AppError(type: AppErrorType.other, error: 'Invalid JSON'),
+            );
+          }
+          final json = decodedJson;
           return Result.success(json);
         }
       }
