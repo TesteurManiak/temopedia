@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Temopedia',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: AppTheme.dark,
+      theme: AppTheme.dark(),
       routerConfig: router,
     );
   }

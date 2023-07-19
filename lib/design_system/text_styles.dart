@@ -1,10 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:temopedia/design_system/palette.dart';
-import 'package:temopedia/design_system/theme.dart';
 import 'package:temopedia/gen/fonts.gen.dart';
+import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
 
-@immutable
-class AppTextTheme extends ThemeExtension<AppTextTheme> {
+part 'text_styles.tailor.dart';
+
+@TailorMixin()
+class AppTextTheme extends ThemeExtension<AppTextTheme>
+    with DiagnosticableTreeMixin, _$AppTextThemeTailorMixin {
   const AppTextTheme({
     required this.generic,
     required this.genericBold,
@@ -23,39 +27,11 @@ class AppTextTheme extends ThemeExtension<AppTextTheme> {
           ),
         );
 
+  @override
   final TextStyle generic;
+
+  @override
   final TextStyle genericBold;
-
-  static AppTextTheme of(BuildContext context) {
-    return maybeOf(context)!;
-  }
-
-  static AppTextTheme? maybeOf(BuildContext context) {
-    return AppTheme.maybeOf(context)?.textTheme;
-  }
-
-  @override
-  AppTextTheme copyWith({
-    TextStyle? generic,
-    TextStyle? genericBold,
-  }) {
-    return AppTextTheme(
-      generic: generic ?? this.generic,
-      genericBold: genericBold ?? this.genericBold,
-    );
-  }
-
-  @override
-  AppTextTheme lerp(ThemeExtension<AppTextTheme>? other, double t) {
-    if (other is! AppTextTheme) {
-      return this;
-    }
-
-    return AppTextTheme(
-      generic: TextStyle.lerp(generic, other.generic, t)!,
-      genericBold: TextStyle.lerp(genericBold, other.genericBold, t)!,
-    );
-  }
 }
 
 @Deprecated('Use AppTextTheme instead')
