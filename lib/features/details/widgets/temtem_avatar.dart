@@ -71,9 +71,7 @@ class _TemtemAvatarState extends State<TemtemAvatar> {
               child: ValueListenableBuilder(
                 valueListenable: showLumaNotifier,
                 builder: (_, showLuma, __) {
-                  return _AnimatedSwitchIcon(
-                    turns: showLuma ? 0 : 1,
-                  );
+                  return _AnimatedSwitchIcon(turns: showLuma ? 0 : 1);
                 },
               ),
             ),
