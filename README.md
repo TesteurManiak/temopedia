@@ -12,11 +12,11 @@ I am not affiliated with Temtem's company. This is a personal project I'm doing 
 
 ## Screenshots
 
+_Work in progress_
+
 <div align="center">
-    <img src="flutter_01.png" height="400">
-    <img src="flutter_02.png" height="400">
-    <img src="flutter_03.png" height="400">
-    <img src="flutter_04.png" height="400">
+    <img src="screenshots/home.png" height="400">
+    <img src="screenshots/details.png" height="400">
 </div>
 
 ## How to install
