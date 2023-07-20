@@ -6,7 +6,7 @@ part of 'trait_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$traitControllerHash() => r'7825db5e32155ba2990f06d1cf4cb9ba1c902047';
+String _$traitControllerHash() => r'bf6d014a4e3a9ce1bb19ee69bf806b79ee7c8062';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -6,7 +6,7 @@ part of 'fetch_temtem_trait.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchTemtemTraitHash() => r'ffc03a810e83a4f7a5fae23b2c67c9fd647c2221';
+String _$fetchTemtemTraitHash() => r'0d56032bfecf481f6596176bdb7bc8360679d850';
 
 /// Copied from Dart SDK
 class _SystemHash {

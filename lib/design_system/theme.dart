@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/design_system/border_radius.dart';
 import 'package:temopedia/design_system/colors.dart';
 import 'package:temopedia/design_system/text_styles.dart';
 
@@ -8,6 +9,7 @@ class AppTheme {
   static ThemeData dark() {
     const colors = AppColors.dark();
     const textTheme = AppTextTheme.regular();
+    const borderRadius = AppBorderRadius.regular();
 
     final baseDark = ThemeData.dark();
     return baseDark.copyWith(
@@ -19,6 +21,9 @@ class AppTheme {
         centerTitle: true,
       ),
       dialogBackgroundColor: colors.dialog,
+      dialogTheme: DialogTheme(
+        shape: RoundedRectangleBorder(borderRadius: borderRadius.dialog),
+      ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: colors.bottomSheet,
         shape: const RoundedRectangleBorder(
@@ -30,6 +35,7 @@ class AppTheme {
       extensions: [
         colors,
         textTheme,
+        borderRadius,
       ],
     );
   }

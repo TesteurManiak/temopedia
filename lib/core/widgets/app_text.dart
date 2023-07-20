@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:temopedia/design_system/extensions/build_context.dart';
 import 'package:temopedia/design_system/text_styles.dart';
 
 class AppText extends StatelessWidget {
@@ -31,7 +30,7 @@ class AppText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textTheme = context.textTheme;
+    final textTheme = context.appTextTheme;
     final typeStyle =
         type?.fetcher(textTheme) ?? AppTextType.generic.fetcher(textTheme);
     final effectiveStyle = typeStyle.merge(style).copyWith(color: color);

@@ -19,16 +19,23 @@
     },
     "Get semanticColorTheme": {
         "prefix": "colorTheme",
-        "description": "Retrieve colorTheme from context in a variable",
+        "description": "Retrieve color theme from context in a variable",
         "body": [
-            "final colorTheme = context.colorTheme;",
+            "final colorTheme = context.appColors;",
         ],
     },
     "Get semanticTextTheme": {
         "prefix": "textTheme",
-        "description": "Retrieve textTheme from context in a variable",
+        "description": "Retrieve text theme from context in a variable",
         "body": [
-            "final textTheme = context.textTheme;",
+            "final textTheme = context.appTextTheme;",
+        ],
+    },
+    "Get borderRadiusTheme": {
+        "prefix": "borderRadius",
+        "description": "Retrieve border radius theme from context in a variable",
+        "body": [
+            "final borderRadius = context.appBorderRadius;",
         ],
     },
     "Get Strings": {
