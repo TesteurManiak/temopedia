@@ -33,6 +33,7 @@ class StatsSection extends StatelessWidget {
           _StatLine(label: strings.def_stat, value: stats.def),
           _StatLine(label: strings.spatk_stat, value: stats.spatk),
           _StatLine(label: strings.spdef_stat, value: stats.spdef),
+          const Divider(),
           _TotalLine(stats.total),
         ],
       ),
@@ -80,8 +81,11 @@ class _TotalLine extends StatelessWidget {
     return SeparatedRow(
       separator: const Spacer(),
       children: [
-        AppText(strings.total.toUpperCase()),
-        AppText('$total'),
+        AppText(
+          strings.total.toUpperCase(),
+          type: AppTextType.genericSemiBold,
+        ),
+        AppText('$total', type: AppTextType.genericSemiBold),
       ],
     );
   }

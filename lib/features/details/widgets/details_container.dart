@@ -32,7 +32,11 @@ class DetailsContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         separator: const SizedBox(height: 12),
         children: [
-          if (localTitle != null) AppText(localTitle.toUpperCase()),
+          if (localTitle != null)
+            AppText(
+              localTitle.toUpperCase(),
+              type: AppTextType.genericSemiBold,
+            ),
           child,
         ],
       ),

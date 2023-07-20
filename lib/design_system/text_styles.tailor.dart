@@ -11,15 +11,18 @@ part of 'text_styles.dart';
 mixin _$AppTextThemeTailorMixin
     on ThemeExtension<AppTextTheme>, DiagnosticableTreeMixin {
   TextStyle get generic;
+  TextStyle get genericSemiBold;
   TextStyle get genericBold;
 
   @override
   AppTextTheme copyWith({
     TextStyle? generic,
+    TextStyle? genericSemiBold,
     TextStyle? genericBold,
   }) {
     return AppTextTheme(
       generic: generic ?? this.generic,
+      genericSemiBold: genericSemiBold ?? this.genericSemiBold,
       genericBold: genericBold ?? this.genericBold,
     );
   }
@@ -29,6 +32,8 @@ mixin _$AppTextThemeTailorMixin
     if (other is! AppTextTheme) return this as AppTextTheme;
     return AppTextTheme(
       generic: TextStyle.lerp(generic, other.generic, t)!,
+      genericSemiBold:
+          TextStyle.lerp(genericSemiBold, other.genericSemiBold, t)!,
       genericBold: TextStyle.lerp(genericBold, other.genericBold, t)!,
     );
   }
@@ -40,6 +45,8 @@ mixin _$AppTextThemeTailorMixin
             other is AppTextTheme &&
             const DeepCollectionEquality().equals(generic, other.generic) &&
             const DeepCollectionEquality()
+                .equals(genericSemiBold, other.genericSemiBold) &&
+            const DeepCollectionEquality()
                 .equals(genericBold, other.genericBold));
   }
 
@@ -48,6 +55,7 @@ mixin _$AppTextThemeTailorMixin
     return Object.hash(
       runtimeType.hashCode,
       const DeepCollectionEquality().hash(generic),
+      const DeepCollectionEquality().hash(genericSemiBold),
       const DeepCollectionEquality().hash(genericBold),
     );
   }
@@ -58,6 +66,7 @@ mixin _$AppTextThemeTailorMixin
     properties
       ..add(DiagnosticsProperty('type', 'AppTextTheme'))
       ..add(DiagnosticsProperty('generic', generic))
+      ..add(DiagnosticsProperty('genericSemiBold', genericSemiBold))
       ..add(DiagnosticsProperty('genericBold', genericBold));
   }
 }
@@ -65,5 +74,6 @@ mixin _$AppTextThemeTailorMixin
 extension AppTextThemeBuildContextProps on BuildContext {
   AppTextTheme get appTextTheme => Theme.of(this).extension<AppTextTheme>()!;
   TextStyle get generic => appTextTheme.generic;
+  TextStyle get genericSemiBold => appTextTheme.genericSemiBold;
   TextStyle get genericBold => appTextTheme.genericBold;
 }

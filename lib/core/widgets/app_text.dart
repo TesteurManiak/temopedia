@@ -49,6 +49,7 @@ typedef TextTypeFetcher = TextStyle Function(AppTextTheme textTheme);
 
 enum AppTextType {
   generic(_generic),
+  genericSemiBold(_genericSemiBold),
   genericBold(_genericBold);
 
   const AppTextType(this.fetcher);
@@ -57,4 +58,5 @@ enum AppTextType {
 }
 
 TextStyle _generic(AppTextTheme textTheme) => textTheme.generic;
+TextStyle _genericSemiBold(AppTextTheme textTheme) => textTheme.genericSemiBold;
 TextStyle _genericBold(AppTextTheme textTheme) => textTheme.genericBold;

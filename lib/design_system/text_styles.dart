@@ -11,12 +11,18 @@ class AppTextTheme extends ThemeExtension<AppTextTheme>
     with DiagnosticableTreeMixin, _$AppTextThemeTailorMixin {
   const AppTextTheme({
     required this.generic,
+    required this.genericSemiBold,
     required this.genericBold,
   });
 
   const AppTextTheme.regular()
       : this(
           generic: const TextStyle(
+            fontSize: 14,
+            fontFamily: FontFamily.rubik,
+          ),
+          genericSemiBold: const TextStyle(
+            fontWeight: FontWeight.w600,
             fontSize: 14,
             fontFamily: FontFamily.rubik,
           ),
@@ -29,6 +35,9 @@ class AppTextTheme extends ThemeExtension<AppTextTheme>
 
   @override
   final TextStyle generic;
+
+  @override
+  final TextStyle genericSemiBold;
 
   @override
   final TextStyle genericBold;

@@ -24,6 +24,7 @@ class TraitsSection extends StatelessWidget {
             ListTile(
               title: Text(trait),
               trailing: const Icon(Icons.chevron_right),
+              contentPadding: EdgeInsets.zero,
               onTap: () => TraitDialog(name: trait).show(context),
             ),
         ],
