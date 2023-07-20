@@ -1,26 +1,22 @@
-import 'dart:async';
-
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:temopedia/core/database/local_storage.dart';
 import 'package:temopedia/core/models/error.dart';
 import 'package:temopedia/core/models/result.dart';
-import 'package:temopedia/core/models/temtem.dart';
 import 'package:temopedia/core/network/http_clients.dart';
+import 'package:temopedia/features/details/models/trait.dart';
 
-part 'fetch_temtem_details.g.dart';
+part 'fetch_temtem_traits.g.dart';
 
 @riverpod
-Future<Result<Temtem, AppError>> fetchTemtemDetails(
-  FetchTemtemDetailsRef ref,
-  int id,
+Future<Result<List<Trait>, AppError>> fetchTemtemTraits(
+  FetchTemtemTraitsRef ref,
 ) async {
   final apiClient = ref.watch(apiClientProvider);
   final localStorage = ref.watch(localStorageProvider);
 
-  final result =
-      await apiClient.get('/api/temtems/$id').decode(Temtem.fromJson);
+  final result = await apiClient.get('/api/traits').decodeList(Trait.fromJson);
 
-  await result.whenOrNull(success: localStorage.createTemtem);
+  await result.whenOrNull(success: localStorage.createTraits);
 
   return result;
 }

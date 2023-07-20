@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fetch_temtem_details.dart';
+part of 'trait_controller.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchTemtemDetailsHash() =>
-    r'ecb7430e4a7cf2c42e456baead3ceabbd0948ca1';
+String _$traitControllerHash() => r'7825db5e32155ba2990f06d1cf4cb9ba1c902047';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,34 +29,39 @@ class _SystemHash {
   }
 }
 
-typedef FetchTemtemDetailsRef
-    = AutoDisposeFutureProviderRef<Result<Temtem, AppError>>;
+abstract class _$TraitController
+    extends BuildlessAutoDisposeNotifier<TraitState> {
+  late final String name;
 
-/// See also [fetchTemtemDetails].
-@ProviderFor(fetchTemtemDetails)
-const fetchTemtemDetailsProvider = FetchTemtemDetailsFamily();
+  TraitState build(
+    String name,
+  );
+}
 
-/// See also [fetchTemtemDetails].
-class FetchTemtemDetailsFamily
-    extends Family<AsyncValue<Result<Temtem, AppError>>> {
-  /// See also [fetchTemtemDetails].
-  const FetchTemtemDetailsFamily();
+/// See also [TraitController].
+@ProviderFor(TraitController)
+const traitControllerProvider = TraitControllerFamily();
 
-  /// See also [fetchTemtemDetails].
-  FetchTemtemDetailsProvider call(
-    int id,
+/// See also [TraitController].
+class TraitControllerFamily extends Family<TraitState> {
+  /// See also [TraitController].
+  const TraitControllerFamily();
+
+  /// See also [TraitController].
+  TraitControllerProvider call(
+    String name,
   ) {
-    return FetchTemtemDetailsProvider(
-      id,
+    return TraitControllerProvider(
+      name,
     );
   }
 
   @override
-  FetchTemtemDetailsProvider getProviderOverride(
-    covariant FetchTemtemDetailsProvider provider,
+  TraitControllerProvider getProviderOverride(
+    covariant TraitControllerProvider provider,
   ) {
     return call(
-      provider.id,
+      provider.name,
     );
   }
 
@@ -73,44 +77,50 @@ class FetchTemtemDetailsFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'fetchTemtemDetailsProvider';
+  String? get name => r'traitControllerProvider';
 }
 
-/// See also [fetchTemtemDetails].
-class FetchTemtemDetailsProvider
-    extends AutoDisposeFutureProvider<Result<Temtem, AppError>> {
-  /// See also [fetchTemtemDetails].
-  FetchTemtemDetailsProvider(
-    this.id,
+/// See also [TraitController].
+class TraitControllerProvider
+    extends AutoDisposeNotifierProviderImpl<TraitController, TraitState> {
+  /// See also [TraitController].
+  TraitControllerProvider(
+    this.name,
   ) : super.internal(
-          (ref) => fetchTemtemDetails(
-            ref,
-            id,
-          ),
-          from: fetchTemtemDetailsProvider,
-          name: r'fetchTemtemDetailsProvider',
+          () => TraitController()..name = name,
+          from: traitControllerProvider,
+          name: r'traitControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$fetchTemtemDetailsHash,
-          dependencies: FetchTemtemDetailsFamily._dependencies,
+                  : _$traitControllerHash,
+          dependencies: TraitControllerFamily._dependencies,
           allTransitiveDependencies:
-              FetchTemtemDetailsFamily._allTransitiveDependencies,
+              TraitControllerFamily._allTransitiveDependencies,
         );
 
-  final int id;
+  final String name;
 
   @override
   bool operator ==(Object other) {
-    return other is FetchTemtemDetailsProvider && other.id == id;
+    return other is TraitControllerProvider && other.name == name;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
+    hash = _SystemHash.combine(hash, name.hashCode);
 
     return _SystemHash.finish(hash);
+  }
+
+  @override
+  TraitState runNotifierBuild(
+    covariant TraitController notifier,
+  ) {
+    return notifier.build(
+      name,
+    );
   }
 }
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

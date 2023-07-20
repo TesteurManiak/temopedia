@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:temopedia/core/database/hive_database.dart';
 import 'package:temopedia/core/models/temtem.dart';
+import 'package:temopedia/features/details/models/trait.dart';
 
 part 'local_storage.g.dart';
 
@@ -9,10 +10,8 @@ abstract class LocalStorage {
   Future<void> createTemtem(Temtem temtem);
   Future<List<Temtem>> readTemtems();
   Future<Temtem?> readTemtem(int id);
-  Future<void> updateTemtems(Iterable<Temtem> temtems);
-  Future<void> updateTemtem(Temtem temtem);
-  Future<void> deleteTemtems(Iterable<int> ids);
-  Future<void> deleteTemtem(int id);
+  Future<void> createTraits(Iterable<Trait> traits);
+  Future<Trait?> readTrait(String name);
 }
 
 @Riverpod(keepAlive: true)

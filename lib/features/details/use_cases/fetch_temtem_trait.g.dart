@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'fetch_temtem_details.dart';
+part of 'fetch_temtem_trait.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchTemtemDetailsHash() =>
-    r'ecb7430e4a7cf2c42e456baead3ceabbd0948ca1';
+String _$fetchTemtemTraitHash() => r'ffc03a810e83a4f7a5fae23b2c67c9fd647c2221';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,34 +29,34 @@ class _SystemHash {
   }
 }
 
-typedef FetchTemtemDetailsRef
-    = AutoDisposeFutureProviderRef<Result<Temtem, AppError>>;
+typedef FetchTemtemTraitRef
+    = AutoDisposeFutureProviderRef<Result<Trait, AppError>>;
 
-/// See also [fetchTemtemDetails].
-@ProviderFor(fetchTemtemDetails)
-const fetchTemtemDetailsProvider = FetchTemtemDetailsFamily();
+/// See also [fetchTemtemTrait].
+@ProviderFor(fetchTemtemTrait)
+const fetchTemtemTraitProvider = FetchTemtemTraitFamily();
 
-/// See also [fetchTemtemDetails].
-class FetchTemtemDetailsFamily
-    extends Family<AsyncValue<Result<Temtem, AppError>>> {
-  /// See also [fetchTemtemDetails].
-  const FetchTemtemDetailsFamily();
+/// See also [fetchTemtemTrait].
+class FetchTemtemTraitFamily
+    extends Family<AsyncValue<Result<Trait, AppError>>> {
+  /// See also [fetchTemtemTrait].
+  const FetchTemtemTraitFamily();
 
-  /// See also [fetchTemtemDetails].
-  FetchTemtemDetailsProvider call(
-    int id,
+  /// See also [fetchTemtemTrait].
+  FetchTemtemTraitProvider call(
+    String name,
   ) {
-    return FetchTemtemDetailsProvider(
-      id,
+    return FetchTemtemTraitProvider(
+      name,
     );
   }
 
   @override
-  FetchTemtemDetailsProvider getProviderOverride(
-    covariant FetchTemtemDetailsProvider provider,
+  FetchTemtemTraitProvider getProviderOverride(
+    covariant FetchTemtemTraitProvider provider,
   ) {
     return call(
-      provider.id,
+      provider.name,
     );
   }
 
@@ -73,42 +72,42 @@ class FetchTemtemDetailsFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'fetchTemtemDetailsProvider';
+  String? get name => r'fetchTemtemTraitProvider';
 }
 
-/// See also [fetchTemtemDetails].
-class FetchTemtemDetailsProvider
-    extends AutoDisposeFutureProvider<Result<Temtem, AppError>> {
-  /// See also [fetchTemtemDetails].
-  FetchTemtemDetailsProvider(
-    this.id,
+/// See also [fetchTemtemTrait].
+class FetchTemtemTraitProvider
+    extends AutoDisposeFutureProvider<Result<Trait, AppError>> {
+  /// See also [fetchTemtemTrait].
+  FetchTemtemTraitProvider(
+    this.name,
   ) : super.internal(
-          (ref) => fetchTemtemDetails(
+          (ref) => fetchTemtemTrait(
             ref,
-            id,
+            name,
           ),
-          from: fetchTemtemDetailsProvider,
-          name: r'fetchTemtemDetailsProvider',
+          from: fetchTemtemTraitProvider,
+          name: r'fetchTemtemTraitProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$fetchTemtemDetailsHash,
-          dependencies: FetchTemtemDetailsFamily._dependencies,
+                  : _$fetchTemtemTraitHash,
+          dependencies: FetchTemtemTraitFamily._dependencies,
           allTransitiveDependencies:
-              FetchTemtemDetailsFamily._allTransitiveDependencies,
+              FetchTemtemTraitFamily._allTransitiveDependencies,
         );
 
-  final int id;
+  final String name;
 
   @override
   bool operator ==(Object other) {
-    return other is FetchTemtemDetailsProvider && other.id == id;
+    return other is FetchTemtemTraitProvider && other.name == name;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, id.hashCode);
+    hash = _SystemHash.combine(hash, name.hashCode);
 
     return _SystemHash.finish(hash);
   }

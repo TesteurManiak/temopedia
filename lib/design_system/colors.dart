@@ -25,7 +25,7 @@ class AppColors extends ThemeExtension<AppColors>
           scaffold: MyColors.background,
           activeButton: Palette.cyan,
           disabledButton: Palette.grey,
-          dialog: Palette.black,
+          dialog: Palette.darkPurple3,
         );
 
   @override
