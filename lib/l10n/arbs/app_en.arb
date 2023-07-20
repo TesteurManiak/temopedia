@@ -21,5 +21,6 @@
     "spatk_stat": "SPATK",
     "spdef_stat": "SPDEF",
     "total": "Total",
-    "generic_error": "An error occurred"
+    "generic_error": "An error occurred",
+    "global_close": "Close"
 }

@@ -224,6 +224,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An error occurred'**
   String get generic_error;
+
+  /// No description provided for @global_close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get global_close;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

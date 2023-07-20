@@ -4,6 +4,7 @@ import 'package:temopedia/core/extensions/build_context.dart';
 import 'package:temopedia/core/mixins/showable.dart';
 import 'package:temopedia/core/widgets/error_widget.dart';
 import 'package:temopedia/core/widgets/object_loader.dart';
+import 'package:temopedia/core/widgets/separated_column.dart';
 import 'package:temopedia/features/details/controllers/trait_controller.dart';
 import 'package:temopedia/features/details/models/trait.dart';
 
@@ -19,6 +20,8 @@ class TraitDialog extends ConsumerWidget with ShowableDialog {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(traitControllerProvider(name));
 
+    final strings = context.strings;
+
     return ObjectLoader(
       loadable: ref.watch(traitControllerProvider(name).notifier),
       child: AlertDialog(
@@ -29,8 +32,14 @@ class TraitDialog extends ConsumerWidget with ShowableDialog {
             return const Center(child: CircularProgressIndicator());
           },
           loaded: _Body.new,
-          error: (_) => AppErrorWidget(message: context.strings.generic_error),
+          error: (_) => AppErrorWidget(message: strings.generic_error),
         ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(context.strings.global_close),
+          ),
+        ],
       ),
     );
   }
@@ -43,8 +52,13 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      trait.description,
+    return SeparatedColumn(
+      mainAxisSize: MainAxisSize.min,
+      separator: const SizedBox(height: 8),
+      children: [
+        Text(trait.description),
+        Text(trait.effect),
+      ],
     );
   }
 }

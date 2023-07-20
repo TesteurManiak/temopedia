@@ -69,4 +69,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get generic_error => 'An error occurred';
+
+  @override
+  String get global_close => 'Close';
 }
