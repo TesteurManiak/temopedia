@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/core/extensions/iterable.dart';
 
 class SeparatedRow extends StatelessWidget {
   const SeparatedRow({
@@ -19,18 +20,7 @@ class SeparatedRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: mainAxisAlignment,
       crossAxisAlignment: crossAxisAlignment,
-      children: [
-        ..._buildChildren(),
-      ],
+      children: [...children.separatedBy(separator)],
     );
-  }
-
-  Iterable<Widget> _buildChildren() sync* {
-    for (int i = 0; i < children.length; i++) {
-      yield children[i];
-      if (i < children.length - 1) {
-        yield separator;
-      }
-    }
   }
 }

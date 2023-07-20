@@ -11,8 +11,6 @@ part 'details_controller.g.dart';
 
 @riverpod
 class DetailsController extends _$DetailsController with Loadable {
-  DetailsController();
-
   @override
   DetailsState build(int temtemId) {
     return const DetailsState.loading();
@@ -20,6 +18,7 @@ class DetailsController extends _$DetailsController with Loadable {
 
   @override
   Future<void> load() async {
+    state = const DetailsState.loading();
     if (state.temtemOrNull == null) {
       final localTemtem =
           await ref.read(getLocalTemtemProvider(temtemId).future);

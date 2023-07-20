@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:temopedia/core/extensions/string.dart';
+import 'package:temopedia/core/widgets/separated_column.dart';
 import 'package:temopedia/features/details/widgets/details_container.dart';
 
 class TraitsSection extends StatelessWidget {
@@ -11,9 +13,22 @@ class TraitsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DetailsContainer(
-      title: 'Traits',
-      child: Placeholder(),
+    return DetailsContainer(
+      title: 'Traits'.hardcoded,
+      child: SeparatedColumn(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        separator: const Divider(),
+        children: [
+          for (final trait in traits)
+            ListTile(
+              title: Text(trait),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                // TODO(Guillaume): redirect to trait dialog or view
+              },
+            ),
+        ],
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:temopedia/core/extensions/iterable.dart';
 import 'package:temopedia/core/mixins/app_bar_size.dart';
 import 'package:temopedia/core/models/stats.dart';
 import 'package:temopedia/core/network/http_clients.dart';
@@ -47,20 +48,13 @@ class _Body extends ConsumerWidget {
 
     return CustomScrollView(
       slivers: [
-        _SliverHeader(id: id),
-        if (stats != null) ...[
-          const SliverSpace(24),
-          _SliverStatsSection(stats: stats),
-        ],
-        if (traits != null && traits.isNotEmpty) ...[
-          const SliverSpace(24),
-          SliverToBoxAdapter(
-            child: TraitsSection(
-              traits: traits,
-            ),
-          ),
-        ],
-        const BottomSliverSpace(),
+        ...[
+          _SliverHeader(id: id),
+          if (stats != null) _SliverStatsSection(stats: stats),
+          if (traits != null && traits.isNotEmpty)
+            SliverToBoxAdapter(child: TraitsSection(traits: traits)),
+          const BottomSliverSpace(),
+        ].separatedBy(const SliverSpace(24)),
       ],
     );
   }
@@ -108,8 +102,6 @@ class _SliverStatsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: StatsSection(stats: stats),
-    );
+    return SliverToBoxAdapter(child: StatsSection(stats: stats));
   }
 }
