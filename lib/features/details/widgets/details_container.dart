@@ -7,15 +7,16 @@ import 'package:temopedia/design_system/colors.dart';
 class DetailsContainer extends StatelessWidget {
   const DetailsContainer({
     super.key,
-    required this.title,
+    this.title,
     required this.child,
   });
 
-  final String title;
+  final String? title;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
+    final localTitle = title;
     final colorTheme = context.appColors;
     final borderRadius = context.appBorderRadius;
 
@@ -31,7 +32,7 @@ class DetailsContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         separator: const SizedBox(height: 12),
         children: [
-          AppText(title.toUpperCase()),
+          if (localTitle != null) AppText(localTitle.toUpperCase()),
           child,
         ],
       ),

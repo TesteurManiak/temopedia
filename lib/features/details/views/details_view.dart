@@ -4,10 +4,12 @@ import 'package:temopedia/core/extensions/iterable.dart';
 import 'package:temopedia/core/mixins/app_bar_size.dart';
 import 'package:temopedia/core/models/stats.dart';
 import 'package:temopedia/core/network/http_clients.dart';
+import 'package:temopedia/core/widgets/app_text.dart';
 import 'package:temopedia/core/widgets/bottom_sliver_space.dart';
 import 'package:temopedia/core/widgets/object_loader.dart';
 import 'package:temopedia/core/widgets/sliver_space.dart';
 import 'package:temopedia/features/details/controllers/details_controller.dart';
+import 'package:temopedia/features/details/widgets/details_container.dart';
 import 'package:temopedia/features/details/widgets/header_content.dart';
 import 'package:temopedia/features/details/widgets/stats_section.dart';
 import 'package:temopedia/features/details/widgets/traits_section.dart';
@@ -39,6 +41,11 @@ class _Body extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final description = ref.watch(
+      detailsControllerProvider(id).select((s) {
+        return s.temtemOrNull?.gameDescription;
+      }),
+    );
     final stats = ref.watch(
       detailsControllerProvider(id).select((s) => s.temtemOrNull?.stats),
     );
@@ -50,6 +57,7 @@ class _Body extends ConsumerWidget {
       slivers: [
         ...[
           _SliverHeader(id: id),
+          if (description != null) _SliverDescription(description),
           if (stats != null) _SliverStatsSection(stats: stats),
           if (traits != null && traits.isNotEmpty)
             SliverToBoxAdapter(child: TraitsSection(traits: traits)),
@@ -89,6 +97,19 @@ class _SliverHeader extends ConsumerWidget with AppBarSize {
         iconUrl: iconUrl,
         lumaIconUrl: lumaIconUrl,
       ),
+    );
+  }
+}
+
+class _SliverDescription extends StatelessWidget {
+  const _SliverDescription(this.description);
+
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: DetailsContainer(child: AppText(description)),
     );
   }
 }
