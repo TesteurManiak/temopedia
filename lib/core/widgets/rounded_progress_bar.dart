@@ -13,12 +13,11 @@ class RoundedProgressBar extends ProgressIndicator {
   const RoundedProgressBar({
     super.key,
     super.value,
+    super.color,
+    super.backgroundColor,
     this.minHeight,
     this.radius,
-  }) : super(
-          color: _kDefaultBarColor,
-          backgroundColor: _kDefaultBackgroundColor,
-        );
+  });
 
   /// Defaults to 6.0.
   final double? minHeight;

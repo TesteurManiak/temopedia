@@ -5,6 +5,7 @@ import 'package:temopedia/core/widgets/app_text.dart';
 import 'package:temopedia/core/widgets/rounded_progress_bar.dart';
 import 'package:temopedia/core/widgets/separated_column.dart';
 import 'package:temopedia/core/widgets/separated_row.dart';
+import 'package:temopedia/design_system/palette.dart';
 import 'package:temopedia/features/details/widgets/details_container.dart';
 
 class StatsSection extends StatelessWidget {
@@ -52,6 +53,13 @@ class _StatLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final percentage = value / 100;
+    final color = switch (percentage) {
+      _ when percentage < 0.5 => Colors.red,
+      _ when percentage >= 0.5 && percentage < 0.75 => Palette.orange2,
+      _ => Colors.green,
+    };
+
     return SeparatedRow(
       separator: const SizedBox(width: 8),
       children: [
@@ -59,7 +67,12 @@ class _StatLine extends StatelessWidget {
           width: 44,
           child: AppText(label.toUpperCase()),
         ),
-        Flexible(child: RoundedProgressBar(value: value / 100)),
+        Flexible(
+          child: RoundedProgressBar(
+            value: percentage,
+            color: color,
+          ),
+        ),
         SizedBox(
           width: 24,
           child: AppText('$value', textAlign: TextAlign.end),
